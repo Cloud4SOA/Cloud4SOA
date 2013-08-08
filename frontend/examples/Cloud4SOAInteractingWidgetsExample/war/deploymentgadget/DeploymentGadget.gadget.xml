@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?><Module><ModulePrefs author="Yosu Gorroñogoitia" author_email="jesus.gorronogoitia@atosresearch.eu" height="400" title="Cloud4SOA Deployment Widget" width="300"><Require feature="pubsub"/></ModulePrefs><Content type="html"><![CDATA[<!DOCTYPE html><script>function deploymentgadget(){
+  var $intern_0 = '', $intern_8 = '" for "gwt:onLoadErrorFn"', $intern_10 = '" for "gwt:onPropertyErrorFn"', $intern_29 = '">', $intern_42 = '"><\/script>', $intern_16 = '&', $intern_40 = '.cache.js', $intern_39 = '.cache.js$', $intern_5 = '/', $intern_33 = '2.1', $intern_34 = '7184BB0AD158E9E6661D8278E210D69C', $intern_38 = ':', $intern_28 = '<link rel="stylesheet" href="', $intern_41 = '<script src="', $intern_12 = '=', $intern_7 = 'Bad handler "', $intern_35 = 'EA708E76F715E5A2D8824C2008680650', $intern_36 = 'FAC4D0EFB8BC6DF1C2AA3DE59A0B8E9E', $intern_37 = 'FE2E75F8DD3A011EB38DAE7C91138973', $intern_15 = '_', $intern_14 = 'country', $intern_2 = 'deploymentgadget', $intern_3 = 'external.gwtOnLoad failed: ', $intern_24 = 'gecko', $intern_25 = 'gecko1_8', $intern_1 = 'gwt.hybrid', $intern_27 = 'gwt/standard/standard.css', $intern_6 = 'gwt:onLoadErrorFn', $intern_9 = 'gwt:onPropertyErrorFn', $intern_11 = 'gwt:property', $intern_23 = 'ie6', $intern_22 = 'ie8', $intern_13 = 'lang', $intern_31 = 'moduleStartup', $intern_21 = 'msie', $intern_32 = 'onModuleLoadStart', $intern_18 = 'opera', $intern_20 = 'safari', $intern_30 = 'startup', $intern_26 = 'unknown', $intern_4 = 'url', $intern_17 = 'user.agent', $intern_19 = 'webkit';
+  var $wnd = window, $doc = document, external = $wnd.external, gwtOnLoad, bodyDone, base = $intern_0, metaProps = {}, values = [], providers = [], answers = [], softPermutationId = 0, onLoadErrorFunc, propertyErrorFunc, $stats = $wnd.__gwtStatsEvent?function(a){
+    return $wnd.__gwtStatsEvent(a);
+  }
+  :null;
+  if (!$wnd.__gwt_stylesLoaded) {
+    $wnd.__gwt_stylesLoaded = {};
+  }
+  if (!$wnd.__gwt_scriptsLoaded) {
+    $wnd.__gwt_scriptsLoaded = {};
+  }
+  function isHostedMode(){
+    try {
+      return external && (external.gwtOnLoad && $wnd.location.search.indexOf($intern_1) == -1);
+    }
+     catch (e) {
+      return false;
+    }
+  }
+
+  function maybeStartModule(){
+    if (bodyDone) {
+      if (isHostedMode()) {
+        try {
+          external.gwtOnLoad($wnd, $intern_2, softPermutationId);
+        }
+         catch (e) {
+          $wnd.alert($intern_3 + e);
+        }
+      }
+       else if (gwtOnLoad) {
+        gwtOnLoad(onLoadErrorFunc, $intern_2, base, softPermutationId);
+      }
+    }
+  }
+
+  function computeScriptBase(){
+    base = $wnd.gadgets.util.getUrlParameters()[$intern_4];
+    base = base.substring(0, base.lastIndexOf($intern_5) + 1);
+  }
+
+  function processMetas(){
+    var meta;
+    var prefs = new $wnd.gadgets.Prefs;
+    if (meta = prefs.getString($intern_6)) {
+      try {
+        onLoadErrorFunc = eval(meta);
+      }
+       catch (e) {
+        alert($intern_7 + content + $intern_8);
+      }
+    }
+    if (meta = prefs.getString($intern_9)) {
+      try {
+        propertyErrorFunc = eval(meta);
+      }
+       catch (e) {
+        alert($intern_7 + content + $intern_10);
+      }
+    }
+    if (meta = prefs.getArray($intern_11)) {
+      for (var i = 0; i < meta.length; i++) {
+        var content = meta[i];
+        if (content) {
+          var value, eq = content.indexOf($intern_12);
+          if (eq >= 0) {
+            name = content.substring(0, eq);
+            value = content.substring(eq + 1);
+          }
+           else {
+            name = content;
+            value = $intern_0;
+          }
+          metaProps[name] = value;
+        }
+      }
+    }
+  }
+
+  function setLocale(){
+    var args = $wnd.location.search;
+    var lang = extractFromQueryStr(args, $intern_13);
+    if (lang != null) {
+      country = extractFromQueryStr(args, $intern_14);
+      if (country != null) {
+        $wnd.__gwt_Locale = lang + $intern_15 + country;
+      }
+       else {
+        $wnd.__gwt_Locale = lang;
+      }
+    }
+  }
+
+  function extractFromQueryStr(args, argName){
+    var start = args.indexOf(argName + $intern_12);
+    if (start < 0) {
+      return undefined;
+    }
+    var value = args.substring(start);
+    var valueBegin = value.indexOf($intern_12) + 1;
+    var valueEnd = value.indexOf($intern_16);
+    if (valueEnd == -1) {
+      valueEnd = value.length;
+    }
+    return value.substring(valueBegin, valueEnd);
+  }
+
+  function unflattenKeylistIntoAnswers(propValArray, value){
+    var answer = answers;
+    for (var i = 0, n = propValArray.length - 1; i < n; ++i) {
+      answer = answer[propValArray[i]] || (answer[propValArray[i]] = []);
+    }
+    answer[propValArray[n]] = value;
+  }
+
+  function computePropValue(propName){
+    var value = providers[propName](), allowedValuesMap = values[propName];
+    if (value in allowedValuesMap) {
+      return value;
+    }
+    var allowedValuesList = [];
+    for (var k in allowedValuesMap) {
+      allowedValuesList[allowedValuesMap[k]] = k;
+    }
+    if (propertyErrorFunc) {
+      propertyErrorFunc(propName, allowedValuesList, value);
+    }
+    throw null;
+  }
+
+  providers[$intern_17] = function(){
+    var ua = navigator.userAgent.toLowerCase();
+    var makeVersion = function(result){
+      return parseInt(result[1]) * 1000 + parseInt(result[2]);
+    }
+    ;
+    if (ua.indexOf($intern_18) != -1) {
+      return $intern_18;
+    }
+     else if (ua.indexOf($intern_19) != -1) {
+      return $intern_20;
+    }
+     else if (ua.indexOf($intern_21) != -1) {
+      if (document.documentMode >= 8) {
+        return $intern_22;
+      }
+       else {
+        var result = /msie ([0-9]+)\.([0-9]+)/.exec(ua);
+        if (result && result.length == 3) {
+          var v = makeVersion(result);
+          if (v >= 6000) {
+            return $intern_23;
+          }
+        }
+      }
+    }
+     else if (ua.indexOf($intern_24) != -1) {
+      return $intern_25;
+    }
+    return $intern_26;
+  }
+  ;
+  values[$intern_17] = {gecko1_8:0, ie6:1, ie8:2, opera:3, safari:4};
+  deploymentgadget.onScriptLoad = function(gwtOnLoadFunc){
+    deploymentgadget = null;
+    gwtOnLoad = gwtOnLoadFunc;
+    maybeStartModule();
+  }
+  ;
+  computeScriptBase();
+  processMetas();
+  setLocale();
+  $wnd.gadgets.util.registerOnLoadHandler(function(){
+    if (!bodyDone) {
+      bodyDone = true;
+      if (!__gwt_stylesLoaded[$intern_27]) {
+        __gwt_stylesLoaded[$intern_27] = true;
+        document.write($intern_28 + gadgets.io.getProxyUrl(base + $intern_27) + $intern_29);
+      }
+      maybeStartModule();
+    }
+  }
+  );
+  if (isHostedMode()) {
+    $wnd.$wnd = $wnd;
+    $wnd.$doc = $doc;
+    $wnd.$moduleName = $intern_2;
+    $wnd.$moduleBase = base;
+    $wnd.__gwt_getProperty = computePropValue;
+    $wnd.__gwt_initHandlers = deploymentgadget.__gwt_initHandlers;
+    $wnd.__gwt_module_id = 0;
+    $wnd.fireOnModuleLoadStart = function(className){
+      $stats && $stats({moduleName:$moduleName, subSystem:$intern_30, evtGroup:$intern_31, millis:(new Date).getTime(), type:$intern_32, className:className});
+    }
+    ;
+    $wnd.onunload = function(){
+      external.gwtOnLoad($wnd, null, $intern_33);
+    }
+    ;
+  }
+   else {
+    var strongName;
+    try {
+      unflattenKeylistIntoAnswers([$intern_20], $intern_34);
+      unflattenKeylistIntoAnswers([$intern_23], $intern_35);
+      unflattenKeylistIntoAnswers([$intern_18], $intern_36);
+      unflattenKeylistIntoAnswers([$intern_25], $intern_37);
+      strongName = answers[computePropValue($intern_17)];
+      var idx = strongName.indexOf($intern_38);
+      if (idx != -1) {
+        softPermutationId = Number(strongName.substring(idx + 1));
+        strongName = strongName.substring(0, idx);
+      }
+    }
+     catch (e) {
+      return;
+    }
+    var fullName = base + strongName;
+    if (fullName.search($intern_39) < 0) {
+      fullName = fullName.concat($intern_40);
+    }
+    var loadFrom = $wnd.gadgets.io.getProxyUrl(fullName, {refreshInterval:31536000});
+    $doc.write($intern_41 + loadFrom + $intern_42);
+  }
+}
+
+deploymentgadget.__gwt_initHandlers = function(resize, beforeunload, unload){
+  var $wnd = window, oldOnResize = $wnd.onresize, oldOnBeforeUnload = $wnd.onbeforeunload, oldOnUnload = $wnd.onunload;
+  $wnd.onresize = function(evt){
+    try {
+      resize();
+    }
+     finally {
+      oldOnResize && oldOnResize(evt);
+    }
+  }
+  ;
+  $wnd.onbeforeunload = function(evt){
+    var ret, oldRet;
+    try {
+      ret = beforeunload();
+    }
+     finally {
+      oldRet = oldOnBeforeUnload && oldOnBeforeUnload(evt);
+    }
+    if (ret != null) {
+      return ret;
+    }
+    if (oldRet != null) {
+      return oldRet;
+    }
+  }
+  ;
+  $wnd.onunload = function(evt){
+    try {
+      unload();
+    }
+     finally {
+      oldOnUnload && oldOnUnload(evt);
+    }
+  }
+  ;
+}
+;
+deploymentgadget();
+</script>
+<div id="__gwt_gadget_content_div"></div>]]></Content></Module>

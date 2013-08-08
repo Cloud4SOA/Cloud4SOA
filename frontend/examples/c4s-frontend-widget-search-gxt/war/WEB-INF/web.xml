@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets --> 	
+  
+  <servlet>
+    <servlet-name>service</servlet-name>
+    <servlet-class>com.extjs.gxt.samples.server.ExampleServiceImpl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>fileservice</servlet-name>
+    <servlet-class>com.extjs.gxt.samples.server.FileServiceImpl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>xmltree</servlet-name>
+    <servlet-class>com.extjs.gxt.samples.server.XmlTreeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>xmltree</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.explorer.Explorer/xmltreeloader</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>xmltree</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.Examples/xmltreeloader</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>service</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.explorer.Explorer/service</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>service</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.Examples/service</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>service</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.Examples/service</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>service</servlet-name>
+    <url-pattern>/c4s_frontend_widget_search_gwt/service</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>fileservice</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.explorer.Explorer/fileservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>fileservice</servlet-name>
+    <url-pattern>/com.extjs.gxt.samples.Examples/fileservice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>service</servlet-name>
+    <url-pattern>/c4s_frontend_widget_search_gwt/service</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>fileservice</servlet-name>
+    <url-pattern>/c4s_frontend_widget_search_gwt/fileservice</url-pattern>
+  </servlet-mapping>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>C4s_frontend_widget_search_gwt.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

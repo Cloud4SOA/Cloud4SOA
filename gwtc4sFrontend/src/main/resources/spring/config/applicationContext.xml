@@ -1,0 +1,66 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+        <!--
+	-
+	- Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+	- 
+	- Licensed to the Apache Software Foundation (ASF) under one
+	- or more contributor license agreements.  See the NOTICE file
+	- distributed with this work for additional information
+	- regarding copyright ownership.  The ASF licenses this file
+	- to you under the Apache License, Version 2.0 (the
+	- "License"); you may not use this file except in compliance
+	- with the License.  You may obtain a copy of the License at
+	-
+	- http://www.apache.org/licenses/LICENSE-2.0
+	- 
+	- Unless required by applicable law or agreed to in writing, software
+	- distributed under the License is distributed on an "AS IS" BASIS,
+	- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	- See the License for the specific language governing permissions and
+	- limitations under the License.
+	-
+	--><bean id="applicationModel" class="eu.cloud4soa.semantic.ApplicationModel">
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="paaSOfferingModel" class="eu.cloud4soa.semantic.PaaSOfferingModel">
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="sLAsRepository" class="eu.cloud4soa.repository.SLAsRepository">
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="slaModule" class="eu.cloud4soa.governance.SLAModule">
+            <property name="sLAsRepository" ref="sLAsRepository"/>
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="monitoringModule" class="eu.cloud4soa.governance.MonitoringModule">
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="executionManagementServiceModule" class="eu.cloud4soa.governance.ExecutionManagementServiceModule">
+            <property name="monitoringModule" ref="monitoringModule"/>
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="applicationProfilesRepository" class="eu.cloud4soa.repository.ApplicationProfilesRepository">
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+
+        <bean id="applicationDeployment" class="eu.cloud4soa.soa.ApplicationDeployment">
+            <property name="applicationModel" ref="applicationModel"/>
+            <property name="paaSOfferingModel" ref="paaSOfferingModel"/>
+            <property name="slaModule" ref="slaModule"/>
+            <property name="applicationProfilesRepository" ref="applicationProfilesRepository"/>
+            <property name="executionManagementServiceModule" ref="executionManagementServiceModule"/>
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+		
+		<bean id="deploymentWidget" class="eu.cloud4soa.frontend.DeploymentWidget">
+            <property name="applicationDeployment" ref="applicationDeployment"/>
+<!-- additional collaborators and configuration for this bean go here -->
+        </bean>
+</beans>

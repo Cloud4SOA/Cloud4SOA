@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.cloud4soa.eu/v0.1/enterprise-domain#"
+    xmlns:paas-m="http://www.cloud4soa.eu/v0.1/paas-model#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:c4s-inf-m="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/enterprise-domain">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SoftwareProvider">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.enterprise-architecture.org/essential-metamodel.owl#Supplier">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Software Provider</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="providesSoftwareComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A business that offer Software that can run in the cloud. Cloud Software providers sell the usage of their Software following different business and pricing models. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PaaSProvider">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Supplier"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A business that has set up a Cloud PaaS system which makes available PaaS offerings. Cloud PaaS providers sell the usage of their PaaS offerings following different business and pricing models. </rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PaaS Provider</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasUser"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="providePaaS"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IaaSProvider">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Supplier"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >IaaS Provider</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="providesHardwareComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A business that has set up a Cloud IaaS system which makes available more than one resources (e.g. virtual machines, storage etc.) IaaS providers sell the usage of their resources following different business and pricing models. </rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#providePaaS">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Provider with the PaaSOfferings it provides.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provide PaaS</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering"/>
+    <rdfs:domain rdf:resource="#PaaSProvider"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasUser">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Provider with a PaaS Usser in order to have access to the Cloud4SOA system.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has User</rdfs:label>
+    <rdfs:domain rdf:resource="#PaaSProvider"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/user-model#PaaSUser"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#providesSoftwareComponent">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a Software Provider with the Software Components it provides.</rdfs:comment>
+    <rdfs:domain rdf:resource="#SoftwareProvider"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provides Software Component</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#providesHardwareComponent">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provides Hardware Component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates  an IaaS Provider with the Hardware Components it provides.</rdfs:comment>
+    <rdfs:domain rdf:resource="#IaaSProvider"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Component"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="link">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The link of a document</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >link</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:DatatypeProperty>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Supplier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Supplier"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

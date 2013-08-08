@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/measure">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Time_Unit">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time Unit</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a Time unit that can measure e.g. the latency of a netwrork resource.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MeasurementUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MegaHertz">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Computing_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mega Hertz</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A computing unit measured in Mega Hertz.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StorageRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Storage range</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MeasurementRange"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a storage range that can measure e.g. the range of the capacity of a storage component.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MeasurementRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Measurement range</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Utilities"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The upper class of the Measurement Ranges.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TeraByte">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Storage_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TeraByte</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage unit measured in TeraByte.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MegaByte_Per_Second">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Networking_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MegaByte per Second</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Networking unit measured in MegaByte per Second.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TeraByte_Per_Second">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Networking_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TeraByte per Second</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Networking unit measured in TeraByte per Second.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Second">
+    <rdfs:subClassOf rdf:resource="#Time_Unit"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Time unit measured in Second.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Second</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Hour">
+    <rdfs:subClassOf rdf:resource="#Time_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Hour</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Time unit measured in Hours.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Networking_Unit">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Networking Unit</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a Networking unit that can measure e.g. the network bandwidth.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasurementUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Computing_Unit">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasurementUnit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computing Unit</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a computing unit that can measure e.g. the CPU speed.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="GigaHertz">
+    <rdfs:subClassOf rdf:resource="#Computing_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Giga Hertz</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A computing unit measured in Giga Hertz.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NetworkingRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Networking range</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MeasurementRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a networking range that can measure e.g. the range of the network bandwidth.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MilliSecond">
+    <rdfs:subClassOf rdf:resource="#Time_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MilliSecond</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Time unit measured in Millisecond.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time range</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MeasurementRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a time range that can measure e.g. the range of the  latency of a netwrork resource.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="KiloByte">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Storage_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >KiloByte</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage unit measured in KiloByte.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="GigaByte_Per_Second">
+    <rdfs:subClassOf rdf:resource="#Networking_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GigaByte per Second</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Networking unit measured in GigaByte per Second.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Flops">
+    <rdfs:subClassOf rdf:resource="#Computing_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Flops</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A computing unit measured in floating-point operations per second.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NumericRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Numeric range</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MeasurementRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a numeric range that can measure e.g. the range of the http requests served by a box component.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="KiloByte_Per_Second">
+    <rdfs:subClassOf rdf:resource="#Networking_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >KiloByte per Second</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Networking unit measured in KiloByte per Second.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MegaByte">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Storage_Unit"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MegaByte</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage unit measured in MegaByte.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Minute">
+    <rdfs:subClassOf rdf:resource="#Time_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Minute</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Time unit measured in Minutes.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Storage_Unit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a Storage unit that can measure e.g. the capacity of a storage component.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Storage Unit</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasurementUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ComputingRange">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computing range</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MeasurementRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A class representing a computing range that can measure e.g. the range of the CPU speed.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#MeasurementUnit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The upper class of the Measurement Untis.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Measurement Unit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Utilities"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GigaByte">
+    <rdfs:subClassOf rdf:resource="#Storage_Unit"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GigaByte</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage unit measured in GigaBytes.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasStorageStep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines a valid step offered by the PaaS provider for a Storage range</rdfs:comment>
+    <rdfs:range rdf:resource="#Storage_Unit"/>
+    <rdfs:domain rdf:resource="#StorageRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Storage Step</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMaxNetworkingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Networking Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Max Networking Value</rdfs:label>
+    <rdfs:domain rdf:resource="#NetworkingRange"/>
+    <rdfs:range rdf:resource="#Networking_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTimeStep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines a valid step offered by the PaaS provider for a Time range</rdfs:comment>
+    <rdfs:range rdf:resource="#Time_Unit"/>
+    <rdfs:domain rdf:resource="#TimeRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has time step</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasComputingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates a Computing Range with a Computing value.</rdfs:comment>
+    <rdfs:range rdf:resource="#Computing_Unit"/>
+    <rdfs:domain rdf:resource="#ComputingRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Computing Value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNetworkingStep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines a valid step offered by the PaaS provider for a Networking range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Networking Step</rdfs:label>
+    <rdfs:domain rdf:resource="#NetworkingRange"/>
+    <rdfs:range rdf:resource="#Networking_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMinStorageValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Storage Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Min Storage Value</rdfs:label>
+    <rdfs:domain rdf:resource="#StorageRange"/>
+    <rdfs:range rdf:resource="#Storage_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNetworkingValue">
+    <rdfs:range rdf:resource="#Networking_Unit"/>
+    <rdfs:domain rdf:resource="#NetworkingRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates a Networking Range with a Networking value.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has networking value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMaxStorageValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the maximum value for a Storage Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Max Storage Value</rdfs:label>
+    <rdfs:domain rdf:resource="#StorageRange"/>
+    <rdfs:range rdf:resource="#Storage_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMinNetworkingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Networking Range</rdfs:comment>
+    <rdfs:range rdf:resource="#Networking_Unit"/>
+    <rdfs:domain rdf:resource="#NetworkingRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has min networking value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMaxTimeValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the maximum value for a Timing Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Max Time Value</rdfs:label>
+    <rdfs:domain rdf:resource="#TimeRange"/>
+    <rdfs:range rdf:resource="#Time_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMaxComputingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the maximum value for a Computing Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Max Computing Value</rdfs:label>
+    <rdfs:domain rdf:resource="#ComputingRange"/>
+    <rdfs:range rdf:resource="#Computing_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasComputingStep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines a valid step offered by the PaaS provider for a Computing range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Computing Step</rdfs:label>
+    <rdfs:domain rdf:resource="#ComputingRange"/>
+    <rdfs:range rdf:resource="#Computing_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTimeValue">
+    <rdfs:range rdf:resource="#Time_Unit"/>
+    <rdfs:domain rdf:resource="#TimeRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates a Time Range with a Time value.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has time value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasStorageValue">
+    <rdfs:range rdf:resource="#Storage_Unit"/>
+    <rdfs:domain rdf:resource="#StorageRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates a Storage Range with a Storage value.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Storage Value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMinComputingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Computing Range</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Min Computing Value</rdfs:label>
+    <rdfs:domain rdf:resource="#ComputingRange"/>
+    <rdfs:range rdf:resource="#Computing_Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMinTimeValue">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Min Time Value</rdfs:label>
+    <rdfs:range rdf:resource="#Time_Unit"/>
+    <rdfs:domain rdf:resource="#TimeRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Time Range</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasMaxNumericValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#NumericRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Max Numeric Range</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the maximum value for a Numeric Range</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMinNumericValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Min Numeric Value</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the minimum value for a Numeric Range</rdfs:comment>
+    <rdfs:domain rdf:resource="#NumericRange"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="has_value">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Assosiates a value to the measurement unit.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Value</rdfs:label>
+    <rdfs:domain rdf:resource="#MeasurementUnit"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasNumericStep">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines a valid step offered by the PaaS provider for a Numeric range</rdfs:comment>
+    <rdfs:domain rdf:resource="#NumericRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Numeric Step</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasNumericValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates a Numeric Range with a Numeric value.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#NumericRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has numeric value</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isRequired">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is required</rdfs:label>
+    <rdfs:domain rdf:resource="#MeasurementRange"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates if a value is defined as a requirement or preference by the user.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <NumericRange rdf:ID="one_range">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >one range</rdfs:label>
+    <hasMaxNumericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1</hasMaxNumericValue>
+  </NumericRange>
+  <rdf:Statement rdf:ID="hasmin-range-MeasurementUnit">
+    <rdf:object rdf:resource="#MeasurementUnit"/>
+    <rdf:predicate rdf:resource="http://www.w3.org/2000/01/rdf-schema#range"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hasmin-range-Measurement unit</rdfs:label>
+  </rdf:Statement>
+  <NumericRange rdf:ID="unlimited">
+    <hasMinNumericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0</hasMinNumericValue>
+    <hasMaxNumericValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >99999999</hasMaxNumericValue>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >unlimited</rdfs:label>
+  </NumericRange>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

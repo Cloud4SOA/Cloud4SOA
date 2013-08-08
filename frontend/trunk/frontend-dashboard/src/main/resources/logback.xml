@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<configuration>
+    
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.openrdf.http.client.HTTPClient" level="INFO"/>
+  <logger name="org.apache.cxf.interceptor.LoggingInInterceptor" level="WARN"/>
+  <logger name="eu.cloud4soa.relational.persistence.MonitoringStatisticRepository" level="ERROR"/>
+  <logger name="eu.cloud4soa.relational.persistence.MonitoringJobRepository" level="ERROR"/>
+  <logger name="org.hibernate" level="ERROR"/>
+  <logger name="eu.cloud4soa.relational.persistence.support.AbstractHbmDao" level="ERROR"/>
+  <logger name="eu.cloud4soa.governance.monitoring.worker.MonitoringWorker" level="ERROR"/>
+  <logger name="org.ontoware.rdf2go" level="ERROR"/>
+  <logger name="org.apache.cxf" level="ERROR"/>
+  <logger name="com.hp.hpl.jena" level="ERROR"/>
+    <logger name="eu.cloud4soa.governance.sla.enforcement.worker" level="INFO"/>
+    <logger name="com.hp.hpl.jena.sdb.sql.SDBConnection" level="ERROR"/>
+  
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
+  
+</configuration>

@@ -1,0 +1,40 @@
+# Saved by TopBraid on Tue Jul 30 11:25:48 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlRuby
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlRuby#> .
+@prefix CloudControl:  <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:CloudControlRuby
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Cloud control ruby"^^xsd:string ;
+      dcterms:title "CloudControl (Ruby)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:cloudControl_API ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "https://www.cloudcontrol.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#one_range> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloneInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlWorker> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBKrypton> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCcustomName> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Alias> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB256MBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB2GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Mailgun> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCAppServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedXLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedSmallDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated4XLargehmDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CloudMailin> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBNeon> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCWebServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Cron> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronWorker> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Memcached> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated2XLargehmDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB512MBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB5GBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#SSL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDBFreeInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB20GBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBOxygen> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronMQ> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBAragon> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB16MBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Blitz.io> , <http://www.enterprise-architecture.org/essential-metamodel.owl#New_Relic> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBHelium> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCGIT> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#cloudControlBoxRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#cloudControlPaaS> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#CloudControlUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#ccLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlRuby>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

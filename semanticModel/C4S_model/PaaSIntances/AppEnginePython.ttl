@@ -1,0 +1,65 @@
+###
+# Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+#
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+###
+
+# Saved by TopBraid on Fri Apr 26 12:31:33 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/AppEnginePython
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/AppEnginePython#> .
+@prefix AppEngine:  <http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:googleAppEnginePython
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "google app engine python"^^xsd:string ;
+      dcterms:description "Google App Engine enables you to build and host web apps on the same systems that power Google applications"^^xsd:string ;
+      dcterms:title "Google App Engine (Python)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:google_API ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasPricingPolicy
+              paas-m:policy_google_storage , paas-m:policy_google_bandwidth , paas-m:policy_google_CPU ;
+      paas-m:hasURL "https://developers.google.com/appengine/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#unlimited> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#GAppEngineB2Instance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#GAppEngineHttpRequestHandler> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#GAppEngineB8Instance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#googleNetwork> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#GAppEngineB4Instance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#GAppEngineB1Instance> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#google_BlobStore> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_Authorisation> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#google_DataStore> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AppengineAppServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_ImageManipulation> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_XMPP> , <http://www.enterprise-architecture.org/essential-metamodel.owl#GoogleSSL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_Ant> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_Mail> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#googleCloudSQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AppengineWebserver> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_TaskQueue> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_Cron> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_Cache> , <http://www.enterprise-architecture.org/essential-metamodel.owl#google_loadBalancer> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#unlimited> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#googlePaaS> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#AppengineUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#AppengineLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Python> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/AppEnginePython>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

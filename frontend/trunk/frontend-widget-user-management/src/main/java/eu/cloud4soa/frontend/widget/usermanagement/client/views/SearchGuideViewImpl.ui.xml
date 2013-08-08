@@ -1,0 +1,46 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+	<ui:style src="SearchGuideView.css" />
+	
+
+    <g:HTMLPanel>
+    
+    	<div class='{style.guide}'>
+    	<div class='{style.section}'>
+	<!--<div class='{style.iconGuide}' />-->
+        <div class='{style.sideBar}'>
+
+	    <p class='{style.sideheaderFont}'>Searching</p>
+            
+            <p class='{style.sideFont}'>Here you can search for PaaS Offerings that match your requirements. Select an application profile from the list to perform the search. You can also search for PaaS Offering by browsing the entire PaaS Offerings catalogue by means of the <a ui:field="browseLink">Browse catalogue</a> function.</p>
+                
+            <p class='{style.sideFont}'>
+            Each matching PaaS Offering can be selected to inspect all the details of the offering. On some offerings you can use this portal to deploy your application.
+			</p>
+			
+			<p class='{style.sideFont}'>If your application is already deployed on a PaaS, you can go to <a ui:field="monitoringLink">monitoring</a> to check how it behaves.
+            </p>
+
+        </div>
+        </div>
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

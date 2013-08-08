@@ -1,0 +1,11 @@
+profile { 
+	application: "C4Sv1.0" version: 1.0 file_name: "SimpleAppName.war" programming_language: "Java" version: 1.6 
+	software { 
+	    category: "web server" description: "Host applications" { 
+		component : "apache tomcat" description : "Apache Tomcat Application Server" version : 7.0 license : GPL
+	    } 
+	} 
+	hardware { 
+	    compute component : "Pentium" description : "intel Pentium" architecture : x86 cores : 1 speed : 2000 memory : 1024 cache : 2048 
+	} 
+}

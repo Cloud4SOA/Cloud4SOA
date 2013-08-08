@@ -1,0 +1,206 @@
+<?eclipse version="3.0"?>
+<plugin>
+
+    <!--
+	-
+	- Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+	- 
+	- Licensed to the Apache Software Foundation (ASF) under one
+	- or more contributor license agreements.  See the NOTICE file
+	- distributed with this work for additional information
+	- regarding copyright ownership.  The ASF licenses this file
+	- to you under the Apache License, Version 2.0 (the
+	- "License"); you may not use this file except in compliance
+	- with the License.  You may obtain a copy of the License at
+	-
+	- http://www.apache.org/licenses/LICENSE-2.0
+	- 
+	- Unless required by applicable law or agreed to in writing, software
+	- distributed under the License is distributed on an "AS IS" BASIS,
+	- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	- See the License for the specific language governing permissions and
+	- limitations under the License.
+	-
+	--><extension point="org.eclipse.ui.editors">
+        <editor class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor" contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor" default="true" extensions="c4s" id="eu.cloud4soa.xtext.Dsl" name="Dsl Editor">
+        </editor>
+    </extension>
+    <extension point="org.eclipse.ui.handlers">
+        <handler class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler" commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler" commandId="eu.cloud4soa.xtext.Dsl.validate">
+         <activeWhen>
+            <reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="eu.cloud4soa.xtext.Dsl.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" value="eu.cloud4soa.xtext.Dsl" forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension point="org.eclipse.ui.preferencePages">
+        <page class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage" id="eu.cloud4soa.xtext.Dsl" name="Dsl">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+        </page>
+        <page category="eu.cloud4soa.xtext.Dsl" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage" id="eu.cloud4soa.xtext.Dsl.coloring" name="Syntax Coloring">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+        </page>
+        <page category="eu.cloud4soa.xtext.Dsl" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage" id="eu.cloud4soa.xtext.Dsl.templates" name="Templates">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+        </page>
+    </extension>
+    <extension point="org.eclipse.ui.propertyPages">
+        <page class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage" id="eu.cloud4soa.xtext.Dsl" name="Dsl">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension point="org.eclipse.ui.keywords">
+        <keyword id="eu.cloud4soa.xtext.ui.keyword_Dsl" label="Dsl"/>
+    </extension>
+    <extension point="org.eclipse.ui.commands">
+      <command description="Trigger expensive validation" id="eu.cloud4soa.xtext.Dsl.validate" name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="popup:#TextEditorContext?after=group.edit">
+             <command commandId="eu.cloud4soa.xtext.Dsl.validate" style="push" tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler" commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory" type="c4s">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider" uriExtension="c4s">
+        </resourceServiceProvider>
+    </extension>
+
+
+
+   <extension point="org.eclipse.xtext.builder.participant">
+      <participant class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+      </participant>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+        <page category="eu.cloud4soa.xtext.Dsl" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage" id="eu.cloud4soa.xtext.Dsl.compiler.preferencePage" name="Compiler">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+        </page>
+    </extension>
+    <extension point="org.eclipse.ui.propertyPages">
+        <page category="eu.cloud4soa.xtext.Dsl" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage" id="eu.cloud4soa.xtext.Dsl.compiler.propertyPage" name="Compiler">
+            <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler" commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.commands">
+		<command description="Open the quick outline." id="org.eclipse.xtext.ui.editor.outline.QuickOutline" name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline" style="push" tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+   <!-- quickfix marker resolution generator -->
+   <extension point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+      </markerResolutionGenerator>
+   </extension>
+
+   	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler" commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+    <extension point="org.eclipse.ui.menus">
+         <menuContribution locationURI="popup:#TextEditorContext?after=group.edit">
+         <command commandId="org.eclipse.xtext.ui.refactoring.RenameElement" style="push">
+            <visibleWhen checkEnabled="false">
+               <reference definitionId="eu.cloud4soa.xtext.Dsl.Editor.opened">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+	    <page category="eu.cloud4soa.xtext.Dsl" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage" id="eu.cloud4soa.xtext.Dsl.refactoring" name="Refactoring">
+	        <keywordReference id="eu.cloud4soa.xtext.ui.keyword_Dsl"/>
+	    </page>
+	</extension>
+
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="eu.cloud4soa.xtext.Dsl.compare.contentViewers" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator" extensions="c4s">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="eu.cloud4soa.xtext.Dsl.compare.contentMergeViewers" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator" extensions="c4s" label="Dsl Compare">
+     </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="eu.cloud4soa.xtext.Dsl.editors.documentProviders" class="eu.cloud4soa.xtext.ui.DslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider" extensions="c4s">
+    </provider>
+  </extension>
+
+</plugin>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><title>Cloud4SOA SPARQL endpoint</title>
+  <link rel="stylesheet" type="text/css" href="StyleSheets/joseki.css" />
+  </head>
+
+  <body>
+    <h1>Cloud4SOA SPARQL endpoint - An RDF Query endpoint for cloud4SOA repository</h1>
+    <hr/>
+
+    <div class="moreindent">
+
+      <form action="c4ssparql" method="get">
+	<p>SELECT - get variables (apply XSLT stylesheet)</p>
+<p><textarea name="query" cols="70" rows="5">
+</textarea>
+<br/>
+	  Output XML: <input type="radio" name="output" value="xml" checked/>
+	  with XSLT style sheet (leave blank for none): 
+	  <input name="stylesheet" size="25" value="/xml-to-html.xsl" /> <br/>
+	  or JSON output: <input type="radio" name="output" value="json"/> <br/>
+	  or text output: <input type="radio" name="output" value="text"/> <br/>
+	  or CSV output: <input type="radio" name="output" value="csv"/> <br/>
+	  or TSV output: <input type="radio" name="output" value="tsv"/> <br/>
+	  Force the accept header to <tt>text/plain</tt> regardless 
+ 	  <input type="checkbox" name="force-accept" value="text/plain"/>
+	  <br/>
+	   
+	  <input type="submit" value="Get Results" />
+	</p>
+    
+      <hr/>
+    </div>
+  </body>
+</html>

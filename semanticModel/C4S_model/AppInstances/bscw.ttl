@@ -1,0 +1,72 @@
+# Saved by TopBraid on Thu Oct 18 16:42:36 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/BSCW
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/BSCW#> .
+@prefix c4s-app-m:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-ent-m:  <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/BSCW>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+c4s-inf-m:redis
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:comment "Redis"^^xsd:string ;
+      dcterms:description "Persistent key-value database server with network interface"^^xsd:string ;
+      dcterms:hasVersion "2.2.12"^^xsd:string ;
+      dcterms:title "Redis"^^xsd:string ;
+      c4s-app-m:license_type
+              "BSD"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:redisConfig ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Redis .
+
+c4s-inf-m:redisConfig
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "redis config"^^xsd:string ;
+      c4s-inf-m:hasDBcapacity
+              measure:bscwRedisCapacityRange .
+
+measure:bscwRedisCapacityRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "bscw redis capacity range"^^xsd:string ;
+      measure:hasMinStorageValue
+              measure:bscw_storage_resource_redis_capacity .
+
+measure:bscw_storage_resource_redis_capacity
+      rdf:type measure:GigaByte ;
+      rdfs:comment "bscw storage resource redis capacity"^^xsd:string ;
+      measure:has_value "2"^^xsd:float .
+
+essential-metamodel:BSCW
+      rdf:type essential-metamodel:Application ;
+      rdfs:comment "BSCW application"^^xsd:string ;
+      dcterms:hasVersion "4.5.5"^^xsd:string ;
+      dcterms:title "BSCW"^^xsd:string ;
+      c4s-app-m:digest "f6f244eb9c6fbabdcab653477b3b42fc"^^xsd:string ;
+      c4s-app-m:requiresSoftwareComponent
+              c4s-inf-m:redis , essential-metamodel:apache2 ;
+      c4s-app-m:useProgrammingLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Python> .
+
+essential-metamodel:apache2
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:comment "apache2"^^xsd:string ;
+      dcterms:description "Apache open-source HTTP Server with following Modules enabled: alias, auth_basic, autoindex, cgi, deflate, dir, env, expires, headers, mime, rewrite, setenvif, ssl"^^xsd:string ;
+      dcterms:hasVersion "2.2"^^xsd:string ;
+      dcterms:title "Apache2"^^xsd:string ;
+      c4s-app-m:license_type
+              "Apache License 2.0"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:web_server .

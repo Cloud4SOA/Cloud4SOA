@@ -1,0 +1,34 @@
+# Saved by TopBraid on Fri Jun 29 18:31:22 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppSWcomponent
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+# imports: http://www.cloud4soa.eu/v0.1/infrastructural-domain
+# imports: http://purl.org/dc/terms/
+# imports: http://www.enterprise-architecture.org/essential-metamodel.owl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppSWcomponent#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppSWcomponent>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> , <http://www.enterprise-architecture.org/essential-metamodel.owl> , dct: , <http://www.cloud4soa.eu/v0.1/infrastructural-domain> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppSWcomponent.AppSWcomponent>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application SWcomponent"^^xsd:string ;
+      dct:alternative "Application SWcomponent"^^xsd:string ;
+      dct:title "Application SWcomponent"^^xsd:string ;
+      application-domain:requiresSoftwareComponent
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#AppSWcomponent.mySSL> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppSWcomponent.mySSL>
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "my SSL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:security .

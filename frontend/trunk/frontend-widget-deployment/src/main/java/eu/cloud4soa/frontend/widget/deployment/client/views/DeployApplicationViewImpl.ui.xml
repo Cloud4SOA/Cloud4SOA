@@ -1,0 +1,64 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+
+        <g:HorizontalPanel addStyleNames="c4s-white-bg">
+
+
+            <g:FlowPanel>
+                <g:Label text="PaaS Provider:"/>
+                <g:TextBox ui:field="paaSProvider" readOnly="true"/>
+
+                <g:Label text="Public Key:"/>
+                <g:TextBox ui:field="publicKey" readOnly="false"/>
+
+                <g:Label text="Secret Key:"/>
+                <g:TextBox ui:field="secretKey" readOnly="false"/>
+
+                <g:Label text="Account Name:"/>
+                <g:TextBox ui:field="accountName" readOnly="false"/>
+
+
+            </g:FlowPanel>
+
+            <g:FlowPanel>
+
+                <g:Label text="Application Name:"/>
+                <g:TextBox ui:field="applicationName" readOnly="false"/>
+
+                <g:Label text="Application Version:"/>
+                <g:TextBox ui:field="applicationVersion" readOnly="false"/>
+
+                <g:Label text="Application Description:"/>
+                <g:TextArea ui:field="applicationDescription" readOnly="false"/>
+
+            </g:FlowPanel>
+
+        </g:HorizontalPanel>
+
+        <g:HorizontalPanel>
+            <g:FormPanel ui:field="uploadFormPanel" method="post" encoding="multipart/form-data">
+                <g:FileUpload name="Upload Image" ui:field="fileName"/>
+            </g:FormPanel>
+            <g:Button text="Deploy" ui:field="deployButton"/>
+        </g:HorizontalPanel>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

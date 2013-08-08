@@ -1,0 +1,61 @@
+# Saved by TopBraid on Mon Jul 29 16:54:39 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/AzureJava
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/Azure
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/AzureJava#> .
+@prefix Azure:   <http://www.cloud4soa.eu/v0.1/paasInstances/Azure#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:AzureJava
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Azure java"^^xsd:string ;
+      dcterms:title "Azure (Java)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:AzureChannel ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "https://www.windowsazure.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#twentyRange> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureNetwork> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureStorage> ;
+      paas-m:offerSoftware
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureNewMonitoring> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureScheduling> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureMail> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureWebServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureSQLserver> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureMySQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureSSL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureImage> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureAppServer> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#twentyRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#Microsoft> ;
+      paas-m:providesServiceQuality
+              qos-model:azureLatency , qos-model:azureCloudRespTime , qos-model:AzureUptime , qos-model:azureMemoryLoad , qos-model:azureCPULoad , qos-model:azureContRespTime ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/AzureJava>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/Azure> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+qos-model:azureCPULoad
+      rdf:type qos-model:CPULoad ;
+      rdfs:label "azure CPULoad"^^xsd:string .
+
+qos-model:azureCloudRespTime
+      rdf:type qos-model:CloudResponseTime ;
+      rdfs:label "azure cloud resp time"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              <http://www.cloud4soa.eu/v0.1/measure#fiftyMillisecondRange> .
+
+qos-model:azureContRespTime
+      rdf:type qos-model:ContainerResponseTime ;
+      rdfs:label "azure cont resp time"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              <http://www.cloud4soa.eu/v0.1/measure#fourtyMillisecondRange> .
+
+qos-model:azureMemoryLoad
+      rdf:type qos-model:MemoryLoad ;
+      rdfs:label "azure memory load"^^xsd:string .

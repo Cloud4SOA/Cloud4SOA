@@ -1,0 +1,59 @@
+###
+#  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+###
+
+
+# Saved by TopBraid on Tue Apr 30 21:09:20 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/HerokuRuby
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/Herokujava
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/HerokuRuby#> .
+@prefix Herokujava:  <http://www.cloud4soa.eu/v0.1/paasInstances/Herokujava#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-model:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-model:HerokuRuby
+      rdf:type paas-model:PaaSOffering ;
+      rdfs:label "Heroku ruby"^^xsd:string ;
+      dcterms:title "Heroku (Ruby)"^^xsd:string ;
+      paas-model:communicateThrough
+              paas-model:herokuChannel ;
+      paas-model:hasAdapter
+              "false"^^xsd:boolean ;
+      paas-model:hasURL "https://www.heroku.com/"^^xsd:string ;
+      paas-model:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#zeroTotwentyfourrange> ;
+      paas-model:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#workerDyno> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#webRequestHandler> ;
+      paas-model:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBRSLInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresShared15GB> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMysqIgniteInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#HerokuGIT> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgreCloudDoubleCharmedXi> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuCouchDBHelium> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBLargeInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresFugu> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresBaku> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresIka> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBSmall> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuCouchDBOxygen> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMysqPunchInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuCouchDBNeon> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgreCloudXi> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresMecha> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBLarge> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBRSSInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBFreeInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgreCloudCharmedXi> , <http://www.enterprise-architecture.org/essential-metamodel.owl#HerokuCustomDomainName> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgreCloudSigma> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresRonin> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuCouchDBArgon> , <http://www.enterprise-architecture.org/essential-metamodel.owl#HerokuAppServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBMini> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgreCloudLambda> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMysqlDriftInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresShared5GB> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBNano> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBSmallInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMongoDBMicroInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuMysqIScreamInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBMedium> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBMega> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuPostgresZilla> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#HerokuRedisDBSuper> ;
+      paas-model:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#zeroTotwentyfourrange> ;
+      paas-model:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#herokuPaaSprovider> ;
+      paas-model:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#herokuLatency> , <http://www.cloud4soa.eu/v0.1/qos-model#herokuUptime> ;
+      paas-model:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/HerokuRuby>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/Herokujava> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

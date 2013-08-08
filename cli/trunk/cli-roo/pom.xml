@@ -1,0 +1,257 @@
+<!--
+ -  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+ -
+ -  Licensed under the Apache License, Version 2.0 (the "License");
+ -  you may not use this file except in compliance with the License.
+ -  You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ -  Unless required by applicable law or agreed to in writing, software
+ -  distributed under the License is distributed on an "AS IS" BASIS,
+ -  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ -  See the License for the specific language governing permissions and
+ -  limitations under the License.
+ -->
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>eu.cloud4soa</groupId>
+    <artifactId>cli-parent</artifactId>
+    <version>0.0.3-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>eu.cloud4soa</groupId>
+  <artifactId>eu.cloud4soa.cli.roo.addon</artifactId>
+  <packaging>bundle</packaging>
+  <version>0.0.3-SNAPSHOT</version>
+  <name>cloud4soa.cli.roo</name>
+  <organization>
+    <name>Cloud4Soa</name>
+  </organization>
+  <licenses>
+    <license>
+      <name>&gt;GNU General Public License (GPL), Version 3.0</name>
+      <url>http://www.gnu.org/copyleft/gpl.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <description>An add-on created by Spring Roo's addon creator feature.</description>
+  <url>http://www.cloud4soa.eu</url>
+  <properties>
+    <roo.version>1.1.5.RELEASE</roo.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <google.code.project.name>${project.name}</google.code.project.name>
+    <repo.folder>eu/cloud4soa</repo.folder>
+    <project.source.charset>UTF-8</project.source.charset>
+    <project.source.encoding>UTF-8</project.source.encoding>
+
+    <java.version.source>1.6</java.version.source>
+    <java.version.target>1.6</java.version.target>
+
+    <junit.version>4.7</junit.version>
+
+    <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+  </properties>
+  <repositories>
+    <repository>
+      <id>spring-roo-repository</id>
+      <name>Spring Roo Repository</name>
+      <url>http://spring-roo-repository.springsource.org/release</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-roo-repository</id>
+      <name>Spring Roo Repository</name>
+      <url>http://spring-roo-repository.springsource.org/release</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <dependencies>
+    <!-- Cloud4Soa modules -->        
+	<dependency>
+    	    <groupId>eu.cloud4soa</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        
+        <dependency>
+    	    <groupId>eu.cloud4soa</groupId>
+            <artifactId>cli-soa-client</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Cloud description template utility -->    
+        <dependency>       
+            <groupId>eu.cloud4soa</groupId>
+            <artifactId>cli-profiles-template</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+        </dependency>
+        
+    <!-- apache commons-codec --> 
+<!--    <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+    </dependency>
+ -->   
+
+    
+    <!-- OSGi -->
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>4.1.0</version>
+       <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>4.1.0</version>
+       <type>bundle</type>
+    </dependency>
+    <!-- Apache Felix -->
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr.annotations</artifactId>
+      <version>1.2.0</version>
+       <type>bundle</type>
+    </dependency>
+    <!-- Spring Roo modules -->
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.metadata</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.process.manager</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.project</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.support</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.shell</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.bootstrap</artifactId>
+      <version>${roo.version}</version>
+      <scope>provided</scope>
+       <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.model</artifactId>
+      <version>${roo.version}</version>
+      <scope>provided</scope>
+       <type>bundle</type>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.roo</groupId>
+      <artifactId>org.springframework.roo.classpath</artifactId>
+      <version>${roo.version}</version>
+      <type>bundle</type>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.eclipse.jgit</groupId>
+        <artifactId>org.eclipse.jgit</artifactId>
+        <version>2.0.0.201206130900-r</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.jcraft </groupId>
+        <artifactId>jsch</artifactId>
+        <version>0.1.45 </version>
+    </dependency>
+  </dependencies>
+  <scm>
+    <connection>scm:svn:https://${google.code.project.name}.googlecode.com/svn/trunk</connection>
+    <developerConnection>scm:svn:https://${google.code.project.name}.googlecode.com/svn/trunk</developerConnection>
+    <url>http://code.google.com/p/${google.code.project.name}/source/browse</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>Google Code</id>
+      <url>dav:https://${google.code.project.name}.googlecode.com/svn/repo</url>
+    </repository>
+  </distributionManagement>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.5</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>eu.cloud4soa.cli.roo.addon;version=${project.version},eu.cloud4soa.cli.soa,javax.wsdl.extensions,javax.*, org.apache.cxf.jaxrs.*</Export-Package>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
+            <Bundle-Copyright>Copyright ${project.organization.name}. All Rights Reserved.</Bundle-Copyright>
+            <Bundle-DocURL>${project.url}</Bundle-DocURL>
+            <Import-Package>*;resolution:=optional</Import-Package>
+            <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+            <Embed-Dependency>*;scope=compile|runtime;groupId=!org.osgi|org.apache.felix|org.springframework.roo</Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
+<!--            <_exportcontents>*;type=!bundle</_exportcontents>-->
+          </instructions>
+          <remoteOBR>true</remoteOBR>
+          <bundleUrl>httppgp://${google.code.project.name}.googlecode.com/svn/repo/${repo.folder}/${project.artifactId}/${project.version}/${project.artifactId}-${project.version}.jar</bundleUrl>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-scr-plugin</artifactId>
+        <version>1.4.2</version>
+        <executions>
+          <execution>
+            <id>generate-scr-scrdescriptor</id>
+            <goals>
+              <goal>scr</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <parseJavaDoc>false</parseJavaDoc>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

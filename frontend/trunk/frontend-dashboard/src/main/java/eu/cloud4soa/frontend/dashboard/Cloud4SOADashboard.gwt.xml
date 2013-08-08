@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<module rename-to='cloud4soadashboard'>
+    <!-- Inherit the core Web Toolkit stuff.                        -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Inherit the default GWT style sheet.  You can change       -->
+    <!-- the theme of your GWT application by uncommenting          -->
+    <!-- any one of the following lines.                            -->
+    <!--<inherits name='com.google.gwt.user.theme.clean.Clean'/>-->
+    <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/>  -->
+    <!--<inherits name='com.google.gwt.user.theme.chrome.Chrome'/>-->
+    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+    <!-- Other module inherits                                      -->
+    <inherits name="com.google.gwt.activity.Activity"/>
+    <inherits name="com.google.gwt.place.Place"/>
+    <inherits name="com.extjs.gxt.ui.GXT"/>
+
+
+    <!-- only build for Firefox -->
+    <!--<set-property name="user.agent" value="gecko1_8" />-->
+    <set-property name="user.agent" value="gecko1_8,safari,ie8,ie9,opera"/>
+
+
+    <!-- Logging -->
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+    # To change the default logLevel
+    <set-property name="gwt.logging.logLevel" value="FINE"/>
+    # To disable logging
+    <set-property name="gwt.logging.enabled" value="FALSE"/>
+    # To disable a default Handler
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+
+    <define-property name="c4s.mode" values="full,standalone" />
+
+    <property-provider name="c4s.mode"><![CDATA[
+          {
+            if ($wnd.c4s_mode && $wnd.c4s_mode === 'standalone') {
+                return 'standalone';
+            }
+            return 'full';
+          }
+        ]]></property-provider>
+
+    <!--<set-property name="user.agent" value="gecko1_8"/>-->
+    <!--     <set-property name="gwt.logging.developmentModeHandler" value="DISABLED" /> -->
+    <!--   	<set-property name="gwt.logging.popupHandler" value="DISABLED" /> -->
+    <!--   	<set-property name="gwt.logging.systemHandler" value="DISABLED" /> -->
+
+    <!-- Cloud4SOA UI Widget modules inherits                                      -->
+    <inherits name="eu.cloud4soa.frontend.commons.FrontendCommons"/>
+    <inherits name="eu.cloud4soa.frontend.widget.search.SearchWidget"/>
+    <inherits name="eu.cloud4soa.frontend.widget.usermanagement.UserManagementWidget"/>
+    <inherits name="eu.cloud4soa.frontend.widget.monitoring.MonitoringWidget"/>
+    <inherits name="eu.cloud4soa.frontend.widget.deployment.DeploymentWidget"/>
+
+
+    <!--This must be the last inherit-->
+    <inherits name="com.jhickman.web.gwt.gxtuibinder.GxtUiBinder"/>
+
+    <!-- Specify the app entry point class.                         -->
+    <entry-point class='eu.cloud4soa.frontend.dashboard.client.Cloud4SOADashboard'/>
+
+    <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+
+    <!-- Use ClientFactoryImpl by default -->
+    <replace-with class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactoryImpl">
+        <when-type-is class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactory"/>
+    </replace-with>
+
+    <!-- Use NorthViewImpl -->
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.NorthViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.NorthView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.SouthViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.SouthView"/>
+    </replace-with>
+
+
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.MainViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.MainView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.Cloud4SOAPortalViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.Cloud4SOAPortalView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.WelcomeViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.WelcomeView"/>
+        <none>
+            <when-property-is name="c4s.mode" value="standalone"/>
+        </none>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.dashboard.client.views.WelcomeViewStandaloneImpl">
+        <when-type-is class="eu.cloud4soa.frontend.dashboard.client.views.WelcomeView"/>
+        <when-property-is name="c4s.mode" value="standalone"/>
+    </replace-with>
+
+</module>
+

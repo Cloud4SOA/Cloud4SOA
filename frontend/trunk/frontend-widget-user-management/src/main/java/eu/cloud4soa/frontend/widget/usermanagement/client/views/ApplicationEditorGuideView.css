@@ -1,0 +1,89 @@
+        .ae-guide {
+            text-align: left;
+            font-weight: bold;
+            margin-top: 0px;
+            padding: 10px;
+            margin-right: 15px;
+            margin-left: 18px;
+            background-color: #EFC231;
+        }
+
+        .iconGuide {
+            float: right;
+            width: 100px;
+            height: 100px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA4klEQVR42u3aQQqCQBiGYW/QbbpZx+gqHaZ1BpKhq2jVtoRaRRmp2Ec8D8yuXPwvg81QUQAAAAAAAAAAAAAAAAAwk13dVt26vlgX0/lNkPObIKIEBhm0TDUsiCiBQUQJDFLWzdqEg4LYJYL8d5ARzxRkZJTnGNVUzzTdGXdRWZ4Wn4L0fYYZgzy+56SfFARBBDEdQRBEEL48ON7XsVmZTlKQCU70TBvE1YggCCIIggjCIPtDsxQkaXd0hz9BooK0G0Gy3h9bQbKC9P5NyAVj1q8sd1kAAAAAAAAAAAAAAAAAsW5LZ7ZhVOgjqAAAAABJRU5ErkJggg==);
+            background-position: 0px 0px;
+            background-repeat: no-repeat no-repeat;
+        }
+
+        .ae-guide p {
+            font-size: 16px;
+            margin: 3px;
+            color: #15428B;
+        }
+
+        .sideBar {
+            margin: 15px 10px;
+        }
+
+        .sideheaderFont {
+            color: black;
+            text-align: center;
+            font-weight: 500;
+            font-size: 24px;
+            padding-bottom: 2%;
+        }
+
+        .sideFont {
+            color: black;
+            text-align: left;
+            font-style: normal;
+            font-size: 14px;
+            font-weight: 200;
+            margin: 5px 10px;
+        }
+
+        .side-list {
+            margin-left: 10px;
+            margin-right: 10px;
+            list-style-type: none;
+        }
+
+        .side-list ul {
+            margin-left: 0px;
+        }
+
+        .guide {
+            float: left;
+            width: 400px;
+            height: 300px;
+            background: #EFC231;
+            margin-top: 0px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+		
+		.guideLeft {
+            float: left;
+            background: #EFC231;
+            margin-top: 0px;
+            /*
+			height: 600px;
+            margin-left: 5%;
+            margin-right: 5%;
+			*/
+        }
+		
+		.sideBarLeft {
+            /*margin: 15px 10px;*/
+        }
+
+
+        .section {
+            /*overflow-y: scroll; */
+            padding: 1%;
+            height: auto;
+        }
+
+

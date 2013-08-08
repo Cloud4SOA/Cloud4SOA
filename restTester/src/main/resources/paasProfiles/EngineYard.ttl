@@ -1,0 +1,184 @@
+# Saved by TopBraid on Fri Jul 26 18:07:40 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard
+# imports: http://www.cloud4soa.eu/v0.1/qos-model
+# imports: http://www.cloud4soa.eu/v0.1/paas-model
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard#> .
+@prefix c4s-ent-m:  <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+c4s-ent-m:EngineYardPaaSProvider
+      rdf:type c4s-ent-m:PaaSProvider ;
+      rdfs:label "Engine yard paa SProvider"^^xsd:string ;
+      dcterms:description "Engine Yard is the leading Platform as a Service (PaaS), empowering software application innovation more rapidly, easily and cost effectively. "^^xsd:string ;
+      dcterms:title "EngineYard"^^xsd:string ;
+      foaf:homepage foaf:EngineYardPaaSURL .
+
+c4s-inf-m:engineYardCompute
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:label "engine yard compute"^^xsd:string ;
+      c4s-inf-m:computationalPowerFactor
+              measure:twentysixRange ;
+      c4s-inf-m:hasMemory measure:sixtyfiveGBrange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:ECU .
+
+c4s-inf-m:engineYardMySQL
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "engine yard my SQL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+c4s-inf-m:engineYardPostgresSQL
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "engine yard postgres SQL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Postgres .
+
+c4s-inf-m:engineYardRedis
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "engine yard redis"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Redis .
+
+c4s-inf-m:engineYardStorage
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "engine yard storage"^^xsd:string ;
+      c4s-inf-m:capacity measure:onepointsevenTBrange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+measure:nineteennineRange
+      rdf:type measure:NumericRange ;
+      rdfs:label "nineteennine range"^^xsd:string ;
+      measure:hasMaxNumericValue
+              "99"^^xsd:float .
+
+measure:ninetyMS
+      rdf:type measure:MilliSecond ;
+      rdfs:label "ninety MS"^^xsd:string ;
+      measure:has_value "90"^^xsd:float .
+
+measure:ninetyRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "ninety range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:ninetyMS .
+
+measure:onepointsevenTB
+      rdf:type measure:TeraByte ;
+      rdfs:label "onepointseven GB"^^xsd:string ;
+      measure:has_value "1.7"^^xsd:float .
+
+measure:onepointsevenTBrange
+      rdf:type measure:StorageRange ;
+      rdfs:label "onepointseven GBrange"^^xsd:string .
+
+measure:sixtyfiveGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "sixtyfive GB"^^xsd:string ;
+      measure:has_value "65"^^xsd:float .
+
+measure:sixtyfiveGBrange
+      rdf:type measure:StorageRange ;
+      rdfs:label "sixtyfive GBrange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:sixtyfiveGB .
+
+measure:twentysixRange
+      rdf:type measure:NumericRange ;
+      rdfs:label "twentysix range"^^xsd:string ;
+      measure:hasMaxNumericValue
+              "26"^^xsd:float .
+
+paas-m:EngineYard
+      rdf:type paas-m:PaaSOffering ;
+      dcterms:description "Engine Yard offers a two-tiered service level for cloud-hosted Ruby on Rails applications, as well as virtual private cloud solutions."^^xsd:string ;
+      dcterms:title "Engine Yard (Ruby)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:engineYardAPI ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasSlaId "8dea47f8-9607-47f1-b90f-a12b17cb1be0"^^xsd:string ;
+      paas-m:hasURL "http://www.engineyard.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              measure:nineteennineRange ;
+      paas-m:offerHardwareComponent
+              c4s-inf-m:engineYardStorage , c4s-inf-m:engineYardCompute ;
+      paas-m:offerSoftware
+              c4s-inf-m:engineYardMySQL , essential-metamodel:engineYardAppServer , essential-metamodel:engineYardWebServer , c4s-inf-m:engineYardRedis , c4s-inf-m:engineYardPostgresSQL , essential-metamodel:engineYardMemcache ;
+      paas-m:offerWebScalingFactor
+              measure:nineteennineRange ;
+      paas-m:providedByPaaSProvider
+              c4s-ent-m:EngineYardPaaSProvider ;
+      paas-m:providesServiceQuality
+              qos-model:engineYardLatency , qos-model:engineYardUptime ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> .
+
+paas-m:engineYardAPI
+      rdf:type paas-m:API ;
+      rdfs:label "engine yard API"^^xsd:string ;
+      paas-m:supportOperation
+              paas-m:engineYardGIT , paas-m:engineYardAppDeployment .
+
+paas-m:engineYardAppDeployment
+      rdf:type paas-m:Operation ;
+      rdfs:label "engine yard app deployment"^^xsd:string ;
+      paas-m:hasOperationType
+              paas-m:CodeArchiveDeployment .
+
+paas-m:engineYardGIT
+      rdf:type paas-m:Operation ;
+      rdfs:label "engine yard GIT"^^xsd:string ;
+      paas-m:hasOperationType
+              paas-m:GITDeployment .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paas-model> , <http://www.cloud4soa.eu/v0.1/qos-model> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+qos-model:engineYardLatency
+      rdf:type qos-model:Latency ;
+      rdfs:label "engine yard latency"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:ninetyRange .
+
+qos-model:engineYardUptime
+      rdf:type qos-model:Uptime ;
+      rdfs:label "engine yard uptime"^^xsd:string ;
+      qos-model:hasPercentage
+              "99.9"^^xsd:float .
+
+essential-metamodel:engineYardAppServer
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "engine yard app server"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Application_server .
+
+essential-metamodel:engineYardMemcache
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "engine yard memcache"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MemCache .
+
+essential-metamodel:engineYardWebServer
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "engine yard web server"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:web_server .
+
+foaf:EngineYardPaaSURL
+      rdf:type foaf:Document ;
+      rdfs:label "Engine yard paa SURL"^^xsd:string ;
+      c4s-ent-m:link <http://www.engineyard.com> .

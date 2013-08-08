@@ -1,0 +1,14 @@
+Procedure to initialize the repositoryFile.rdf
+----------------------------------------------
+
+Required: /src/main/java/eu/cloud4soa/soa/jaxrs/test/Initializer.java
+
+Procedure:
+- Edit restTester/src/main/java/eu/cloud4soa/soa/jaxrs/test/Initializer.java:
+set this property: final String BASE_URI = "http://localhost:8888/services/REST/";
+- remove frontend/trunk/frontend-dashboard/repositoryFile.rdf
+- launch C4S portal: mvn gwt:run from frontend/trunk/frontend-dashboard/
+- invoke main in restTester/src/main/java/eu/cloud4soa/soa/jaxrs/test/Initializer.java
+- stop C4S portal.
+Then, you get a reset frontend/trunk/frontend-dashboard/repositoryFile.rdf
+This new file contains more detailed PaaS offerings and one Application profile.

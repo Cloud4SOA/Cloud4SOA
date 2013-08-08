@@ -1,0 +1,40 @@
+# Saved by TopBraid on Mon Jul 29 16:46:45 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/AzureNodejs
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/Azure
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/AzureNodejs#> .
+@prefix Azure:   <http://www.cloud4soa.eu/v0.1/paasInstances/Azure#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:AzureNodejs
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Azure nodejs"^^xsd:string ;
+      dcterms:title "Azure (Node.js)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:AzureChannel ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "http://www.cloud4soa.eu/v0.1/paasInstances/AzurePHP"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#twentyRange> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureNetwork> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureStorage> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureMySQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureWebServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureNewMonitoring> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureImage> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureAppServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureSSL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureMail> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AzureScheduling> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AzureSQLserver> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#twentyRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#Microsoft> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#AzureUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#azureLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Node.js> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/AzureNodejs>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/Azure> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

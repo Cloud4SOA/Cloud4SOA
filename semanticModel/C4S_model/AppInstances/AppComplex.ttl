@@ -1,0 +1,210 @@
+# Saved by TopBraid on Fri Jun 29 18:03:51 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppComplex
+# imports: http://www.cloud4soa.eu/v0.1/qos-model
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppComplex#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppComplex>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/qos-model> , <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.BoxComponent>
+      rdf:type c4s-inf-m:HttpRequestsHandler ;
+      rdfs:label "Box component"^^xsd:string ;
+      c4s-inf-m:hasHTTPRequests
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.FourRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:Clone .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.ComputeComplexComponent>
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:label "Compute complex component"^^xsd:string ;
+      c4s-inf-m:computationalPowerFactor
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoRange> ;
+      c4s-inf-m:hasArchitecture
+              "32 bit"^^xsd:string ;
+      c4s-inf-m:hasCache <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneMBrange> ;
+      c4s-inf-m:hasCores <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoRange> ;
+      c4s-inf-m:hasMemory <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoGBrange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:ECU .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.DBcacheComponent>
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "DBcache component"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.DBcacheConfiguration> ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.DBcacheConfiguration>
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "DBcache configuration"^^xsd:string ;
+      c4s-inf-m:hasDBcache
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBrange> ;
+      c4s-inf-m:hasDBcapacity
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneHundredGBrange> .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.NetworkBandwidthComponent>
+      rdf:type c4s-inf-m:NetworkResource ;
+      rdfs:label "Network bandwidth component"^^xsd:string ;
+      c4s-inf-m:bandwidth <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBperSecRange> ;
+      c4s-inf-m:latency <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenMsRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:NetworkDefaultCategory .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.StorageBandwidthComponent>
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "Storage bandwidth component"^^xsd:string ;
+      c4s-inf-m:bandwidth <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBperSecRange> ;
+      c4s-inf-m:capacity <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenGBrange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.FourRange>
+      rdf:type measure:NumericRange ;
+      rdfs:label "Four range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "4"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.HundredMs>
+      rdf:type measure:MilliSecond ;
+      rdfs:label "Hundred ms"^^xsd:string ;
+      measure:has_value "100"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.HundredMsRange>
+      rdf:type measure:TimeRange ;
+      rdfs:label "Hundred ms range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.HundredMs> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGB>
+      rdf:type measure:MegaByte ;
+      rdfs:label "One GB"^^xsd:string ;
+      measure:has_value "1000"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBperSec>
+      rdf:type measure:MegaByte_Per_Second ;
+      rdfs:label "One GBper sec"^^xsd:string ;
+      measure:has_value "1000"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBperSecRange>
+      rdf:type measure:NetworkingRange ;
+      rdfs:label "One GBper sec range"^^xsd:string ;
+      measure:hasMinNetworkingValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBperSec> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "One GBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneGB> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneHundredGB>
+      rdf:type measure:TeraByte ;
+      rdfs:label "One hundred GB"^^xsd:string ;
+      measure:has_value "0.1"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneHundredGBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "One hundred GBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneHundredGB> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneMB>
+      rdf:type measure:KiloByte ;
+      rdfs:label "One MB"^^xsd:string ;
+      measure:has_value "1000"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneMBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "One MBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.OneMB> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenGB>
+      rdf:type measure:GigaByte ;
+      rdfs:label "Ten GB"^^xsd:string ;
+      measure:has_value "10"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenGBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "Ten GBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenGB> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenMs>
+      rdf:type measure:MilliSecond ;
+      rdfs:label "Ten ms"^^xsd:string ;
+      measure:has_value "10"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenMsRange>
+      rdf:type measure:TimeRange ;
+      rdfs:label "Ten ms range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TenMs> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoGB>
+      rdf:type measure:MegaByte ;
+      rdfs:label "Two GB"^^xsd:string ;
+      measure:has_value "2000"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoGBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "Two GBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoGB> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoRange>
+      rdf:type measure:NumericRange ;
+      rdfs:label "Two range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "2"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/qos-model#AppComplex.QoSlatency>
+      rdf:type qos-model:Latency ;
+      rdfs:label "Qo slatency"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.HundredMsRange> .
+
+<http://www.cloud4soa.eu/v0.1/qos-model#AppComplex.QoSuptime>
+      rdf:type qos-model:Uptime ;
+      rdfs:label "Qo suptime"^^xsd:string ;
+      qos-model:hasPercentage
+              "99"^^xsd:float .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppComplex.AppComplex>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "App complex"^^xsd:string ;
+      dcterms:alternative "Complex application"^^xsd:string ;
+      dcterms:title "Complex Application"^^xsd:string ;
+      application-domain:requireComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoRange> ;
+      application-domain:requireWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#AppComplex.TwoRange> ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.ComputeComplexComponent> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.NetworkBandwidthComponent> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.StorageBandwidthComponent> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.BoxComponent> ;
+      application-domain:requiresServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#AppComplex.QoSuptime> , <http://www.cloud4soa.eu/v0.1/qos-model#AppComplex.QoSlatency> ;
+      application-domain:requiresSoftwareComponent
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#AppComplex.mySSL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComplex.DBcacheComponent> ;
+      application-domain:useProgrammingLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppComplex.mySSL>
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "my SSL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:security .

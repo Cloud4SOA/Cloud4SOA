@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" x="104" y="120" width="569" height="425" text="Window" measuredWidth="569" measuredHeight="425"/>
+  <widgets xsi:type="model:Tabs" x="104" y="120" text="Application Profile, User Profile, Deployed Applications" measuredWidth="414" measuredHeight="36" selection="0">
+    <items x="1" y="0" width="144" height="36" text="Application Profile"/>
+    <items x="145" y="0" width="96" height="36" text="User Profile"/>
+    <items x="241" y="0" width="172" height="36" text="Deployed Applications"/>
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>

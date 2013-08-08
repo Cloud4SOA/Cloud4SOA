@@ -1,0 +1,147 @@
+grammar eu.cloud4soa.xtext.Dsl with org.eclipse.xtext.common.Terminals 
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate dsl "http://www.cloud4soa.eu/xtext/Dsl"
+
+Scope :
+  'profile' '{' ( userProfile=UserProfile | applicationProfile=ApplicationProfile | paasOfferingProfile=PaasOfferingProfile ) '}' ;
+
+UserProfile :
+  ( 'developer' | 'provider' ':' provider=Provider ) '{' accountInfo=AccountInfo personalInfo=PersonalInfos '}' ;
+
+PersonalInfos :
+  'firstname' ':' firstName=STRING 'surname' ':' surnName=STRING 'email' ':' email=STRING ( birthDay=Birthday )? ;
+
+Birthday :
+  'birthday' ':' date=DATE_US ;
+
+AccountInfo :
+ 'username' ':' username=STRING 'password' ':' password=STRING ;
+
+Provider :
+  provider=STRING 'url' ':' homepage=STRING;
+
+ApplicationProfile :
+  infos=ApplicationInfos file=File technology=TechnologyInfo ;
+
+ApplicationInfos :
+  'application' ':' application=STRING version=Version ( code=ApplicationCode )? ;
+
+ApplicationCode:
+	'application_code' ':' applicationCode=STRING ;
+
+PaasOfferingProfile :
+  paasOfferingInfos=PaasOfferingInfos channels=Channels technology=TechnologyInfo ;
+
+PaasOfferingInfos :
+  'paas_offering' ':' paasOffering=STRING ;
+
+File :
+  'file_name' ':' fileName=STRING ( dimension=FileDimension )? ;
+
+FileDimension :
+  'size' ':' size=NATURAL_NUMBER ( digest=Digest )? ;
+
+Digest :
+  'digest' ':' digest=STRING ;
+
+TechnologyInfo :
+  programmingLanguage=ProgrammingLanguage software=Software hardware=Hardware ;
+
+ProgrammingLanguage :
+  'programming_language' ':' programmingLanguage=STRING version=Version ;
+
+Software :
+ 'software' '{' (category+=SoftwareCategory '{' ( component+=SoftwareComponent )+ '}' )+ '}' ;
+
+
+SoftwareCategory :
+  'category' ':' category=STRING description=Description ;
+
+SoftwareComponent :
+  component=Component version=Version ( license=License )? ;
+
+Component :
+  'component'   ':'   component=STRING  description=Description ;
+
+Description :
+  'description' ':' description=STRING ;
+
+License :
+  'license'   ':'   license=( "GPL" | "LGPL" | "BSD" | "MIT" ) ;
+
+Hardware :
+  'hardware'   '{'  ( box=Box | compute=Compute )? ( networkResource+=NetworkResource )* ( storageResource+=StorageResource )*  '}' ;
+
+Box :
+  'box'  box=BoxComponent ;
+
+BoxComponent :
+  component=Component httpRequest=HttpRequests ;
+
+HttpRequests :
+  'http_requests'   ':'  http_requests=NATURAL_NUMBER ;
+
+Compute :
+  'compute'  compute=ComputationalComponent ;
+
+ComputationalComponent :
+  component=Component architecture=Architecture cores=Cores speed=Speed memory=Memory cache=Cache ;
+
+Architecture :
+  'architecture'   ':'   architecture=( "x86" | "x64" ) ;
+
+Cores :
+  'cores'   ':'   cores=NATURAL_NUMBER ;
+
+Speed :
+  'speed'   ':'   speed=NATURAL_NUMBER ;
+
+Memory :
+  'memory'   ':'   memory=NATURAL_NUMBER ;
+
+Cache :
+  'cache'   ':'   cache=NATURAL_NUMBER ;
+
+NetworkResource :
+  'network_resource' networkResource=CommunicationalComponent ;
+
+CommunicationalComponent :
+  component=Component bandwidth=Bandwidth  ( latency=Latency )? ;
+
+Bandwidth :
+  'bandwidth'   ':'   bandwidth=NATURAL_NUMBER ;
+
+Latency :
+  'latency'   ':'   latency=NATURAL_NUMBER ;
+
+StorageResource :
+  'storage_resource'  storageComponent=StorageComponent ;
+
+StorageComponent :
+  component=Component capacity=Capacity ( bandwidth=Bandwidth )? ;
+
+Capacity :
+  'capacity'   ':'   capacity=NATURAL_NUMBER ;
+
+Channels :
+  'channels'   '{'  ( channel+=Channel )*  '}' ;
+
+Channel :
+  (  'api'  |  'cli'  |  'web_interface' )  '{'  ( operation+=Operation )*  '}' ;
+
+Operation :
+  'operation' ':' operation=STRING description=Description command=Command informationReturned=InformationReturned ;
+
+Command :
+  'command' ':' command=STRING ;
+
+InformationReturned :
+  'information_returned' ':' informationReturned=STRING ;
+
+Version :
+  'version' ':' value=NATURAL_NUMBER('.'NATURAL_NUMBER)+ ;
+
+terminal NATURAL_NUMBER returns ecore::EInt : ('0'..'9'|'1'..'9'('0'..'9')+) ;
+terminal DATE_US : '0'..'9' '0'..'9' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9' '-' '0'..'9' '0'..'9' ;

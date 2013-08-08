@@ -1,0 +1,60 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+
+        <g:HorizontalPanel>
+
+
+            <g:FlowPanel>
+                <g:Label text="Paas Offer name:"/>
+                <g:TextBox ui:field="title" readOnly="true"/>
+
+                <g:Label text="PaaS Provider:"/>
+                <g:TextBox ui:field="paasProvider" readOnly="true"/>
+
+                <g:Label text="Infrastructure:"/>
+                <g:TextBox ui:field="userInfrastructure" readOnly="true"/>
+
+
+            </g:FlowPanel>
+
+            <g:FlowPanel>
+
+                <g:Label text="Programming language:"/>
+                <g:TextBox ui:field="programmingLanguage" readOnly="true"/>
+
+                <g:Label text="Pricing policies:"/>
+                <g:ListBox ui:field="pricingPolicyList" multipleSelect="true"/>
+
+
+                <g:HorizontalPanel>
+                    <g:Button text="Deploy application" ui:field="deploy"/>
+                </g:HorizontalPanel>
+
+            </g:FlowPanel>
+
+
+
+        </g:HorizontalPanel>
+
+
+
+    </g:HTMLPanel>
+</ui:UiBinder>

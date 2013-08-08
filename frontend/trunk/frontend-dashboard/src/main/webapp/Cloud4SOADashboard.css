@@ -1,0 +1,98 @@
+/*
+ * This file is part of Cloud4SOA Frontend.
+ *
+ *     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+body {
+	/*text-align:center;*/
+	background-color: #eeeeee !important;
+}
+
+#wrapper{
+	width:1200px;
+	margin: 0 auto;
+}
+
+#header{
+	background-color: transparent;
+	width: 100%;
+	padding: 5px 0 10px 20px;
+	height: 100%;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+#mainPanel{
+}
+
+.mainPanel{
+	margin-left:auto; 
+	margin-right:auto;
+	clear: both !important;
+	display: block !important;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+closeButton {
+  margin: 15px 6px 6px;
+}
+
+/** FOOTER */
+
+#footer{
+	position: absolute;
+	width: 100%;
+	background-color: transparent;
+	bottom: 0px;
+}
+
+.clearfix{
+	clear: both;
+	display:block;
+}
+
+.rtMonitoring {
+ font-weight:bold;color:red
+}

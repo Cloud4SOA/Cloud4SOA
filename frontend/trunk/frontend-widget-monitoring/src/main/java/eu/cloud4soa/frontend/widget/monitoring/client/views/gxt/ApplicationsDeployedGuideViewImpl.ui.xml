@@ -1,0 +1,40 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="ApplicationsDeployedGuideView.css" />
+
+    <g:HTMLPanel>
+
+       	<div class='{style.guide}'>
+    	<div class='{style.section}'>
+    	<!--<div class='{style.iconGuide}' />-->
+
+        <div class='{style.sideBar}'>
+            <p class='{style.sideheaderFont}'>Monitoring</p>
+            <p class='{style.sideFont}'>On the left side viewer you can see your deployed applications. You can select a deployed application and, depending on its status, start, stop or undeploy it.
+            </p>
+            <p class='{style.sideFont}'>Additionally, you can see the monitoring statistics (multiple selection allowed for monitoring comparison) and the SLA contract for the selected applications. In the monitoring details view (center panel), set the monitoring statistics frame time. If not set, real-time monitoring statistics are shown. Click See Monitoring Statistics to start. On bottom tabbed panel you will see three panels, showing Selected Application details, a Response time graph and a Response code graph
+            </p>
+        </div>
+        </div>
+        </div>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

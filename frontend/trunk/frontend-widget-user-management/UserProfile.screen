@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" x="224" y="113" width="465" height="349" measuredWidth="465" measuredHeight="349"/>
+  <widgets xsi:type="model:TextField" x="484" y="187" text="&lt;yourName>" measuredWidth="97" measuredHeight="28">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Text" x="593" y="191" text="Name" measuredWidth="40" measuredHeight="20">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" x="468" y="233" text="&lt;yourSurname>" measuredWidth="114" measuredHeight="28">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Text" x="593" y="237" text="Surname" measuredWidth="58" measuredHeight="20">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" x="534" y="278" text="email" measuredWidth="47" measuredHeight="28">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Text" x="593" y="282" text="email" measuredWidth="37" measuredHeight="20">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Text" x="240" y="182" text="profile of user &#xD;&#xA;&lt;c4suserAccount>" measuredWidth="119" measuredHeight="40">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Tabs" x="224" y="113" text="Application Profile, User Profile, Deployed Applications" measuredWidth="414" measuredHeight="36" selection="0">
+    <items x="1" y="0" width="144" height="36" text="Application Profile"/>
+    <items x="145" y="0" width="96" height="36" text="User Profile"/>
+    <items x="241" y="0" width="172" height="36" text="Deployed Applications"/>
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="534" y="416" text="Save" measuredWidth="51" measuredHeight="30">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" x="538" y="329" text="date" measuredWidth="40" measuredHeight="28">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Text" x="593" y="333" text="birthdate" measuredWidth="61" measuredHeight="20">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>

@@ -1,0 +1,12 @@
+.even-row {
+    background-color: #FCFFFE;
+}
+
+.odd-row {
+    background-color: #ECF3FE;
+}
+
+.active-row {
+    background-color: #FFEBDA !important;
+    cursor: pointer;
+}

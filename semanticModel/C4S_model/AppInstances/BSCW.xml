@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:c4s-ent-m="http://www.cloud4soa.eu/v0.1/enterprise-domain#"
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measure="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:c4s-inf-m="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.cloud4soa.eu/v0.1/appinstances/BSCW#"
+  xml:base="http://www.cloud4soa.eu/v0.1/appinstances/BSCW">
+  <c4s-ent-m:SoftwareProvider rdf:ID="apache_software_foundation">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Apache Software Foundation</rdfs:comment>
+  </c4s-ent-m:SoftwareProvider>
+  <essential-metamodel:Application rdf:about="http://www.enterprise-architecture.org/essential-metamodel.owl#BSCW">
+    <c4s-app-m:useProgrammingLanguage>
+      <rdf:Description rdf:about="http://www.cloud4soa.eu/v0.1/other#Python">
+        <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >2.6</dcterms:hasVersion>
+      </rdf:Description>
+    </c4s-app-m:useProgrammingLanguage>
+    <c4s-app-m:requiresHardwareComponent>
+      <c4s-inf-m:Storage_Component rdf:ID="bscw_storage_component_redis">
+        <essential-metamodel:realisation_of_technology_capability>
+          <c4s-inf-m:StorageResource rdf:ID="bscw_storage_resource_redis">
+            <c4s-inf-m:bandwidth>
+              <measure:GigaByte_Per_Second rdf:ID="bscw_storage_resource_redis_bandwidth">
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw storage resource redis bandwidth</rdfs:comment>
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1</measure:has_value>
+              </measure:GigaByte_Per_Second>
+            </c4s-inf-m:bandwidth>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >bscw storage resource for redis</rdfs:comment>
+            <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >bscw storage resource for redis store</dcterms:description>
+            <c4s-inf-m:capacity>
+              <measure:GigaByte rdf:ID="bscw_storage_resource_redis_capacity">
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw storage resource redis capacity</rdfs:comment>
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >20</measure:has_value>
+              </measure:GigaByte>
+            </c4s-inf-m:capacity>
+          </c4s-inf-m:StorageResource>
+        </essential-metamodel:realisation_of_technology_capability>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >bscw storage component for redis</rdfs:comment>
+      </c4s-inf-m:Storage_Component>
+    </c4s-app-m:requiresHardwareComponent>
+    <c4s-app-m:requiresHardwareComponent>
+      <c4s-inf-m:Computational_Component rdf:ID="bscw_computational_component">
+        <essential-metamodel:realisation_of_technology_capability>
+          <c4s-inf-m:Compute rdf:ID="bscw_compute">
+            <c4s-inf-m:hasMemory>
+              <measure:GigaByte rdf:ID="bscw_compute_memory_size">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >4</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw compute memory size</rdfs:comment>
+              </measure:GigaByte>
+            </c4s-inf-m:hasMemory>
+            <c4s-inf-m:hasSpeed>
+              <measure:GigaHertz rdf:ID="bscw_compute_speed">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1.5</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw compute speed</rdfs:comment>
+              </measure:GigaHertz>
+            </c4s-inf-m:hasSpeed>
+            <c4s-inf-m:hasArchitecture rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >x64</c4s-inf-m:hasArchitecture>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >bscw compute</rdfs:comment>
+            <c4s-inf-m:hasCores rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+            >2</c4s-inf-m:hasCores>
+            <c4s-inf-m:hasCache>
+              <measure:MegaByte rdf:ID="bscw_compute_cache_size">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw compute cache size</rdfs:comment>
+              </measure:MegaByte>
+            </c4s-inf-m:hasCache>
+          </c4s-inf-m:Compute>
+        </essential-metamodel:realisation_of_technology_capability>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >bscw_computational_component</rdfs:comment>
+      </c4s-inf-m:Computational_Component>
+    </c4s-app-m:requiresHardwareComponent>
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >4.5.5</dcterms:hasVersion>
+    <c4s-app-m:digest rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >f6f244eb9c6fbabdcab653477b3b42fc</c4s-app-m:digest>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BSCW</dcterms:title>
+    <c4s-app-m:requiresSoftwareComponent>
+      <essential-metamodel:Software_Component rdf:ID="redis">
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Redis</dcterms:title>
+        <c4s-app-m:license_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >BSD</c4s-app-m:license_type>
+        <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Persistent key-value database server with network interface</dcterms:description>
+        <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >2.2.12</dcterms:hasVersion>
+        <c4s-inf-m:related_sw_category rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#dataBase"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Redis</rdfs:comment>
+      </essential-metamodel:Software_Component>
+    </c4s-app-m:requiresSoftwareComponent>
+    <c4s-app-m:size>
+      <measure:MegaByte rdf:ID="bscw_size">
+        <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >32.538782</measure:has_value>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+      </measure:MegaByte>
+    </c4s-app-m:size>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BSCW application</rdfs:comment>
+    <c4s-app-m:requiresHardwareComponent>
+      <c4s-inf-m:Storage_Component rdf:ID="bscw_storage_component_s3">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >bscw storage component s3</rdfs:comment>
+        <essential-metamodel:realisation_of_technology_capability>
+          <c4s-inf-m:StorageResource rdf:ID="bscw_storage_resource_s3">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >bscw storage resource s3</rdfs:comment>
+            <c4s-inf-m:bandwidth>
+              <measure:MegaByte_Per_Second rdf:ID="bscw_storage_resource_s3_bandwidth">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >100</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw storage resource s3 bandwidth</rdfs:comment>
+              </measure:MegaByte_Per_Second>
+            </c4s-inf-m:bandwidth>
+            <c4s-inf-m:capacity>
+              <measure:TeraByte rdf:ID="bscw_storage_resource_s3_capacity">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw storage resource s3 capacity</rdfs:comment>
+              </measure:TeraByte>
+            </c4s-inf-m:capacity>
+          </c4s-inf-m:StorageResource>
+        </essential-metamodel:realisation_of_technology_capability>
+      </c4s-inf-m:Storage_Component>
+    </c4s-app-m:requiresHardwareComponent>
+    <c4s-app-m:requiresSoftwareComponent>
+      <essential-metamodel:Software_Component rdf:ID="apache2">
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Apache2</dcterms:title>
+        <c4s-app-m:license_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Apache License 2.0</c4s-app-m:license_type>
+        <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >2.2</dcterms:hasVersion>
+        <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Apache open-source HTTP Server with following Modules enabled: alias, auth_basic, autoindex, cgi, deflate, dir, env, expires, headers, mime, rewrite, setenvif, ssl</dcterms:description>
+        <c4s-inf-m:related_sw_category rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#web_server"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >apache2</rdfs:comment>
+      </essential-metamodel:Software_Component>
+    </c4s-app-m:requiresSoftwareComponent>
+    <c4s-app-m:requiresHardwareComponent>
+      <c4s-inf-m:Communicational_Component rdf:ID="bscw_network_component">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >bscw network component</rdfs:comment>
+        <essential-metamodel:realisation_of_technology_capability>
+          <c4s-inf-m:NetworkResource rdf:ID="bscw_network_resource">
+            <c4s-inf-m:bandwidth>
+              <measure:GigaByte_Per_Second rdf:ID="bscw_network_resource_bandwidth">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw network resource bandwidth</rdfs:comment>
+              </measure:GigaByte_Per_Second>
+            </c4s-inf-m:bandwidth>
+            <c4s-inf-m:latency>
+              <measure:MilliSecond rdf:ID="bscw_network_resource_latency">
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >75</measure:has_value>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >bscw network resource latency</rdfs:comment>
+              </measure:MilliSecond>
+            </c4s-inf-m:latency>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >bscw network resource</rdfs:comment>
+          </c4s-inf-m:NetworkResource>
+        </essential-metamodel:realisation_of_technology_capability>
+      </c4s-inf-m:Communicational_Component>
+    </c4s-app-m:requiresHardwareComponent>
+  </essential-metamodel:Application>
+</rdf:RDF>

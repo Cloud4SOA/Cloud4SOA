@@ -1,0 +1,268 @@
+Facets
+------
+
+Imports:
+
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+
+
+Provider:
+
+SELECT DISTINCT ?ppname
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:providedByPaaSProvider ?pp .
+	?pp dcterms:title ?ppname
+}
+
+Programming language:
+SELECT DISTINCT ?l
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:supportLanguage ?pol .
+	?pol dcterms:title ?l .
+}
+
+
+Ratings:
+SELECT DISTINCT ?v
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:hasRating ?r .
+	?r paas-m:hasValue ?v .
+}
+
+Software components (TOOLS):
+SELECT DISTINCT ?s
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:offerSoftware ?sc .
+	?sc dcterms:title ?s .
+}
+
+
+Hardware components (FEATURES):
+SELECT DISTINCT ?t ?h
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:offerHardwareComponent ?hc .
+	?hc essential-metamodel:realisation_of_technology_capability ?tc .
+	?tc rdf:type ?t .
+	?tc dcterms:title ?h .
+}
+
+SELECT DISTINCT ?t ?h 
+WHERE { 
+	?po <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering> . 
+	?po <http://www.cloud4soa.eu/v0.1/paas-model#offerHardwareComponent> ?hc . 
+	?hc <http://www.enterprise-architecture.org/essential-metamodel.owl#realisation_of_technology_capability> ?tc . 
+	?tc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?t . 
+	?tc <http://purl.org/dc/terms/title> ?h . 
+}
+
+Channels:
+SELECT DISTINCT ?t ?d
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:communicateThrough ?ch .
+	?ch rdf:type ?t .
+	?ch dcterms:description ?d .
+}
+
+
+Pricing policies:
+SELECT DISTINCT ?t
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po paas-m:hasPricingPolicy ?pp .
+	?pp dcterms:title ?t
+}
+
+Faceted queries
+---------------
+
+Filtering within one facet (multiple values) as literals: filtering by programming language: Java, .NET
+Note: flag 'i' ignore case
+
+SELECT *
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po dcterms:title ?pon .
+	?po paas-m:supportLanguage ?pl .
+	?pl dcterms:title ?l .
+	FILTER (REGEX(?l, 'JAVA', 'i') || REGEX(?l, '.NET', 'i')) .
+}
+
+Filtering within one facet (multiple values) as resources: filtering by channels: API, Web Interface
+
+SELECT *
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po dcterms:title ?ti .
+	?po paas-m:communicateThrough ?ch .
+	{ ?ch rdf:type paas-m:WebInterface . } 
+	UNION 
+	{ ?ch rdf:type paas-m:API . }
+}
+
+Filtering within multiple facets (one value): filtering by programming language (Java), channel (API), pricing policy (Premium)
+
+SELECT *
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po dcterms:title ?pon .
+	?po paas-m:supportLanguage ?pl .
+	?pl dcterms:title ?l .
+	FILTER (REGEX(?l, 'JAVA', 'i')) .
+	?po paas-m:communicateThrough ?ch .
+	?ch rdf:type paas-m:API .
+	?po paas-m:hasPricingPolicy ?pp .
+	?pp dcterms:title ?ppt .
+	FILTER (REGEX(?ppt, 'Premium', 'i')) .
+}
+
+Filtering within multiple facets (multiple value): filtering by programming language (Java, .NET), channel (API, CLI)
+
+SELECT *
+WHERE {
+    ?po rdf:type paas-m:PaaSOffering .
+	?po dcterms:title ?pon .
+	?po paas-m:supportLanguage ?pl .
+	?pl dcterms:title ?l .
+	FILTER (REGEX(?l, 'JAVA', 'i') || REGEX(?l, '.NET', 'i')) .
+	?po paas-m:communicateThrough ?ch .
+	{?ch rdf:type paas-m:API .}
+	UNION
+	{?ch rdf:type paas-m:CLI .}
+}
+
+
+Queries to obtain dynamically the PaaS Offering facets
+------------------------------------------------------
+
+PREFIX dcterms:<http://purl.org/dc/terms/>
+PREFIX paas-m:<http://www.cloud4soa.eu/v0.1/paas-model#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX essential-metamodel:<http://www.enterprise-architecture.org/essential-metamodel.owl#>
+
+// PaaS Offering properties
+SELECT DISTINCT 
+?property WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po ?property ?pn . 
+}
+
+// Select paas-m PaaS Offering properties (also obtains their labels and comments)
+SELECT DISTINCT 
+?property ?label ?comment WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po ?property ?pn . 
+	?property rdf:type owl:ObjectProperty .
+	?property rdfs:range ?range .
+	?range rdfs:label ?label .
+	?range rdfs:comment ?comment .
+}
+
+// Only populated properties (example Channels)
+
+SELECT DISTINCT 
+?pn WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:communicateThrough ?pn . 
+}
+
+//Result YES
+ASK { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:communicateThrough ?pn .
+}
+
+// Facet properties (example Channels) using dcterms:description (not guarantee to be fulfilled)
+
+SELECT DISTINCT 
+?title ?description WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:hasPricingPolicy ?pp . 
+	?pp dcterms:title ?title .
+	?pp dcterms:description ?description .
+}
+
+
+// Facet properties (example Channels) using rdf:type 
+SELECT DISTINCT 
+?facet WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:communicateThrough ?pn . 
+	?pn rdf:type ?facet .
+}
+
+// We need to find a common approach to obtain the facet value dynamically, based on TITLE, TYPE, etc. See for other facet types.
+
+SELECT DISTINCT 
+?property ?facet ?facet_comment ?facet_value ?facet_value_description WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po ?property ?pn . 
+	?property rdf:type owl:ObjectProperty .
+	?property rdfs:range ?range .
+	?range rdfs:label ?facet .
+	?range rdfs:comment ?facet_comment .
+	?po ?property ?pv .
+	?pv dcterms:title ?facet_value.
+	?pv dcterms:description ?facet_value_description .
+}
+
+//Obtaining software components facets
+SELECT DISTINCT 
+?so ?sot ?facetname ?facetcomment ?ca ?facetvalue ?facetvaluedescription WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:offerSoftware ?so . 
+	?so rdf:type ?sot .
+	optional {?sot rdfs:label ?facetname .}
+	optional {?sot rdfs:comment ?facetcomment .}
+	?so c4s-inf-m:related_sw_category ?ca .
+	optional {?ca dcterms:title ?facetvalue .}
+	optional {?ca dcterms:description ?facetvaluedescription .}
+}
+
+//Obtaining hardware component facets
+SELECT DISTINCT 
+?hc ?hct ?facetname ?facetcomment ?hcat ?facetvalue ?facetvaluedescription WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:offerHardwareComponent ?hc .
+	?hc rdf:type ?hct .
+	optional {?hct rdfs:label ?facetname .}
+	optional {?hct rdfs:comment ?facetcomment .}
+	?hc essential-metamodel:realisation_of_technology_capability ?hcat .
+	optional {?hcat dcterms:title ?facetvalue .}
+	optional {?hcat dcterms:description ?facetvaluedescription .}
+}
+
+//Obtaining software/hardware component facets
+
+SELECT DISTINCT 
+?facetname ?facetcomment ?facetvalue ?facetvaluedescription WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:offerHardwareComponent ?co .
+	?co essential-metamodel:realisation_of_technology_capability ?cat .
+	?cat rdf:type ?cattype .
+	?cattype rdfs:label ?facetname .
+	optional {?cattype rdfs:comment ?facetcomment .}
+	?cat dcterms:title ?facetvalue .
+	optional {?cat dcterms:description ?facetvaluedescription .}
+}
+
+SELECT DISTINCT 
+?facetname ?facetcomment ?facetvalue ?facetvaluedescription WHERE { 
+	?po rdf:type paas-m:PaaSOffering . 
+	?po paas-m:offerSoftware ?co .
+	?co c4s-inf-m:related_sw_category ?cat .
+	?cat rdf:type ?cattype .
+	?cattype rdfs:label ?facetname .
+	optional {?cattype rdfs:comment ?facetcomment .}
+	?cat dcterms:title ?facetvalue .
+	optional {?cat dcterms:description ?facetvaluedescription .}
+}
+

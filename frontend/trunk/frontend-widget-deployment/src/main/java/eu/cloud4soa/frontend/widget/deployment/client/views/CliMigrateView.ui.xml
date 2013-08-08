@@ -1,0 +1,82 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="CliMigrateView.css" />
+
+    <g:HTMLPanel>
+
+        <div class="{style.caption}">
+            Migration to this PaaS offering requires to perform some steps using the Cloud4SOA Command Line Interface.
+            <br/>
+            Cloud4SOA CLI is a Spring Roo add-on. If don't have done it already, download
+            <a href="http://s3.amazonaws.com/dist.springframework.org/release/ROO/spring-roo-1.2.0.RELEASE.zip">Spring ROO</a>
+            and the
+            <a href="http://dl.dropbox.com/u/24061217/CLI/eu.cloud4soa.cli.roo.addon-0.0.3-SNAPSHOT.jar">Cloud4SOA OSGi Bundle</a>.
+            <br/>
+            In order to install the Cloud4SOA CLI do the following steps:
+            <ul>
+                <li>Extract the Spring Roo archive file.</li>
+                <li>Copy the Cloud4SOA CLI OSGi plug-in (eu.cloud4soa.cli.roo.addon-0.0.3-SNAPSHOT.jar) into the /bundle folder of Spring Roo</li>
+                <li>Run the Spring Roo tool (
+                    <div class="{style.code}">roo.sh</div>
+                    in Unix/Linux or
+                    <div class="{style.code}">roo.bat</div>
+                    in Windows) from the /bin directory.
+                </li>
+            </ul>
+
+            <br/>
+            Now that you have the Cloud4SOA CLI, configure it for you user:
+
+            <ul>
+                <li>Set Cloud4SOA server address with <br/>
+                    <div class="{style.code}">cloud4soa url set --url
+                        <span ui:field="c4s_address">http://localhost/</span>services/REST/
+                    </div>
+                </li>
+                <li>Set your credentials with <br/>
+                    <div class="{style.code}">cloud4soa login --username
+                        <span ui:field="c4s_username">username</span>
+                        --password &lt;your-password-here&gt;
+                    </div>
+                </li>
+                <li>Set the GIT proxy with <br/>
+                    <div class="{style.code}">cloud4soa git proxy set --url
+                        <span ui:field="c4s_gitproxy">localhost</span>
+                    </div>
+                </li>
+                <li>Retrieve the C4S public key with <br/>
+                    <div class="{style.code}">cloud4soa git key c4s</div>
+                </li>
+                <li>Migrate the application with <br/>
+                    <div class="{style.code}">cloud4soa migrate gitPush --appId
+                        <span ui:field="c4s_appUriId">appUriId</span>
+                        --paasId
+                        <span ui:field="c4s_paasUriId">paasUriId</span>
+                        --repoPath /path/to/local/repo --passphrase &lt;key-passphrase&gt;
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </g:HTMLPanel>
+</ui:UiBinder>

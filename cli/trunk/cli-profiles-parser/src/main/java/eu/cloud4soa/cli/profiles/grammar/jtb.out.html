@@ -1,0 +1,244 @@
+<html><!--
+		-
+		- Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+		- 
+		- Licensed to the Apache Software Foundation (ASF) under one
+		- or more contributor license agreements.  See the NOTICE file
+ 		- distributed with this work for additional information
+ 		- regarding copyright ownership.  The ASF licenses this file
+ 		- to you under the Apache License, Version 2.0 (the
+ 		- "License"); you may not use this file except in compliance
+		- with the License.  You may obtain a copy of the License at
+        -
+		- http://www.apache.org/licenses/LICENSE-2.0
+		- 
+		- Unless required by applicable law or agreed to in writing, software
+		- distributed under the License is distributed on an "AS IS" BASIS,
+		- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		- See the License for the specific language governing permissions and
+		- limitations under the License.
+		-
+
+	--><head><title>BNF for jtb.out.jj</title></head><body>
+<h1 align="CENTER">BNF for jtb.out.jj</h1>
+<h2 align="CENTER">TOKENS</h2>
+<table><!-- Token --><tr><td>
+   <pre>
+&lt;DEFAULT&gt; SKIP : {
+" "
+| "\t"
+| "\n"
+| "\r"
+| &lt;"//" (~["\n","\r"])* ("\n" | "\r" | "\r\n")&gt;
+}
+
+   </pre>
+  </td>
+ </tr><!-- Token --><tr><td>
+   <pre>
+&lt;DEFAULT&gt; TOKEN : {
+&lt;PROFILE: "profile"&gt;
+| &lt;DEVELOPER: "developer"&gt;
+| &lt;PROVIDER: "provider"&gt;
+| &lt;APPLICATION: "application"&gt;
+| &lt;PAAS_OFFERING: "paas_offering"&gt;
+| &lt;ACCOUNT: "account"&gt;
+| &lt;SOFTWARE: "software"&gt;
+| &lt;HARDWARE: "hardware"&gt;
+| &lt;NETWORK_RESOURCE: "network_resource"&gt;
+| &lt;BOX: "box"&gt;
+| &lt;COMPUTE: "compute"&gt;
+| &lt;HTTP_REQUESTS: "http_requests"&gt;
+| &lt;STORAGE_RESOURCE: "storage_resource"&gt;
+| &lt;CHANNELS: "channels"&gt;
+| &lt;API: "api"&gt;
+| &lt;CLI: "cli"&gt;
+| &lt;WebInterface: "web_interface"&gt;
+| &lt;LBRACE: "{"&gt;
+| &lt;RBRACE: "}"&gt;
+| &lt;COLON: ":"&gt;
+| &lt;BANDWIDTH: "bandwidth"&gt;
+| &lt;LATENCY: "latency"&gt;
+| &lt;SPEED: "speed"&gt;
+| &lt;MEMORY: "memory"&gt;
+| &lt;CACHE: "cache"&gt;
+| &lt;CAPACITY: "capacity"&gt;
+| &lt;FIRSTNAME: "firstname"&gt;
+| &lt;SURNAME: "surname"&gt;
+| &lt;USERNAME: "username"&gt;
+| &lt;PASSWORD: "password"&gt;
+| &lt;ACRONYM: "acronym"&gt;
+| &lt;COMMAND: "command"&gt;
+| &lt;DIGEST: "digest"&gt;
+| &lt;URL: "url"&gt;
+| &lt;PROGRAMMING_LANGUAGE: "programming_language"&gt;
+| &lt;INFORMATION_RETURNED: "information_returned"&gt;
+| &lt;APPLICATION_CODE: "application_code"&gt;
+| &lt;SIZE: "size"&gt;
+| &lt;FILE_NAME: "file_name"&gt;
+| &lt;CATEGORY: "category"&gt;
+| &lt;COMPONENT: "component"&gt;
+| &lt;DESCRIPTION: "description"&gt;
+| &lt;BIRTHDAY: "birthday"&gt;
+| &lt;EMAIL: "email"&gt;
+| &lt;VERSION: "version"&gt;
+| &lt;LICENSE: "license"&gt;
+| &lt;LICENSE_TYPE: "GPL" | "LGPL" | "BSD" | "MIT"&gt;
+| &lt;CORES: "cores"&gt;
+| &lt;ARCHITECTURE: "architecture"&gt;
+| &lt;OPERATION: "operation"&gt;
+| &lt;ARCHITECTURE_VALUE: "x86" | "x64"&gt;
+| &lt;FLOATING_POINT: &lt;NATURAL_NUMBER&gt; ("." &lt;NATURAL_NUMBER&gt;)+&gt;
+| &lt;NATURAL_NUMBER: ["0"-"9"] | ["1"-"9"] (["0"-"9"])+&gt;
+| &lt;DATE_US: ["0"-"9"] ["0"-"9"] ["0"-"9"] ["0"-"9"] "-" ["0"-"9"] ["0"-"9"] "-" ["0"-"9"] ["0"-"9"]&gt;
+| &lt;STRING: "\"" (["A"-"Z","a"-"z","0"-"9","_","\'",".",":","-","+","#","*"," ","@","/"])+ "\""&gt;
+}
+
+   </pre>
+  </td>
+ </tr></table><h2 align="CENTER">NON-TERMINALS</h2>
+<table><tr><td align="RIGHT" valign="BASELINE"><a name="prod1">Scope</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;PROFILE&gt; &lt;LBRACE&gt; ( ( <a href="#prod2">UserProfile</a> | <a href="#prod3">ApplicationProfile</a> | <a href="#prod4">PaasOfferingProfile</a> ) ) &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod2">UserProfile</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">( ( &lt;DEVELOPER&gt; | &lt;PROVIDER&gt; &lt;COLON&gt; <a href="#prod5">Provider</a> ) ) &lt;LBRACE&gt; <a href="#prod6">AccountInfo</a> <a href="#prod7">PersonalInfos</a> &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod7">PersonalInfos</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;FIRSTNAME&gt; &lt;COLON&gt; &lt;STRING&gt; &lt;SURNAME&gt; &lt;COLON&gt; &lt;STRING&gt; &lt;EMAIL&gt; &lt;COLON&gt; &lt;STRING&gt; ( <a href="#prod8">Birthday</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod8">Birthday</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;BIRTHDAY&gt; &lt;COLON&gt; &lt;DATE_US&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod6">AccountInfo</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;USERNAME&gt; &lt;COLON&gt; &lt;STRING&gt; &lt;PASSWORD&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod5">Provider</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;STRING&gt; &lt;URL&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod3">ApplicationProfile</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod9">ApplicationInfos</a> <a href="#prod10">File</a> <a href="#prod11">TechnologyInfo</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod9">ApplicationInfos</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;APPLICATION&gt; &lt;COLON&gt; &lt;STRING&gt; <a href="#prod12">Version</a> ( <a href="#prod13">ApplicationCode</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod13">ApplicationCode</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;APPLICATION_CODE&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod4">PaasOfferingProfile</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod14">PaasOfferingInfos</a> <a href="#prod15">Channels</a> <a href="#prod11">TechnologyInfo</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod14">PaasOfferingInfos</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;PAAS_OFFERING&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod10">File</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;FILE_NAME&gt; &lt;COLON&gt; &lt;STRING&gt; ( <a href="#prod16">FileDimension</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod16">FileDimension</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;SIZE&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt; ( <a href="#prod17">Digest</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod17">Digest</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;DIGEST&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod11">TechnologyInfo</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod18">ProgrammingLanguage</a> <a href="#prod19">Software</a> <a href="#prod20">Hardware</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod18">ProgrammingLanguage</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;PROGRAMMING_LANGUAGE&gt; &lt;COLON&gt; &lt;STRING&gt; <a href="#prod12">Version</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod19">Software</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;SOFTWARE&gt; &lt;LBRACE&gt; ( <a href="#prod21">SoftwareCategory</a> &lt;LBRACE&gt; ( <a href="#prod22">SoftwareComponent</a> )+ &lt;RBRACE&gt; )+ &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod21">SoftwareCategory</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CATEGORY&gt; &lt;COLON&gt; &lt;STRING&gt; <a href="#prod23">Description</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod22">SoftwareComponent</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod24">Component</a> <a href="#prod12">Version</a> ( <a href="#prod25">License</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod24">Component</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;COMPONENT&gt; &lt;COLON&gt; &lt;STRING&gt; <a href="#prod23">Description</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod23">Description</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;DESCRIPTION&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod25">License</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;LICENSE&gt; &lt;COLON&gt; &lt;LICENSE_TYPE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod20">Hardware</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;HARDWARE&gt; &lt;LBRACE&gt; ( ( <a href="#prod26">Box</a> | <a href="#prod27">Compute</a> ) )? ( <a href="#prod28">NetworkResource</a> )* ( <a href="#prod29">StorageResource</a> )* &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod26">Box</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;BOX&gt; <a href="#prod30">BoxComponent</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod30">BoxComponent</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod24">Component</a> <a href="#prod31">HttpRequests</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod31">HttpRequests</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;HTTP_REQUESTS&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod27">Compute</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;COMPUTE&gt; <a href="#prod32">ComputationalComponent</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod32">ComputationalComponent</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod24">Component</a> <a href="#prod33">Architecture</a> <a href="#prod34">Cores</a> <a href="#prod35">Speed</a> <a href="#prod36">Memory</a> <a href="#prod37">Cache</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod33">Architecture</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;ARCHITECTURE&gt; &lt;COLON&gt; &lt;ARCHITECTURE_VALUE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod34">Cores</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CORES&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod35">Speed</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;SPEED&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod36">Memory</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;MEMORY&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod37">Cache</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CACHE&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod28">NetworkResource</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;NETWORK_RESOURCE&gt; <a href="#prod38">CommunicationalComponent</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod38">CommunicationalComponent</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod24">Component</a> <a href="#prod39">Bandwidth</a> ( <a href="#prod40">Latency</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod39">Bandwidth</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;BANDWIDTH&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod40">Latency</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;LATENCY&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod29">StorageResource</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;STORAGE_RESOURCE&gt; <a href="#prod41">StorageComponent</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod41">StorageComponent</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE"><a href="#prod24">Component</a> <a href="#prod42">Capacity</a> ( <a href="#prod39">Bandwidth</a> )?</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod42">Capacity</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CAPACITY&gt; &lt;COLON&gt; &lt;NATURAL_NUMBER&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod15">Channels</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CHANNELS&gt; &lt;LBRACE&gt; ( <a href="#prod43">Api</a> )? ( <a href="#prod44">Cli</a> )? ( <a href="#prod45">WebInterface</a> )? &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod43">Api</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;API&gt; &lt;LBRACE&gt; ( <a href="#prod46">Operation</a> )* &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod44">Cli</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;CLI&gt; &lt;LBRACE&gt; ( <a href="#prod46">Operation</a> )* &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod45">WebInterface</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;WebInterface&gt; &lt;LBRACE&gt; ( <a href="#prod46">Operation</a> )* &lt;RBRACE&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod46">Operation</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;OPERATION&gt; &lt;COLON&gt; &lt;STRING&gt; <a href="#prod23">Description</a> <a href="#prod47">Command</a> <a href="#prod48">InformationReturned</a></td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod47">Command</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;COMMAND&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod48">InformationReturned</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;INFORMATION_RETURNED&gt; &lt;COLON&gt; &lt;STRING&gt;</td>
+</tr><tr><td align="RIGHT" valign="BASELINE"><a name="prod12">Version</a></td>
+<td align="CENTER" valign="BASELINE">::=</td>
+<td align="LEFT" valign="BASELINE">&lt;VERSION&gt; &lt;COLON&gt; &lt;FLOATING_POINT&gt;</td>
+</tr></table></body></html>

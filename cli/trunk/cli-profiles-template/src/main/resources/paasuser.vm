@@ -1,0 +1,22 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix user-m: <http://www.cloud4soa.eu/v0.1/user-model#> .
+@prefix c4s-ent-m: <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+
+user-m:$paasUserUriId a user-m:PaaSUser ;
+	foaf:firstName "" ;
+	foaf:surname "" ;
+        ## foaf:gender ""^^xsd:string ; ## oneOf ("male"^^xsd:string "female"^^xsd:string)
+	## foaf:birthday ""^^xsd:date ; ## "aaaa-mm-dd"^^xsd:date
+	foaf:mbox "" ;
+        user-m:userOfPaaSProvider c4s-ent-m:$paasProviderUriId.
+
+c4s-ent-m:$paasProviderUriId a c4s-ent-m:PaaSProvider ;
+	dcterms:title ""^^xsd:string ;
+	dcterms:description ""^^xsd:string ;
+	foaf:homepage foaf:$homepageUriId ;
+        c4s-ent-m:hasUser user-m:$paasUserUriId .
+
+foaf:$homepageUriId a foaf:Document ;
+	c4s-ent-m:link ""^^xsd:anyURI .

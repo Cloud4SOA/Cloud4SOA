@@ -1,0 +1,15 @@
+.caption {
+    margin: 20px;
+}
+
+.caption ul {
+    margin-top: 10px;
+    list-style: inside;
+}
+
+.code {
+    font-family: monospace;
+    font-weight: bold;
+    display: inline;
+}
+

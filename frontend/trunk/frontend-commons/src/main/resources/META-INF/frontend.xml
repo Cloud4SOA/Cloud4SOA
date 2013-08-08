@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:beans="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <!--override properties for the Object Relational Data model (ORD)
+        - Default value go into ord.default.properties
+        - Property values for production go into ord.prod.properties, used if no c4s.env system property is set
+        - If c4s.inv is set, e.g. 'dev' read more properties from ord.dev.properties
+
+    -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="placeholderPrefix" value="ORD{"/>
+        <property name="placeholderSuffix" value="}"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:META-INF/frontend.default.properties</value>
+                <value>classpath*:META-INF/frontend.${c4s.env:prod}.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="placeholderPrefix" value="GIT{"/>
+        <property name="placeholderSuffix" value="}"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:META-INF/git.default.properties</value>
+                <value>classpath*:META-INF/git.${c4s.env:prod}.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--Enable AOP in order to allow security interceptors-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <!--Enable the GWT Exception translator-->
+    <beans:bean class="com.gwt.ss.GwtExceptionTranslator"/>
+
+    <!--The username password used by the GWT login widget-->
+    <beans:bean class="com.gwt.ss.GwtUsernamePasswordAuthority">
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+    </beans:bean>
+
+    <!-- this 'cloud4soadashboard' must be the name of the module defined in Cloud4SOADashboard.gwt.xml-->
+    <security:http pattern="/**/cloud4soadashboard" security="none"/>
+
+    <security:http auto-config="true" disable-url-rewriting="true">
+
+        <!--when using GwtLogout[Async] process Logout,must config success-handler-ref instead of logout-success-url-->
+        <security:logout invalidate-session="true" success-handler-ref="logoutSuccessHandler"/>
+
+        <security:remember-me key="c4s" user-service-ref="c4sAuthenticationProvider"/>
+    </security:http>
+
+    <security:global-method-security pre-post-annotations="disabled" secured-annotations="enabled" jsr250-annotations="enabled"/>
+
+    <!--Define the authentication provider for C4S...-->
+    <beans:bean id="c4sAuthenticationProvider" class="eu.cloud4soa.frontend.commons.server.security.C4sAuthenticationProvider"/>
+
+    <!--...and set it in the Spring Security authentication manager-->
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="c4sAuthenticationProvider"/>
+    </security:authentication-manager>
+
+    <!--Upon logout by mean of GWT go to the home page-->
+    <beans:bean id="logoutSuccessHandler" class="com.gwt.ss.GwtLogoutSuccessHandler" p:logoutSuccessUrl="/"/>
+
+    <import resource="classpath:META-INF/soa.xml"/>
+<!--
+    <import resource="classpath:net/bull/javamelody/monitoring-spring-datasource.xml"/>
+-->
+    <context:component-scan base-package="eu.cloud4soa.frontend" scoped-proxy="interfaces"/>
+
+
+</beans>

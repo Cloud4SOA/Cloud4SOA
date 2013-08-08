@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:paas-m="http://www.cloud4soa.eu/v0.1/paas-model#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.cloud4soa.eu/v0.1/user-model#"
+  xml:base="http://www.cloud4soa.eu/v0.1/user-model">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/application-domain"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="PaaSUser">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="User"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PaaS User</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A user related to a PaaS Provider who wants to register (or update) a PaaS Offering to the Cloud4SOA system.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cloud4SoaAccount">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cloud4SoaAccount</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An online account required inorder to have access to the Cloud4SOA system</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#User">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Cloud4SoaAccount"/>
+        <owl:onProperty rdf:resource="http://xmlns.com/foaf/0.1/account"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >User</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Generic User concept that model a user of the Cloud4SOA system that has an account.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Developer">
+    <rdfs:subClassOf rdf:resource="#User"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Developer</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="has_application"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cloud-based application developer, i.e. a developer working for a company or a free-lancer who wants to deploy their application on a PaaS offering or wishes to migrate from one Cloud PaaS provider to another</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="userOfPaaSProvider">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Used with the PaaS Provider it corresponds</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >user Of PaaS Provider</rdfs:label>
+    <rdfs:domain rdf:resource="#PaaSUser"/>
+    <owl:inverseOf rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain#hasUser"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has_application">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:domain rdf:resource="#Developer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a Developer with an Application which will be deployed and executed by the means of the negotiated PaaS offerings (platform services).</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has application</rdfs:label>
+  </owl:ObjectProperty>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </rdf:Description>
+  <Developer rdf:ID="admin">
+    <foaf:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >administrator</foaf:name>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >admin</rdfs:label>
+    <foaf:holdsAccount>
+      <Cloud4SoaAccount rdf:ID="adminAccount">
+        <foaf:accountName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >admin</foaf:accountName>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >admin account</rdfs:label>
+      </Cloud4SoaAccount>
+    </foaf:holdsAccount>
+  </Developer>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

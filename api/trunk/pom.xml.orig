@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>cloud4soa.api</name>
+
+	<parent>
+		<groupId>eu.cloud4soa</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../parent/trunk</relativePath>
+	</parent>
+
+	<groupId>eu.cloud4soa</groupId>
+	<artifactId>api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<!-- scm>
+		<connection>scm:svn:https://dev01.sindice.net/svn/di2/sindice/modules/site-manager.api/trunk</connection>
+		<developerConnection>scm:svn:https://dev01.sindice.net/svn/di2/sindice/modules/site-manager.api/trunk</developerConnection>
+		<url>https://dev01.sindice.net/svn/di2/sindice/modules/site-manager.api/trunk</url>
+	</scm -->
+
+	<dependencies>
+
+<!--		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>avro</artifactId>
+			<version>1.5.1</version>
+			 version>1.3.3</version 
+			<scope>compile</scope>
+		</dependency>-->
+	
+	</dependencies>
+
+	<build>
+		<finalName>cloud4soa.api</finalName>
+
+<!--		<plugins>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>1.5.1</version>
+				 version>1.0.0.v20110131</version 
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.thoughtworks.paranamer</groupId>
+				<artifactId>paranamer-maven-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>run</id>
+						<configuration>
+							<sourceDirectory>${project.build.directory}/generated-sources/avro</sourceDirectory>
+							<outputDirectory>${project.build.directory}/classes</outputDirectory>
+						</configuration>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>-->
+	</build>
+
+</project>

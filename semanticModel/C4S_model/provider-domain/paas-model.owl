@@ -1,0 +1,761 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns="http://www.cloud4soa.eu/v0.1/paas-model#"
+    xmlns:common-m="http://www.cloud4soa.eu/v0.1/other#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/paas-model">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/user-model"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Author: Zeginis Dimitris</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://purl.org/dc/dcmitype/"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/other"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/application-domain"/>
+    <owl:imports rdf:resource="http://purl.org/dc/dcam/"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Platform_Layer">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#EA_Class"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Platform Layer</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The upper class of the Platform Layer</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="API">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Channel"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >API</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A contact that defines how a developer will write his code in order to interact with the PaaS offering.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The type of  an Operation supported by a communication Channel (e.g. Deploy application, Start application, Stop application, Restart application, Create application, Delete application etc.). The Operation Type is defined in order to be able to classify the Operations of different PaaS Offerings that make the same action (e.g. deploy).</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Operation Type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Rating">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rating</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Evaluation and comments provided by users of the PaaS Offering.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WebInterface">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Channel"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A graphical web interface that enables the developer to interact with the PaaS Offering and manage his applications.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Web Interface</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="PricingPolicy">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedHardwareComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedSoftware"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The way the pricing of the service is made and is related to the Hardware and Software components offered by the PaaS Offering</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pricing Policy</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Operation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="requireParameter"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="throwException"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Operation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An action (e.g. deploy an application) supported by a communication Channel offered by a Paas Offering. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Exception">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An error condition produced during the execution of an Operation.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Exception</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Channel">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A way to communicate with the cloud PaaS Offering in order to create new applications, deploy an application, start an application, access the database etc.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="supportOperation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Channel</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CLI">
+    <rdfs:subClassOf rdf:resource="#Channel"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CLI</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A command line interface that enables the user to interact  (e.g deploy an application, stop an application) with the cloud PaaS Offering through commands.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Parameter">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The information required by an Operation in order to be executed.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Parameter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PaaSOffering">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="communicateThrough"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hostsApplication"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Represents a programming platform that Cloud-based application developers can use in order to implement and deploy their applications. A PaaS Offering support a specific technology (i.e. Programming Language) and offer software and hardware resources that can me managed through communication Channels. The pricing is related to the resources offered.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="offerHardwareComponent"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PaaS Offering</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="offerSoftware"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasPricingPolicy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasRating"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SLA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The agreement between the Developer and a specific PaaS Offering where the level of service is formally defined in terms of performance and reliability.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="relatedPricingPolicy"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SLA</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Platform_Layer"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#supportOperation">
+    <rdfs:range rdf:resource="#Operation"/>
+    <rdfs:domain rdf:resource="#Channel"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >support Operation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a communication Channel with an Operation it supports.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="supportLanguage">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >support Language</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with the Programming Language it supports.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="providesServiceQuality">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provides Service Quality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the QoS metrics offered by a PaaS offering.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="involvesDeveloper">
+    <rdfs:domain rdf:resource="#SLA"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/user-model#Developer"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >involves Developer</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an SLA with a Developer that is involved in the SLA agreement. </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedSoftware">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:domain rdf:resource="#PricingPolicy"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >related Software</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a Pricing Policy with the Software Component it is related.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="useInfrastructure">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain#IaaSProvider"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use Infrastructure</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with an IaaS Provider that offer the required infrastructure to the PaaS Offering.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasPricingPolicy">
+    <rdfs:range rdf:resource="#PricingPolicy"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Pricing Policy</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaSOffering with a Pricing Policy it uses.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOperationType">
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:range rdf:resource="#OperationType"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Operation Type</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Operation with an OperationType in order to classify the Operations that perform the same action.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hostsApplication">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hosts Application</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with an Application that it hosts.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#communicateThrough">
+    <rdfs:range rdf:resource="#Channel"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >communicate through</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with the communication Channels it support.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#offerHardwareComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with the Hardware Components it offers.</rdfs:comment>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >offer Hardware Component</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Component"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#throwException">
+    <rdfs:range rdf:resource="#Exception"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >throw Exception</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An Exception thrown during the execution of this Operation because of an error condition.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="offerComputeScalingFactor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >offer compute scaling factor</rdfs:label>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of Compute instances offered by the PaaS</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedHardwareComponent">
+    <rdfs:domain rdf:resource="#PricingPolicy"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a Pricing Policy with the Hardware Component it is related.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >related Hardware Component</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Component"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#relatedPricingPolicy">
+    <rdfs:range rdf:resource="#PricingPolicy"/>
+    <rdfs:domain rdf:resource="#SLA"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >related Pricing Policy</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an SLA with the Pricing Policy it is related.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="providedByPaaSProvider">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provided By PaaS Provider</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaSOffering with the PaaS Provider that provides it.</rdfs:comment>
+    <owl:inverseOf rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain#providePaaS"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#offerSoftware">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaS Offering with the Software Component it offers</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >offer Software</rdfs:label>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="involvesPaaSOffering">
+    <rdfs:domain rdf:resource="#SLA"/>
+    <rdfs:range rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >involves PaaS Offering</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an SLA with a PaaS Offering that is involved in the SLA agreement. </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasRating">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="#Rating"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Rating</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a PaaSOffering with the Ratings made by the users of the platform. </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#requireParameter">
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:range rdf:resource="#Parameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >require Parameter</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Operation with the Parameters it requires for its excecution.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="offerWebScalingFactor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of Http requests handler instances offered.</rdfs:comment>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >offer web scaling factor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasURL">
+    <rdfs:domain rdf:resource="#WebInterface"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:domain rdf:resource="#CLI"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has URL</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The URL to access a CLI or PaaSOffering or WebInterface.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCondition">
+    <rdfs:domain rdf:resource="#Exception"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Condition</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The condition that must be satisfied in order this Exception to be thrown.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAdapter">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has adapter</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCommunicationProtocol">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#API"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Communication Protocol</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The protocol that is supported by this API (e.g. REST, WSDL).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Rating"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Value</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The value of this Parameter of Rating.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasStatus">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Status</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The status of this PaaSOffering (e.g. beta, running etc).</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSlaId">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has SLA Id</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates the PaaS Offering with the corresponding service-level-agreement.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isOptional">
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is Optional</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines if this Parameter is required for the excecution of an Operation or not.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAccessRights">
+    <rdfs:domain rdf:resource="#Channel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Access Rights</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The access rights that are related to this communication Channel.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:domain rdf:resource="#PricingPolicy"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:domain rdf:resource="#Exception"/>
+    <rdfs:domain rdf:resource="#OperationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Channel"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasComment">
+    <rdfs:domain rdf:resource="#Rating"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Comment</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The comment that a user has made for a PaaSOffering.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="obligation">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#SLA"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >obligation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The obligation of the SLA that is undertaken by the PaaS Offering.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
+    <rdfs:domain rdf:resource="#PaaSOffering"/>
+    <rdfs:domain rdf:resource="#Exception"/>
+    <rdfs:domain rdf:resource="#Parameter"/>
+    <rdfs:domain rdf:resource="#PricingPolicy"/>
+    <rdfs:domain rdf:resource="#OperationType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:domain rdf:resource="#Channel"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasOperationCommand">
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#OperationType"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Operation Command</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The operation command of an Operation or OperationType. </rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasInformationReturned">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Information Returned</rdfs:label>
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the information returned after the successful excecution of this Operation.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="validityPeriod">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#SLA"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >validity Period</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The validity period of the SLA.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <OperationType rdf:ID="getSummaryStatistics">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getSummaryStatistics(in appID : unsigned long long, in envID : unsigned long long) :: Statistics</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get summary statistics of all running (prior and current) application versions of the given application in the given environment</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Summary Statistics</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="uploadAndDeployToEnv">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >uploadAndDeployToEnv(in app : Application, in appVersion : VersionedApplication, in env : Environment) :: ApplicationSpace</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Creates a new application (if needed), then a new application version, upload the respective executable file, associate and deploy it to the specified environment</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Upload and Deploy to Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="listApplications">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >listApplications() :: sequence of Application</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is used in order to return a list of all applications registered for a specific user a specific PaaS provider</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >List Applications</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="updateApplication">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >updateApplication(in application : Application) :: Application</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Updates Application elements</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Update Application</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="deleteEnvironment">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deleteEnvironment(in envID : unsigned long long) :: Boolean</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delete the environment that corresponds to the given ID</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delete Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="stop">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >stop(in appID : unsigned long long, in version : String) :: InstanceStatus</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Stop an already started instance of the specified application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Stop</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="undeploy">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >undeploy(in appID : unsigned long long, in version : String) :: InstanceStatus</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Undeploy the specified application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Undeploy</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="getAppStatisitcs">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getAppStatistics(in appID : unsigned long long, in version : String) :: Statistics</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get statistics of the specified application versions</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Application Statistics</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="deleteAppVersion">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deleteAppVersion(in appID : unsigned long long, in version : String) :: Boolean</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deletes VersionedApplication of the application with the given ID and version string</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delete Application Version</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="CodeArchiveDeployment">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enables the deployment of an application through archive</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Code archive deployment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="getRunningStatus">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getRunningStatus(in appID : unsigned long long, in version : String) :: InstanceStatus</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get the status of the running instance that corresponds to the deployed application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Running Status</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="attachEnvironment">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Associates the specified application version with the given environment</dcterms:description>
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attachEnvironment(in appID : unsigned long long, in version : String, in envID : unsigned long long) ::  Boolean</hasOperationCommand>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Attach Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="getAppStatus">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getAppStatus(in appID : unsigned long long, in version : String) :: AppStatus</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get status of the specified application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Application Status</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="deploy">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deploy(in appID : unsigned long long, in version : String) :: ApplicationSpace</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deploy the specified application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deploy</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="createAppVersion">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >createAppVersion(in appVersion : VersionedApplication, in appID : unsigned long long) :: VersionedApplication</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Creates an application version which refers to the given application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Create Application Version</dcterms:title>
+  </OperationType>
+  <owl:Thing rdf:ID="Antarctica"/>
+  <OperationType rdf:ID="getAppVersions">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getAppVersions(in appID : unsigned long long) :: sequence of VersionedApplication</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Returns a list of application versions found in the PaaS for a specific application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Application Versions</dcterms:title>
+  </OperationType>
+  <owl:Thing rdf:ID="Africa"/>
+  <owl:Thing rdf:ID="Eurasia"/>
+  <OperationType rdf:ID="GITDeployment">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIT deployment</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enables the Deployment of an Application using GIT</dcterms:description>
+  </OperationType>
+  <OperationType rdf:ID="getRunningAppVersion">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getRunningAppVersion(in appID : unsigned long long) :: VersionedApplication</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get all currently running application versions of the specified application in the specified environment.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Running Application Version</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="checkAppAvailability">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >checkAppAvailability(in appName : String) :: Boolean</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Checks whether the specified application name is available</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Check Application Availability</dcterms:title>
+  </OperationType>
+  <owl:Thing rdf:ID="SouthAmerica"/>
+  <OperationType rdf:ID="createApplication">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >createApplication(in application : Application) :: Application</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Creates an empty application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Create Application</dcterms:title>
+  </OperationType>
+  <owl:Thing rdf:ID="Australia"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <rdfs:domain rdf:resource="#Channel"/>
+  </rdf:Description>
+  <OperationType rdf:ID="start">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >start(in appID : unsigned long long, in version : String) :: InstanceStatus</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Start a non-started instance of the specified application version</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Start</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="createEnvironment">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >createEnvironment(in env : Environment) :: Environment</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Create a working environment, given the appropriate information set</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Create Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="exportAppVersion">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >exportAppVersion(in appID : unsigned long long, in version : String) :: ExportObject</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Export application version executable file plus any associated external data, which was defined in the Environment object</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Export Application Version</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="updateEnvironment">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >updateEnvironment(in env : Environment) :: Environment</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Update environment details</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Update Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="deleteApplication">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deleteApplication(in appID : unsigned long long) :: Boolean</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deletes application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delete Application</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="deployToEnv">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deployToEnv(in appID : unsigned long long, in version : String, in envID : unsigned long long) :: ApplicationSpace</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deploy the specified application version into the specified environment</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deploy to Environment</dcterms:title>
+  </OperationType>
+  <OperationType rdf:ID="getAppEnvironments">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getAppEnvironments(in appID : unsigned long long) :: sequence of Environment</hasOperationCommand>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get all environment information about all versions of the application with the given ID</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Get Application Environments</dcterms:title>
+  </OperationType>
+  <owl:Thing rdf:ID="NorthAmerica"/>
+  <OperationType rdf:ID="deteleApplication">
+    <hasOperationCommand rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deleteApplication(in appID : unsigned long long) :: Boolean</hasOperationCommand>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Delete Application</dcterms:title>
+  </OperationType>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

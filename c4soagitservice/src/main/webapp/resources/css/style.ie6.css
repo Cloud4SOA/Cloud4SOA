@@ -1,0 +1,608 @@
+/* 
+    Document   : style_ie6
+    Created on : 13 Ιαν 2012, 8:10:38 πμ
+    Author     : panoss
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* begin Page */
+
+img
+{
+    filter:expression(fixPNG(this));
+}
+/* end Page */
+
+/* begin Box, Sheet */
+.art-Sheet, .art-Sheet-body
+{
+    zoom:1;
+}
+
+.art-Sheet-body
+{
+    position:static;
+}
+
+.art-Sheet-tr, .art-Sheet-tl, .art-Sheet-br, .art-Sheet-bl, .art-Sheet-tc, .art-Sheet-bc,.art-Sheet-cr, .art-Sheet-cl
+{
+    font-size: 1px;
+    background: none;
+}
+
+.art-Sheet-tr, .art-Sheet-tl, .art-Sheet-br, .art-Sheet-bl
+{
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Sheet-s.png',sizingMethod='scale')");
+}
+
+.art-Sheet-tl
+{
+    clip: rect(auto 27px 27px auto);
+}
+
+.art-Sheet-tr
+{
+    left: expression(this.parentNode.offsetWidth-54+'px');
+    clip: rect(auto auto 27px 27px);
+}
+
+.art-Sheet-bl
+{
+    top: expression(this.parentNode.offsetHeight-54+'px');
+    clip: rect(27px 27px auto auto);
+}
+
+.art-Sheet-br
+{
+    top: expression(this.parentNode.offsetHeight-54+'px');
+    left: expression(this.parentNode.offsetWidth-54+'px');
+    clip: rect(27px auto auto 27px);
+}
+
+.art-Sheet-tc, .art-Sheet-bc
+{
+    width: expression(this.parentNode.offsetWidth-54+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Sheet-h.png',sizingMethod='scale')");
+}
+
+.art-Sheet-tc
+{
+    clip: rect(auto auto 27px auto);
+}
+
+.art-Sheet-bc
+{
+    top: expression(this.parentNode.offsetHeight-54+'px');
+    clip: rect(27px auto auto auto);
+}
+
+.art-Sheet-cr, .art-Sheet-cl
+{
+    height: expression(this.parentNode.offsetHeight-54+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Sheet-v.png',sizingMethod='scale')");
+}
+
+.art-Sheet-cr
+{
+    left: expression(this.parentNode.offsetWidth-54+'px');
+    clip: rect(auto auto auto 27px);
+}
+
+.art-Sheet-cl
+{
+    clip: rect(auto 27px auto auto);
+}
+
+.art-Sheet-cc
+{
+    font-size: 1px;
+    width: expression(this.parentNode.offsetWidth-54+'px');
+    height: expression(this.parentNode.offsetHeight-54+'px');
+    background-color: #FFFFFF;
+}
+#art-page-background-simple-gradient, #art-page-background-gradient, #art-page-background-glare
+{
+    width:expression(document.body.clientWidth > 1000 ? "100%" : "1000px");
+}
+/* end Box, Sheet */
+
+/* begin Header */
+div.art-Header-png
+{
+    font-size: 1px;
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Header.png',sizingMethod='crop')");
+}
+/* end Header */
+
+/* begin Menu */
+
+.art-menu ul
+{
+    height: 1%;
+    width:1px;
+}
+
+.art-menu, .art-menu ul
+{
+    height: 1%;
+}
+
+.art-menu li.art-menuhover
+{
+    z-index: 10000;
+}
+
+.art-menu .art-menuhoverUL
+{
+    visibility: visible;
+}
+
+.art-menu .art-menuhoverUL
+{
+    top: 100%;
+    left: 0;
+}
+
+.art-menu .art-menuhoverUL .art-menuhoverUL
+{
+    top: 0;
+    left: 100%;
+}
+
+.art-menu ul a
+{
+    height: 1%;
+}
+
+.art-menu li li
+{
+    float: left;
+    width: 100%;
+}
+
+.art-menu .art-menuhoverUL .art-menuhoverUL
+{
+    top: 5px;
+    left: 100%;
+}
+
+.art-menu, .art-menu ul
+{
+    height: 1%;
+}
+
+.art-menu li.art-menuhover
+{
+    z-index: 10000;
+}
+
+.art-menu .art-menuhoverUL
+{
+    visibility: visible;
+}
+
+.art-menu .art-menuhoverUL
+{
+    top: 100%;
+    left: 0;
+}
+
+.art-menu .art-menuhoverUL .art-menuhoverUL
+{
+    top: 0;
+    left: 100%;
+}
+
+.art-menu ul a
+{
+    height: 1%;
+}
+
+.art-menu li li
+{
+    float: left;
+    width: 100%;
+}
+
+.art-nav
+{
+    zoom: 1;
+}
+
+.art-nav .l, .art-nav .r
+{
+    font-size: 1px;
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/nav.png',sizingMethod='crop')");
+}
+
+.art-nav .l
+{
+    width: expression(this.parentNode.offsetWidth-0+'px');
+}
+
+.art-nav .r
+{
+    left: expression(this.parentNode.offsetWidth-990+'px');
+    clip: rect(auto auto auto 990px);
+}
+
+/* end Menu */
+
+/* begin MenuItem */
+.art-menu a
+{
+    float:left;
+}
+
+.art-menu a:hover
+{
+    visibility:visible;
+}
+
+.art-menu a .r, .art-menu a .l
+{
+    font-size:1px;
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/MenuItem.png',sizingMethod='crop')");
+}
+
+.art-menu a .r
+{
+    left: expression(this.parentNode.offsetWidth-412+'px');
+    clip: rect(auto auto auto 406px);
+}
+
+.art-menu a .l
+{
+    width: expression(this.parentNode.offsetWidth-6+'px');
+}
+
+.art-menuhover .art-menuhoverA .t
+{
+    color: #27333A;
+}
+
+.art-menuhover .art-menuhoverA .l, .art-menuhover .art-menuhoverA .r
+{
+    top: -29px;
+}
+/* end MenuItem */
+
+/* begin Box, Block */
+.art-Block, .art-Block-body
+{
+    zoom:1;
+}
+
+.art-Block-body
+{
+    position:static;
+}
+/* end Box, Block */
+
+/* begin BlockHeader */
+.art-BlockHeader, .art-BlockHeader
+{
+    font-size: 1px;
+}
+.art-BlockHeader .l, .art-BlockHeader .r
+{
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockHeader.png',sizingMethod='crop')");
+}
+
+.art-BlockHeader .r
+{
+    left: expression(this.parentNode.offsetWidth-990+'px');
+    clip: rect(auto auto auto 982px);
+}
+
+.art-BlockHeader .l
+{
+    width: expression(this.parentNode.offsetWidth-8+'px');
+}
+
+.art-header-tag-icon
+{
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockHeaderIcon.png',sizingMethod='crop')");
+}
+
+/* end BlockHeader */
+
+/* begin Box, BlockContent */
+.art-BlockContent, .art-BlockContent-body
+{
+    zoom:1;
+}
+
+.art-BlockContent-body
+{
+    position:static;
+}
+
+.art-BlockContent-tr, .art-BlockContent-tl, .art-BlockContent-br, .art-BlockContent-bl, .art-BlockContent-tc, .art-BlockContent-bc,.art-BlockContent-cr, .art-BlockContent-cl
+{
+    font-size: 1px;
+    background: none;
+}
+
+.art-BlockContent-tr, .art-BlockContent-tl, .art-BlockContent-br, .art-BlockContent-bl
+{
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockContent-s.png',sizingMethod='scale')");
+}
+
+.art-BlockContent-tl
+{
+    clip: rect(auto 9px 9px auto);
+}
+
+.art-BlockContent-tr
+{
+    left: expression(this.parentNode.offsetWidth-18+'px');
+    clip: rect(auto auto 9px 9px);
+}
+
+.art-BlockContent-bl
+{
+    top: expression(this.parentNode.offsetHeight-18+'px');
+    clip: rect(9px 9px auto auto);
+}
+
+.art-BlockContent-br
+{
+    top: expression(this.parentNode.offsetHeight-18+'px');
+    left: expression(this.parentNode.offsetWidth-18+'px');
+    clip: rect(9px auto auto 9px);
+}
+
+.art-BlockContent-tc, .art-BlockContent-bc
+{
+    width: expression(this.parentNode.offsetWidth-18+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockContent-h.png',sizingMethod='scale')");
+}
+
+.art-BlockContent-tc
+{
+    clip: rect(auto auto 9px auto);
+}
+
+.art-BlockContent-bc
+{
+    top: expression(this.parentNode.offsetHeight-18+'px');
+    clip: rect(9px auto auto auto);
+}
+
+.art-BlockContent-cr, .art-BlockContent-cl
+{
+    height: expression(this.parentNode.offsetHeight-18+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockContent-v.png',sizingMethod='scale')");
+}
+
+.art-BlockContent-cr
+{
+    left: expression(this.parentNode.offsetWidth-18+'px');
+    clip: rect(auto auto auto 9px);
+}
+
+.art-BlockContent-cl
+{
+    clip: rect(auto 9px auto auto);
+}
+
+.art-BlockContent-cc
+{
+    font-size: 1px;
+    width: expression(this.parentNode.offsetWidth-18+'px');
+    height: expression(this.parentNode.offsetHeight-18+'px');
+    background-color: #D4E0E8;
+}
+
+.art-BlockContent-body ul li
+{
+    height:1%;
+    background:none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/BlockContentBullets.png',sizingMethod='crop')");
+}
+
+/* end Box, BlockContent */
+
+/* begin Box, Post */
+.art-Post, .art-Post-body
+{
+    zoom:1;
+}
+
+.art-Post-body
+{
+    position:static;
+}
+
+.art-Post-tr, .art-Post-tl, .art-Post-br, .art-Post-bl, .art-Post-tc, .art-Post-bc,.art-Post-cr, .art-Post-cl
+{
+    font-size: 1px;
+    background: none;
+}
+
+.art-Post-tr, .art-Post-tl, .art-Post-br, .art-Post-bl
+{
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Post-s.png',sizingMethod='scale')");
+}
+
+.art-Post-tl
+{
+    clip: rect(auto 7px 7px auto);
+}
+
+.art-Post-tr
+{
+    left: expression(this.parentNode.offsetWidth-14+'px');
+    clip: rect(auto auto 7px 7px);
+}
+
+.art-Post-bl
+{
+    top: expression(this.parentNode.offsetHeight-14+'px');
+    clip: rect(7px 7px auto auto);
+}
+
+.art-Post-br
+{
+    top: expression(this.parentNode.offsetHeight-14+'px');
+    left: expression(this.parentNode.offsetWidth-14+'px');
+    clip: rect(7px auto auto 7px);
+}
+
+.art-Post-tc, .art-Post-bc
+{
+    width: expression(this.parentNode.offsetWidth-14+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Post-h.png',sizingMethod='scale')");
+}
+
+.art-Post-tc
+{
+    clip: rect(auto auto 7px auto);
+}
+
+.art-Post-bc
+{
+    top: expression(this.parentNode.offsetHeight-14+'px');
+    clip: rect(7px auto auto auto);
+}
+
+.art-Post-cr, .art-Post-cl
+{
+    height: expression(this.parentNode.offsetHeight-14+'px');
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Post-v.png',sizingMethod='scale')");
+}
+
+.art-Post-cr
+{
+    left: expression(this.parentNode.offsetWidth-14+'px');
+    clip: rect(auto auto auto 7px);
+}
+
+.art-Post-cl
+{
+    clip: rect(auto 7px auto auto);
+}
+
+.art-Post-cc
+{
+    font-size: 1px;
+    width: expression(this.parentNode.offsetWidth-14+'px');
+    height: expression(this.parentNode.offsetHeight-14+'px');
+    background-color: #E8EEF3;
+}
+/* end Box, Post */
+
+/* begin PostContent */
+h1
+{
+    margin: 0.67em 0;
+}
+
+h2
+{
+    margin: 0.8em 0;
+}
+
+h3
+{
+    margin: 1em 0;
+}
+
+h4
+{
+    margin: 1.25em 0;
+}
+
+h5
+{
+    margin: 1.67em 0;
+}
+
+h6
+{
+    margin: 2.33em 0;
+}
+/* end PostContent */
+
+/* begin PostBullets */
+.art-Post ul li, .art-Post ol ul li
+{
+    height:1%;
+    background:none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/PostBullets.png',sizingMethod='crop')");
+}
+
+.art-Post ul ol li
+{
+    background:none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="");
+}
+/* end PostBullets */
+
+/* begin PostQuote */
+blockquote,
+.art-PostContent blockquote
+{
+    height:1%;
+    background-image: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/PostQuote.png',sizingMethod='crop')");
+}
+/* end PostQuote */
+
+/* begin Button */
+.art-button-wrapper, .art-button-wrapper .l, .art-button-wrapper .r
+{
+    font-size: 1px;
+}
+
+.art-button-wrapper .art-button
+{
+    float:left;
+}
+
+.art-button-wrapper .l, .art-button-wrapper .r
+{
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Button.png',sizingMethod='crop')");
+}
+
+.art-button-wrapper .r
+{
+    left: expression(this.parentNode.offsetWidth-409+'px');
+    clip: rect(auto auto auto 399px);
+}
+
+.art-button-wrapper .l
+{
+    width: expression(this.parentNode.offsetWidth-10+'px');
+}
+
+/* end Button */
+
+/* begin Footer */
+.art-Footer .art-Footer-background
+{
+    top: expression(this.parentNode.offsetHeight-150+'px');
+    background: none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/Footer.png',sizingMethod='crop')");
+    zoom: 1;
+    font-size:1px;
+}
+
+.art-rss-tag-icon
+{
+    zoom:1;
+    font-size:1px;
+    background:none;
+    behavior: expression(this.runtimeStyle.filter?'':this.runtimeStyle.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + GetStyleUrl()+"images/rssIcon.png',sizingMethod='crop')");
+}
+
+/* end Footer */
+

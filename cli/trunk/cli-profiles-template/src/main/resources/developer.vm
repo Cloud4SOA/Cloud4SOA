@@ -1,0 +1,10 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix user-m: <http://www.cloud4soa.eu/v0.1/user-model#> .
+
+user-m:$developerUriId a user-m:Developer ;
+	foaf:firstName "" ;
+	foaf:surname "" ;
+        foaf:gender ""^^xsd:string ; ## oneOf ("male"^^xsd:string "female"^^xsd:string)
+	foaf:birthday ""^^xsd:date ; ## "aaaa-mm-dd"^^xsd:date
+	foaf:mbox "" .

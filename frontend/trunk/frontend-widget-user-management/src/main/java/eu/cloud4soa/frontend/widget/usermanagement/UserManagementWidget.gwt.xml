@@ -1,0 +1,113 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<module rename-to="usermanagementwidget">
+  	<!-- Inherit the core Web Toolkit stuff.                        -->
+  	<inherits name='com.google.gwt.user.User'/>
+
+  	<!-- Inherit the default GWT style sheet.  You can change       -->
+  	<!-- the theme of your GWT application by uncommenting          -->
+  	<!-- any one of the following lines.                            -->
+  	<!--<inherits name='com.google.gwt.user.theme.standard.Standard'/>-->
+  	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+
+  	<!-- Other module inherits   									-->
+  	<inherits name="com.google.gwt.activity.Activity"/>
+  	<inherits name="com.google.gwt.place.Place"/>
+    <inherits name="com.google.gwt.resources.Resources" />
+   	<inherits name="com.google.gwt.i18n.I18N"/>
+
+  	<!-- Cloud4SOA UI Widget modules inherits                       -->
+  	<inherits name="eu.cloud4soa.frontend.commons.FrontendCommons"/>
+    <inherits name="eu.cloud4soa.frontend.widget.login.LoginWidget"/>
+
+    <!-- Specify the paths for translatable code                    -->
+  	<source path="client"/>
+    <source path="shared"/>
+  	
+    <!-- Use ClientFactoryImpl by default -->
+  	<replace-with class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactoryImpl">
+    	<when-type-is class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactory"/>
+  	</replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationProfileViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationProfileView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferingListViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferingListView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationProfileListViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationProfileListView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserManagementMainViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserManagementMainView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationEditorViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationEditorView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationEditorGuideViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationEditorGuideView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationToolsViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.ApplicationToolsView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.OfferEditorViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.OfferEditorView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferingEditorGuideViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferingEditorGuideView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.SearchGuideViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.SearchGuideView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.AdminGuideViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.AdminGuideView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserEditorViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserEditorView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserListViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserListView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserEditorGuideViewImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.usermanagement.client.views.UserEditorGuideView"/>
+    </replace-with>
+
+
+
+
+
+</module>

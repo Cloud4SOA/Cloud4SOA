@@ -1,0 +1,45 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+             xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:toolbar="urn:import:com.extjs.gxt.ui.client.widget.toolbar" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        >
+
+    <gxt:LayoutContainer addStyleNames="c4s-white-bg" layout="FitLayout">
+
+        <gxt:ContentPanel ui:field="editorPanel" headerVisible="true" borders="true" heading="Application profile" scrollMode="AUTO">
+            <gxt:topcomponent>
+                <toolbar:ToolBar ui:field="toolbar" addStyleNames="c4s-white-bg">
+                    <button:Button ui:field="cancelButton" text="Back" scale="LARGE" iconAlign="BOTTOM"/>
+                    <button:Button ui:field="editButton" text="Edit" scale="LARGE" iconAlign="BOTTOM"/>
+                    <button:Button ui:field="deployButton" text="Deploy" scale="LARGE" iconAlign="BOTTOM"/>
+                    <toolbar:FillToolItem/>
+                    <button:Button ui:field="deleteButton" text="Delete" scale="LARGE" iconAlign="BOTTOM"/>
+                </toolbar:ToolBar>
+            </gxt:topcomponent>
+
+            <form:FormPanel ui:field="applicationProfileForm" headerVisible="false">
+            </form:FormPanel>
+
+
+        </gxt:ContentPanel>
+    </gxt:LayoutContainer>
+</ui:UiBinder>

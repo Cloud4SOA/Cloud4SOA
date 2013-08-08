@@ -1,0 +1,45 @@
+# Saved by TopBraid on Fri Jun 29 18:20:26 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppNetworkLatency
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppNetworkLatency#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppNetworkLatency>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppNetworkLatency.NetworkLatencyComponent>
+      rdf:type c4s-inf-m:NetworkResource ;
+      rdfs:label "Network latency component"^^xsd:string ;
+      c4s-inf-m:latency <http://www.cloud4soa.eu/v0.1/measure#AppNetworkLatency.TenMsRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:NetworkDefaultCategory .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppNetworkLatency.TenMs>
+      rdf:type measure:MilliSecond ;
+      rdfs:label "Ten ms"^^xsd:string ;
+      measure:has_value "10"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppNetworkLatency.TenMsRange>
+      rdf:type measure:TimeRange ;
+      rdfs:label "Ten ms range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppNetworkLatency.TenMs> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppNetworkLatency.AppNetworkLatency>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application network latency"^^xsd:string ;
+      dcterms:alternative "Application network latency"^^xsd:string ;
+      dcterms:title "Application network latency"^^xsd:string ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppNetworkLatency.NetworkLatencyComponent> .

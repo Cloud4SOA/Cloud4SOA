@@ -1,0 +1,684 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measure="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/infrastructural-domain">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:imports rdf:resource="http://purl.org/dc/dcam/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/dcmitype/"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/measure"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/application-domain"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SQLDB">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An SQL database.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SQLDB</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DB"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DBStorageComponent">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DBStorage component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage Component that is responsible for the permanent storage of information in a Database</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Storage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A generic Hardware Component that is responsible for the permanent storage of information.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Storage</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Hardware_Component"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Network">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A generic Hardware Component that is responsible for the communication (e.g. a network card).</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Network</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hardware_Component"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Hardware_Component">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Component"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Hardware Component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This class is main part of the Infrastructure layer and represents a hardware component. The characteristics of the component are specified through the hardware category.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Computational_Category">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A  Hardware Category that can be assigned to a Processing Component.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Hardware_Category"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Computational Component</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#realisation_of_technology_capability"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="Processing"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DB_Deployment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A physical deployment of a Database.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DBDeployment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Information_Store_Instance"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HttpRequestsHandler">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Processing"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Http Request Handler</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Processing hardware component which can handle HTTP requests.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Storage_Category">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A  Hardware Category that can be assigned to a Storage Component.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hardware_Category"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Storage Component</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#realisation_of_technology_capability"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="StorageResource"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NetworkResource">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Network hardware component which has a specific bandwidth.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Network Resource</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Network"/>
+  </owl:Class>
+  <owl:Class rdf:ID="noSQLDB">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A non SQL database.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >no SQLDB</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DB"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Communicational_Category">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Hardware Category that can be assigned to a Network Component.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Communicational Component</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hardware_Category"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#StorageResource">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Storage hardware component with a specific capacity and bandwidth.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StorageResource</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Storage"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DB">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Database software component.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DB</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Software_Category"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Software_Category">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Capability"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Software Category</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This class is main part of the Infrastructure layer and describes the characteristics of a software component.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Processing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A generic Hardware Component that is responsible for the information processing.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Processing</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Hardware_Component"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DBConfiguration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The configuration of a database (storage capacity and cache)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DBConfiguration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Attribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Hardware_Category">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This class is main part of the Infrastructure layer and describes the category of a hardware component.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Hardware Category</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Capability"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Compute">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A Processing hardware component that offer computational power.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Compute</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Processing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasDBcapacity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has DB capacity</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+    <rdfs:domain rdf:resource="#DBConfiguration"/>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the storage capacity of the DB storage component</dcterms:description>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the storage capacity of the DB component.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="bandwidth">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The bandwidth of a Network or Storage resource indicating the transfer rate of data.</rdfs:comment>
+    <rdfs:domain rdf:resource="#StorageResource"/>
+    <rdfs:domain rdf:resource="#NetworkResource"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NetworkingRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMemory">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Memory</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Memory size of the Compute resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCores">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Cores</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Numbers of cores of a Compute resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="migratedFrom">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Can capture the DB deployment history</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >migrated from</rdfs:label>
+    <rdfs:range rdf:resource="#DB_Deployment"/>
+    <rdfs:domain rdf:resource="#DB_Deployment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="computationalPowerFactor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >computational power factor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the computational power expressed as the quantity of hardware category.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:domain rdf:resource="#Processing"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="latency">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The latency of the Network resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="#NetworkResource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >latency</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#TimeRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCache">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Cache size of a Compute resource.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Cache</rdfs:label>
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="capacity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >capacity</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The capacity of a Storage resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="#StorageResource"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDBdeployment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The deployment of a DB Storage Component.</rdfs:comment>
+    <rdfs:range rdf:resource="#DB_Deployment"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has DBdeployment</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDBcache">
+    <rdfs:domain rdf:resource="#DBConfiguration"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has DBcache</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the cache offered by the database</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasHTTPRequests">
+    <rdfs:domain rdf:resource="#HttpRequestsHandler"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of HTTP Requests that can be simultaneously processed by a Box resource.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has HTTP Requests</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDBconfiguration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a DB storage component with a configuration (i.e. storage capacity and cahce offered).</rdfs:comment>
+    <rdfs:range rdf:resource="#DBConfiguration"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has DBconfiguration</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="DB_deployment_location">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DB deployment location</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The PaaS Offering the DB is deployed to.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering"/>
+    <rdfs:domain rdf:resource="#DB_Deployment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="related_sw_category">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:range rdf:resource="#Software_Category"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Is a property used to correlate a Software_component with a Software_Category.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >related software category</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasDBtype">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The type of the database.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dbtype</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="supportErrorCorrectCode">
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Support Error Correct Code</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property indicate if the memory of the Compute component supports Error correction.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasURL">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has URL</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The URL of a DB deployment</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DB_Deployment"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="numberOfUnits">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the number of processing units.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >number of units</rdfs:label>
+    <rdfs:domain rdf:resource="#Processing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the number of untis offered by a PaaS or required by an Application.</dcterms:description>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasDBname">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The name of the database</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dbname</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="code">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The code of this Resource.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >code</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isRequired">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Is Required</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In order to deploy an application some software components are&#xD;
+required and some other are optional (they are needed under specific&#xD;
+conditions). This attribute defines if software component is required, or not, for the deployment and execution of an application.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasDBpassword">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The password for connecting to the database.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dbpassword</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasArchitecture">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Bus Architecture 32/64 bit of a Compute resource.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Architecture</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:domain rdf:resource="#Hardware_Category"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Name</rdfs:comment>
+    <rdfs:domain rdf:resource="#Hardware_Component"/>
+    <rdfs:domain rdf:resource="#Software_Category"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasDBuser">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The user name for connecting to the Database</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#DBStorageComponent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dbuser</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasState">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The State of the Compoute resource (e.g.  active inactive, suspended).</rdfs:comment>
+    <rdfs:domain rdf:resource="#Compute"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has State</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Resource descriptio</rdfs:comment>
+    <rdfs:domain rdf:resource="#Hardware_Component"/>
+    <rdfs:domain rdf:resource="#Hardware_Category"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Software_Category"/>
+  </owl:DatatypeProperty>
+  <Software_Category rdf:ID="communication">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >communication</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable the use of mail, SMS of the applciations</dcterms:description>
+  </Software_Category>
+  <noSQLDB rdf:ID="Blobstore">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Blobstore</rdfs:label>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Blobstore allows your app to serve data objects, called blobs, that are much larger than the size allowed for objects in the Datastore service.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Blobstore</dcterms:title>
+  </noSQLDB>
+  <Software_Category rdf:ID="performance">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Improve the performance of a deployed application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >performance</dcterms:title>
+  </Software_Category>
+  <noSQLDB rdf:ID="JFrog">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A binary Repository in the cloud</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >JFrog</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >JFrog</rdfs:label>
+  </noSQLDB>
+  <Computational_Category rdf:ID="Clone">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clone</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clone</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Each clone can answer one request at the exact same time.</dcterms:description>
+  </Computational_Category>
+  <noSQLDB rdf:ID="DataStore">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data store</rdfs:label>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Datastore is a schemaless object datastore providing robust, scalable storage for your web application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Datastore</dcterms:title>
+  </noSQLDB>
+  <SQLDB rdf:ID="SQLserver">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SQLserver</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SQL server</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SQL Server is a relational database server, developed by Microsoft: it is a software product whose primary function is to store and retrieve data as requested by other software applications.</dcterms:description>
+  </SQLDB>
+  <Software_Category rdf:ID="security">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >security (SSL)</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable https:// for secure logins and other forms that pass sensitive information</dcterms:description>
+  </Software_Category>
+  <noSQLDB rdf:ID="CouchDB">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Couch DB</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Couch DB</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Apache CouchDB is a database that uses JSON for documents, JavaScript for MapReduce queries, and regular HTTP for an API</dcterms:description>
+  </noSQLDB>
+  <Software_Category rdf:ID="dataBase">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable the permanent storage of data</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dataBase</dcterms:title>
+  </Software_Category>
+  <Software_Category rdf:ID="Application_server">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application server</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application server</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >For exaple Tomcat, Glassfish</dcterms:description>
+  </Software_Category>
+  <Software_Category rdf:ID="scheduling">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable the scheduling of tasks</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >scheduling</dcterms:title>
+  </Software_Category>
+  <Computational_Category rdf:ID="ECU">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EC2 Amazon Compute Unit</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EC2</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >EC2</rdfs:label>
+  </Computational_Category>
+  <Hardware_Category rdf:ID="B4">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A google Appengine B4 compute category</dcterms:description>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B4</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B4</dcterms:title>
+  </Hardware_Category>
+  <noSQLDB rdf:ID="Redis">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Redis</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Redis</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Redis is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.</dcterms:description>
+  </noSQLDB>
+  <Software_Category rdf:ID="web_server">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Host applications</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >web_server</dcterms:title>
+  </Software_Category>
+  <Software_Category rdf:ID="monitoring">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Monitor the lifecycle of an application</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >monitoring</dcterms:title>
+  </Software_Category>
+  <Communicational_Category rdf:ID="NetworkDefaultCategory">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Network default category</rdfs:label>
+  </Communicational_Category>
+  <Software_Category rdf:ID="GIT">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIT</rdfs:label>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GIT</dcterms:title>
+  </Software_Category>
+  <SQLDB rdf:ID="Oracle">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Oracle</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Oracle</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Oracle Database is an object-relational database management system produced and marketed by Oracle Corporation.</dcterms:description>
+  </SQLDB>
+  <rdf:Description rdf:about="http://www.cloud4soa.eu/v0.1/application-domain#license_type">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+  </rdf:Description>
+  <Software_Category rdf:ID="autoscaling">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable the automatic scaling of the reserources when needed</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >autoscaling</dcterms:title>
+  </Software_Category>
+  <Software_Category rdf:ID="custom_domain_name">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Allow the use your custom domains for the deployed applciations.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Custom domain name</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >custom domain name</rdfs:label>
+  </Software_Category>
+  <Software_Category rdf:ID="load_balancer">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >distribute workload across multiple resources</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >load_balancer</dcterms:title>
+  </Software_Category>
+  <Software_Category rdf:ID="Cloudant">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Data layer as a service</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cloudant</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cloudant</rdfs:label>
+  </Software_Category>
+  <noSQLDB rdf:ID="MongoDB">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mongo DB</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mongo DB</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MongoDB is a scalable, high-performance, open source NoSQL database. Written in C++.</dcterms:description>
+  </noSQLDB>
+  <Software_Category rdf:ID="Authorisation_service">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable the application to use an external authorisation service.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Authorisation service</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Authorisation service</rdfs:label>
+  </Software_Category>
+  <Software_Category rdf:ID="multimedia">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Enable multimedia manipulation</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >multimedia</dcterms:title>
+  </Software_Category>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+    <rdfs:domain rdf:resource="#Hardware_Component"/>
+  </rdf:Description>
+  <SQLDB rdf:ID="Postgres">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Postgres</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Postgres </dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Postgres is an object-relational database management system available for many platforms including Linux, FreeBSD, Solaris, Microsoft Windows and Mac OS X.</dcterms:description>
+  </SQLDB>
+  <Software_Category rdf:ID="developmnet_tool">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Impove/enhance the development</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >development_tool</dcterms:title>
+  </Software_Category>
+  <SQLDB rdf:ID="MySQL">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >My SQL</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MySQL  is a relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases</rdfs:comment>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MySQL</dcterms:title>
+  </SQLDB>
+  <Software_Category rdf:ID="WSGI">
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WSGI is the Web Server Gateway Interface. It is a specification for web servers and application servers to communicate with web applications.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WSGI</dcterms:title>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >WSGI</rdfs:label>
+  </Software_Category>
+  <Software_Category rdf:ID="MemCache">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mem cache</rdfs:label>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Memcached is a scalable in-memory object caching system. Dynamic web applications use memcached to store frequently used data, reducing database load.</dcterms:description>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MemCache</dcterms:title>
+  </Software_Category>
+  <Software_Category rdf:ID="email">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >email</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >email</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An email service</dcterms:description>
+  </Software_Category>
+  <noSQLDB rdf:ID="S3">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Amazon S3 is storage for the Internet. It is designed to make web-scale computing easier for developers.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S3</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >S3</dcterms:title>
+    <dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Amazon S3 is storage for the Internet. It is designed to make web-scale computing easier for developers.</dcterms:description>
+  </noSQLDB>
+  <Storage_Category rdf:ID="FileSystem">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >File system</rdfs:label>
+  </Storage_Category>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

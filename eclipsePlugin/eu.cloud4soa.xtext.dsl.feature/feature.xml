@@ -1,0 +1,81 @@
+<feature id="eu.cloud4soa.xtext.dsl.feature" label="Feature" version="1.0.0.qualifier" provider-name="www.cloud4soa.eu">
+
+   <!--
+	-
+	- Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+	- 
+	- Licensed to the Apache Software Foundation (ASF) under one
+	- or more contributor license agreements.  See the NOTICE file
+	- distributed with this work for additional information
+	- regarding copyright ownership.  The ASF licenses this file
+	- to you under the Apache License, Version 2.0 (the
+	- "License"); you may not use this file except in compliance
+	- with the License.  You may obtain a copy of the License at
+	-
+	- http://www.apache.org/licenses/LICENSE-2.0
+	- 
+	- Unless required by applicable law or agreed to in writing, software
+	- distributed under the License is distributed on an "AS IS" BASIS,
+	- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	- See the License for the specific language governing permissions and
+	- limitations under the License.
+	-
+	--><description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes id="org.eclipse.xtext.docs" version="0.0.0" search-location="both"/>
+
+   <includes id="org.eclipse.xtext.runtime" version="0.0.0" search-location="both"/>
+
+   <includes id="org.eclipse.xtext.ui" version="0.0.0" search-location="both"/>
+
+   <includes id="org.eclipse.xtext.ui.source" version="0.0.0" search-location="both"/>
+
+   <includes id="org.eclipse.xtext.xbase" version="0.0.0" search-location="both"/>
+
+   <includes id="org.eclipse.xtext.xtext.ui" version="0.0.0" search-location="both"/>
+
+   <requires>
+      <import plugin="org.eclipse.xtext" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtext.xtend2.lib"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.xtext.junit4"/>
+      <import plugin="org.eclipse.xtext.ui.junit"/>
+      <import plugin="org.junit4"/>
+      <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.eclipse.xtext.common.types.ui"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.compare"/>
+   </requires>
+
+   <plugin id="eu.cloud4soa.xtext.dsl" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+   <plugin id="eu.cloud4soa.xtext.dsl.product" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+   <plugin id="eu.cloud4soa.xtext.dsl.tests" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+   <plugin id="eu.cloud4soa.xtext.dsl.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+</feature>

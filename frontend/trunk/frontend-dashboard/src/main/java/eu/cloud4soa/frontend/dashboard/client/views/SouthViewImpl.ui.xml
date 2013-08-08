@@ -1,0 +1,91 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:style src="SouthView.css" />
+	
+
+    <gxt:ContentPanel headerVisible="false" borders="false"
+                      bodyBorder="false" autoHeight="true">
+
+        <g:HTMLPanel>
+
+
+            <div class='{style.logo}'>
+
+                <g:Label ui:field="version" text="-" styleName="{style.version}"/>
+
+                <g:Anchor href="mailto:support@cloud4soa.eu" text="Need help? Write to support@cloud4soa.eu" styleName="{style.help}"/>
+
+                <p>
+                    <a href="http://www.singularlogic.eu">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/singular_logic_logo.png"
+                             alt="SingularLogic image" title="SingularLogic image" class='{style.logoImg}'/>
+                    </a>
+                    <a href="http://www.romtelecom.ro">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/romtelecom_logo.png"
+                             alt="RomTelecom image" title="RomTelecom image" class='{style.logoImg}'/>
+                    </a>
+
+                    <a href="http://www.ptinovacao.pt">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/ptin_0.png" alt="Portugal Telecom Inova??o image"
+                             title="Portugal Telecom Inova??o image" class='{style.logoImg}'/>
+                    </a>
+                    <a href="http://www.fit.fraunhofer.de">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/fraunhofer_logo.png"
+                             alt="Fraunhofer FIT image" title="Fraunhofer FIT image" class='{style.logoImg}'/>
+                    </a>
+
+
+                    <a href="http://www.deri.ie">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/deri_logo.png" alt="Digital Enterprise Research Institute image"
+                             title="Digital Enterprise Research Institute image" class='{style.logoImg}'/>
+                    </a>
+
+                    <a href="http://www.cyntelix.com">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/cyntelix_logo.png"
+                             alt="Cyntelix image" title="Cyntelix image" class='{style.logoImg}'/>
+                    </a>
+
+                    <a href="http://www.cloudcontrol.com">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/cloudcontrol.png"
+                             alt="cloudControl image" title="cloudControl image" class='{style.logoImg}'/>
+                    </a>
+
+
+                    <a href="http://www.certh.gr">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/logo_certh_whitebg.png" alt="Centre for Research and Technology Hellas image"
+                             title="Centre for Research and Technology Hellas image" class='{style.logoImg}'/>
+                    </a>
+
+                    <a href="http://www.atos.net">
+                        <img src="cloud4soadashboard/gwt/c4s/imgs/atos.jpg" alt="Atos image"
+                             title="Atos image" class='{style.logoImg}'/>
+                    </a>
+
+                </p>
+            </div>
+
+
+        </g:HTMLPanel>
+
+    </gxt:ContentPanel>
+
+</ui:UiBinder>

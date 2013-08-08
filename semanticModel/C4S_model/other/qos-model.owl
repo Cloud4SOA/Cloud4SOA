@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measure="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.cloud4soa.eu/v0.1/qos-model#"
+  xml:base="http://www.cloud4soa.eu/v0.1/qos-model">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/measure"/>
+    <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Uptime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The percentage of time in a determined period that the application will answer with an agreed httpCode = 200</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uptime</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CloudResponseTime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The time the Cloud needs to process and forward  to  the  application  the  incoming call.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cloud response time</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CPULoad">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CPU Load</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The  amount  of  computational  work  that the application performs.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MemoryLoad">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Memory Load</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The amount of memory consumed by the application.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Latency">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Latency</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Interval between the receipt of the end of transmission of an inquiry message and the beginning of the transmission of a response message to the station originating the inquiry.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ContainerResponseTime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The  elapsed  time  between  the  end  of  an inquiry or demand on a cloud system and the beginning of a response.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Container response time</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasTimeRangeValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the time value of the QoS metric as a range.</rdfs:comment>
+    <rdfs:domain rdf:resource="#CloudResponseTime"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#TimeRange"/>
+    <rdfs:domain rdf:resource="#Latency"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Time Range Value</rdfs:label>
+    <rdfs:domain rdf:resource="#ContainerResponseTime"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasStorangeRangeValue">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#StorageRange"/>
+    <rdfs:domain rdf:resource="#MemoryLoad"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the storage value of the QoS metric as a range.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has storange range value</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasPercentage">
+    <rdfs:domain rdf:resource="#CPULoad"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Uptime"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Percentage</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The uptime percentage (e.g. 99%).</rdfs:comment>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

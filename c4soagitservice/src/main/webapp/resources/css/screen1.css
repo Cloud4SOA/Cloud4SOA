@@ -1,0 +1,78 @@
+/* general */
+
+body{
+    background:#d8e6ec url(../images/bg_body.gif) repeat-x;
+    font:medium Arial, Helvetica, Sans-Serif;
+    color:#555;
+    line-height:normal;
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+h1{
+    font-size:200%;
+    font-weight:normal;
+    margin:0;
+    padding-left:35px;
+    padding-top:100px
+}
+h2, h3, h4, h5, h6{
+    font-weight:normal;
+    margin:1em 0;
+}
+h2{
+    font-size:160%;
+}
+h3{
+    font-size:140%;
+}
+h4{
+    font-size:120%;
+}
+a{
+    text-decoration:none;
+    color:#0B356C;
+}
+a:hover{
+    color:red;
+    text-decoration:underline;
+}
+p{
+    margin:0 0;
+}
+
+
+/* // general */
+
+/* page setup */
+
+#container{
+    margin:0 auto;
+    width:1440px;
+    text-align:center;
+}
+#header{
+    height:116px;
+    background:url(../images/bg_header1.jpg) no-repeat 0 0;
+}
+#usertype{
+    background:url(../images/bg_content1.gif) repeat-y;
+
+}
+#menu{
+    background:url(../images/bg_content1.gif) repeat-y;
+    padding:.5em 34px;
+}
+#content{
+    background:url(../images/bg_content1.gif) repeat-y;
+    padding:.5em 34px;
+}
+#footer{
+    padding:36px 36px;
+    background:url(../images/bg_footer1.gif) no-repeat 0 0;
+    color:#fff;
+
+}
+
+/* //page setup */
+

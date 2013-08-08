@@ -1,0 +1,45 @@
+# Saved by TopBraid on Fri Jun 29 18:18:40 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppNetworkBandwidth
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppNetworkBandwidth#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppNetworkBandwidth>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppNetworkBandwidth.NetworkBandwidthComponent>
+      rdf:type c4s-inf-m:NetworkResource ;
+      rdfs:label "Network bandwidth component"^^xsd:string ;
+      c4s-inf-m:bandwidth <http://www.cloud4soa.eu/v0.1/measure#AppNetworkBandwidth.OneGBperSecRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:NetworkDefaultCategory .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppNetworkBandwidth.OneGBperSec>
+      rdf:type measure:GigaByte_Per_Second ;
+      rdfs:label "One GBper sec"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppNetworkBandwidth.OneGBperSecRange>
+      rdf:type measure:NetworkingRange ;
+      rdfs:label "One GBper sec range"^^xsd:string ;
+      measure:hasMinNetworkingValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppNetworkBandwidth.OneGBperSec> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppNetworkBandwidth.AppNetworkBandwidth>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application network bandwidth"^^xsd:string ;
+      dct:alternative "Application network bandwidth"^^xsd:string ;
+      dct:title "Application network bandwidth"^^xsd:string ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppNetworkBandwidth.NetworkBandwidthComponent> .

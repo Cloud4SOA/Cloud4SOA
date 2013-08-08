@@ -1,0 +1,112 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="CliDeploymentView.css" />
+	
+
+    <g:ScrollPanel>
+    <g:HTMLPanel>
+		<div class='{style.guide}'>
+        <div class="{style.section}">
+            Deployment to this PaaS offering requires to perform some steps using the Cloud4SOA Command Line Interface. Also as
+            Git is used for the deployment, Git has to be available and the application you want to deploy must be properly
+            initialised for Git*.
+            <br/>
+            Cloud4SOA CLI is a Spring Roo add-on. If don't have done it already, download and then extract
+            <a href="http://s3.amazonaws.com/dist.springframework.org/release/ROO/spring-roo-1.2.0.RELEASE.zip">Spring ROO 1.2.0</a>
+            <br/>
+            <ul>
+                <li>Run the Spring Roo tool (
+                    <div class="{style.code}">roo.sh</div>
+                    in Unix/Linux or
+                    <div class="{style.code}">roo.bat</div>
+                    in Windows) from the /bin directory.
+                </li>
+                <li>Get Cloud4SOA CLI add-on with
+                    <div class="{style.code}">osgi start --url http://demo.cloud4soa.eu/eu.cloud4soa.cli.roo.addon-0.0.3-SNAPSHOT.jar
+                    </div>
+                </li>
+                <li>Set Cloud4SOA server address with <br/>
+                    <div class="{style.code}">cloud4soa url set --url
+                        <span ui:field="c4s_address">http://localhost/</span>services/REST/
+                    </div>
+                </li>
+                <li>Login:
+                    <div class="{style.code}">cloud4soa login --username
+                        <span ui:field="c4s_username">username</span>
+                        --password &lt;your-password-here&gt;
+                    </div>
+                </li>
+                <li>Set the GIT proxy:
+                    <div class="{style.code}">cloud4soa git proxy set --url
+                        <span ui:field="c4s_gitproxy">localhost</span>
+                    </div>
+                </li>
+ 
+                <li>View the available PaaS offerings with <br/>
+                    <div class="{style.code}">cloud4soa show paas profiles 
+                    </div> and get the id of the PaaS of your selection
+                </li>
+
+                <li>View the available application profiles with 
+                    <br/>
+                    <div class="{style.code}"> cloud4soa show application profiles
+                    </div> 
+                    and get the id of the application of your selection
+                </li>
+  
+                <li>Finally deploy the application with <br/>
+                    <div class="{style.code}">cloud4soa deploy gitPush
+                     --appId x --paasId x --repoPath xxx/xxxx/xxxxx/
+                    --passphrase xx
+                    </div><br/> Where  paasId  is the id of the PaaS of your selection, 
+                          appId is the id of the application, repoPath is the path to your initialised
+                    repository and passphrase the passphrase of the ssh key in your machine.
+                </li>
+            </ul>
+            <br/>
+            * To properly initiate a git repository you can do the following:
+            <ul>
+                <li>Go to the repository folder </li>
+                <li>If the repository was cloned before, please remove the hidden Git folder. In linux execute:
+                    <div class="{style.code}">rm -rf .git/</div>
+                </li>
+            
+                <li>Initiate Git repository with <div class="{style.code}">git init</div></li>
+                <li>  An example of a proper application that can be used for deployment in Heroku can be found here:
+                </li>
+                
+            </ul>
+            An example of a proper application that can be used for deployment in Heroku can be cloned from here:
+            <ul>
+                <li>For python: https://github.com/heroku/python-sample.git</li>
+                <li>For ruby: https://github.com/heroku/ruby-sample.git</li>
+            </ul>
+            <div  class="{style.nodisplay}">
+                <span ui:field="c4s_appUriId">appUriId</span>
+                <span ui:field="c4s_paasUriId">paasUriId</span>
+            </div>
+        </div>
+		</div>
+
+
+    </g:HTMLPanel>
+    </g:ScrollPanel>
+</ui:UiBinder>

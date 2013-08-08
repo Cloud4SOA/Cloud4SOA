@@ -1,0 +1,87 @@
+# Saved by TopBraid on Thu May 17 11:34:50 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/zeginisApp
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+# imports: http://www.cloud4soa.eu/v0.1/infrastructural-domain
+# imports: http://www.cloud4soa.eu/v0.1/measure
+# imports: http://purl.org/dc/terms/
+# imports: http://www.enterprise-architecture.org/essential-metamodel.owl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/zeginisApp#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+c4s-inf-m:zeginisDBcomponent
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "zeginis DBcomponent"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:zeginisDBconfiguration ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+c4s-inf-m:zeginisDBconfiguration
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "zeginis DBconfiguration"^^xsd:string ;
+      c4s-inf-m:hasDBcache
+              measure:dbCacheRange ;
+      c4s-inf-m:hasDBcapacity
+              measure:dbCapacityRange .
+
+measure:FortyGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "Forty GB"^^xsd:string ;
+      measure:has_value "40"^^xsd:float .
+
+measure:OneGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "One GB"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+measure:computeScalingFactorRange
+      rdf:type measure:NumericRange ;
+      rdfs:label "compute scaling factor range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "2"^^xsd:float .
+
+measure:dbCacheRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "db cache range"^^xsd:string ;
+      measure:hasMinStorageValue
+              measure:OneGB .
+
+measure:dbCapacityRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "db capacity range"^^xsd:string ;
+      measure:hasMinStorageValue
+              measure:FortyGB .
+
+<http://www.cloud4soa.eu/v0.1/zeginisApp>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> , <http://www.cloud4soa.eu/v0.1/measure> , <http://www.enterprise-architecture.org/essential-metamodel.owl> , dcterms: , <http://www.cloud4soa.eu/v0.1/infrastructural-domain> .
+
+essential-metamodel:ssl
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "ssl"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:security .
+
+essential-metamodel:zeginisApplication
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "zeginis application"^^xsd:string ;
+      dcterms:alternative "ZeginisApplication"^^xsd:string ;
+      dcterms:hasVersion "1.0"^^xsd:string ;
+      dcterms:title "ZeginisApplication"^^xsd:string ;
+      application-domain:application_code
+              "c4szeginis001"^^xsd:string ;
+      application-domain:requireComputeScalingFactor
+              measure:computeScalingFactorRange ;
+      application-domain:requiresSoftwareComponent
+              c4s-inf-m:zeginisDBcomponent ;
+      application-domain:useProgrammingLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .

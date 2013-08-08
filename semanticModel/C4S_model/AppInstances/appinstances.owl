@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:c4s-ent-m="http://www.cloud4soa.eu/v0.1/enterprise-domain#"
+    xmlns="http://www.cloud4soa.eu/v0.1/appinstances#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:c4s-inf-m="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:inf-m="http://www.imolinfo.it/ontologie/ea/v1.1/infrastructural-domain-model#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:state-model-base="http://www.cloud4soa.eu/v0.1/state-model-base#"
+    xmlns:common-m="http://www.cloud4soa.eu/v0.1/other#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measure="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:app-m="http://www.imolinfo.it/ontologie/ea/v1.1/application-domain-model#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/appinstances">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/state-model-base"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/application-domain"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/other"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/user-model"/>
+  </owl:Ontology>
+  <c4s-inf-m:Software_Category rdf:ID="J2EESoftwareCategory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </c4s-inf-m:Software_Category>
+  <c4s-inf-m:Computational_Component rdf:ID="SimpleWarComputationalComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </c4s-inf-m:Computational_Component>
+  <c4s-inf-m:Storage_Component rdf:ID="SimpleWarStorageRequirement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <essential-metamodel:realisation_of_technology_capability>
+      <c4s-inf-m:StorageResource rdf:ID="SimpleWarStorageComponent">
+        <c4s-inf-m:capacity>
+          <measure:StorageRange rdf:ID="capacityRange">
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >capacity range</rdfs:label>
+            <measure:hasMinStorageValue>
+              <measure:MegaByte rdf:ID="minCapacity">
+                <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >min capacity</rdfs:label>
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >1</measure:has_value>
+              </measure:MegaByte>
+            </measure:hasMinStorageValue>
+          </measure:StorageRange>
+        </c4s-inf-m:capacity>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+        <essential-metamodel:realisation_of_technology_capability rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#FileSystem"/>
+      </c4s-inf-m:StorageResource>
+    </essential-metamodel:realisation_of_technology_capability>
+  </c4s-inf-m:Storage_Component>
+  <c4s-ent-m:SoftwareProvider rdf:ID="Oracle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <c4s-ent-m:providesSoftwareComponent>
+      <essential-metamodel:Software_Component rdf:ID="J2EE">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+      </essential-metamodel:Software_Component>
+    </c4s-ent-m:providesSoftwareComponent>
+  </c4s-ent-m:SoftwareProvider>
+  <essential-metamodel:Application rdf:about="http://www.imolinfo.it/ontologie/ea/v1.1/application-domain-model#SimpleWar">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <c4s-app-m:version rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >0.1</c4s-app-m:version>
+    <c4s-app-m:requiresSoftwareComponent rdf:resource="#J2EE"/>
+    <c4s-app-m:requiresHardwareComponent>
+      <c4s-inf-m:Compute rdf:ID="SimpleCompute">
+        <c4s-inf-m:hasCores>
+          <measure:NumericRange rdf:ID="coreRange">
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >core range</rdfs:label>
+          </measure:NumericRange>
+        </c4s-inf-m:hasCores>
+        <c4s-inf-m:hasArchitecture rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >32bit</c4s-inf-m:hasArchitecture>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+        <c4s-inf-m:hasMemory>
+          <measure:StorageRange rdf:ID="memoryRange">
+            <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >memory range</rdfs:label>
+            <measure:hasMinStorageValue>
+              <measure:MegaByte rdf:ID="minMemory">
+                <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >min memory</rdfs:label>
+                <measure:has_value rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                >32</measure:has_value>
+              </measure:MegaByte>
+            </measure:hasMinStorageValue>
+          </measure:StorageRange>
+        </c4s-inf-m:hasMemory>
+      </c4s-inf-m:Compute>
+    </c4s-app-m:requiresHardwareComponent>
+    <c4s-app-m:useProgrammingLanguage rdf:resource="http://www.cloud4soa.eu/v0.1/other#Java_1_6_0"/>
+    <c4s-app-m:size>
+      <measure:Capacity rdf:ID="SimpleWarCapacity">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+        <measure:has_quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >0.03</measure:has_quantity>
+      </measure:Capacity>
+    </c4s-app-m:size>
+    <c4s-app-m:requiresHardwareComponent rdf:resource="#SimpleWarStorageComponent"/>
+  </essential-metamodel:Application>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

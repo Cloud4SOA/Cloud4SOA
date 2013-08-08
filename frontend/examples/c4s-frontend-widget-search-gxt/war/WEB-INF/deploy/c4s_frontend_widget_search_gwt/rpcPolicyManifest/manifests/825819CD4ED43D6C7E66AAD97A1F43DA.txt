@@ -1,0 +1,2 @@
+serviceClass: com.extjs.gxt.samples.client.ExampleService
+path: C7315967D8CEB942C78399A66A02189D.gwt.rpc

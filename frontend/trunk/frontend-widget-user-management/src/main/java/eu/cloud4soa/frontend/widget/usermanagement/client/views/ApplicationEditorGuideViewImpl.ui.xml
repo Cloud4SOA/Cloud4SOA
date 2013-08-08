@@ -1,0 +1,95 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+	<ui:style src="ApplicationEditorGuideView.css" />
+	
+ 
+    <g:ScrollPanel>
+    <g:HTMLPanel>
+
+
+        <div class='{style.sideBar}' ui:field="editParagraph">
+			<div class='{style.guide}'>
+				<div class='{style.section}'>
+					<!--<div class='{style.iconGuide}'/>-->
+				<div class='{style.sideBar}'>
+                    <p class='{style.sideheaderFont}'>The Application Profile Manager</p>
+
+                    <p class='{style.sideFont}'>Here you can see the list of your application profiles, that can be used to search for PaaS Offerings and deploy your application.
+                    </p>
+
+                    <p class='{style.sideFont}'>Clicking on one profile will allow you to edit it or start searching for PaaS offerings.</p>
+                    <p class='{style.sideFont}'>Select an existing application profile or
+                        <a ui:field="newLink">create a new one</a>
+                    </p>
+
+                </div>
+				</div>
+			</div>
+		</div>
+
+        <div class='{style.sideBarLeft}' ui:field="searchParagraph">
+			<div class='{style.guideLeft}'>
+				<div class='{style.section}'>
+					<!--<div class='{style.iconGuide}'/>-->
+					
+                    <p class='{style.sideheaderFont}'>The Application Profile Editor</p>
+
+                    <p class='{style.sideFont}'>Here you can create or edit your application profile.
+                        An application profile is composed by Hardware and Software components.
+                    </p>
+                    <p class='{style.sideFont}'>Hardware components are divided into:</p>
+
+                    <li class='{style.side-list}'>
+                        <ul><b>network</b>: network parameters needed by the application
+                        </ul>
+                        <ul><b>compute</b>: parameters about the computational power needed by the application
+                        </ul>
+                        <ul>
+                            <b>Http request Handler</b>: parameters about the hardware needed to manage the http requests to the application
+                        </ul>
+                        <ul>
+                            <b>storage</b>: parameters about the storage hardware needed by the application (eg: file system)
+                        </ul>
+                    </li>
+
+                    <p class='{style.sideFont}'>Software components instead are divided into:</p>
+
+                    <li class='{style.side-list}'>
+                        <ul><b>SQL database</b>: parameters about an SQL database
+                        </ul>
+                        <ul><b>no SQL database</b>: parameters about noSQL database
+                        </ul>
+                        <ul><b>Generic software component</b>: any other add ons
+                        </ul>
+                    </li>
+
+                <p class='{style.sideFont}'>Fields can be required or optional and have a "required" check-box: if checked, the search returns only the PaaS offerings satisfying that parameter; if not checked, PaaS offerings that satisfy that parameter are ranked higher.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</g:HTMLPanel>
+</g:ScrollPanel>
+
+</ui:UiBinder>

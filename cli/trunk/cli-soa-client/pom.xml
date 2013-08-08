@@ -1,0 +1,113 @@
+<!--
+ -  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+ -
+ -  Licensed under the Apache License, Version 2.0 (the "License");
+ -  you may not use this file except in compliance with the License.
+ -  You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ -  Unless required by applicable law or agreed to in writing, software
+ -  distributed under the License is distributed on an "AS IS" BASIS,
+ -  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ -  See the License for the specific language governing permissions and
+ -  limitations under the License.
+ -->
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>cloud4soa.cli.soa-client</name>
+
+    <description>CLI SOA client</description>
+
+    <parent>
+        <groupId>eu.cloud4soa</groupId>
+        <artifactId>cli-parent</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+    </parent>
+
+    <groupId>eu.cloud4soa</groupId>
+    <artifactId>cli-soa-client</artifactId>
+    <version>0.0.3-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <properties>
+    </properties>
+        
+    <dependencies>
+
+        <dependency>
+            <groupId>eu.cloud4soa</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+        </dependency>
+        
+                    <!-- org.apache.cxf dependencies-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>${cxf.version}</version>
+<!--            <version>${cxf.version}</version>-->
+<!--            <exclusions>
+                <exclusion>
+                    <groupId>wsdl4j</groupId>
+                    <artifactId>wsdl4j</artifactId>
+                </exclusion>
+            </exclusions>-->
+        </dependency>
+        
+        <!--  Apache serialization providers like JSONProvider--> 
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-extension-providers</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>  
+        
+        <!-- CXF Required dependency-->
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>${jettison.version}</version>
+        </dependency>
+        
+        <!-- apache commons-codec --> 
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+  
+    </dependencies>
+
+            <build>
+
+                <plugins>  
+
+                        <plugin>  
+                                <groupId>org.apache.maven.plugins</groupId>  
+                                <artifactId>maven-compiler-plugin</artifactId>  
+                                <configuration>  
+                                <source>1.6</source>  
+                                <target>1.6</target>  
+                                </configuration>  
+                        </plugin>  
+                </plugins>  
+        </build> 
+</project>

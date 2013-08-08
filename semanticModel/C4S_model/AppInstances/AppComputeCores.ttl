@@ -1,0 +1,40 @@
+# Saved by TopBraid on Fri Jun 29 18:08:24 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppComputeCores
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppComputeCores#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppComputeCores>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComputeCores.ComputeCoresComponent>
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:label "Compute cores component"^^xsd:string ;
+      c4s-inf-m:hasCores <http://www.cloud4soa.eu/v0.1/measure#AppComputeCores.TwoRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:ECU .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppComputeCores.TwoRange>
+      rdf:type measure:NumericRange ;
+      rdfs:label "Two range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "2"^^xsd:float .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppComputeCores.AppComputeCores>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application compute cores"^^xsd:string ;
+      dcterms:alternative "Application compute cores"^^xsd:string ;
+      dcterms:title "Application compute cores"^^xsd:string ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppComputeCores.ComputeCoresComponent> .

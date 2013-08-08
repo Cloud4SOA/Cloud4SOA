@@ -1,0 +1,6 @@
+profile {
+    provider : "CloudBees" url: "http://www.cloudbees.com"
+    {
+        username : "CloudBees" password : "pwd" firstname : "CloudBees" surname : "CloudBees" email : "support@cloudbees.com"
+    }
+}

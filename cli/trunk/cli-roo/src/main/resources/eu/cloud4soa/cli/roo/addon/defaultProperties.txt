@@ -1,0 +1,1 @@
+cloud4soa.baseUrl=http://localhost:8080/services/REST/

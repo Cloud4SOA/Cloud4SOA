@@ -1,0 +1,84 @@
+# Saved by TopBraid on Tue Jul 30 11:29:26 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlJava
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlJava#> .
+@prefix CloudControl:  <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+measure:fiftyMillisecond
+      rdf:type measure:Time_Unit ;
+      rdfs:label "fifty millisecond"^^xsd:string ;
+      measure:has_value "50"^^xsd:float .
+
+measure:fiftyMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "fifty millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:fiftyMillisecond .
+
+measure:twentyMillisecond
+      rdf:type measure:Time_Unit ;
+      rdfs:label "ninety millisecond"^^xsd:string ;
+      measure:has_value "20"^^xsd:float .
+
+measure:twentyMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "twenty millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:twentyMillisecond .
+
+paas-m:CloudControlJava
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Cloud control java"^^xsd:string ;
+      dcterms:title "CloudControl (Java)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:cloudControl_API ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "https://www.cloudcontrol.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              measure:one_range ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloneInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlWorker> ;
+      paas-m:offerSoftware
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#CCGIT> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Alias> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Blitz.io> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated2XLargehmDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCWebServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBOxygen> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB256MBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBKrypton> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCcustomName> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedSmallDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Cron> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedXLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronWorker> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB20GBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBAragon> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCAppServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Memcached> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated4XLargehmDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Mailgun> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBHelium> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBNeon> , <http://www.enterprise-architecture.org/essential-metamodel.owl#New_Relic> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB5GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronMQ> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDBFreeInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB16MBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CloudMailin> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB2GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#SSL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB512MBInstance> ;
+      paas-m:offerWebScalingFactor
+              measure:cloudControlBoxRange ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#cloudControlPaaS> ;
+      paas-m:providesServiceQuality
+              qos-model:cloudControlContRespTime , qos-model:cloudControlCPULoad , qos-model:CloudControlUptime , qos-model:cloudControlMemoryLoad , qos-model:cloudControlCloudRespTime , qos-model:ccLatency ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlJava>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+qos-model:cloudControlCPULoad
+      rdf:type qos-model:CPULoad ;
+      rdfs:label "cloud control CPULoad"^^xsd:string .
+
+qos-model:cloudControlCloudRespTime
+      rdf:type qos-model:CloudResponseTime ;
+      rdfs:label "cloud control cloud resp time"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:fiftyMillisecondRange .
+
+qos-model:cloudControlContRespTime
+      rdf:type qos-model:ContainerResponseTime ;
+      rdfs:label "cloud control cont resp time"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:twentyMillisecondRange .
+
+qos-model:cloudControlMemoryLoad
+      rdf:type qos-model:MemoryLoad ;
+      rdfs:label "cloud control memory load"^^xsd:string .

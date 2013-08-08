@@ -1,0 +1,62 @@
+###
+# Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+#
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+###
+
+# Saved by TopBraid on Sat Apr 27 15:19:18 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlPython
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlPython#> .
+@prefix CloudControl:  <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:CloudControlPython
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Cloud control python"^^xsd:string ;
+      dcterms:title "CloudControl (Python)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:cloudControl_API ;
+      paas-m:hasAdapter "true"^^xsd:boolean ;
+      paas-m:hasURL "https://www.cloudcontrol.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#one_range> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloneInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Worker> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedSmallDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#SSL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronMQ> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCcustomName> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Blitz.io> , <http://www.enterprise-architecture.org/essential-metamodel.owl#New_Relic> , <http://www.enterprise-architecture.org/essential-metamodel.owl#IronWorker> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB512MBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Cron> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated4XLargehmDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCGIT> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Mailgun> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedXLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB256MBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB2GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Alias> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CloudMailin> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB5GBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicatedLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCWebServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Memcached> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBKrypton> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlDedicated2XLargehmDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBNeon> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBAragon> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDBFreeInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBHelium> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudControlMysqlSharedDB20GBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolCouchDBOxygen> , <http://www.enterprise-architecture.org/essential-metamodel.owl#CCAppServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudContolMongoDB16MBInstance> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#cloudControlBoxRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#cloudControlPaaS> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#CloudControlUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#ccLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Python> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/CloudControlPython>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

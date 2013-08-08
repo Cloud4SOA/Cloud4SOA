@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.cloud4soa.xtext.dsl/src-gen"
+    editDirectory="/eu.cloud4soa.xtext.dsl.edit/src" editorDirectory="/eu.cloud4soa.xtext.dsl.editor/src"
+    modelPluginID="eu.cloud4soa.xtext.dsl" forceOverwrite="true" modelName="Dsl" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
+    copyrightFields="false" editPluginID="eu.cloud4soa.xtext.dsl.edit" editorPluginID="eu.cloud4soa.xtext.dsl.editor">
+  <genPackages prefix="Dsl" basePackage="eu.cloud4soa.xtext" disposableProviderFactory="true"
+      ecorePackage="Dsl.ecore#/">
+    <genClasses ecoreClass="Dsl.ecore#//Scope">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Scope/userProfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Scope/applicationProfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Scope/paasOfferingProfile"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//UserProfile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//UserProfile/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//UserProfile/accountInfo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//UserProfile/personalInfo"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//PersonalInfos">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//PersonalInfos/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//PersonalInfos/surnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//PersonalInfos/email"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//PersonalInfos/birthDay"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Birthday">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Birthday/date"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//AccountInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//AccountInfo/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//AccountInfo/password"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Provider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Provider/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Provider/homepage"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//ApplicationProfile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ApplicationProfile/infos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ApplicationProfile/file"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ApplicationProfile/technology"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//ApplicationInfos">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//ApplicationInfos/application"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ApplicationInfos/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ApplicationInfos/code"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//ApplicationCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//ApplicationCode/applicationCode"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//PaasOfferingProfile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//PaasOfferingProfile/paasOfferingInfos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//PaasOfferingProfile/channels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//PaasOfferingProfile/technology"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//PaasOfferingInfos">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//PaasOfferingInfos/paasOffering"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//File/fileName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//File/dimension"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//FileDimension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//FileDimension/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//FileDimension/digest"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Digest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Digest/digest"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//TechnologyInfo">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//TechnologyInfo/programmingLanguage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//TechnologyInfo/software"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//TechnologyInfo/hardware"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//ProgrammingLanguage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//ProgrammingLanguage/programmingLanguage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ProgrammingLanguage/version"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Software">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Software/category"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Software/component"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//SoftwareCategory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//SoftwareCategory/category"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//SoftwareCategory/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//SoftwareComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//SoftwareComponent/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//SoftwareComponent/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//SoftwareComponent/license"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Component/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Component/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Description">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Description/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//License">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//License/license"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Hardware">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Hardware/box"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Hardware/compute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Hardware/networkResource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Hardware/storageResource"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Box">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Box/box"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//BoxComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//BoxComponent/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//BoxComponent/httpRequest"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//HttpRequests">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//HttpRequests/http_requests"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Compute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Compute/compute"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//ComputationalComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/architecture"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/cores"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/speed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/memory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//ComputationalComponent/cache"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Architecture">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Architecture/architecture"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Cores">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Cores/cores"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Speed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Speed/speed"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Memory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Memory/memory"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Cache">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Cache/cache"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//NetworkResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//NetworkResource/networkResource"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//CommunicationalComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//CommunicationalComponent/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//CommunicationalComponent/bandwidth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//CommunicationalComponent/latency"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Bandwidth">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Bandwidth/bandwidth"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Latency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Latency/latency"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//StorageResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//StorageResource/storageComponent"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//StorageComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//StorageComponent/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//StorageComponent/capacity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//StorageComponent/bandwidth"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Capacity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Capacity/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Channels">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Channels/channel"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Channel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Channel/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Operation/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Operation/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Operation/command"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dsl.ecore#//Operation/informationReturned"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Command">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Command/command"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//InformationReturned">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//InformationReturned/informationReturned"/>
+    </genClasses>
+    <genClasses ecoreClass="Dsl.ecore#//Version">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dsl.ecore#//Version/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

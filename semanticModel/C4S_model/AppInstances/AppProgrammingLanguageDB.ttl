@@ -1,0 +1,34 @@
+# Saved by TopBraid on Tue Oct 09 14:14:04 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppProgrammingLanguageDB
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppProgrammingLanguageDB#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppProgrammingLanguageDB>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppProgrammingLanguageDB.MySQL>
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "App my SQL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppProgrammingLanguageDB.AppProgrammingLanguageDB>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "AppProgrammingLanguageDB"^^xsd:string ;
+      dcterms:alternative "AppProgrammingLanguageDB"^^xsd:string ;
+      dcterms:title "AppProgrammingLanguageDB"^^xsd:string ;
+      application-domain:requiresSoftwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppProgrammingLanguageDB.MySQL> ;
+      application-domain:useProgrammingLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .

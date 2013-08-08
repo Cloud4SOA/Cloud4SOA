@@ -1,0 +1,6 @@
+profile {
+    provider: "MyNewProvider" url: "http://www.myprovider.it"
+    {
+        username : "myprovider" password : "pwd" firstname : "MyNewProvider" surname : "MyNewProvider" email : "myprovider@myprovider.it"
+    }
+}

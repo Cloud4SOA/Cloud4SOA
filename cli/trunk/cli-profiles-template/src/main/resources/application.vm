@@ -1,0 +1,48 @@
+@prefix essential-metamodel: <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix c4s-app-m: <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m: <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix other: <http://www.cloud4soa.eu/v0.1/other#> .
+@prefix measure: <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix qos-m: <http://www.cloud4soa.eu/v0.1/qos-model#> .
+
+essential-metamodel:$applicationUriId a essential-metamodel:Application ;
+#*  if($application.hasProperty("dcterms:title") && checkHasProperty("dcterms:title", "rdfs:comment"))
+        getProperty("dcterms:title", "rdfs:comment")
+*#
+#*
+c4s-app-m:size a owl:ObjectProperty ;
+	rdfs:comment "Defines the Application Size."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+*#
+    dcterms:title ""^^xsd:string ;
+    dcterms:alternative "" ;
+    essential-metamodel:description "" ;
+##  c4s-app-m:hasOwner $application.developerId ;
+    c4s-app-m:application_code ""^^xsd:string ;
+    dcterms:hasVersion ""^^xsd:string ;
+##  c4s-app-m:license_type "" ;
+##  c4s-app-m:digest "" ;
+    c4s-app-m:useProgrammingLanguage <> ;
+##  c4s-app-m:releatedApplicationArchive <> ;
+    c4s-app-m:requiresHardwareComponent <> ;
+    c4s-app-m:requiresSoftwareComponent <> ;
+    c4s-app-m:requiresServiceQuality qos-m:$latencyUriId ;
+    c4s-app-m:requiresServiceQuality qos-m:$uptimeUriId .
+
+qos-m:$latencyUriId a qos-m:Latency ;
+    qos-m:hasTimeRangeValue measure:$timeRangeUriId .
+
+measure:$timeRangeUriId a measure:TimeRange ;
+    measure:hasMaxTimeValue measure:$timeUnitMaxUriId ;
+    measure:hasMinTimeValue measure:$timeUnitMinUriId .
+
+measure:$timeUnitMaxUriId a measure:MilliSecond ;
+    measure:has_value "1.0"^^xsd:float .
+
+measure:$timeUnitMinUriId a measure:MilliSecond ;
+    measure:has_value "1.0"^^xsd:float .
+
+qos-m:$uptimeUriId a qos-m:Uptime ;
+    qos-m:hasPercentage "100.0"^^xsd:float .

@@ -1,0 +1,240 @@
+# Saved by TopBraid on Mon Jul 29 16:26:28 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava
+# imports: http://www.cloud4soa.eu/v0.1/qos-model
+# imports: http://www.cloud4soa.eu/v0.1/paas-model
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava#> .
+@prefix c4s-ent-m:  <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-model:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+c4s-ent-m:dotCloudProvider
+      rdf:type c4s-ent-m:PaaSProvider ;
+      rdfs:label "dot cloud provider"^^xsd:string ;
+      dcterms:description "dotCloud launched in 2011 as the industry’s first multi-language Platform as a Service. In 2013, recognizing the need for flexible, PaaS-like environments inside enterprises and across clouds, dotCloud released much of its technology as the open source Docker project. Docker is an open source engine for deploying any application as a lightweight, portable, self-sufficient container that will run virtually anywhere."^^xsd:string ;
+      dcterms:title "dotCloud provider"^^xsd:string ;
+      foaf:homepage foaf:dotCloudhomepage .
+
+c4s-inf-m:dotCloudDBconf
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "dot cloud DBconf"^^xsd:string ;
+      c4s-inf-m:hasDBcache
+              measure:fourGBrange .
+
+c4s-inf-m:dotCloudMySQL
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "dot cloud my SQL"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:dotCloudDBconf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+c4s-inf-m:dotCloudStorage
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "dot cloud storage"^^xsd:string ;
+      c4s-inf-m:capacity measure:fourtyGBrange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+c4s-inf-m:dotCloudmongoDB
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "dot cloudmongo DB"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:dotCloudDBconf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MongoDB .
+
+c4s-inf-m:dotCloudpostrgesql
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "dot cloudpostrgesql"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:dotCloudDBconf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Postgres .
+
+c4s-inf-m:dotCloudredis
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "dot cloudredis"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:dotCloudDBconf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Redis .
+
+c4s-inf-m:dotcloudCompute
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:label "dotcloud compute"^^xsd:string ;
+      c4s-inf-m:hasMemory measure:fourGBrange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:ECU .
+
+measure:fiftyMillisecond
+      rdf:type measure:Time_Unit ;
+      rdfs:label "fifty millisecond"^^xsd:string ;
+      measure:has_value "50"^^xsd:float .
+
+measure:fiftyMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "fifty millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:fiftyMillisecond .
+
+measure:fiveRange
+      rdf:type measure:NumericRange ;
+      rdfs:label "five range"^^xsd:string ;
+      measure:hasMaxNumericValue
+              "5"^^xsd:float .
+
+measure:fourGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "four MB"^^xsd:string ;
+      measure:has_value "4"^^xsd:float .
+
+measure:fourGBrange
+      rdf:type measure:StorageRange ;
+      rdfs:label "four GBrange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:fourGB .
+
+measure:fourtyGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "fourty GB"^^xsd:string ;
+      measure:has_value "40"^^xsd:float .
+
+measure:fourtyGBrange
+      rdf:type measure:StorageRange ;
+      rdfs:label "fourty GBrange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:fourtyGB .
+
+measure:hundredMillisecond
+      rdf:type measure:MilliSecond ;
+      rdfs:label "hundred millisecond"^^xsd:string ;
+      measure:has_value "100"^^xsd:float .
+
+measure:hundredMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "hundred millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:hundredMillisecond .
+
+measure:thirtyMillisecond
+      rdf:type measure:Time_Unit ;
+      rdfs:label "thirty millisecond"^^xsd:string ;
+      measure:has_value "30"^^xsd:float .
+
+measure:thirtyMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "thirty millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:thirtyMillisecond .
+
+paas-model:dotCloudAPI
+      rdf:type paas-model:API ;
+      rdfs:label "dot cloud API"^^xsd:string ;
+      paas-model:supportOperation
+              paas-model:dotCloudArchiveDeployment , paas-model:dotCloudGit .
+
+paas-model:dotCloudArchiveDeployment
+      rdf:type paas-model:Operation ;
+      rdfs:label "dot cloud archive deployment"^^xsd:string ;
+      paas-model:hasOperationType
+              paas-model:CodeArchiveDeployment .
+
+paas-model:dotCloudGit
+      rdf:type paas-model:Operation ;
+      rdfs:label "dot cloud git"^^xsd:string ;
+      paas-model:hasOperationType
+              paas-model:GITDeployment .
+
+paas-model:dotCloudJava
+      rdf:type paas-model:PaaSOffering ;
+      rdfs:label "dot cloud java"^^xsd:string ;
+      dcterms:title "dotCloud (Java)"^^xsd:string ;
+      paas-model:communicateThrough
+              paas-model:dotCloudAPI ;
+      paas-model:hasAdapter
+              "false"^^xsd:boolean ;
+      paas-model:hasURL "https://www.dotcloud.com"^^xsd:string ;
+      paas-model:offerComputeScalingFactor
+              measure:fiveRange ;
+      paas-model:offerHardwareComponent
+              c4s-inf-m:dotCloudStorage , c4s-inf-m:dotcloudCompute ;
+      paas-model:offerSoftware
+              c4s-inf-m:dotCloudMySQL , c4s-inf-m:dotCloudmongoDB , essential-metamodel:dotCloudApplciationserver , c4s-inf-m:dotCloudredis , c4s-inf-m:dotCloudpostrgesql , essential-metamodel:dotCloudWebServer , essential-metamodel:dotCloudSSL ;
+      paas-model:offerWebScalingFactor
+              measure:fiveRange ;
+      paas-model:providedByPaaSProvider
+              c4s-ent-m:dotCloudProvider ;
+      paas-model:providesServiceQuality
+              qos-model:dotCloudCPULoad , qos-model:dotCloudLatency , qos-model:dotCloudUptime , qos-model:dotCloudMemoryLoad , qos-model:dotcloudContResTime , qos-model:dotCloudCRT ;
+      paas-model:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/qos-model> , <http://www.cloud4soa.eu/v0.1/paas-model> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+qos-model:dotCloudCPULoad
+      rdf:type qos-model:CPULoad ;
+      rdfs:label "dot cloud CPULoad"^^xsd:string .
+
+qos-model:dotCloudCRT
+      rdf:type qos-model:CloudResponseTime ;
+      rdfs:label "dot cloud CRT"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:fiftyMillisecondRange .
+
+qos-model:dotCloudLatency
+      rdf:type qos-model:Latency ;
+      rdfs:label "dot cloud latency"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:hundredMillisecondRange .
+
+qos-model:dotCloudMemoryLoad
+      rdf:type qos-model:MemoryLoad ;
+      rdfs:label "dot cloud memory load"^^xsd:string .
+
+qos-model:dotCloudUptime
+      rdf:type qos-model:Uptime ;
+      rdfs:label "dot cloud uptime"^^xsd:string ;
+      qos-model:hasPercentage
+              "99.95"^^xsd:float .
+
+qos-model:dotcloudContResTime
+      rdf:type qos-model:ContainerResponseTime ;
+      rdfs:label "dotcloud cont res time"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:thirtyMillisecondRange .
+
+essential-metamodel:dotCloudApplciationserver
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "dot cloud applciationserver"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Application_server .
+
+essential-metamodel:dotCloudSSL
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "dot cloud SSL"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:security .
+
+essential-metamodel:dotCloudWebServer
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "dot cloud web server"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:web_server .
+
+foaf:dotCloudhomepage
+      rdf:type foaf:Document ;
+      rdfs:label "dot cloudhomepage"^^xsd:string ;
+      c4s-ent-m:link <https://www.dotcloud.com> .

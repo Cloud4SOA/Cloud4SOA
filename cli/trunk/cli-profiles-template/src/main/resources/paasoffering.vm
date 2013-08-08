@@ -1,0 +1,33 @@
+@prefix essential-metamodel: <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix c4s-inf-m: <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix other: <http://www.cloud4soa.eu/v0.1/other#> .
+@prefix measure: <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix qos-m: <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix paas-m: <http://www.cloud4soa.eu/v0.1/paas-model#> .
+
+paas-m:$paasOfferingUriId a paas-m:PaaSOffering ;
+    dcterms:title ""^^xsd:string ;
+    dcterms:description ""^^xsd:string ;
+    paas-m:supportLanguage <> ;
+    paas-m:offerHardwareComponent <> ;
+    paas-m:offerSoftware <> ;
+    paas-m:providesServiceQuality qos-m:$latencyUriId ;
+    paas-m:providesServiceQuality qos-m:$uptimeUriId .
+
+qos-m:$latencyUriId a qos-m:Latency ;
+    qos-m:hasTimeRangeValue measure:$timeRangeUriId .
+
+measure:$timeRangeUriId a measure:TimeRange ;
+    measure:hasMaxTimeValue measure:$timeUnitMaxUriId ;
+    measure:hasMinTimeValue measure:$timeUnitMinUriId .
+
+measure:$timeUnitMaxUriId a measure:MilliSecond ;
+    measure:has_value "1.0"^^xsd:float .
+
+measure:$timeUnitMinUriId a measure:MilliSecond ;
+    measure:has_value "1.0"^^xsd:float .
+
+qos-m:$uptimeUriId a qos-m:Uptime ;
+    qos-m:hasPercentage "100.0"^^xsd:float .

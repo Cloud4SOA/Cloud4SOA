@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE web-app
+        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <!-- Initialisation SOA layer: spring context and REST interface -->
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+        <!-- Java Melody -->
+    <!--  
+    <filter>
+          <filter-name>monitoring</filter-name>
+          <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+      </filter>
+      <filter-mapping>
+          <filter-name>monitoring</filter-name>
+          <url-pattern>/*</url-pattern>
+      </filter-mapping>
+      <listener>
+          <listener-class>net.bull.javamelody.SessionListener</listener-class>
+      </listener> 
+    -->
+    
+    <!-- Registering Spring Listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--CXF Servlet -->
+
+    <servlet>
+        <servlet-name>CXFServlet</servlet-name>
+        <display-name>CXF Servlet</display-name>
+        <servlet-class>
+            org.apache.cxf.transport.servlet.CXFServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <!-- RPC service servlets -->
+
+    <servlet>
+        <servlet-name>ApplicationDeploymentServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.ApplicationDeploymentServiceImpl
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ModelManagerServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.ModelManagerServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PaaSOfferingDiscoveryServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.PaaSOfferingDiscoveryServiceImpl
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserManagementAndSecurityServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.UserManagementAndSecurityServiceImpl
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Version</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.VersionImpl</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ApplicationArtifactUpload</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.upload.ApplicationArtifactUpload</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MonitoringServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.MonitoringServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ApplicationComponentsTreeService</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.ApplicationComponentsTreeServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GovernanceServiceImpl</servlet-name>
+        <servlet-class>eu.cloud4soa.frontend.commons.server.services.soa.GovernanceServiceImpl</servlet-class>
+    </servlet>
+
+
+    <!--CXF Mapping -->
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/services/REST/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>ModelManagerServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/ModelManagerService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ApplicationDeploymentServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/ApplicationDeploymentService</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>PaaSOfferingDiscoveryServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/PaaSOfferingDiscoveryService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserManagementAndSecurityServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/UserManagementAndSecurityService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ApplicationArtifactUpload</servlet-name>
+        <url-pattern>/applicationArtifactUpload</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Version</servlet-name>
+        <url-pattern>/cloud4soadashboard/Version</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MonitoringServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/MonitoringService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ApplicationComponentsTreeService</servlet-name>
+        <url-pattern>/cloud4soadashboard/ApplicationComponentsTreeService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GovernanceServiceImpl</servlet-name>
+        <url-pattern>/cloud4soadashboard/GovernanceService</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>Cloud4SOADashboard.html</welcome-file>
+    </welcome-file-list>
+
+
+    <!-- Configurazione per c4s SPARQL endpoint -->
+    <servlet>
+        <servlet-name>Cloud4SOA SPARQL service processor</servlet-name>
+        <servlet-class>org.joseki.http.Servlet</servlet-class>
+
+        <!-- Configuration file -->
+        <init-param>
+            <param-name>org.joseki.rdfserver.config</param-name>
+            <param-value>sdbJosekiConfig.ttl</param-value>
+        </init-param>
+
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>SPARQL/Update service processor</servlet-name>
+        <servlet-class>org.joseki.http.ServletUpdate</servlet-class>
+
+        <init-param>
+            <param-name>org.joseki.rdfserver.config</param-name>
+            <param-value>sdbJosekiConfig.ttl</param-value>
+        </init-param>
+
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>Cloud4SOA SPARQL service processor</servlet-name>
+        <url-pattern>/c4ssparql</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Cloud4SOA SPARQL service processor</servlet-name>
+        <url-pattern>/c4ssparql/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>SPARQL/Update service processor</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    
+    
+</web-app>

@@ -1,0 +1,312 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Cloud4SOA UI Frontend parent project</name>
+    <description>Cloud4SOA UI Frontend parent project</description>
+
+    <parent>
+        <groupId>eu.cloud4soa</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.0.3-SNAPSHOT</version>
+        <relativePath>../../parent/trunk</relativePath>
+    </parent>
+
+    <groupId>eu.cloud4soa</groupId>
+    <artifactId>frontend-parent</artifactId>
+    <version>0.0.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>frontend-dashboard</module>
+        <module>frontend-widget-search</module>
+        <module>frontend-commons</module>
+        <module>frontend-widget-user-management</module>
+        <module>frontend-login</module>
+        <module>frontend-widget-monitoring</module>
+        <module>frontend-theme</module>
+        <module>frontend-widget-deployment</module>
+        <module>frontend-widget-sla-management</module>
+    </modules>
+
+    <properties>
+        <!-- Convenience property to set the GWT version -->
+        <gwt.version>2.4.0</gwt.version>
+
+        <!-- Convenience property to set the GTX version -->
+        <gxt.version>2.2.4</gxt.version>
+
+        <gxt-uibinder.version>1.0.1</gxt-uibinder.version>
+        <gwt-customuibinder>1.2.0</gwt-customuibinder>
+
+        <!-- Convenience property to set the Maven GWT plugin version -->
+        <gwt.maven.plugin.version>2.4.0</gwt.maven.plugin.version>
+
+        <!-- GWT needs at least java 1.5 -->
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-commons</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-login</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-widget-monitoring</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-widget-user-management</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-theme</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-widget-search</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-widget-deployment</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>eu.cloud4soa</groupId>
+                <artifactId>frontend-widget-sla-management</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-servlet</artifactId>
+                <version>${gwt.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-user</artifactId>
+                <version>${gwt.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.extjs</groupId>
+                <artifactId>gxt</artifactId>
+                <version>${gxt.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.jhickman</groupId>
+                <artifactId>gxt-uibinder</artifactId>
+                <version>${gxt-uibinder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jhickman</groupId>
+                <artifactId>gwt-customuibinder</artifactId>
+                <version>${gwt-customuibinder}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gwtsecurity</groupId>
+                <artifactId>gwtsecurity</artifactId>
+                <version>1.1.1</version>
+                <!--Don't inherit spring dependencies from gwt security, since they are different from ours-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-expression</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-tx</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-web</artifactId>
+                    </exclusion>
+                </exclusions>
+
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <distributionManagement>
+        <repository>
+            <id>c4s-release</id>
+            <name>c4s-release</name>
+            <url>http://hudson.cloud4soa.eu:8080/nexus/content/repositories/cloud4soa-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>c4s-snapshot</id>
+            <name>c4s-snapshot</name>
+            <url>http://hudson.cloud4soa.eu:8080/nexus/content/repositories/cloud4soa-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <repositories>
+        <!--TODO external repositories should be managed in NEXUS-->
+        <repository>
+            <id>codehaus-maven-repo</id>
+            <name>Codehaus repo</name>
+            <url>http://repository.codehaus.org/org/codehaus/mojo/</url>
+        </repository>
+        <repository>
+            <id>cobogw</id>
+            <name>Cobo GW widgets library</name>
+            <url>http://cobogw.googlecode.com/svn/maven2</url>
+        </repository>
+
+
+        <!--c4s repositories are declared here in order to allow the frontend module to build on its own-->
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>c4s-release</id>
+            <name>c4s-repo</name>
+            <url>http://hudson.cloud4soa.eu:8080/nexus/content/repositories/cloud4soa-release/</url>
+        </repository>
+        <repository>
+            <snapshots/>
+            <id>snapshot</id>
+            <name>c4s-snapshot</name>
+            <url>http://hudson.cloud4soa.eu:8080/nexus/content/repositories/cloud4soa-snapshot</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-war-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.1.1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>exploded</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.codehaus.mojo
+                                        </groupId>
+                                        <artifactId>
+                                            gwt-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.3.0-1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>resources</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>SingularLogic</id>
+        </profile>
+    </profiles>
+</project>

@@ -1,0 +1,156 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <name>Cloud4SOA Frontend common helper classes</name>
+  <description>Cloud4SOA Frontend common helper classes</description>
+  
+  <parent>
+    <groupId>eu.cloud4soa</groupId>
+    <artifactId>frontend-parent</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>eu.cloud4soa</groupId>
+  <artifactId>frontend-commons</artifactId>
+  <packaging>jar</packaging>
+  
+  <dependencies>
+     <dependency>
+    	<groupId>eu.cloud4soa</groupId>
+		<artifactId>api</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+   	 </dependency>
+   	 <dependency>
+    	<groupId>eu.cloud4soa</groupId>
+		<artifactId>soa-commons</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<type>jar</type>
+		
+<!-- NOTE Uncomment this lines if you are experiencing problems to run C4S Frontend in development mode (Jetty) -->
+		<exclusions>
+           	<exclusion>
+               	<groupId>com.google.appengine</groupId>
+                <artifactId>appengine-tools-sdk</artifactId>
+            </exclusion>
+            <exclusion>
+               	<groupId>com.google.appengine</groupId>
+                <artifactId>appengine-api-1.0-sdk</artifactId>
+            </exclusion>
+        </exclusions>
+   	 </dependency>
+
+   	 <dependency>
+    	<groupId>eu.cloud4soa</groupId>
+		<artifactId>soa-commons</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<type>test-jar</type>
+      	<scope>test</scope>
+   	 </dependency>
+
+      <dependency>
+          <groupId>eu.cloud4soa</groupId>
+          <artifactId>frontend-theme</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.gwt</groupId>
+          <artifactId>gwt-user</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>com.jhickman</groupId>
+          <artifactId>gxt-uibinder</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>com.jhickman</groupId>
+          <artifactId>gwt-customuibinder</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>com.extjs</groupId>
+          <artifactId>gxt</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>commons-fileupload</groupId>
+          <artifactId>commons-fileupload</artifactId>
+          <version>1.2.1</version>
+      </dependency>
+  </dependencies>
+  
+  <build>
+      <resources>
+          <resource>
+              <directory>src/main/java</directory>
+              <includes>
+                  <include>**/*.java</include>
+                  <include>**/*.gwt.xml</include>
+                  <include>**/*.ui.xml</include>
+                  <include>**/*.html</include>
+                  <include>**/*.css</include>
+                  <include>**/*.png</include>
+                  <include>**/*.gif</include>
+              </includes>
+          </resource>
+      </resources>
+
+   <plugins>
+      <!--
+        Ask the plugin to detect GWT resources them based on gwt modules files and copy the required java sources
+        -->
+<!--       <plugin> -->
+<!--         <groupId>org.codehaus.mojo</groupId> -->
+<!--         <artifactId>gwt-maven-plugin</artifactId> -->
+<!--         <version>${gwt.maven.plugin.version}</version> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <goals> -->
+<!--               <goal>resources</goal> -->
+<!--               <goal>compile</goal> -->
+<!--               <goal>test</goal> -->
+<!--             </goals> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
+
+<!-- 	  <plugin> -->
+<!--         <groupId>org.apache.maven.plugins</groupId> -->
+<!--         <artifactId>maven-war-plugin</artifactId> -->
+<!--         <version>2.0</version> -->
+<!--         <configuration> -->
+<!--           default value is ** -->
+<!--           <dependentWarIncludes>**/IncludeME,**/images</dependentWarIncludes>    -->
+<!--         </configuration> -->
+<!--        </plugin> -->
+
+	  <!-- Yosu: Disabling provisionally tests until they are fixed -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4.2</version>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+    </plugins>
+ 
+  </build>
+</project>

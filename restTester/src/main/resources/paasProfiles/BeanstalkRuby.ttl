@@ -1,0 +1,58 @@
+###
+#  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+###
+
+
+# Saved by TopBraid on Tue Apr 30 21:50:47 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/BeanstalkRuby
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/BeanstalkRuby#> .
+@prefix Beanstalk:  <http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:BeanstalkRuby
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Beanstalk python"^^xsd:string ;
+      dcterms:title "AWS Elastic Beanstalk (Ruby)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:beanstalk_API ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "http://aws.amazon.com/elasticbeanstalk/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#unlimited> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkSmallInstanceCompute32Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkMediumInstanceCompute32Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkMediumInstanceCompute64Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkMicroInstanceCompute64Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkMicroInstanceCompute32Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#beanstalk_network> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkLargeInstanceCompute64Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#amazon_storage> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkExtraLargeInstanceCompute64Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkExtraLargeInstanceCompute32Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkSmallInstanceCompute64Bit> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeansTalkLargeInstanceCompute32Bit> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLSmallDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLHighMemoryQuadrupleExtraLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#beanstalk_autoscaling> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverSmallDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleSmallDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLHighMemoryExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLHighMemoryDoubleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverHighMemoryQuadrupleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLExtraLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#beanstalk_loadbalancer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#ApacheHTTPserver> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLMicroDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleHighMemoryQuadrupleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverHighMemoryDoubleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkMySQLLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverHighMemoryExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleHighMemoryExtraLargeDBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#apache_tomcat> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkSQLserverMicroDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleHighMemoryDoubleExtraLargeDBInstance> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#BeanstalkOracleMicroDBInstance> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#fourRange> , <http://www.cloud4soa.eu/v0.1/measure#eightrange> , <http://www.cloud4soa.eu/v0.1/measure#unlimited> , <http://www.cloud4soa.eu/v0.1/measure#onerange> , <http://www.cloud4soa.eu/v0.1/measure#one_range> , <http://www.cloud4soa.eu/v0.1/measure#twoRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#amazonPaaS> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#beanstalkLatency> , <http://www.cloud4soa.eu/v0.1/qos-model#BeanstalkUptime> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/BeanstalkRuby>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

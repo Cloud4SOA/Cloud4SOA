@@ -1,0 +1,45 @@
+# Saved by TopBraid on Fri Jun 29 18:30:23 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppStorageCapacity
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppStorageCapacity#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppStorageCapacity>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppStorageCapacity.StorageCapacityComponent>
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "Storage capacity component"^^xsd:string ;
+      c4s-inf-m:capacity <http://www.cloud4soa.eu/v0.1/measure#AppStorageCapacity.TenGBrange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppStorageCapacity.TenGB>
+      rdf:type measure:GigaByte ;
+      rdfs:label "Ten GB"^^xsd:string ;
+      measure:has_value "10"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppStorageCapacity.TenGBrange>
+      rdf:type measure:StorageRange ;
+      rdfs:label "Ten GBrange"^^xsd:string ;
+      measure:hasMinStorageValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppStorageCapacity.TenGB> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppStorageCapacity.AppStorageCapacity>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application storage capacity"^^xsd:string ;
+      dct:alternative "Application storage capacity"^^xsd:string ;
+      dct:title "Application storage capacity"^^xsd:string ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppStorageCapacity.StorageCapacityComponent> .

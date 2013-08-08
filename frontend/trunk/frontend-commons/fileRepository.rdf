@@ -1,0 +1,2615 @@
+@prefix AppHarbor: <http://www.cloud4soa.eu/v0.1/paasInstances/AppHarbor#> .
+@prefix other: <http://www.cloud4soa.eu/v0.1/other#> .
+@prefix CloudFoundry: <http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry#> .
+@prefix measure: <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix c4s-app-m: <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix c4s-ent-m: <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix paas-m: <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix Beanstalk: <http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk#> .
+@prefix MuleiON: <http://www.cloud4soa.eu/v0.1/paasInstances/MuleiON#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix Playapps: <http://www.cloud4soa.eu/v0.1/paasInstances/Playapps#> .
+@prefix AppEngine: <http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine#> .
+@prefix CloudControl: <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl#> .
+@prefix CloudBees: <http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix BSCW: <http://www.cloud4soa.eu/v0.1/appinstances/BSCW#> .
+@prefix Heroku: <http://www.cloud4soa.eu/v0.1/paasInstances/Heroku#> .
+@prefix essential-metamodel: <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix OpenShift: <http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix EngineYard: <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard#> .
+@prefix c4s-pro-m: <http://www.cloud4soa.eu/v0.1/provider-model#> .
+@prefix Azure: <http://www.cloud4soa.eu/v0.1/paasInstances/Azure#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix c4s-inf-m: <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix user-m: <http://www.cloud4soa.eu/v0.1/user-model#> .
+@prefix CumuLogic: <http://www.cloud4soa.eu/v0.1/paasInstances/CumuLogic#> .
+@prefix appinstances: <http://www.cloud4soa.eu/v0.1/appinstances#> .
+
+c4s-inf-m:communication a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable the communication between users"^^xsd:string .
+
+measure:hasComputingValue a owl:ObjectProperty ;
+	rdfs:comment "Associates a Computing Range with a Computing value."^^xsd:string ;
+	rdfs:domain measure:ComputingRange ;
+	rdfs:label "has Computing Value"^^xsd:string ;
+	rdfs:range measure:Computing_Unit .
+
+c4s-inf-m:performance a c4s-inf-m:Software_Category ;
+	dcterms:description "Improve the performance"^^xsd:string .
+
+paas-m:getSummaryStatistics a paas-m:OperationType ;
+	dcterms:description "Get summary statistics of all running (prior and current) application versions of the given application in the given environment"^^xsd:string ;
+	dcterms:title "Get Summary Statistics"^^xsd:string ;
+	paas-m:hasOperationCommand "getSummaryStatistics(in appID : unsigned long long, in envID : unsigned long long) :: Statistics"^^xsd:string .
+
+paas-m:hasPricingPolicy a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaSOffering with a Pricing Policy it uses."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "has Pricing Policy"^^xsd:string ;
+	rdfs:range paas-m:PricingPolicy .
+
+paas-m:WebInterface a owl:Class ;
+	rdfs:comment "A graphical web interface that enables the developer to interact with the PaaS Offering and manage his applications."^^xsd:string ;
+	rdfs:label "Web Interface"^^xsd:string ;
+	rdfs:subClassOf paas-m:Channel .
+
+user-m:providesResource rdfs:range c4s-inf-m:Resource .
+
+<http://www.cloud4soa.eu/v0.1/measure> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+measure:GigaHertz a owl:Class ;
+	rdfs:comment "A computing unit measured in Giga Hertz."^^xsd:string ;
+	rdfs:label "Giga Hertz"^^xsd:string ;
+	rdfs:subClassOf measure:Computing_Unit .
+
+paas-m:uploadAndDeployToEnv a paas-m:OperationType ;
+	dcterms:description "Creates a new application (if needed), then a new application version, upload the respective executable file, associate and deploy it to the specified environment"^^xsd:string ;
+	dcterms:title "Upload and Deploy to Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "uploadAndDeployToEnv(in app : Application, in appVersion : VersionedApplication, in env : Environment) :: ApplicationSpace"^^xsd:string .
+
+paas-m:supportOperation a owl:ObjectProperty ;
+	rdfs:comment "Correlates a communication Channel with an Operation it supports."^^xsd:string ;
+	rdfs:domain paas-m:Channel ;
+	rdfs:label "support Operation"^^xsd:string ;
+	rdfs:range paas-m:Operation .
+
+c4s-app-m:useProgrammingLanguage a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Application with the Programming Language it uses."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "use Programming Language"^^xsd:string ;
+	rdfs:range other:ProgrammingLanguage .
+
+measure:NetworkingRange a owl:Class ;
+	rdfs:comment "A class representing a networking range that can measure e.g. the range of the network bandwidth."^^xsd:string ;
+	rdfs:label "Networking range"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementRange .
+
+paas-m:listApplications a paas-m:OperationType ;
+	dcterms:description "It is used in order to return a list of all applications registered for a specific user a specific PaaS provider"^^xsd:string ;
+	dcterms:title "List Applications"^^xsd:string ;
+	paas-m:hasOperationCommand "listApplications() :: sequence of Application"^^xsd:string .
+
+other:hasBackwardCompatibilityWith a owl:ObjectProperty ;
+	rdfs:comment "Correlate a Programming Language with another Programming language that is backwards compatible."^^xsd:string ;
+	rdfs:domain other:ProgrammingLanguage ;
+	rdfs:label "has Backward Compatibility With"^^xsd:string ;
+	rdfs:range other:ProgrammingLanguage .
+
+measure:hasNetworkingStep a owl:ObjectProperty ;
+	rdfs:comment "Defines a valid step offered by the PaaS provider for a Networking range"^^xsd:string ;
+	rdfs:domain measure:NetworkingRange ;
+	rdfs:label "has Networking Step"^^xsd:string ;
+	rdfs:range measure:Networking_Unit .
+
+paas-m:OperationType a owl:Class ;
+	rdfs:comment "The type of  an Operation supported by a communication Channel (e.g. Deploy application, Start application, Stop application, Restart application, Create application, Delete application etc.). The Operation Type is defined in order to be able to classify the Operations of different PaaS Offerings that make the same action (e.g. deploy)."^^xsd:string ;
+	rdfs:label "Operation Type"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+c4s-ent-m:providesSoftwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates a Software Provider with the Software Components it provides."^^xsd:string ;
+	rdfs:domain c4s-ent-m:SoftwareProvider ;
+	rdfs:label "provides Software Component"^^xsd:string ;
+	rdfs:range essential-metamodel:Software_Component .
+
+other:PHP_5_3 a other:ProgrammingLanguage ;
+	dcterms:hasVersion "5.3"^^xsd:string ;
+	dcterms:title "PHP 5.3"^^xsd:string .
+
+measure:hasMinNetworkingValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the minimum value for a Networking Range"^^xsd:string ;
+	rdfs:domain measure:NetworkingRange ;
+	rdfs:label "has min networking value"^^xsd:string ;
+	rdfs:range measure:Networking_Unit .
+
+paas-m:hasValue a owl:DatatypeProperty ;
+	rdfs:comment "The value of this Parameter of Rating."^^xsd:string ;
+	rdfs:domain paas-m:Parameter , paas-m:Rating ;
+	rdfs:label "has Value"^^xsd:string ;
+	rdfs:range xsd:string .
+
+measure:KiloByte_Per_Second a owl:Class ;
+	rdfs:comment "A Networking unit measured in KiloByte per Second."^^xsd:string ;
+	rdfs:label "KiloByte per Second"^^xsd:string ;
+	rdfs:subClassOf measure:Networking_Unit .
+
+c4s-inf-m:StorageResource a owl:Class ;
+	rdfs:comment "A Storage hardware category that can be assigned to a Storage Component which has a specific capacity."^^xsd:string ;
+	rdfs:label "StorageResource"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Storage .
+
+paas-m:deleteEnvironment a paas-m:OperationType ;
+	dcterms:description "Delete the environment that corresponds to the given ID"^^xsd:string ;
+	dcterms:title "Delete Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "deleteEnvironment(in envID : unsigned long long) :: Boolean"^^xsd:string .
+
+c4s-inf-m:autoscaling a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable the automatic scaling of the reserources when needed"^^xsd:string .
+
+paas-m:Platform_Layer a owl:Class ;
+	rdfs:comment "The upper class of the Platform Layer"^^xsd:string ;
+	rdfs:label "Platform Layer"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:EA_Class .
+
+c4s-app-m:Application_Deployed a owl:Class ;
+	rdfs:comment "Deployed status means that the application is deployed on a specific cloud platform."^^xsd:string ;
+	rdfs:label "Application Deployed"^^xsd:string ;
+	rdfs:subClassOf c4s-app-m:Application_Status .
+
+paas-m:supportLanguage a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with the Programming Language it supports."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "support Language"^^xsd:string ;
+	rdfs:range other:ProgrammingLanguage .
+
+c4s-inf-m:bandwidth a owl:ObjectProperty ;
+	rdfs:comment "The bandwidth of a Network or Storage resource indicating the transfer rate of data."^^xsd:string ;
+	rdfs:domain c4s-inf-m:NetworkResource , c4s-inf-m:StorageResource ;
+	rdfs:label "bandwidth"^^xsd:string ;
+	rdfs:range measure:NetworkingRange .
+
+paas-m:relatedSoftware a owl:ObjectProperty ;
+	rdfs:comment "Correlates a Pricing Policy with the Software Component it is related."^^xsd:string ;
+	rdfs:domain paas-m:PricingPolicy ;
+	rdfs:label "related Software"^^xsd:string ;
+	rdfs:range essential-metamodel:Software_Component .
+
+paas-m:stop a paas-m:OperationType ;
+	dcterms:description "Stop an already started instance of the specified application version"^^xsd:string ;
+	dcterms:title "Stop"^^xsd:string ;
+	paas-m:hasOperationCommand "stop(in appID : unsigned long long, in version : String) :: InstanceStatus"^^xsd:string .
+
+c4s-app-m:Application_Status a owl:Class ;
+	rdfs:comment "A generic concept that describe the lifecycle status of a cloud-based Application."^^xsd:string ;
+	rdfs:label "Application Status"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Application_Logical .
+
+paas-m:undeploy a paas-m:OperationType ;
+	dcterms:description "Undeploy the specified application version"^^xsd:string ;
+	dcterms:title "Undeploy"^^xsd:string ;
+	paas-m:hasOperationCommand "undeploy(in appID : unsigned long long, in version : String) :: InstanceStatus"^^xsd:string .
+
+measure:hasNetworkingValue a owl:ObjectProperty ;
+	rdfs:comment "Associates a Networking Range with a Networking value."^^xsd:string ;
+	rdfs:domain measure:NetworkingRange ;
+	rdfs:label "has networking value"^^xsd:string ;
+	rdfs:range measure:Networking_Unit .
+
+measure:TeraByte a owl:Class ;
+	rdfs:comment "A Storage unit measured in TeraByte."^^xsd:string ;
+	rdfs:label "TeraByte"^^xsd:string ;
+	rdfs:subClassOf measure:Storage_Unit .
+
+c4s-inf-m:hasSpeed a owl:ObjectProperty ;
+	rdfs:comment "The Speed value of the Compute resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has Speed"^^xsd:string ;
+	rdfs:range measure:ComputingRange .
+
+c4s-inf-m:multimedia a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable multimedia manipulation"^^xsd:string .
+
+paas-m:getAppStatisitcs a paas-m:OperationType ;
+	dcterms:description "Get statistics of the specified application versions"^^xsd:string ;
+	dcterms:title "Get Application Statistics"^^xsd:string ;
+	paas-m:hasOperationCommand "getAppStatistics(in appID : unsigned long long, in version : String) :: Statistics"^^xsd:string .
+
+paas-m:isOptional a owl:DatatypeProperty ;
+	rdfs:comment "Defines if this Parameter is required for the excecution of an Operation or not."^^xsd:string ;
+	rdfs:domain paas-m:Parameter ;
+	rdfs:label "is Optional"^^xsd:string ;
+	rdfs:range xsd:boolean .
+
+measure:Hour a owl:Class ;
+	rdfs:comment "A Time unit measured in Hours."^^xsd:string ;
+	rdfs:label "Hour"^^xsd:string ;
+	rdfs:subClassOf measure:Time_Unit .
+
+paas-m:relatedPricingPolicy a owl:ObjectProperty ;
+	rdfs:comment "Correlates an SLA with the Pricing Policy it is related."^^xsd:string ;
+	rdfs:domain paas-m:SLA ;
+	rdfs:label "related Pricing Policy"^^xsd:string ;
+	rdfs:range paas-m:PricingPolicy .
+
+<http://www.cloud4soa.eu/v0.1/other> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+measure:hasMinTimeValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the minimum value for a Time Range"^^xsd:string ;
+	rdfs:domain measure:TimeRange ;
+	rdfs:label "has Min Time Value"^^xsd:string ;
+	rdfs:range measure:Time_Unit .
+
+paas-m:hasRating a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaSOffering with the Ratings made by the users of the platform. "^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "has Rating"^^xsd:string ;
+	rdfs:range paas-m:Rating .
+
+<http://purl.org/dc/elements/1.1/title> rdfs:range xsd:string .
+
+c4s-inf-m:developmnet_tool a c4s-inf-m:Software_Category ;
+	dcterms:description "Impove/enhance the development"^^xsd:string .
+
+paas-m:SLA a owl:Class ;
+	rdfs:comment "The agreement between the Developer and a specific PaaS Offering where the level of service is formally defined in terms of performance and reliability."^^xsd:string ;
+	rdfs:label "SLA"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+_:node16prsp4ctx1 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:relatedPricingPolicy .
+
+paas-m:SLA rdfs:subClassOf _:node16prsp4ctx1 .
+
+paas-m:PaaSOffering a owl:Class ;
+	rdfs:comment "Represents a programming platform that Cloud-based application developers can use in order to implement and deploy their applications. A PaaS Offering support a specific technology (i.e. Programming Language) and offer software and hardware resources that can me managed through communication Channels. The pricing is related to the resources offered."^^xsd:string ;
+	rdfs:label "PaaS Offering"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+_:node16prsp4ctx2 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:communicateThrough .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx2 .
+
+_:node16prsp4ctx3 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:offerSoftware .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx3 .
+
+_:node16prsp4ctx4 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:hostsApplication .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx4 .
+
+_:node16prsp4ctx5 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:offerHardwareComponent .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx5 .
+
+_:node16prsp4ctx6 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:hasRating .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx6 .
+
+_:node16prsp4ctx7 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:hasPricingPolicy .
+
+paas-m:PaaSOffering rdfs:subClassOf _:node16prsp4ctx7 .
+
+paas-m:hasOperationCommand a owl:DatatypeProperty ;
+	rdfs:comment "The operation command of an Operation or OperationType. "^^xsd:string ;
+	rdfs:domain paas-m:OperationType , paas-m:Operation ;
+	rdfs:label "has Operation Command"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:hasInformationReturned a owl:DatatypeProperty ;
+	rdfs:comment "Describes the information returned after the successful excecution of this Operation."^^xsd:string ;
+	rdfs:domain paas-m:Operation ;
+	rdfs:label "has Information Returned"^^xsd:string ;
+	rdfs:range xsd:string .
+
+other:GO a other:ProgrammingLanguage ;
+	dcterms:title "GO"^^xsd:string .
+
+measure:hasStorageStep a owl:ObjectProperty ;
+	rdfs:comment "Defines a valid step offered by the PaaS provider for a Storage range"^^xsd:string ;
+	rdfs:domain measure:StorageRange ;
+	rdfs:label "has Storage Step"^^xsd:string ;
+	rdfs:range measure:Storage_Unit .
+
+measure:hasMaxNetworkingValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the minimum value for a Networking Range"^^xsd:string ;
+	rdfs:domain measure:NetworkingRange ;
+	rdfs:label "has Max Networking Value"^^xsd:string ;
+	rdfs:range measure:Networking_Unit .
+
+measure:hasMaxNumericValue a owl:DatatypeProperty ;
+	rdfs:comment "Defines the maximum value for a Numeric Range"^^xsd:string ;
+	rdfs:domain measure:NumericRange ;
+	rdfs:label "has Max Numeric Range"^^xsd:string ;
+	rdfs:range xsd:float .
+
+c4s-app-m:size a owl:ObjectProperty ;
+	rdfs:comment "Defines the Application Size."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "size"^^xsd:string ;
+	rdfs:range measure:Storage_Unit .
+
+c4s-app-m:hasIP a owl:DatatypeProperty ;
+	rdfs:comment "Defines the IP of the Application Deployment"^^xsd:string ;
+	rdfs:domain essential-metamodel:Application_Deployment ;
+	rdfs:label "has IP"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:hasCores a owl:ObjectProperty ;
+	rdfs:comment "The Numbers of cores of a Compute resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has Cores"^^xsd:string ;
+	rdfs:range measure:NumericRange .
+
+<http://www.cloud4soa.eu/v0.1/paas-model> owl:versionInfo "Created with TopBraid Composer"^^xsd:string , "Author: Zeginis Dimitris"^^xsd:string .
+
+paas-m:getRunningStatus a paas-m:OperationType ;
+	dcterms:description "Get the status of the running instance that corresponds to the deployed application version"^^xsd:string ;
+	dcterms:title "Get Running Status"^^xsd:string ;
+	paas-m:hasOperationCommand "getRunningStatus(in appID : unsigned long long, in version : String) :: InstanceStatus"^^xsd:string .
+
+measure:NumericRange a owl:Class ;
+	rdfs:comment "A class representing a numeric range that can measure e.g. the range of the http requests served by a box component."^^xsd:string ;
+	rdfs:label "Numeric range"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementRange .
+
+paas-m:hasStatus a owl:DatatypeProperty ;
+	rdfs:comment "The status of this PaaSOffering (e.g. beta, running etc)."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "has Status"^^xsd:string ;
+	rdfs:range xsd:string .
+
+measure:hasComputingStep a owl:ObjectProperty ;
+	rdfs:comment "Defines a valid step offered by the PaaS provider for a Computing range"^^xsd:string ;
+	rdfs:domain measure:ComputingRange ;
+	rdfs:label "has Computing Step"^^xsd:string ;
+	rdfs:range measure:Computing_Unit .
+
+c4s-inf-m:hasCache a owl:ObjectProperty ;
+	rdfs:comment "The Cache size of a Compute resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has Cache"^^xsd:string ;
+	rdfs:range measure:StorageRange .
+
+c4s-inf-m:capacity a owl:ObjectProperty ;
+	rdfs:comment "The capacity of a Storage resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:StorageResource ;
+	rdfs:label "capacity"^^xsd:string ;
+	rdfs:range measure:StorageRange .
+
+measure:hasMinComputingValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the minimum value for a Computing Range"^^xsd:string ;
+	rdfs:domain measure:ComputingRange ;
+	rdfs:label "has Min Computing Value"^^xsd:string ;
+	rdfs:range measure:Computing_Unit .
+
+c4s-inf-m:Computational_Component a owl:Class ;
+	rdfs:comment "A Hardware Component that is responsible for the information processing."^^xsd:string ;
+	rdfs:label "Computational Component"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Hardware_Component .
+
+_:node16prsp4ctx8 a owl:Restriction ;
+	owl:allValuesFrom c4s-inf-m:Processing ;
+	owl:onProperty essential-metamodel:realisation_of_technology_capability .
+
+c4s-inf-m:Computational_Component rdfs:subClassOf _:node16prsp4ctx8 .
+
+paas-m:getAppStatus a paas-m:OperationType ;
+	dcterms:description "Get status of the specified application version"^^xsd:string ;
+	dcterms:title "Get Application Status"^^xsd:string ;
+	paas-m:hasOperationCommand "getAppStatus(in appID : unsigned long long, in version : String) :: AppStatus"^^xsd:string .
+
+paas-m:Channel a owl:Class ;
+	rdfs:comment "A way to communicate with the cloud PaaS Offering in order to create new applications, deploy an application, start an application, access the database etc."^^xsd:string ;
+	rdfs:label "Channel"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+_:node16prsp4ctx9 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:supportOperation .
+
+paas-m:Channel rdfs:subClassOf _:node16prsp4ctx9 .
+
+measure:hasNumericValue a owl:DatatypeProperty ;
+	rdfs:comment "Associates a Numeric Range with a Numeric value."^^xsd:string ;
+	rdfs:domain measure:NumericRange ;
+	rdfs:label "has numeric value"^^xsd:string ;
+	rdfs:range xsd:float .
+
+paas-m:deploy a paas-m:OperationType ;
+	dcterms:description "Deploy the specified application version"^^xsd:string ;
+	dcterms:title "Deploy"^^xsd:string ;
+	paas-m:hasOperationCommand "deploy(in appID : unsigned long long, in version : String) :: ApplicationSpace"^^xsd:string .
+
+measure:MegaHertz a owl:Class ;
+	rdfs:comment "A computing unit measured in Mega Hertz."^^xsd:string ;
+	rdfs:label "Mega Hertz"^^xsd:string ;
+	rdfs:subClassOf measure:Computing_Unit .
+
+paas-m:API a owl:Class ;
+	rdfs:comment "A contact that defines how a developer will write his code in order to interact with the PaaS offering."^^xsd:string ;
+	rdfs:label "API"^^xsd:string ;
+	rdfs:subClassOf paas-m:Channel .
+
+foaf:homepage rdfs:domain foaf:Agent .
+
+c4s-inf-m:NetworkResource a owl:Class ;
+	rdfs:comment "A Network hardware category that can be assigned to a Communicational Component which has a specific bandwidth."^^xsd:string ;
+	rdfs:label "Network Resource"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Network .
+
+c4s-inf-m:security a c4s-inf-m:Software_Category ;
+	dcterms:description "Enhance the security"^^xsd:string .
+
+paas-m:hostsApplication a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with an Application that it hosts."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "hosts Application"^^xsd:string ;
+	rdfs:range essential-metamodel:Application .
+
+measure:hasMaxComputingValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the maximum value for a Computing Range"^^xsd:string ;
+	rdfs:domain measure:ComputingRange ;
+	rdfs:label "has Max Computing Value"^^xsd:string ;
+	rdfs:range measure:Computing_Unit .
+
+measure:MegaByte_Per_Second a owl:Class ;
+	rdfs:comment "A Networking unit measured in MegaByte per Second."^^xsd:string ;
+	rdfs:label "MegaByte per Second"^^xsd:string ;
+	rdfs:subClassOf measure:Networking_Unit .
+
+measure:TeraByte_Per_Second a owl:Class ;
+	rdfs:comment "A Networking unit measured in TeraByte per Second."^^xsd:string ;
+	rdfs:label "TeraByte per Second"^^xsd:string ;
+	rdfs:subClassOf measure:Networking_Unit .
+
+c4s-inf-m:latency a owl:ObjectProperty ;
+	rdfs:comment "The latency of the Network resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:NetworkResource ;
+	rdfs:label "latency"^^xsd:string ;
+	rdfs:range measure:TimeRange .
+
+paas-m:Antarctica a owl:Thing .
+
+paas-m:getAppVersions a paas-m:OperationType ;
+	dcterms:description "Returns a list of application versions found in the PaaS for a specific application"^^xsd:string ;
+	dcterms:title "Get Application Versions"^^xsd:string ;
+	paas-m:hasOperationCommand "getAppVersions(in appID : unsigned long long) :: sequence of VersionedApplication"^^xsd:string .
+
+measure:hasMinNumericValue a owl:DatatypeProperty ;
+	rdfs:comment "Defines the minimum value for a Numeric Range"^^xsd:string ;
+	rdfs:domain measure:NumericRange ;
+	rdfs:label "has Min Numeric Value"^^xsd:string ;
+	rdfs:range xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/state-model-base> a owl:Ontology ;
+	owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/Heroku> , <http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees> , <http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift> , <http://www.cloud4soa.eu/v0.1/paasInstances/CumuLogic> , <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard> , <http://www.cloud4soa.eu/v0.1/appinstances/BSCW> , <http://www.cloud4soa.eu/v0.1/appinstances> , <http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry> , <http://www.enterprise-architecture.org/essential-metamodel.owl> , <http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl> , <http://www.cloud4soa.eu/v0.1/paasInstances/MuleiON> , <http://www.cloud4soa.eu/v0.1/paasInstances/AppHarbor> , <http://www.cloud4soa.eu/v0.1/paasInstances/Azure> , <http://www.cloud4soa.eu/v0.1/paasInstances/Playapps> , <http://xmlns.com/foaf/0.1/> , <http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine> , <http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk> , <http://purl.org/dc/dcmitype/> , <http://purl.org/dc/elements/1.1/> , <http://purl.org/dc/terms/> , <http://purl.org/dc/dcam/> ;
+	owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+paas-m:Africa a owl:Thing .
+
+paas-m:Eurasia a owl:Thing .
+
+c4s-app-m:fileName a owl:DatatypeProperty ;
+	rdfs:comment "The file name of the Applciation archive."^^xsd:string ;
+	rdfs:domain c4s-app-m:ApplicationArchive ;
+	rdfs:label "file Name"^^xsd:string ;
+	rdfs:range xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+c4s-app-m:application_code a owl:DatatypeProperty ;
+	rdfs:comment "The code of the applciation"^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "Application code"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-app-m:extensionName a owl:DatatypeProperty ;
+	rdfs:comment "The file extension of the Application Archive (e.g. war)."^^xsd:string ;
+	rdfs:domain c4s-app-m:ApplicationArchive ;
+	rdfs:label "extension Name"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:web_server a c4s-inf-m:Software_Category ;
+	dcterms:description "Host applications"^^xsd:string .
+
+other:Python a other:ProgrammingLanguage ;
+	dcterms:title "Python"^^xsd:string .
+
+paas-m:checkAppAvailability a paas-m:OperationType ;
+	dcterms:description "Checks whether the specified application name is available"^^xsd:string ;
+	dcterms:title "Check Application Availability"^^xsd:string ;
+	paas-m:hasOperationCommand "checkAppAvailability(in appName : String) :: Boolean"^^xsd:string .
+
+measure:GigaByte a owl:Class ;
+	rdfs:comment "A Storage unit measured in GigaBytes."^^xsd:string ;
+	rdfs:label "GigaByte"^^xsd:string ;
+	rdfs:subClassOf measure:Storage_Unit .
+
+c4s-ent-m:link a owl:DatatypeProperty ;
+	rdfs:comment "The link of a document"^^xsd:string ;
+	rdfs:domain foaf:Document ;
+	rdfs:label "link"^^xsd:string ;
+	rdfs:range xsd:anyURI .
+
+c4s-ent-m:SoftwareProvider a owl:Class ;
+	rdfs:comment "A business that offer Software that can run in the cloud. Cloud Software providers sell the usage of their Software following different business and pricing models. "^^xsd:string ;
+	rdfs:label "Software Provider"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Supplier .
+
+_:node16prsp4ctx10 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty c4s-ent-m:providesSoftwareComponent .
+
+c4s-ent-m:SoftwareProvider rdfs:subClassOf _:node16prsp4ctx10 .
+
+measure:Time_Unit a owl:Class ;
+	rdfs:comment "A class representing a Time unit that can measure e.g. the latency of a netwrork resource."^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementUnit .
+
+c4s-inf-m:Hardware_Component a owl:Class ;
+	rdfs:comment "This class is main part of the Infrastructure layer and represents a hardware component. The characteristics of the component are specified through the hardware category."^^xsd:string ;
+	rdfs:label "Hardware Component"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Technology_Component .
+
+c4s-app-m:ApplicationArchive a owl:Class ;
+	rdfs:comment "A collection of files used to deploy the appliation on the cloud platform."^^xsd:string ;
+	rdfs:label "Application Archive"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Application_Physical .
+
+paas-m:Rating a owl:Class ;
+	rdfs:comment "Evaluation and comments provided by users of the PaaS Offering."^^xsd:string ;
+	rdfs:label "Rating"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+c4s-inf-m:Resource a owl:Class ;
+	rdfs:comment "Describe a generic Hardware Category resource type."^^xsd:string ;
+	rdfs:label "Resource"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Hardware_Category .
+
+measure:MeasurementRange a owl:Class ;
+	rdfs:comment "The upper class of the Measurement Ranges."^^xsd:string ;
+	rdfs:label "Measurement range"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Utilities .
+
+c4s-inf-m:Processing a owl:Class ;
+	rdfs:comment "A generic Hardware Category that can be assigned to a Computational Component."^^xsd:string ;
+	rdfs:label "Processing"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Resource .
+
+paas-m:Operation a owl:Class ;
+	rdfs:comment "An action (e.g. deploy an application) supported by a communication Channel offered by a Paas Offering. "^^xsd:string ;
+	rdfs:label "Operation"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+_:node16prsp4ctx11 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:throwException .
+
+paas-m:Operation rdfs:subClassOf _:node16prsp4ctx11 .
+
+_:node16prsp4ctx12 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:requireParameter .
+
+paas-m:Operation rdfs:subClassOf _:node16prsp4ctx12 .
+
+measure:Second a owl:Class ;
+	rdfs:comment "A Time unit measured in Second."^^xsd:string ;
+	rdfs:label "Second"^^xsd:string ;
+	rdfs:subClassOf measure:Time_Unit .
+
+c4s-inf-m:Communicational_Component a owl:Class ;
+	rdfs:comment "A Hardware Component that is responsible for the communication (e.g. a network card)."^^xsd:string ;
+	rdfs:label "Communicational Component"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Hardware_Component .
+
+dcterms:title a owl:DatatypeProperty ;
+	rdfs:comment "Name"^^xsd:string ;
+	rdfs:domain other:ProgrammingLanguage , c4s-app-m:ApplicationArchive , essential-metamodel:Application , c4s-inf-m:Software_Category , c4s-inf-m:Resource , c4s-inf-m:Hardware_Component , essential-metamodel:Software_Component , essential-metamodel:Supplier , paas-m:Channel , paas-m:OperationType , paas-m:Exception , paas-m:PaaSOffering , paas-m:Parameter , paas-m:PricingPolicy , paas-m:Operation ;
+	rdfs:range xsd:string .
+
+paas-m:relatedHardwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates a Pricing Policy with the Hardware Component it is related."^^xsd:string ;
+	rdfs:domain paas-m:PricingPolicy ;
+	rdfs:label "related Hardware Component"^^xsd:string ;
+	rdfs:range c4s-inf-m:Resource , c4s-inf-m:Hardware_Component .
+
+c4s-inf-m:Compute a owl:Class ;
+	rdfs:comment "A Processing hardware category that can be assigned to a Computational Components (e.g. a virtual machine)."^^xsd:string ;
+	rdfs:label "Compute"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Processing .
+
+paas-m:CLI a owl:Class ;
+	rdfs:comment "A command line interface that enables the user to interact  (e.g deploy an application, stop an application) with the cloud PaaS Offering through commands."^^xsd:string ;
+	rdfs:label "CLI"^^xsd:string ;
+	rdfs:subClassOf paas-m:Channel .
+
+paas-m:hasCondition a owl:DatatypeProperty ;
+	rdfs:comment "The condition that must be satisfied in order this Exception to be thrown."^^xsd:string ;
+	rdfs:domain paas-m:Exception ;
+	rdfs:label "has Condition"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:createEnvironment a paas-m:OperationType ;
+	dcterms:description "Create a working environment, given the appropriate information set"^^xsd:string ;
+	dcterms:title "Create Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "createEnvironment(in env : Environment) :: Environment"^^xsd:string .
+
+c4s-inf-m:Storage a owl:Class ;
+	rdfs:comment "A generic Hardware Category that can be assigned to a Storage Component."^^xsd:string ;
+	rdfs:label "Storage"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Resource .
+
+c4s-ent-m:hasUser a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Provider with a PaaS Usser in order to have access to the Cloud4SOA system."^^xsd:string ;
+	rdfs:domain c4s-ent-m:PaaSProvider ;
+	rdfs:label "has User"^^xsd:string ;
+	rdfs:range user-m:PaaSUser .
+
+<http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> a other:ProgrammingLanguage ;
+	dcterms:hasVersion "1.9.2"^^xsd:string ;
+	dcterms:title "Ruby 1.9.2"^^xsd:string .
+
+paas-m:updateEnvironment a paas-m:OperationType ;
+	dcterms:description "Update environment details"^^xsd:string ;
+	dcterms:title "Update Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "updateEnvironment(in env : Environment) :: Environment"^^xsd:string .
+
+c4s-app-m:requiresSoftwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Application with the Software Components it required for its execution."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "requires Software Component"^^xsd:string ;
+	rdfs:range essential-metamodel:Software_Component .
+
+paas-m:deleteApplication a paas-m:OperationType ;
+	dcterms:description "Deletes application"^^xsd:string ;
+	dcterms:title "Delete Application"^^xsd:string ;
+	paas-m:hasOperationCommand "deleteApplication(in appID : unsigned long long) :: Boolean"^^xsd:string .
+
+paas-m:communicateThrough a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with the communication Channels it support."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "communicate through"^^xsd:string ;
+	rdfs:range paas-m:Channel .
+
+measure:hasTimeValue a owl:ObjectProperty ;
+	rdfs:comment "Associates a Time Range with a Time value."^^xsd:string ;
+	rdfs:domain measure:TimeRange ;
+	rdfs:label "has time value"^^xsd:string ;
+	rdfs:range measure:Time_Unit .
+
+c4s-app-m:cause a owl:DatatypeProperty ;
+	rdfs:comment "The cause that describe why the application is stopped."^^xsd:string ;
+	rdfs:domain c4s-app-m:Application_Stopped ;
+	rdfs:label "cause"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:hasSlaId a owl:DatatypeProperty ;
+	rdfs:comment "Correlates the PaaS Offering with the corresponding service-level-agreement."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "has SLA Id"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-ent-m:providePaaS a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Provider with the PaaSOfferings it provides."^^xsd:string ;
+	rdfs:domain c4s-ent-m:PaaSProvider ;
+	rdfs:label "provide PaaS"^^xsd:string ;
+	rdfs:range paas-m:PaaSOffering .
+
+paas-m:providedByPaaSProvider a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaSOffering with the PaaS Provider that provides it."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "provided By PaaS Provider"^^xsd:string ;
+	rdfs:range c4s-ent-m:PaaSProvider ;
+	owl:inverseOf c4s-ent-m:providePaaS .
+
+paas-m:NorthAmerica a owl:Thing .
+
+paas-m:getAppEnvironments a paas-m:OperationType ;
+	dcterms:description "Get all environment information about all versions of the application with the given ID"^^xsd:string ;
+	dcterms:title "Get Application Environments"^^xsd:string ;
+	paas-m:hasOperationCommand "getAppEnvironments(in appID : unsigned long long) :: sequence of Environment"^^xsd:string .
+
+measure:Storage_Unit a owl:Class ;
+	rdfs:comment "A class representing a Storage unit that can measure e.g. the capacity of a storage component."^^xsd:string ;
+	rdfs:label "Storage Unit"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementUnit .
+
+paas-m:requireParameter a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Operation with the Parameters it requires for its excecution."^^xsd:string ;
+	rdfs:domain paas-m:Operation ;
+	rdfs:label "require Parameter"^^xsd:string ;
+	rdfs:range paas-m:Parameter .
+
+c4s-app-m:Application_Uploaded a owl:Class ;
+	rdfs:comment "Uploaded status means that the application is uploaded and is waiting for deploying."^^xsd:string ;
+	rdfs:label "Application Uploaded"^^xsd:string ;
+	rdfs:subClassOf c4s-app-m:Application_Status .
+
+c4s-app-m:releatedApplicationArchive a owl:ObjectProperty ;
+	rdfs:comment "Relates an Application with its Application Archive."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "releatedApplicationArchive"^^xsd:string ;
+	rdfs:range c4s-app-m:ApplicationArchive .
+
+paas-m:deteleApplication a paas-m:OperationType ;
+	dcterms:title "Delete Application"^^xsd:string ;
+	paas-m:hasOperationCommand "deleteApplication(in appID : unsigned long long) :: Boolean"^^xsd:string .
+
+measure:hasMinStorageValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the minimum value for a Storage Range"^^xsd:string ;
+	rdfs:domain measure:StorageRange ;
+	rdfs:label "has Min Storage Value"^^xsd:string ;
+	rdfs:range measure:Storage_Unit .
+
+c4s-ent-m:IaaSProvider a owl:Class ;
+	rdfs:comment "A business that has set up a Cloud IaaS system which makes available more than one resources (e.g. virtual machines, storage etc.) IaaS providers sell the usage of their resources following different business and pricing models. "^^xsd:string ;
+	rdfs:label "IaaS Provider"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Supplier .
+
+_:node16prsp4ctx13 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty c4s-ent-m:providesHardwareComponent .
+
+c4s-ent-m:IaaSProvider rdfs:subClassOf _:node16prsp4ctx13 .
+
+c4s-app-m:hasStatus a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Application with an Application Status. The potential statuses are Uploaded, Deployed, Stopped."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "has Status"^^xsd:string ;
+	rdfs:range c4s-app-m:Application_Status .
+
+paas-m:offerHardwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with the Hardware Components it offers."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "offer Hardware Component"^^xsd:string ;
+	rdfs:range c4s-inf-m:Resource , c4s-inf-m:Hardware_Component .
+
+c4s-inf-m:Software_Category a owl:Class ;
+	rdfs:comment "This class is main part of the Infrastructure layer and describes the characteristics of a software component."^^xsd:string ;
+	rdfs:label "Software Category"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Application_Capability .
+
+c4s-inf-m:scheduling a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable the scheduling of tasks"^^xsd:string .
+
+c4s-inf-m:Hardware_Category a owl:Class ;
+	rdfs:comment "This class is main part of the Infrastructure layer and describes the characteristics of a hardware component."^^xsd:string ;
+	rdfs:label "Hardware Category"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Technology_Capability .
+
+other:ProgrammingLanguage a owl:Class ;
+	rdfs:comment "A language used to write cloud-based Applications (e.g. Java, PHP, Python etc.)."^^xsd:string ;
+	rdfs:label "Programming Language"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Utilities .
+
+measure:TimeRange a owl:Class ;
+	rdfs:comment "A class representing a time range that can measure e.g. the range of the  latency of a netwrork resource."^^xsd:string ;
+	rdfs:label "Time range"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementRange .
+
+measure:KiloByte a owl:Class ;
+	rdfs:comment "A Storage unit measured in KiloByte."^^xsd:string ;
+	rdfs:label "KiloByte"^^xsd:string ;
+	rdfs:subClassOf measure:Storage_Unit .
+
+measure:Minute a owl:Class ;
+	rdfs:comment "A Time unit measured in Minutes."^^xsd:string ;
+	rdfs:label "Minute"^^xsd:string ;
+	rdfs:subClassOf measure:Time_Unit .
+
+paas-m:hasAccessRights a owl:DatatypeProperty ;
+	rdfs:comment "The access rights that are related to this communication Channel."^^xsd:string ;
+	rdfs:domain paas-m:Channel ;
+	rdfs:label "has Access Rights"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:updateApplication a paas-m:OperationType ;
+	dcterms:description "Updates Application elements"^^xsd:string ;
+	dcterms:title "Update Application"^^xsd:string ;
+	paas-m:hasOperationCommand "updateApplication(in application : Application) :: Application"^^xsd:string .
+
+c4s-inf-m:hasHTTPRequests a owl:ObjectProperty ;
+	rdfs:comment "The number of HTTP Requests that can be simultaneously processed by a Box resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Box ;
+	rdfs:label "has HTTP Requests"^^xsd:string ;
+	rdfs:range measure:NumericRange .
+
+user-m:User a owl:Class ;
+	rdfs:comment "A Generic User concept that model a user of the Cloud4SOA system that has an account."^^xsd:string ;
+	rdfs:label "User"^^xsd:string ;
+	rdfs:subClassOf foaf:Person .
+
+_:node16prsp4ctx14 a owl:Restriction ;
+	owl:allValuesFrom user-m:Cloud4SoaAccount ;
+	owl:onProperty foaf:account .
+
+user-m:User rdfs:subClassOf _:node16prsp4ctx14 .
+
+c4s-app-m:hasOwner a owl:ObjectProperty ;
+	rdfs:comment "The main person who own the application"^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:range user-m:Developer .
+
+dcterms:description a owl:DatatypeProperty ;
+	rdfs:comment "The Resource descriptio"^^xsd:string ;
+	rdfs:domain c4s-inf-m:Software_Category , c4s-inf-m:Hardware_Category , c4s-inf-m:Hardware_Component , essential-metamodel:Software_Component , essential-metamodel:Supplier , paas-m:Channel , paas-m:Operation , paas-m:OperationType , paas-m:PricingPolicy , paas-m:Parameter , paas-m:Exception , paas-m:PaaSOffering ;
+	rdfs:range xsd:string .
+
+measure:hasmin-range-MeasurementUnit a rdf:Statement ;
+	rdf:object measure:MeasurementUnit ;
+	rdf:predicate rdfs:range ;
+	rdfs:label "hasmin-range-Measurement unit"^^xsd:string .
+
+paas-m:useInfrastructure a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with an IaaS Provider that offer the required infrastructure to the PaaS Offering."^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "use Infrastructure"^^xsd:string ;
+	rdfs:range c4s-ent-m:IaaSProvider .
+
+user-m:adminAccount a user-m:Cloud4SoaAccount ;
+	rdfs:label "admin account"^^xsd:string ;
+	foaf:accountName "admin"^^xsd:string .
+
+measure:has_value a owl:DatatypeProperty ;
+	rdfs:comment "Assosiates a value to the measurement unit."^^xsd:string ;
+	rdfs:domain measure:MeasurementUnit ;
+	rdfs:label "has Value"^^xsd:string ;
+	rdfs:range xsd:float .
+
+paas-m:hasOperationType a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Operation with an OperationType in order to classify the Operations that perform the same action."^^xsd:string ;
+	rdfs:domain paas-m:Operation ;
+	rdfs:label "has Operation Type"^^xsd:string ;
+	rdfs:range paas-m:OperationType .
+
+user-m:admin a user-m:Developer ;
+	rdfs:label "admin"^^xsd:string ;
+	foaf:holdsAccount user-m:adminAccount ;
+	foaf:name "administrator"^^xsd:string .
+
+paas-m:deleteAppVersion a paas-m:OperationType ;
+	dcterms:description "Deletes VersionedApplication of the application with the given ID and version string"^^xsd:string ;
+	dcterms:title "Delete Application Version"^^xsd:string ;
+	paas-m:hasOperationCommand "deleteAppVersion(in appID : unsigned long long, in version : String) :: Boolean"^^xsd:string .
+
+measure:Computing_Unit a owl:Class ;
+	rdfs:comment "A class representing a computing unit that can measure e.g. the CPU speed."^^xsd:string ;
+	rdfs:label "Computing Unit"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementUnit .
+
+paas-m:Exception a owl:Class ;
+	rdfs:comment "An error condition produced during the execution of an Operation."^^xsd:string ;
+	rdfs:label "Exception"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+measure:hasNumericStep a owl:DatatypeProperty ;
+	rdfs:comment "Defines a valid step offered by the PaaS provider for a Numeric range"^^xsd:string ;
+	rdfs:domain measure:NumericRange ;
+	rdfs:label "has Numeric Step"^^xsd:string ;
+	rdfs:range xsd:float .
+
+paas-m:Parameter a owl:Class ;
+	rdfs:comment "The information required by an Operation in order to be executed."^^xsd:string ;
+	rdfs:label "Parameter"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+user-m:Developer a owl:Class ;
+	rdfs:comment "Cloud-based application developer, i.e. a developer working for a company or a free-lancer who wants to deploy their application on a PaaS offering or wishes to migrate from one Cloud PaaS provider to another"^^xsd:string ;
+	rdfs:label "Developer"^^xsd:string ;
+	rdfs:subClassOf user-m:User .
+
+_:node16prsp4ctx15 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty user-m:has_application .
+
+user-m:Developer rdfs:subClassOf _:node16prsp4ctx15 .
+
+<http://www.cloud4soa.eu/v0.1/user-model> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+measure:MilliSecond a owl:Class ;
+	rdfs:comment "A Time unit measured in Millisecond."^^xsd:string ;
+	rdfs:label "MilliSecond"^^xsd:string ;
+	rdfs:subClassOf measure:Time_Unit .
+
+c4s-inf-m:supportErrorCorrectCode a owl:DatatypeProperty ;
+	rdfs:comment "This property indicate if the memory of the Compute component supports Error correction."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "Support Error Correct Code"^^xsd:string ;
+	rdfs:range xsd:boolean .
+
+c4s-ent-m:PaaSProvider a owl:Class ;
+	rdfs:comment "A business that has set up a Cloud PaaS system which makes available PaaS offerings. Cloud PaaS providers sell the usage of their PaaS offerings following different business and pricing models. "^^xsd:string ;
+	rdfs:label "PaaS Provider"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Supplier .
+
+_:node16prsp4ctx16 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty c4s-ent-m:providePaaS .
+
+c4s-ent-m:PaaSProvider rdfs:subClassOf _:node16prsp4ctx16 .
+
+_:node16prsp4ctx17 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty c4s-ent-m:hasUser .
+
+c4s-ent-m:PaaSProvider rdfs:subClassOf _:node16prsp4ctx17 .
+
+c4s-inf-m:Network a owl:Class ;
+	rdfs:comment "A generic Hardware Category that can be assigned to a Communicational Component."^^xsd:string ;
+	rdfs:label "Network"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Resource .
+
+user-m:Cloud4SoaAccount a owl:Class ;
+	rdfs:comment "An online account required inorder to have access to the Cloud4SOA system"^^xsd:string ;
+	rdfs:label "Cloud4SoaAccount"^^xsd:string ;
+	rdfs:subClassOf foaf:OnlineAccount .
+
+other:PHP_5_3_2 a other:ProgrammingLanguage ;
+	dcterms:hasVersion "5.3.2"^^xsd:string ;
+	dcterms:title "PHP 5.3.2"^^xsd:string .
+
+measure:GigaByte_Per_Second a owl:Class ;
+	rdfs:comment "A Networking unit measured in GigaByte per Second."^^xsd:string ;
+	rdfs:label "GigaByte per Second"^^xsd:string ;
+	rdfs:subClassOf measure:Networking_Unit .
+
+measure:hasMaxTimeValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the maximum value for a Timing Range"^^xsd:string ;
+	rdfs:domain measure:TimeRange ;
+	rdfs:label "has Max Time Value"^^xsd:string ;
+	rdfs:range measure:Time_Unit .
+
+paas-m:hasCommunicationProtocol a owl:DatatypeProperty ;
+	rdfs:comment "The protocol that is supported by this API (e.g. REST, WSDL)."^^xsd:string ;
+	rdfs:domain paas-m:API ;
+	rdfs:label "has Communication Protocol"^^xsd:string ;
+	rdfs:range xsd:string .
+
+other:Spring_Java a other:ProgrammingLanguage ;
+	dcterms:title "Spring Java"^^xsd:string .
+
+paas-m:attachEnvironment a paas-m:OperationType ;
+	dcterms:description "Associates the specified application version with the given environment"^^xsd:string ;
+	dcterms:title "Attach Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "attachEnvironment(in appID : unsigned long long, in version : String, in envID : unsigned long long) ::  Boolean"^^xsd:string .
+
+other:Java_1_6_0 a other:ProgrammingLanguage ;
+	dcterms:hasVersion "1.6"^^xsd:string ;
+	dcterms:title "Java 1.6"^^xsd:string .
+
+measure:MeasurementUnit a owl:Class ;
+	rdfs:comment "The upper class of the Measurement Untis."^^xsd:string ;
+	rdfs:label "Measurement Unit"^^xsd:string ;
+	rdfs:subClassOf essential-metamodel:Utilities .
+
+user-m:userOfPaaSProvider a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Used with the PaaS Provider it corresponds"^^xsd:string ;
+	rdfs:domain user-m:PaaSUser ;
+	rdfs:label "user Of PaaS Provider"^^xsd:string ;
+	rdfs:range c4s-ent-m:PaaSProvider ;
+	owl:inverseOf c4s-ent-m:hasUser .
+
+user-m:PaaSUser a owl:Class ;
+	rdfs:comment "A user related to a PaaS Provider who wants to register (or update) a PaaS Offering to the Cloud4SOA system."^^xsd:string ;
+	rdfs:label "PaaS User"^^xsd:string ;
+	rdfs:subClassOf user-m:User .
+
+<http://www.cloud4soa.eu/v0.1/application-domain> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+c4s-inf-m:Storage_Component a owl:Class ;
+	rdfs:comment "A Hardware Component that is responsible for the permanent storage of information."^^xsd:string ;
+	rdfs:label "Storage Component"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Hardware_Component .
+
+_:node16prsp4ctx18 a owl:Restriction ;
+	owl:allValuesFrom c4s-inf-m:StorageResource ;
+	owl:onProperty essential-metamodel:realisation_of_technology_capability .
+
+c4s-inf-m:Storage_Component rdfs:subClassOf _:node16prsp4ctx18 .
+
+paas-m:createAppVersion a paas-m:OperationType ;
+	dcterms:description "Creates an application version which refers to the given application"^^xsd:string ;
+	dcterms:title "Create Application Version"^^xsd:string ;
+	paas-m:hasOperationCommand "createAppVersion(in appVersion : VersionedApplication, in appID : unsigned long long) :: VersionedApplication"^^xsd:string .
+
+c4s-inf-m:hasMemory a owl:ObjectProperty ;
+	rdfs:comment "The Memory size of the Compute resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has Memory"^^xsd:string ;
+	rdfs:range measure:StorageRange .
+
+c4s-inf-m:hasArchitecture a owl:DatatypeProperty ;
+	rdfs:comment "The Bus Architecture 32/64 bit of a Compute resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has Architecture"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:dataBase a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable the permanent storage of data"^^xsd:string .
+
+paas-m:throwException a owl:ObjectProperty ;
+	rdfs:comment "An Exception thrown during the execution of this Operation because of an error condition."^^xsd:string ;
+	rdfs:domain paas-m:Operation ;
+	rdfs:label "throw Exception"^^xsd:string ;
+	rdfs:range paas-m:Exception .
+
+paas-m:hasComment a owl:DatatypeProperty ;
+	rdfs:comment "The comment that a user has made for a PaaSOffering."^^xsd:string ;
+	rdfs:domain paas-m:Rating ;
+	rdfs:label "has Comment"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-ent-m:providesHardwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates  an IaaS Provider with the Hardware Components it provides."^^xsd:string ;
+	rdfs:domain c4s-ent-m:IaaSProvider ;
+	rdfs:label "provides Hardware Component"^^xsd:string ;
+	rdfs:range c4s-inf-m:Hardware_Component .
+
+paas-m:validityPeriod a owl:DatatypeProperty ;
+	rdfs:comment "The validity period of the SLA."^^xsd:string ;
+	rdfs:domain paas-m:SLA ;
+	rdfs:label "validity Period"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:involvesDeveloper a owl:ObjectProperty ;
+	rdfs:comment "Correlates an SLA with a Developer that is involved in the SLA agreement. "^^xsd:string ;
+	rdfs:domain paas-m:SLA ;
+	rdfs:label "involves Developer"^^xsd:string ;
+	rdfs:range user-m:Developer .
+
+essential-metamodel:Supplier rdfs:subClassOf foaf:Organization .
+
+<http://www.cloud4soa.eu/v0.1/other#ASP.NET> a other:ProgrammingLanguage ;
+	dcterms:title "ASP.NET"^^xsd:string .
+
+paas-m:PricingPolicy a owl:Class ;
+	rdfs:comment "The way the pricing of the service is made and is related to the Hardware and Software components offered by the PaaS Offering"^^xsd:string ;
+	rdfs:label "Pricing Policy"^^xsd:string ;
+	rdfs:subClassOf paas-m:Platform_Layer .
+
+_:node16prsp4ctx19 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:relatedSoftware .
+
+paas-m:PricingPolicy rdfs:subClassOf _:node16prsp4ctx19 .
+
+_:node16prsp4ctx20 a owl:Restriction ;
+	owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onProperty paas-m:relatedHardwareComponent .
+
+paas-m:PricingPolicy rdfs:subClassOf _:node16prsp4ctx20 .
+
+measure:hasMaxStorageValue a owl:ObjectProperty ;
+	rdfs:comment "Defines the maximum value for a Storage Range"^^xsd:string ;
+	rdfs:domain measure:StorageRange ;
+	rdfs:label "has Max Storage Value"^^xsd:string ;
+	rdfs:range measure:Storage_Unit .
+
+measure:Flops a owl:Class ;
+	rdfs:comment "A computing unit measured in floating-point operations per second."^^xsd:string ;
+	rdfs:label "Flops"^^xsd:string ;
+	rdfs:subClassOf measure:Computing_Unit .
+
+paas-m:getRunningAppVersion a paas-m:OperationType ;
+	dcterms:description "Get all currently running application versions of the specified application in the specified environment."^^xsd:string ;
+	dcterms:title "Get Running Application Version"^^xsd:string ;
+	paas-m:hasOperationCommand "getRunningAppVersion(in appID : unsigned long long) :: VersionedApplication"^^xsd:string .
+
+measure:MegaByte a owl:Class ;
+	rdfs:comment "A Storage unit measured in MegaByte."^^xsd:string ;
+	rdfs:label "MegaByte"^^xsd:string ;
+	rdfs:subClassOf measure:Storage_Unit .
+
+c4s-inf-m:monitoring a c4s-inf-m:Software_Category ;
+	dcterms:description "Monitor the lifecycle of an application"^^xsd:string .
+
+c4s-app-m:digest a owl:DatatypeProperty ;
+	rdfs:comment "The Application digest like md5sum/SHA."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "digest"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-app-m:Application_Stopped a owl:Class ;
+	rdfs:comment "Stopped status means that a deployed application is stopped for a specific cause."^^xsd:string ;
+	rdfs:label "Application Stopped"^^xsd:string ;
+	rdfs:subClassOf c4s-app-m:Application_Status .
+
+c4s-app-m:deploying_location a owl:ObjectProperty ;
+	rdfs:comment "Correlates a deployed Application with the PaaS Offering where  it is deployed."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application_Deployment ;
+	rdfs:label "deploying location"^^xsd:string ;
+	rdfs:range paas-m:PaaSOffering .
+
+paas-m:SouthAmerica a owl:Thing .
+
+c4s-app-m:license_type a owl:DatatypeProperty ;
+	rdfs:comment "Defines the license type of a Software Component"^^xsd:string ;
+	rdfs:domain essential-metamodel:Application , essential-metamodel:Software_Component ;
+	rdfs:label "license type"^^xsd:string ;
+	rdfs:range xsd:string .
+
+paas-m:hasURL a owl:DatatypeProperty ;
+	rdfs:comment "The URL to access a CLI or PaaSOffering or WebInterface."^^xsd:string ;
+	rdfs:domain paas-m:CLI , paas-m:PaaSOffering , paas-m:WebInterface ;
+	rdfs:label "has URL"^^xsd:string ;
+	rdfs:range xsd:string .
+
+measure:hasTimeStep a owl:ObjectProperty ;
+	rdfs:comment "Defines a valid step offered by the PaaS provider for a Time range"^^xsd:string ;
+	rdfs:domain measure:TimeRange ;
+	rdfs:label "has time step"^^xsd:string ;
+	rdfs:range measure:Time_Unit .
+
+paas-m:createApplication a paas-m:OperationType ;
+	dcterms:description "Creates an empty application"^^xsd:string ;
+	dcterms:title "Create Application"^^xsd:string ;
+	paas-m:hasOperationCommand "createApplication(in application : Application) :: Application"^^xsd:string .
+
+paas-m:Australia a owl:Thing .
+
+measure:StorageRange a owl:Class ;
+	rdfs:comment "A class representing a storage range that can measure e.g. the range of the capacity of a storage component."^^xsd:string ;
+	rdfs:label "Storage range"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementRange .
+
+c4s-inf-m:load_balancer a c4s-inf-m:Software_Category ;
+	dcterms:description "distribute workload across multiple resources"^^xsd:string .
+
+c4s-inf-m:code a owl:DatatypeProperty ;
+	rdfs:comment "The code of this Resource."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Resource ;
+	rdfs:label "code"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:isRequired a owl:DatatypeProperty ;
+	rdfs:comment """In order to deploy an application some software components are
+required and some other are optional (they are needed under specific
+conditions). This attribute defines if software component is required, or not, for the deployment and execution of an application."""^^xsd:string ;
+	rdfs:domain essential-metamodel:Software_Component ;
+	rdfs:label "Is Required"^^xsd:string ;
+	rdfs:range xsd:boolean .
+
+other:Play_Framework a other:ProgrammingLanguage ;
+	dcterms:title "Play Framework"^^xsd:string .
+
+measure:Networking_Unit a owl:Class ;
+	rdfs:comment "A class representing a Networking unit that can measure e.g. the network bandwidth."^^xsd:string ;
+	rdfs:label "Networking Unit"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementUnit .
+
+user-m:has_application a owl:ObjectProperty ;
+	rdfs:comment "Correlates a Developer with an Application which will be deployed and executed by the means of the negotiated PaaS offerings (platform services)."^^xsd:string ;
+	rdfs:domain user-m:Developer ;
+	rdfs:label "has application"^^xsd:string ;
+	rdfs:range essential-metamodel:Application .
+
+paas-m:obligation a owl:DatatypeProperty ;
+	rdfs:comment "The obligation of the SLA that is undertaken by the PaaS Offering."^^xsd:string ;
+	rdfs:domain paas-m:SLA ;
+	rdfs:label "obligation"^^xsd:string ;
+	rdfs:range xsd:string .
+
+dcterms:hasVersion rdfs:domain other:ProgrammingLanguage , essential-metamodel:Application , c4s-inf-m:Hardware_Component , c4s-inf-m:Resource , essential-metamodel:Software_Component , paas-m:Channel ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:hasState a owl:DatatypeProperty ;
+	rdfs:comment "The State of the Compoute resource (e.g.  active inactive, suspended)."^^xsd:string ;
+	rdfs:domain c4s-inf-m:Compute ;
+	rdfs:label "has State"^^xsd:string ;
+	rdfs:range xsd:string .
+
+c4s-inf-m:related_sw_category a owl:ObjectProperty ;
+	rdfs:comment "Is a property used to correlate a Software_component with a Software_Category."^^xsd:string ;
+	rdfs:domain essential-metamodel:Software_Component ;
+	rdfs:label "related software category"^^xsd:string ;
+	rdfs:range c4s-inf-m:Software_Category .
+
+paas-m:start a paas-m:OperationType ;
+	dcterms:description "Start a non-started instance of the specified application version"^^xsd:string ;
+	dcterms:title "Start"^^xsd:string ;
+	paas-m:hasOperationCommand "start(in appID : unsigned long long, in version : String) :: InstanceStatus"^^xsd:string .
+
+c4s-inf-m:Box a owl:Class ;
+	rdfs:comment "A Processing hardware category that can be assigned to a Computational Components which can respond to HTTP requests simultaneously."^^xsd:string ;
+	rdfs:label "Box"^^xsd:string ;
+	rdfs:subClassOf c4s-inf-m:Processing .
+
+paas-m:exportAppVersion a paas-m:OperationType ;
+	dcterms:description "Export application version executable file plus any associated external data, which was defined in the Environment object"^^xsd:string ;
+	dcterms:title "Export Application Version"^^xsd:string ;
+	paas-m:hasOperationCommand "exportAppVersion(in appID : unsigned long long, in version : String) :: ExportObject"^^xsd:string .
+
+c4s-app-m:hasDeployment a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Application with an Application Deployment of the specific application."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "has Deployment"^^xsd:string ;
+	rdfs:range essential-metamodel:Application_Deployment .
+
+measure:hasStorageValue a owl:ObjectProperty ;
+	rdfs:comment "Associates a Storage Range with a Storage value."^^xsd:string ;
+	rdfs:domain measure:StorageRange ;
+	rdfs:label "has Storage Value"^^xsd:string ;
+	rdfs:range measure:Storage_Unit .
+
+paas-m:deployToEnv a paas-m:OperationType ;
+	dcterms:description "Deploy the specified application version into the specified environment"^^xsd:string ;
+	dcterms:title "Deploy to Environment"^^xsd:string ;
+	paas-m:hasOperationCommand "deployToEnv(in appID : unsigned long long, in version : String, in envID : unsigned long long) :: ApplicationSpace"^^xsd:string .
+
+paas-m:offerSoftware a owl:ObjectProperty ;
+	rdfs:comment "Correlates a PaaS Offering with the Software Component it offers"^^xsd:string ;
+	rdfs:domain paas-m:PaaSOffering ;
+	rdfs:label "offer Software"^^xsd:string ;
+	rdfs:range essential-metamodel:Software_Component .
+
+measure:ComputingRange a owl:Class ;
+	rdfs:comment "A class representing a computing range that can measure e.g. the range of the CPU speed."^^xsd:string ;
+	rdfs:label "Computing range"^^xsd:string ;
+	rdfs:subClassOf measure:MeasurementRange .
+
+c4s-app-m:requiresHardwareComponent a owl:ObjectProperty ;
+	rdfs:comment "Correlates an Application with the Hardware Components it requires during its excecution."^^xsd:string ;
+	rdfs:domain essential-metamodel:Application ;
+	rdfs:label "requires Hardware Component"^^xsd:string ;
+	rdfs:range c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain> owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+paas-m:involvesPaaSOffering a owl:ObjectProperty ;
+	rdfs:comment "Correlates an SLA with a PaaS Offering that is involved in the SLA agreement. "^^xsd:string ;
+	rdfs:domain paas-m:SLA ;
+	rdfs:label "involves PaaS Offering"^^xsd:string ;
+	rdfs:range paas-m:PaaSOffering .
+
+user-m:PaaSUser <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.user.PaaSUser" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/611f2d51-cf60-4051-97ce-5de900ea5cb6> a user-m:PaaSUser ;
+	foaf:family_name "GoogleAppEngine" ;
+	foaf:surname "GoogleAppEngine" ;
+	foaf:geekcode "GoogleAppEngine" ;
+	foaf:firstName "GoogleAppEngine" .
+
+user-m:Cloud4SoaAccount <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.user.Cloud4SoaAccount" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/d1b32dc9-a3b9-4f3f-8e4e-310e64ab462c> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/611f2d51-cf60-4051-97ce-5de900ea5cb6> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/d1b32dc9-a3b9-4f3f-8e4e-310e64ab462c> .
+
+c4s-ent-m:PaaSProvider <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.ent.PaaSProvider" .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/96bdc964-3125-458f-b1f1-7215df8d1127> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/611f2d51-cf60-4051-97ce-5de900ea5cb6> ;
+	dcterms:title "AppEngine" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/611f2d51-cf60-4051-97ce-5de900ea5cb6> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/96bdc964-3125-458f-b1f1-7215df8d1127> .
+
+paas-m:PaaSOffering <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.paas.PaaSOffering" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> a paas-m:PaaSOffering .
+
+paas-m:API <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.paas.API" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> a paas-m:API .
+
+paas-m:Operation <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.paas.Operation" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/811bfeb3-bada-4341-a830-c59fb3fcc593> a paas-m:Operation .
+
+paas-m:OperationType <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.paas.OperationType" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/47d876d9-1ad4-43ea-99ac-46c12fafbc49> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/811bfeb3-bada-4341-a830-c59fb3fcc593> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/47d876d9-1ad4-43ea-99ac-46c12fafbc49> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "checkAppAvailability(in appName : String) :: Boolean" ;
+	dcterms:title "Check Application Availability" ;
+	dcterms:description "Checks whether the specified application name is available" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/811bfeb3-bada-4341-a830-c59fb3fcc593> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f12bee4-bfdb-4e3d-81f4-150aa7cdb897> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/dfa62bb2-1257-4dad-8dc7-d47fbb3685e9> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f12bee4-bfdb-4e3d-81f4-150aa7cdb897> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/dfa62bb2-1257-4dad-8dc7-d47fbb3685e9> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "createAppVersion(in appVersion : VersionedApplication, in appID : unsigned long long) :: VersionedApplication" ;
+	dcterms:title "Create Application Version" ;
+	dcterms:description "Creates an application version which refers to the given application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f12bee4-bfdb-4e3d-81f4-150aa7cdb897> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/d9f75a15-45e7-4d26-961f-8f120feab6b6> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d3db096e-8b4f-448a-ac74-6bf457848173> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/d9f75a15-45e7-4d26-961f-8f120feab6b6> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d3db096e-8b4f-448a-ac74-6bf457848173> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "createApplication(in application : Application) :: Application" ;
+	dcterms:title "Create Application" ;
+	dcterms:description "Creates an empty application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/d9f75a15-45e7-4d26-961f-8f120feab6b6> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/df38d2cb-cea4-49c7-9cff-376c45168d28> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3779b570-c8a5-4b6f-b0e7-9aaab71a3ff8> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/df38d2cb-cea4-49c7-9cff-376c45168d28> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3779b570-c8a5-4b6f-b0e7-9aaab71a3ff8> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "deleteApplication(in appID : unsigned long long) :: Boolean" ;
+	dcterms:title "Delete Application" ;
+	dcterms:description "Deletes application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/df38d2cb-cea4-49c7-9cff-376c45168d28> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/a0b72980-afec-4152-a979-237f5ab4e17f> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/ccef2980-9f7e-4ef7-ac77-766395c70922> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/a0b72980-afec-4152-a979-237f5ab4e17f> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/ccef2980-9f7e-4ef7-ac77-766395c70922> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "getAppStatistics(in appID : unsigned long long, in version : String) :: Statistics" ;
+	dcterms:title "Get Application Statistics" ;
+	dcterms:description "Get statistics of the specified application versions" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/a0b72980-afec-4152-a979-237f5ab4e17f> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/ff11b6b2-2fd9-4c74-ab75-40c8f7b56717> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/17eab329-3ca0-4fd6-8a37-eb4aed7abf1c> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/ff11b6b2-2fd9-4c74-ab75-40c8f7b56717> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/17eab329-3ca0-4fd6-8a37-eb4aed7abf1c> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "getAppStatus(in appID : unsigned long long, in version : String) :: AppStatus" ;
+	dcterms:title "Get Application Status" ;
+	dcterms:description "Get status of the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/ff11b6b2-2fd9-4c74-ab75-40c8f7b56717> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bcccb136-8057-485b-bb2c-4523e2056e7a> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/ca2cd714-4e6a-4352-84aa-45e377c1b0a3> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bcccb136-8057-485b-bb2c-4523e2056e7a> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/ca2cd714-4e6a-4352-84aa-45e377c1b0a3> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "getRunningStatus(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Get Running Status" ;
+	dcterms:description "Get the status of the running instance that corresponds to the deployed application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/bcccb136-8057-485b-bb2c-4523e2056e7a> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/7319e6ef-20d0-4f2d-af5e-8da8d772f247> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/6813cedb-1088-411c-aee6-1efb4ba926ca> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/7319e6ef-20d0-4f2d-af5e-8da8d772f247> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/6813cedb-1088-411c-aee6-1efb4ba926ca> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "getSummaryStatistics(in appID : unsigned long long, in envID : unsigned long long) :: Statistics" ;
+	dcterms:title "Get Summary Statistics" ;
+	dcterms:description "Get summary statistics of all running (prior and current) application versions of the given application in the given environment" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/7319e6ef-20d0-4f2d-af5e-8da8d772f247> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/8f7c99f3-99fd-405f-a033-f72b2b47a20e> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/86f6de20-f0d5-4f8f-8e7a-e24e3b01cc0b> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/8f7c99f3-99fd-405f-a033-f72b2b47a20e> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/86f6de20-f0d5-4f8f-8e7a-e24e3b01cc0b> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "listApplications() :: sequence of Application" ;
+	dcterms:title "List Applications" ;
+	dcterms:description "It is used in order to return a list of all applications registered for a specific user a specific PaaS provider" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/8f7c99f3-99fd-405f-a033-f72b2b47a20e> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/90973bbd-106e-40e0-8ec3-4c4c664f6b09> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/4ab207da-a6ca-41e5-8d4d-83406611b638> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/90973bbd-106e-40e0-8ec3-4c4c664f6b09> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/4ab207da-a6ca-41e5-8d4d-83406611b638> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "undeploy(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Undeploy" ;
+	dcterms:description "Undeploy the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/90973bbd-106e-40e0-8ec3-4c4c664f6b09> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/2e24d8b5-c8cb-494c-996a-00913867ae1e> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d9322263-7602-4653-b5e2-b77d9bd1628c> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/2e24d8b5-c8cb-494c-996a-00913867ae1e> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d9322263-7602-4653-b5e2-b77d9bd1628c> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "updateApplication(in application : Application) :: Application" ;
+	dcterms:title "Update Application" ;
+	dcterms:description "Updates Application elements" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/2e24d8b5-c8cb-494c-996a-00913867ae1e> ;
+	dcterms:description "The Google AppEngine API" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:communicateThrough <http://www.cloud4soa.eu/v0.1/paas-model#API/5ff23ec5-22a5-4d5b-9ef0-ce432e742228> .
+
+c4s-inf-m:Hardware_Component <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.HardwareComponent" .
+
+c4s-inf-m:Hardware_Componente4e8c328-100a-4da2-9b3d-18570ecd6e5e a c4s-inf-m:Hardware_Component .
+
+c4s-inf-m:NetworkResource <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.NetworkResource" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#NetworkResource/c6f2f454-131f-49df-a7a9-7ce0f12d4281> a c4s-inf-m:NetworkResource ;
+	dcterms:title "googleNetwork" .
+
+c4s-inf-m:Hardware_Componente4e8c328-100a-4da2-9b3d-18570ecd6e5e essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#NetworkResource/c6f2f454-131f-49df-a7a9-7ce0f12d4281> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Componente4e8c328-100a-4da2-9b3d-18570ecd6e5e .
+
+c4s-inf-m:Hardware_Component312dfb27-6da1-4175-aa9c-6c4d3e442f50 a c4s-inf-m:Hardware_Component .
+
+c4s-inf-m:Compute <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.Compute" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/af5942d6-5506-457f-be13-8ee86aecef8a> a c4s-inf-m:Compute ;
+	dcterms:title "googleCompute" .
+
+c4s-inf-m:Hardware_Component312dfb27-6da1-4175-aa9c-6c4d3e442f50 essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/af5942d6-5506-457f-be13-8ee86aecef8a> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Component312dfb27-6da1-4175-aa9c-6c4d3e442f50 .
+
+c4s-inf-m:Hardware_Component1ee728fc-c01c-461a-b707-f66871f2804a a c4s-inf-m:Hardware_Component .
+
+c4s-inf-m:StorageResource <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.StorageResource" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/302cd552-0d58-4c76-a625-a4d6ce217ee5> a c4s-inf-m:StorageResource ;
+	dcterms:title "googleStorage" .
+
+c4s-inf-m:Hardware_Component1ee728fc-c01c-461a-b707-f66871f2804a essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/302cd552-0d58-4c76-a625-a4d6ce217ee5> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Component1ee728fc-c01c-461a-b707-f66871f2804a .
+
+essential-metamodel:Software_Component <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.SoftwareComponent" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/f3aceb70-8d82-4690-9c5e-59c7926e01d7> a essential-metamodel:Software_Component ;
+	dcterms:description "A specialized servlet framework, leveraging the Groovy  language, offers rapid small application development on the GAE/J platform" ;
+	dcterms:title "Gaelyk" ;
+	dcterms:hasVersion "" .
+
+c4s-inf-m:Software_Category <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.inf.SoftwareCategory" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/44c85ff7-db25-4e79-a3b8-996607172845> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/f3aceb70-8d82-4690-9c5e-59c7926e01d7> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/44c85ff7-db25-4e79-a3b8-996607172845> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/f3aceb70-8d82-4690-9c5e-59c7926e01d7> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/9f566efa-68ee-4d1d-adf2-63d80b351b23> a essential-metamodel:Software_Component ;
+	dcterms:description "The cutting edge JRuby community has quickly embraced the GAE platform with both standalone Gems and near-complete Rails support" ;
+	dcterms:title "JRuby" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/122c8b9f-f7de-4be6-a161-4c08d5a1e48c> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/9f566efa-68ee-4d1d-adf2-63d80b351b23> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/122c8b9f-f7de-4be6-a161-4c08d5a1e48c> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/9f566efa-68ee-4d1d-adf2-63d80b351b23> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ecfb3d5c-17e1-4860-9c1d-2279edf2f7d6> a essential-metamodel:Software_Component ;
+	dcterms:description "Struts 2 offers a widely-used and familiar framework to quickly take advantage of GAE/J web app hosting." ;
+	dcterms:title "Struts" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/098c0c3d-b581-4cdc-b53c-2a55ada0140c> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ecfb3d5c-17e1-4860-9c1d-2279edf2f7d6> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/098c0c3d-b581-4cdc-b53c-2a55ada0140c> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ecfb3d5c-17e1-4860-9c1d-2279edf2f7d6> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ffda82a1-e506-462d-87e0-b20ee3832e10> a essential-metamodel:Software_Component ;
+	dcterms:description "Ant build" ;
+	dcterms:title "google_Ant" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/f8d923a3-8399-4a61-b698-379b6ddd178f> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ffda82a1-e506-462d-87e0-b20ee3832e10> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/f8d923a3-8399-4a61-b698-379b6ddd178f> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ffda82a1-e506-462d-87e0-b20ee3832e10> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/876c47c2-0dd4-4aee-80f0-51839ff2956e> a essential-metamodel:Software_Component ;
+	dcterms:description "Maven is a software tool for project management and build automation" ;
+	dcterms:title "google_Maven" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b6940de7-8973-4c93-8b5c-316570b9e1be> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/876c47c2-0dd4-4aee-80f0-51839ff2956e> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b6940de7-8973-4c93-8b5c-316570b9e1be> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/876c47c2-0dd4-4aee-80f0-51839ff2956e> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3cbb4d66-583f-43a2-944d-d4d0c6720d4e> a essential-metamodel:Software_Component ;
+	dcterms:description "Grails is an open source web application framework which uses the Groovy programming language " ;
+	dcterms:title "grails" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/0d29c2dc-8ba7-40fd-bc19-c08242c2b705> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3cbb4d66-583f-43a2-944d-d4d0c6720d4e> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/0d29c2dc-8ba7-40fd-bc19-c08242c2b705> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3cbb4d66-583f-43a2-944d-d4d0c6720d4e> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d8b6d045-6a61-4dbd-81e8-579611c920ba> a essential-metamodel:Software_Component ;
+	dcterms:description "This popular web framework for the Java platform offers basic compatibility with GAE/J." ;
+	dcterms:title "wicket" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b1058be1-a642-4b3b-8622-e966b85babad> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d8b6d045-6a61-4dbd-81e8-579611c920ba> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b1058be1-a642-4b3b-8622-e966b85babad> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d8b6d045-6a61-4dbd-81e8-579611c920ba> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/b90139ed-ad91-4554-be7b-ab9c9c716d76> a essential-metamodel:Software_Component ;
+	dcterms:description "Autoscaling of resources" ;
+	dcterms:title "googleAutoScaling" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/2ebf5537-85e4-4330-86ef-07768088604b> a c4s-inf-m:Software_Category ;
+	dcterms:title "autoscaling" ;
+	dcterms:description "Enable the automatic scaling of the reserources when needed" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/b90139ed-ad91-4554-be7b-ab9c9c716d76> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/2ebf5537-85e4-4330-86ef-07768088604b> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/b90139ed-ad91-4554-be7b-ab9c9c716d76> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6a94eb5e-5d96-4634-b4d2-5edc2e888e21> a essential-metamodel:Software_Component ;
+	dcterms:description "GAE provides an API to use Google’s own authentication system" ;
+	dcterms:title "google_Authorisation" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/567c5ecc-1eb9-4e08-abb2-b0c405e75663> a c4s-inf-m:Software_Category ;
+	dcterms:title "security" ;
+	dcterms:description "Enhance the security" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6a94eb5e-5d96-4634-b4d2-5edc2e888e21> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/567c5ecc-1eb9-4e08-abb2-b0c405e75663> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6a94eb5e-5d96-4634-b4d2-5edc2e888e21> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/fb8bb650-21e0-4e9a-8ead-83dfa2333856> a essential-metamodel:Software_Component ;
+	dcterms:description "The Blobstore allows your app to serve data objects" ;
+	dcterms:title "google_BlobStore" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/aa13d57b-05db-4f1b-b0c0-3d53092bb0a0> a c4s-inf-m:Software_Category ;
+	dcterms:title "database" ;
+	dcterms:description "Enable the permanent storage of data" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/fb8bb650-21e0-4e9a-8ead-83dfa2333856> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/aa13d57b-05db-4f1b-b0c0-3d53092bb0a0> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/fb8bb650-21e0-4e9a-8ead-83dfa2333856> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/78e40497-9b2a-4b64-b7ba-a6beb998e768> a essential-metamodel:Software_Component ;
+	dcterms:description "The App Engine datastore is a schemaless object datastore, with a query engine and atomic transactions" ;
+	dcterms:title "google_DataStore" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/3b9f07db-7f56-466b-bf9f-e2ec3559a1e6> a c4s-inf-m:Software_Category ;
+	dcterms:title "database" ;
+	dcterms:description "Enable the permanent storage of data" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/78e40497-9b2a-4b64-b7ba-a6beb998e768> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/3b9f07db-7f56-466b-bf9f-e2ec3559a1e6> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/78e40497-9b2a-4b64-b7ba-a6beb998e768> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6f868cd9-a189-486e-a66b-a24f133322e7> a essential-metamodel:Software_Component ;
+	dcterms:description "GAE/J offers both a low level API as well as a JSR-107 JCache API to place objects in this simple key/value repository" ;
+	dcterms:title "google_Cache" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/cf63430b-1877-4c5a-89d1-a56616de1552> a c4s-inf-m:Software_Category ;
+	dcterms:title "performance" ;
+	dcterms:description "Improve the performance" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6f868cd9-a189-486e-a66b-a24f133322e7> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/cf63430b-1877-4c5a-89d1-a56616de1552> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/6f868cd9-a189-486e-a66b-a24f133322e7> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/c6dff0aa-1922-4fcd-ba8b-a5fc68773036> a essential-metamodel:Software_Component ;
+	dcterms:description "CRON Jobs execute on a scheduled recurrence." ;
+	dcterms:title "google_Cron" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/df37f151-8949-471c-813d-0f704cb8d190> a c4s-inf-m:Software_Category ;
+	dcterms:title "scheduling" ;
+	dcterms:description "Enable the scheduling of tasks" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/c6dff0aa-1922-4fcd-ba8b-a5fc68773036> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/df37f151-8949-471c-813d-0f704cb8d190> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/c6dff0aa-1922-4fcd-ba8b-a5fc68773036> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/e7f3051d-9368-4849-813c-2cfe52858e99> a essential-metamodel:Software_Component ;
+	dcterms:description "Activities that can be worked asynchronously are a fit for the Task Queue." ;
+	dcterms:title "google_TaskQueue" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/318b8e0a-7a56-4d67-97cb-665c8ede474c> a c4s-inf-m:Software_Category ;
+	dcterms:title "scheduling" ;
+	dcterms:description "Enable the scheduling of tasks" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/e7f3051d-9368-4849-813c-2cfe52858e99> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/318b8e0a-7a56-4d67-97cb-665c8ede474c> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/e7f3051d-9368-4849-813c-2cfe52858e99> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/28576988-4d8f-4d7d-b3a1-a3f6fd06076d> a essential-metamodel:Software_Component ;
+	dcterms:description "GAE/J provides the native ability to resize, rotate, flip, crop and enahance images on the fly." ;
+	dcterms:title "google_ImageManipulation" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/0500cb40-7a78-4c30-bfdb-65bebc00e24d> a c4s-inf-m:Software_Category ;
+	dcterms:title "multimedia" ;
+	dcterms:description "Enable multimedia manipulation" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/28576988-4d8f-4d7d-b3a1-a3f6fd06076d> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/0500cb40-7a78-4c30-bfdb-65bebc00e24d> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/28576988-4d8f-4d7d-b3a1-a3f6fd06076d> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3d73941e-8356-407a-95bb-d77ba7da0da1> a essential-metamodel:Software_Component ;
+	dcterms:description "GAE/J provides a mail-sending JavaMail implementation." ;
+	dcterms:title "google_Mail" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/63339f3d-8bd1-4c0b-b5d4-d1ecb3b85894> a c4s-inf-m:Software_Category ;
+	dcterms:title "communication" ;
+	dcterms:description "Enable the communication between users" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3d73941e-8356-407a-95bb-d77ba7da0da1> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/63339f3d-8bd1-4c0b-b5d4-d1ecb3b85894> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/3d73941e-8356-407a-95bb-d77ba7da0da1> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7ceca783-4b6d-454f-9509-51659cb5e7ef> a essential-metamodel:Software_Component ;
+	dcterms:description "GAE/J impressively implements an API to allow web apps to participate in these IM conversations." ;
+	dcterms:title "google_XMPP" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b4f30927-90b8-4f13-b79c-ed70deaeb06c> a c4s-inf-m:Software_Category ;
+	dcterms:title "communication" ;
+	dcterms:description "Enable the communication between users" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7ceca783-4b6d-454f-9509-51659cb5e7ef> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b4f30927-90b8-4f13-b79c-ed70deaeb06c> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7ceca783-4b6d-454f-9509-51659cb5e7ef> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/a8083701-e53a-4809-ae79-9592f6791818> a essential-metamodel:Software_Component ;
+	dcterms:description "Appengine load balancer" ;
+	dcterms:title "google_loadBalancer" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/bf6a6be3-2221-4529-99fb-5790d685c4a4> a c4s-inf-m:Software_Category ;
+	dcterms:title "load_balancer" ;
+	dcterms:description "distribute workload across multiple resources" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/a8083701-e53a-4809-ae79-9592f6791818> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/bf6a6be3-2221-4529-99fb-5790d685c4a4> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/a8083701-e53a-4809-ae79-9592f6791818> ;
+	dcterms:title "Google App Engine" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/96bdc964-3125-458f-b1f1-7215df8d1127> .
+
+other:ProgrammingLanguage <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.other.ProgrammingLanguage" .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/f69f9abb-0da0-413c-9056-846c9e256792> a other:ProgrammingLanguage ;
+	dcterms:title "JAVA" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/0b5605ff-b525-442b-bba3-70e9b81e206c> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/f69f9abb-0da0-413c-9056-846c9e256792> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/03a98448-1173-499b-8b6c-1d364b8b9461> a user-m:PaaSUser ;
+	foaf:family_name "Beanstalk" ;
+	foaf:surname "Beanstalk" ;
+	foaf:geekcode "Beanstalk" ;
+	foaf:firstName "Beanstalk" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/aa96ec1a-1338-4bee-83bd-e602feb23828> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/03a98448-1173-499b-8b6c-1d364b8b9461> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/aa96ec1a-1338-4bee-83bd-e602feb23828> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/95315be6-06fb-452a-892a-e60d47deac2a> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/03a98448-1173-499b-8b6c-1d364b8b9461> ;
+	dcterms:title "Beanstalk" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/03a98448-1173-499b-8b6c-1d364b8b9461> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/95315be6-06fb-452a-892a-e60d47deac2a> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> a paas-m:PaaSOffering .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> a paas-m:API .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/d190452d-4279-463b-bcfc-edee28baf634> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/29ce53fb-59ca-48cf-be63-16a80082d85a> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/d190452d-4279-463b-bcfc-edee28baf634> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/29ce53fb-59ca-48cf-be63-16a80082d85a> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "checkAppAvailability(in appName : String) :: Boolean" ;
+	dcterms:title "Check Application Availability" ;
+	dcterms:description "Checks whether the specified application name is available" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/d190452d-4279-463b-bcfc-edee28baf634> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/152cdc1a-0fb2-49fa-9839-28934017dca5> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3b27ffce-43f0-4556-b474-c3a8611f6811> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/152cdc1a-0fb2-49fa-9839-28934017dca5> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3b27ffce-43f0-4556-b474-c3a8611f6811> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "createAppVersion(in appVersion : VersionedApplication, in appID : unsigned long long) :: VersionedApplication" ;
+	dcterms:title "Create Application Version" ;
+	dcterms:description "Creates an application version which refers to the given application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/152cdc1a-0fb2-49fa-9839-28934017dca5> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/5db49c73-1b66-467b-acb6-8992d5b25de0> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d3e9d745-39ab-49db-92ef-fa9b24f02954> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/5db49c73-1b66-467b-acb6-8992d5b25de0> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/d3e9d745-39ab-49db-92ef-fa9b24f02954> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "createApplication(in application : Application) :: Application" ;
+	dcterms:title "Create Application" ;
+	dcterms:description "Creates an empty application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/5db49c73-1b66-467b-acb6-8992d5b25de0> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/9c17603d-b6ad-452b-8c6b-8645eb0f28d1> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/7fca0839-faa1-42f9-865a-f9f4c3bd20f6> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/9c17603d-b6ad-452b-8c6b-8645eb0f28d1> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/7fca0839-faa1-42f9-865a-f9f4c3bd20f6> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "createEnvironment(in env : Environment) :: Environment" ;
+	dcterms:title "Create Environment" ;
+	dcterms:description "Create a working environment, given the appropriate information set" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/9c17603d-b6ad-452b-8c6b-8645eb0f28d1> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/e81f5782-86b6-4a5d-94d0-a9ed77bd0048> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/1283429e-3648-498d-926f-23f4afd0cd96> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/e81f5782-86b6-4a5d-94d0-a9ed77bd0048> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/1283429e-3648-498d-926f-23f4afd0cd96> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "deleteAppVersion(in appID : unsigned long long, in version : String) :: Boolean" ;
+	dcterms:title "Delete Application Version" ;
+	dcterms:description "Deletes VersionedApplication of the application with the given ID and version string" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/e81f5782-86b6-4a5d-94d0-a9ed77bd0048> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/aa3c1e82-44c0-4825-9345-3c0658807b2f> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/07fc6926-b342-464f-8cc2-032bda2ee80b> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/aa3c1e82-44c0-4825-9345-3c0658807b2f> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/07fc6926-b342-464f-8cc2-032bda2ee80b> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "deleteApplication(in appID : unsigned long long) :: Boolean" ;
+	dcterms:title "Delete Application" ;
+	dcterms:description "Deletes application" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/aa3c1e82-44c0-4825-9345-3c0658807b2f> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0ba40e88-c410-426f-a919-a2f2db2df3a5> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/aed75336-8ffc-4987-89e5-48a1183f5cee> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0ba40e88-c410-426f-a919-a2f2db2df3a5> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/aed75336-8ffc-4987-89e5-48a1183f5cee> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "deleteEnvironment(in envID : unsigned long long) :: Boolean" ;
+	dcterms:title "Delete Environment" ;
+	dcterms:description "Delete the environment that corresponds to the given ID" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/0ba40e88-c410-426f-a919-a2f2db2df3a5> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/92394bd1-cbf4-4638-8384-92022ec8ebd4> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/b66502b3-51e3-4880-ae4a-c9fc33f9ff86> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/92394bd1-cbf4-4638-8384-92022ec8ebd4> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/b66502b3-51e3-4880-ae4a-c9fc33f9ff86> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "undeploy(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Undeploy" ;
+	dcterms:description "Undeploy the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/92394bd1-cbf4-4638-8384-92022ec8ebd4> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/f3c7ef67-c1fb-42de-93c8-8ae778a6aff9> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3445c071-a901-4461-9f73-da13e54482f2> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/f3c7ef67-c1fb-42de-93c8-8ae778a6aff9> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/3445c071-a901-4461-9f73-da13e54482f2> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "updateApplication(in application : Application) :: Application" ;
+	dcterms:title "Update Application" ;
+	dcterms:description "Updates Application elements" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/f3c7ef67-c1fb-42de-93c8-8ae778a6aff9> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/1bc82e4c-bc85-44d1-9bfe-cee3fd30c980> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/94aaec70-a679-4df0-ba94-55097b6f8593> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/1bc82e4c-bc85-44d1-9bfe-cee3fd30c980> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/94aaec70-a679-4df0-ba94-55097b6f8593> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "updateEnvironment(in env : Environment) :: Environment" ;
+	dcterms:title "Update Environment" ;
+	dcterms:description "Update environment details" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/1bc82e4c-bc85-44d1-9bfe-cee3fd30c980> ;
+	dcterms:description "The Amazon Beanstalk API" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:communicateThrough <http://www.cloud4soa.eu/v0.1/paas-model#API/6e2823e9-9658-4f54-85b8-d95e9a377a92> .
+
+c4s-inf-m:Hardware_Componenta73d5b01-184a-4570-bf4b-e995d394e14b a c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#NetworkResource/ebde178b-ffb4-4ecd-afaf-1fe69327b107> a c4s-inf-m:NetworkResource ;
+	dcterms:title "beanstalk_network" .
+
+c4s-inf-m:Hardware_Componenta73d5b01-184a-4570-bf4b-e995d394e14b essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#NetworkResource/ebde178b-ffb4-4ecd-afaf-1fe69327b107> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Componenta73d5b01-184a-4570-bf4b-e995d394e14b .
+
+c4s-inf-m:Hardware_Componenta3f16df6-fad1-4ed8-bd78-d84bf23bb390 a c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/6a9a783c-1d1f-48ba-a9f3-84e94a96c782> a c4s-inf-m:Compute ;
+	dcterms:title "beanstalk_compute" .
+
+measure:StorageRange <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.measure.StorageRange" .
+
+_:node16prsp4ctx21 a measure:StorageRange .
+
+measure:Storage_Unit <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.measure.StorageUnit" .
+
+_:node16prsp4ctx22 a measure:Storage_Unit ;
+	measure:has_value "64.0"^^xsd:float .
+
+_:node16prsp4ctx21 measure:hasMaxStorageValue _:node16prsp4ctx22 .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/6a9a783c-1d1f-48ba-a9f3-84e94a96c782> c4s-inf-m:hasMemory _:node16prsp4ctx21 ;
+	c4s-inf-m:hasArchitecture "32 and 64 bit" .
+
+c4s-inf-m:Hardware_Componenta3f16df6-fad1-4ed8-bd78-d84bf23bb390 essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/6a9a783c-1d1f-48ba-a9f3-84e94a96c782> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Componenta3f16df6-fad1-4ed8-bd78-d84bf23bb390 .
+
+c4s-inf-m:Hardware_Component7239ea6a-5cd5-471b-a582-c61afa0e7c6e a c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/7275cc30-6540-4345-b4e3-69b7dd5a5236> a c4s-inf-m:StorageResource ;
+	dcterms:title "amazon_storage" .
+
+c4s-inf-m:Hardware_Component7239ea6a-5cd5-471b-a582-c61afa0e7c6e essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/7275cc30-6540-4345-b4e3-69b7dd5a5236> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Component7239ea6a-5cd5-471b-a582-c61afa0e7c6e .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7118b774-90f9-4b61-9db3-9315a391d3f5> a essential-metamodel:Software_Component ;
+	dcterms:description "Apache Tomcat" ;
+	dcterms:title "apache_tomcat" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/1e80d82c-c818-40d0-bfe0-434dd0597b14> a c4s-inf-m:Software_Category ;
+	dcterms:title "web_server" ;
+	dcterms:description "Host applications" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7118b774-90f9-4b61-9db3-9315a391d3f5> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/1e80d82c-c818-40d0-bfe0-434dd0597b14> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/7118b774-90f9-4b61-9db3-9315a391d3f5> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/21c032a3-0438-43ff-8cd4-289f7ee98cb9> a essential-metamodel:Software_Component ;
+	dcterms:description "Beanstalk autoscaling" ;
+	dcterms:title "beanstalk_autoscaling" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/a496c6b5-b1e7-4e9a-8e1d-3cff6878173b> a c4s-inf-m:Software_Category ;
+	dcterms:title "autoscaling" ;
+	dcterms:description "Enable the automatic scaling of the reserources when needed" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/21c032a3-0438-43ff-8cd4-289f7ee98cb9> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/a496c6b5-b1e7-4e9a-8e1d-3cff6878173b> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/21c032a3-0438-43ff-8cd4-289f7ee98cb9> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/99ae80fc-2f62-46ea-b005-77e12daa3621> a essential-metamodel:Software_Component ;
+	dcterms:description "Beanstalk load balancer" ;
+	dcterms:title "beanstalk_loadbalancer" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b8e98828-ca36-4546-abaa-84e0f1e38752> a c4s-inf-m:Software_Category ;
+	dcterms:title "load_balancer" ;
+	dcterms:description "distribute workload across multiple resources" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/99ae80fc-2f62-46ea-b005-77e12daa3621> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b8e98828-ca36-4546-abaa-84e0f1e38752> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/99ae80fc-2f62-46ea-b005-77e12daa3621> ;
+	dcterms:title "AWS Elastic Beanstalk (beta)" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/95315be6-06fb-452a-892a-e60d47deac2a> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/895bcb9f-0550-4b1d-a46d-5027ca44d00a> a other:ProgrammingLanguage ;
+	dcterms:title "JAVA" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/f04d2362-ab0e-401e-8668-c8e23d8eb574> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/895bcb9f-0550-4b1d-a46d-5027ca44d00a> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/b3a874a0-0d2a-43b6-a5c3-76c11640c5e8> a user-m:PaaSUser .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/4d8a5335-40dd-4d3b-aefa-892d6d58873e> dcterms:title "CloudBees" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/4d8a5335-40dd-4d3b-aefa-892d6d58873e> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/510b12d7-01e2-4ed4-bb82-a3aae4024238> dcterms:title "JAVA" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/510b12d7-01e2-4ed4-bb82-a3aae4024238> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/cc3bde75-a6a9-44f9-a696-b5c705372024> a user-m:Cloud4SoaAccount .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment/2d9f32f3-be99-4667-b381-d8611f1b5211> c4s-app-m:deploying_location <http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/4d8a5335-40dd-4d3b-aefa-892d6d58873e> a c4s-ent-m:PaaSProvider .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment/2d9f32f3-be99-4667-b381-d8611f1b5211> c4s-app-m:hasIP "http://c4sv1.0.testaccountname.cloudbees.net" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:hasDeployment <http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment/2d9f32f3-be99-4667-b381-d8611f1b5211> ;
+	c4s-app-m:application_code "C4Sv1.0" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> a paas-m:PaaSOffering .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> a paas-m:API .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/f5cb12da-9990-49cb-a4e6-3b7a2a43398e> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/cafc4796-a3c1-41f7-b06e-aa3314155876> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/f706a277-c300-4215-9e5b-17c6852f0ef6> a other:ProgrammingLanguage ;
+	dcterms:title "Play Framework" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/fa89e7d2-2214-472e-a277-a76de6390769> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/f706a277-c300-4215-9e5b-17c6852f0ef6> .
+
+user-m:Developer <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.user.Developer" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Developer/8d715de5-b205-4f2c-9292-c94b05f53ef5> a user-m:Developer .
+
+_:node16prsp4ctx24 c4s-app-m:fileName "SimpleWar" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/89b49c24-71c0-4e20-967e-b8a486c55bea> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/7b4cb41a-e30d-4739-848b-72e2560dc0a9> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/34651e15-0300-4cf0-8e81-9b9dfe97dc71> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Developer/8d715de5-b205-4f2c-9292-c94b05f53ef5> foaf:family_name "D'Andria" ;
+	foaf:geekcode "fdandria" ;
+	foaf:firstName "Francesco" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/f5cb12da-9990-49cb-a4e6-3b7a2a43398e> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/cafc4796-a3c1-41f7-b06e-aa3314155876> ;
+	paas-m:hasInformationReturned "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/b08cca39-87b2-4a80-be38-5855faa0c177> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/f5cb12da-9990-49cb-a4e6-3b7a2a43398e> paas-m:hasOperationCommand "checkAppAvailability(in appName : String) :: Boolean" ;
+	dcterms:title "Check Application Availability" ;
+	dcterms:description "Checks whether the specified application name is available" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/f5cb12da-9990-49cb-a4e6-3b7a2a43398e> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/89b49c24-71c0-4e20-967e-b8a486c55bea> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/7b4cb41a-e30d-4739-848b-72e2560dc0a9> ;
+	paas-m:hasInformationReturned "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bb302edf-3b2e-469a-98d0-730d8a833b32> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/640f932c-b5d7-44e3-94ee-f437bacbc257> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/89b49c24-71c0-4e20-967e-b8a486c55bea> paas-m:hasOperationCommand "getRunningStatus(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Get Running Status" ;
+	dcterms:description "Get the status of the running instance that corresponds to the deployed application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/89b49c24-71c0-4e20-967e-b8a486c55bea> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/b08cca39-87b2-4a80-be38-5855faa0c177> ;
+	paas-m:hasInformationReturned "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/746bd46a-61ee-4cde-9661-6ba45d9b92d5> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/72cbbc8e-0030-48d0-b6e4-650e1ca7e9fc> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/75fcfb3a-c95e-4491-bd8d-3b5b82a332ad> paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "stop(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Stop" ;
+	dcterms:description "Stop an already started instance of the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/75fcfb3a-c95e-4491-bd8d-3b5b82a332ad> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> paas-m:hasOperationCommand "getSummaryStatistics(in appID : unsigned long long, in envID : unsigned long long) :: Statistics" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/75fcfb3a-c95e-4491-bd8d-3b5b82a332ad> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/037c6472-0c4b-4654-9958-5c4e2a790997> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/078ade67-c429-4a59-a75d-23e412c64142> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/a8bd7c76-2579-42a5-8954-dc3950654fe3> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "undeploy(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Undeploy" ;
+	dcterms:description "Undeploy the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> dcterms:title "Get Summary Statistics" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/078ade67-c429-4a59-a75d-23e412c64142> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/a8bd7c76-2579-42a5-8954-dc3950654fe3> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/078ade67-c429-4a59-a75d-23e412c64142> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bfef032b-3fdf-429c-9aa6-70107f054f16> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/73884986-0486-4992-9739-896c3dd15782> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "uploadAndDeployToEnv(in app : Application, in appVersion : VersionedApplication, in env : Environment) :: ApplicationSpace" ;
+	dcterms:title "Upload and Deploy to Environment" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> dcterms:description "Get summary statistics of all running (prior and current) application versions of the given application in the given environment" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bfef032b-3fdf-429c-9aa6-70107f054f16> a paas-m:Operation .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#OperationType/73884986-0486-4992-9739-896c3dd15782> a paas-m:OperationType .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bfef032b-3fdf-429c-9aa6-70107f054f16> dcterms:description "Creates a new application (if needed), then a new application version, upload the respective executable file, associate and deploy it to the specified environment" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/bfef032b-3fdf-429c-9aa6-70107f054f16> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:communicateThrough <http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/01e858b1-335b-4277-8e87-2fd3a3cc5859> dcterms:title "cloudBees_compute" .
+
+c4s-inf-m:Hardware_Componentf76791c4-c41a-4377-95c5-c13f37a20c96 essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/01e858b1-335b-4277-8e87-2fd3a3cc5859> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/0f81f820-02e0-4558-99f0-009c1881a871> .
+
+_:node16prsp4ctx25 a measure:Storage_Unit .
+
+c4s-inf-m:Hardware_Componentf76791c4-c41a-4377-95c5-c13f37a20c96 a c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Compute/01e858b1-335b-4277-8e87-2fd3a3cc5859> a c4s-inf-m:Compute .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Componentf76791c4-c41a-4377-95c5-c13f37a20c96 .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/d0c568d6-1077-4421-b174-2776728696e7> dcterms:title "cloudBees_storage" .
+
+_:node16prsp4ctx25 measure:has_value "4087.0"^^xsd:float .
+
+c4s-inf-m:Hardware_Componentc6083335-fce4-4dd4-bae7-06ccfbe8c3bf a c4s-inf-m:Hardware_Component .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/d0c568d6-1077-4421-b174-2776728696e7> a c4s-inf-m:StorageResource .
+
+c4s-inf-m:Hardware_Componentc6083335-fce4-4dd4-bae7-06ccfbe8c3bf essential-metamodel:realisation_of_technology_capability <http://www.cloud4soa.eu/v0.1/infrastructural-domain#StorageResource/d0c568d6-1077-4421-b174-2776728696e7> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerHardwareComponent c4s-inf-m:Hardware_Componentc6083335-fce4-4dd4-bae7-06ccfbe8c3bf .
+
+essential-metamodel:Application <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.app.Application" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> a essential-metamodel:Application .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> a essential-metamodel:Software_Component .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:hasSlaId "templateId" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> dcterms:description "CloudBees autoscaling of resources" ;
+	dcterms:title "AutoScaling" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/465a7172-c9a9-439c-9456-c749628f10a7> a c4s-inf-m:Software_Category .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/465a7172-c9a9-439c-9456-c749628f10a7> dcterms:title "autoscaling" ;
+	dcterms:description "Enable the automatic scaling of the reserources when needed" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/465a7172-c9a9-439c-9456-c749628f10a7> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:hasOwner <http://www.cloud4soa.eu/v0.1/user-model#Developer/8d715de5-b205-4f2c-9292-c94b05f53ef5> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/52938c0c-bc37-45cc-b483-02f71a26cc54> a essential-metamodel:Software_Component .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/ed4dbe10-ac34-47a4-aff5-777f3c6e2a45> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/52938c0c-bc37-45cc-b483-02f71a26cc54> dcterms:description "Binary repository in the cloud" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b1116cb8-35f5-4c68-92bd-745b0740dcd9> a c4s-inf-m:Software_Category .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0c02ed59-7480-43f6-866c-d542d91504ad> dcterms:description "MySQL server" ;
+	dcterms:title "MySQL" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/52938c0c-bc37-45cc-b483-02f71a26cc54> dcterms:title "JFrog" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Developer/8d715de5-b205-4f2c-9292-c94b05f53ef5> foaf:surname "D'Andria" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0c02ed59-7480-43f6-866c-d542d91504ad> a essential-metamodel:Software_Component ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/9d0d5590-b587-46f2-8226-8b2c04dbc718> dcterms:title "database" ;
+	dcterms:description "Enable the permanent storage of data" ;
+	a c4s-inf-m:Software_Category .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0c02ed59-7480-43f6-866c-d542d91504ad> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/9d0d5590-b587-46f2-8226-8b2c04dbc718> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0c02ed59-7480-43f6-866c-d542d91504ad> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/84bef6f7-d83f-4a0d-9a2d-aa2c1e233a2f> dcterms:description "Reliable, distributed Database-as-a-Service, based on Apache CouchDB" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/34651e15-0300-4cf0-8e81-9b9dfe97dc71> foaf:accountName "fdandria" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/84bef6f7-d83f-4a0d-9a2d-aa2c1e233a2f> a essential-metamodel:Software_Component ;
+	dcterms:title "cloudant" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/eb66c16b-2865-41c7-86be-f470ff6684ea> dcterms:title "database" ;
+	a c4s-inf-m:Software_Category ;
+	dcterms:description "Enable the permanent storage of data" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/84bef6f7-d83f-4a0d-9a2d-aa2c1e233a2f> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/eb66c16b-2865-41c7-86be-f470ff6684ea> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/84bef6f7-d83f-4a0d-9a2d-aa2c1e233a2f> .
+
+_:node16prsp4ctx23 a other:ProgrammingLanguage .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/daa4324b-6bc4-490f-98c7-0f229a13e0ec> a essential-metamodel:Software_Component ;
+	dcterms:description "Jenkins Hudson" ;
+	dcterms:title "Jenkins" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/76b07edc-d68e-4900-81c4-a88f033d613b> a c4s-inf-m:Software_Category ;
+	dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/daa4324b-6bc4-490f-98c7-0f229a13e0ec> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/76b07edc-d68e-4900-81c4-a88f033d613b> ;
+	c4s-app-m:license_type "" .
+
+_:node16prsp4ctx23 dcterms:title "Java" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> a essential-metamodel:Software_Component .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/daa4324b-6bc4-490f-98c7-0f229a13e0ec> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> dcterms:description "Manual and Selenium-driven cross-browser testing on the cloud" ;
+	dcterms:title "Sauce_Labs_OnDemand" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/4ef530b7-f4e8-436e-be39-cb0b3ba8a8ca> a c4s-inf-m:Software_Category .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/4ef530b7-f4e8-436e-be39-cb0b3ba8a8ca> dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/4ef530b7-f4e8-436e-be39-cb0b3ba8a8ca> .
+
+_:node16prsp4ctx23 dcterms:hasVersion "1.6" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d2d87631-a5e0-498d-a4d0-e3b6b0e12f9f> a essential-metamodel:Software_Component .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/69563293-5640-4911-bda9-b79089891924> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d2d87631-a5e0-498d-a4d0-e3b6b0e12f9f> dcterms:description "Continuously inspect your source code" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/47af5e29-36b7-4a8c-881d-840060a70cb7> a c4s-inf-m:Software_Category .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d2d87631-a5e0-498d-a4d0-e3b6b0e12f9f> dcterms:title "Sonar" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/47af5e29-36b7-4a8c-881d-840060a70cb7> dcterms:title "developmnet_tool" ;
+	dcterms:description "Impove/enhance the development" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Developer/8d715de5-b205-4f2c-9292-c94b05f53ef5> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/34651e15-0300-4cf0-8e81-9b9dfe97dc71> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0b2488aa-a4a9-4126-8288-9a2640ece46d> a essential-metamodel:Software_Component .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d2d87631-a5e0-498d-a4d0-e3b6b0e12f9f> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/47af5e29-36b7-4a8c-881d-840060a70cb7> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/d2d87631-a5e0-498d-a4d0-e3b6b0e12f9f> .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/f4a46c82-ed2b-44d5-80a3-81289e3ff6d3> a c4s-inf-m:Software_Category .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/52938c0c-bc37-45cc-b483-02f71a26cc54> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0b2488aa-a4a9-4126-8288-9a2640ece46d> dcterms:hasVersion "" ;
+	dcterms:description "Real-time web monitoring and analytics, delivered as a service" ;
+	dcterms:title "NewRelic" .
+
+c4s-app-m:ApplicationArchive <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.app.ApplicationArchive" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/04f1d2fd-3a5c-441b-b8f3-d49d06d938ea> a essential-metamodel:Software_Component .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:digest "9f0c1546fe967ff63bbb8b7a4c155ee0688e702c77b7607731b85da64b96dac7" .
+
+_:node16prsp4ctx26 a other:ProgrammingLanguage ;
+	dcterms:title "Java" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b6dd8db7-7503-434e-83bd-7dce0935202c> a c4s-inf-m:Software_Category .
+
+_:node16prsp4ctx26 dcterms:hasVersion "1.6" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:useProgrammingLanguage _:node16prsp4ctx26 .
+
+_:node16prsp4ctx27 a c4s-app-m:ApplicationArchive ;
+	c4s-app-m:extensionName ".war" .
+
+_:node16prsp4ctx24 a c4s-app-m:ApplicationArchive ;
+	c4s-app-m:extensionName ".war" .
+
+essential-metamodel:Application_Deployment <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.app.ApplicationDeployment" .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/510b12d7-01e2-4ed4-bb82-a3aae4024238> a other:ProgrammingLanguage .
+
+_:node16prsp4ctx27 c4s-app-m:fileName "SimpleWar" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment/2d9f32f3-be99-4667-b381-d8611f1b5211> a essential-metamodel:Application_Deployment .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e396758b-5f8f-4613-87ad-3e080b25f6db> a user-m:PaaSUser ;
+	foaf:family_name "AppHarbor" ;
+	foaf:surname "AppHarbor" ;
+	foaf:geekcode "AppHarbor" ;
+	foaf:firstName "AppHarbor" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/2e3af4d7-347c-471e-a346-efdd9072da93> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e396758b-5f8f-4613-87ad-3e080b25f6db> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/2e3af4d7-347c-471e-a346-efdd9072da93> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e09b222b-5769-4304-9b8d-3c4739e40581> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e396758b-5f8f-4613-87ad-3e080b25f6db> ;
+	dcterms:title "AppHarbor" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e396758b-5f8f-4613-87ad-3e080b25f6db> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e09b222b-5769-4304-9b8d-3c4739e40581> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/cb0957c9-a587-4729-9865-5c709d95fba2> a paas-m:PaaSOffering ;
+	dcterms:title "AppHarbor" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e09b222b-5769-4304-9b8d-3c4739e40581> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/42c99b71-591e-4249-8a3a-41fb70ad8ebb> a other:ProgrammingLanguage ;
+	dcterms:title "ASP.NET" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/cb0957c9-a587-4729-9865-5c709d95fba2> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/42c99b71-591e-4249-8a3a-41fb70ad8ebb> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/a342421d-73f3-416e-b307-2095c3a8edf1> a user-m:PaaSUser ;
+	foaf:family_name "Azure" ;
+	foaf:surname "Azure" ;
+	foaf:geekcode "Azure" ;
+	foaf:firstName "Azure" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/e12cd87e-312f-4a2a-bb21-a7b6e9939a18> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/a342421d-73f3-416e-b307-2095c3a8edf1> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/e12cd87e-312f-4a2a-bb21-a7b6e9939a18> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/7ad556db-2920-42ed-bbad-53d224aed172> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/a342421d-73f3-416e-b307-2095c3a8edf1> ;
+	dcterms:title "Azure" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/a342421d-73f3-416e-b307-2095c3a8edf1> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/7ad556db-2920-42ed-bbad-53d224aed172> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/c071cd7d-e4c7-4a88-b35e-74cfdebbc6ba> a paas-m:PaaSOffering ;
+	dcterms:title "Azure" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/7ad556db-2920-42ed-bbad-53d224aed172> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/7fa73cfc-98a0-4a6a-9077-edd6fc61a269> a other:ProgrammingLanguage ;
+	dcterms:title "ASP.NET" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/c071cd7d-e4c7-4a88-b35e-74cfdebbc6ba> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/7fa73cfc-98a0-4a6a-9077-edd6fc61a269> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/3a2ca3bf-ac53-40ca-9a2c-c86a23b4c323> a user-m:PaaSUser ;
+	foaf:family_name "CloudControl" ;
+	foaf:surname "CloudControl" ;
+	foaf:geekcode "CloudControl" ;
+	foaf:firstName "CloudControl" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/9448ac77-a6d5-4945-95a5-0679c57fe77e> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/3a2ca3bf-ac53-40ca-9a2c-c86a23b4c323> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/9448ac77-a6d5-4945-95a5-0679c57fe77e> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/212ea432-77b0-49b5-a03b-3342939cc8d2> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/3a2ca3bf-ac53-40ca-9a2c-c86a23b4c323> ;
+	dcterms:title "CloudControl" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/3a2ca3bf-ac53-40ca-9a2c-c86a23b4c323> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/212ea432-77b0-49b5-a03b-3342939cc8d2> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/71bc4edc-e7ef-4ace-bd51-3c84f09d4ae9> a paas-m:PaaSOffering ;
+	dcterms:title "CloudControl" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/212ea432-77b0-49b5-a03b-3342939cc8d2> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/ed2b8d12-4b0c-4dbf-bc30-09a8daf335d5> a other:ProgrammingLanguage ;
+	dcterms:title "PHP 5.3.2" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/71bc4edc-e7ef-4ace-bd51-3c84f09d4ae9> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/ed2b8d12-4b0c-4dbf-bc30-09a8daf335d5> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/690c737c-37f5-40e5-8067-a6b8a15b2ca4> a user-m:PaaSUser ;
+	foaf:family_name "CloudFoundry" ;
+	foaf:surname "CloudFoundry" ;
+	foaf:geekcode "CloudFoundry" ;
+	foaf:firstName "CloudFoundry" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/d00d6743-a752-422a-82c0-14e6dbcca0ae> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/690c737c-37f5-40e5-8067-a6b8a15b2ca4> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/d00d6743-a752-422a-82c0-14e6dbcca0ae> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/277b0bb9-0e4c-46c3-9322-ce925f05d2e0> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/690c737c-37f5-40e5-8067-a6b8a15b2ca4> ;
+	dcterms:title "CloudFoundry" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/690c737c-37f5-40e5-8067-a6b8a15b2ca4> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/277b0bb9-0e4c-46c3-9322-ce925f05d2e0> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/7955b6b0-96d8-4c15-992b-19a723497520> a paas-m:PaaSOffering ;
+	dcterms:title "CloudFoundry" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/277b0bb9-0e4c-46c3-9322-ce925f05d2e0> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/50e5fa5b-524b-49ec-8d61-ab136e82db5b> a other:ProgrammingLanguage ;
+	dcterms:title "Spring Java" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/7955b6b0-96d8-4c15-992b-19a723497520> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/50e5fa5b-524b-49ec-8d61-ab136e82db5b> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/1d98c614-997c-4730-892f-ab6e72f6cfdb> a user-m:PaaSUser ;
+	foaf:family_name "CumuLogic" ;
+	foaf:surname "CumuLogic" ;
+	foaf:geekcode "CumuLogic" ;
+	foaf:firstName "CumuLogic" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/0e81b472-c55a-4638-b231-a33fa1d877e4> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/1d98c614-997c-4730-892f-ab6e72f6cfdb> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/0e81b472-c55a-4638-b231-a33fa1d877e4> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a523b2d3-807f-447d-8ce1-153ecabfba1a> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/1d98c614-997c-4730-892f-ab6e72f6cfdb> ;
+	dcterms:title "CumuLogic" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/1d98c614-997c-4730-892f-ab6e72f6cfdb> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a523b2d3-807f-447d-8ce1-153ecabfba1a> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/2c2d1288-48ef-4edc-afcd-52c803f9eb59> a paas-m:PaaSOffering ;
+	dcterms:title "CumuLogic" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a523b2d3-807f-447d-8ce1-153ecabfba1a> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/fc82da34-0ea8-4ce1-98f4-75889cfb7344> a other:ProgrammingLanguage ;
+	dcterms:title "Java" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/2c2d1288-48ef-4edc-afcd-52c803f9eb59> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/fc82da34-0ea8-4ce1-98f4-75889cfb7344> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/0ea2b39a-f8ca-4714-bb5a-5ea935fe4a38> a user-m:PaaSUser ;
+	foaf:family_name "EngineYard" ;
+	foaf:surname "EngineYard" ;
+	foaf:geekcode "EngineYard" ;
+	foaf:firstName "EngineYard" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/b0593e3e-d2eb-4123-9d66-0583f6efd2bb> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/0ea2b39a-f8ca-4714-bb5a-5ea935fe4a38> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/b0593e3e-d2eb-4123-9d66-0583f6efd2bb> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5f70d8ad-ad82-42b5-ac74-7cd85d1cd418> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/0ea2b39a-f8ca-4714-bb5a-5ea935fe4a38> ;
+	dcterms:title "EngineYard" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/0ea2b39a-f8ca-4714-bb5a-5ea935fe4a38> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5f70d8ad-ad82-42b5-ac74-7cd85d1cd418> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/8cecf39c-d108-44ef-8682-fa9e5c9c40b3> a paas-m:PaaSOffering ;
+	dcterms:title "EngineYard" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5f70d8ad-ad82-42b5-ac74-7cd85d1cd418> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/a763c410-7e4b-4dbb-b0c9-1079de3245dc> a other:ProgrammingLanguage ;
+	dcterms:title "Ruby 1.9.2" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/8cecf39c-d108-44ef-8682-fa9e5c9c40b3> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/a763c410-7e4b-4dbb-b0c9-1079de3245dc> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/c680c08f-ebf5-4e4e-a746-73273c9b93cc> a user-m:PaaSUser ;
+	foaf:family_name "Heroku" ;
+	foaf:surname "Heroku" ;
+	foaf:geekcode "Heroku" ;
+	foaf:firstName "Heroku" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/f0d2b55c-8e28-437f-85f9-e811f7493960> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/c680c08f-ebf5-4e4e-a746-73273c9b93cc> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/f0d2b55c-8e28-437f-85f9-e811f7493960> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a2073c17-734a-4606-ba21-887c39ecf4da> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/c680c08f-ebf5-4e4e-a746-73273c9b93cc> ;
+	dcterms:title "Heroku" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/c680c08f-ebf5-4e4e-a746-73273c9b93cc> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a2073c17-734a-4606-ba21-887c39ecf4da> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/c3984ce6-d1af-457b-9be0-ccc023799add> a paas-m:PaaSOffering ;
+	dcterms:title "Heroku" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/a2073c17-734a-4606-ba21-887c39ecf4da> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/49b44593-62f6-4337-893f-13f2b6af04a2> a other:ProgrammingLanguage ;
+	dcterms:title "Java" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/c3984ce6-d1af-457b-9be0-ccc023799add> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/49b44593-62f6-4337-893f-13f2b6af04a2> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e2d4c0ac-444d-44f3-ab2f-3ec66a3a5cc5> a user-m:PaaSUser ;
+	foaf:family_name "MuleiON" ;
+	foaf:surname "MuleiON" ;
+	foaf:geekcode "MuleiON" ;
+	foaf:firstName "MuleiON" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/3cc382a7-2d6d-4dcc-92a3-e8e35422e714> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e2d4c0ac-444d-44f3-ab2f-3ec66a3a5cc5> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/3cc382a7-2d6d-4dcc-92a3-e8e35422e714> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5118e944-941d-40ff-b67b-6f1c5a53e721> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e2d4c0ac-444d-44f3-ab2f-3ec66a3a5cc5> ;
+	dcterms:title "MuleiON" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/e2d4c0ac-444d-44f3-ab2f-3ec66a3a5cc5> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5118e944-941d-40ff-b67b-6f1c5a53e721> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/e546ed37-94b2-4fe8-8808-1fa1cc1794b7> a paas-m:PaaSOffering ;
+	dcterms:title "MuleiON" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/5118e944-941d-40ff-b67b-6f1c5a53e721> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/c469f0c2-19e3-4d60-998b-72b94e0b74da> a other:ProgrammingLanguage ;
+	dcterms:title "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/e546ed37-94b2-4fe8-8808-1fa1cc1794b7> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/c469f0c2-19e3-4d60-998b-72b94e0b74da> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/257af44f-1eb2-4571-acda-f1fbc46de58f> a user-m:PaaSUser ;
+	foaf:family_name "OpenShift" ;
+	foaf:surname "OpenShift" ;
+	foaf:geekcode "OpenShift" ;
+	foaf:firstName "OpenShift" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/81756686-6548-4388-a64d-2c39f2a87909> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/257af44f-1eb2-4571-acda-f1fbc46de58f> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/81756686-6548-4388-a64d-2c39f2a87909> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/39544c07-b880-4681-9840-2ca026ddfa9b> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/257af44f-1eb2-4571-acda-f1fbc46de58f> ;
+	dcterms:title "OpenShift" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/257af44f-1eb2-4571-acda-f1fbc46de58f> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/39544c07-b880-4681-9840-2ca026ddfa9b> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/56d503f6-9558-48d6-b972-e1fa4b77cc95> a paas-m:PaaSOffering ;
+	dcterms:title "OpenShift" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/39544c07-b880-4681-9840-2ca026ddfa9b> .
+
+<http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/950bf347-5bb4-49bf-90f2-2627d8fed52b> a other:ProgrammingLanguage ;
+	dcterms:title "PHP" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/56d503f6-9558-48d6-b972-e1fa4b77cc95> paas-m:supportLanguage <http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage/950bf347-5bb4-49bf-90f2-2627d8fed52b> .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/24f3b40e-b72d-4910-95cd-88a12ffddf4d> a user-m:PaaSUser ;
+	foaf:family_name "PlayApps" ;
+	foaf:surname "PlayApps" ;
+	foaf:geekcode "PlayApps" ;
+	foaf:firstName "PlayApps" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/7191ffa4-fede-49f0-a045-886d202c34c9> a user-m:Cloud4SoaAccount .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/24f3b40e-b72d-4910-95cd-88a12ffddf4d> foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/7191ffa4-fede-49f0-a045-886d202c34c9> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e8e263e1-5016-4b71-9ea7-af334b22f0d9> a c4s-ent-m:PaaSProvider ;
+	c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/24f3b40e-b72d-4910-95cd-88a12ffddf4d> ;
+	dcterms:title "PlayApps" .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/24f3b40e-b72d-4910-95cd-88a12ffddf4d> user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e8e263e1-5016-4b71-9ea7-af334b22f0d9> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/fa89e7d2-2214-472e-a277-a76de6390769> a paas-m:PaaSOffering ;
+	dcterms:title "PlayApps" ;
+	paas-m:providedByPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/e8e263e1-5016-4b71-9ea7-af334b22f0d9> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/bb302edf-3b2e-469a-98d0-730d8a833b32> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/640f932c-b5d7-44e3-94ee-f437bacbc257> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "listApplications() :: sequence of Application" ;
+	dcterms:title "List Applications" ;
+	dcterms:description "It is used in order to return a list of all applications registered for a specific user a specific PaaS provider" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/bb302edf-3b2e-469a-98d0-730d8a833b32> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/746bd46a-61ee-4cde-9661-6ba45d9b92d5> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/72cbbc8e-0030-48d0-b6e4-650e1ca7e9fc> ;
+	paas-m:hasInformationReturned "" ;
+	paas-m:hasOperationCommand "start(in appID : unsigned long long, in version : String) :: InstanceStatus" ;
+	dcterms:title "Start" ;
+	dcterms:description "Start a non-started instance of the specified application version" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#API/6c5e3295-58b9-4949-bc42-7ef3dd3902e9> paas-m:supportOperation <http://www.cloud4soa.eu/v0.1/paas-model#Operation/746bd46a-61ee-4cde-9661-6ba45d9b92d5> .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#Operation/75fcfb3a-c95e-4491-bd8d-3b5b82a332ad> paas-m:hasOperationType <http://www.cloud4soa.eu/v0.1/paas-model#OperationType/037c6472-0c4b-4654-9958-5c4e2a790997> .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b1116cb8-35f5-4c68-92bd-745b0740dcd9> dcterms:title "database" ;
+	dcterms:description "Enable the permanent storage of data" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/52938c0c-bc37-45cc-b483-02f71a26cc54> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b1116cb8-35f5-4c68-92bd-745b0740dcd9> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/f4a46c82-ed2b-44d5-80a3-81289e3ff6d3> dcterms:title "monitoring" ;
+	dcterms:description "Monitor the lifecycle of an application" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0b2488aa-a4a9-4126-8288-9a2640ece46d> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/f4a46c82-ed2b-44d5-80a3-81289e3ff6d3> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/0b2488aa-a4a9-4126-8288-9a2640ece46d> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/04f1d2fd-3a5c-441b-b8f3-d49d06d938ea> dcterms:description "provide communication security over the Internet" ;
+	dcterms:title "SSL" ;
+	dcterms:hasVersion "" .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b6dd8db7-7503-434e-83bd-7dce0935202c> dcterms:title "security" ;
+	dcterms:description "Enhance the security" .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/04f1d2fd-3a5c-441b-b8f3-d49d06d938ea> c4s-inf-m:related_sw_category <http://www.cloud4soa.eu/v0.1/infrastructural-domain#Software_Category/b6dd8db7-7503-434e-83bd-7dce0935202c> ;
+	c4s-app-m:license_type "" .
+
+<http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering/87c3fa41-a297-4289-8516-cc9258a83271> paas-m:offerSoftware <http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component/04f1d2fd-3a5c-441b-b8f3-d49d06d938ea> ;
+	dcterms:title "The CloudBees platform  lets companies build, test and deploy Java web applications in the cloud." .
+
+<http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/b3a874a0-0d2a-43b6-a5c3-76c11640c5e8> foaf:family_name "cloudBeesPaaS" ;
+	foaf:surname "cloudBeesPaaS" ;
+	foaf:geekcode "cloudBeesPaaS" ;
+	foaf:firstName "cloudBeesPaaS" ;
+	foaf:holdsAccount <http://www.cloud4soa.eu/v0.1/user-model#Cloud4SoaAccount/cc3bde75-a6a9-44f9-a696-b5c705372024> ;
+	user-m:userOfPaaSProvider <http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/4d8a5335-40dd-4d3b-aefa-892d6d58873e> .
+
+<http://www.cloud4soa.eu/v0.1/enterprise-domain#PaaSProvider/4d8a5335-40dd-4d3b-aefa-892d6d58873e> c4s-ent-m:hasUser <http://www.cloud4soa.eu/v0.1/user-model#PaaSUser/b3a874a0-0d2a-43b6-a5c3-76c11640c5e8> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:releatedApplicationArchive _:node16prsp4ctx27 .
+
+c4s-app-m:Application_Deployed <http://viceversatech.com/rdfbeans/2.0/bindingClass> "eu.cloud4soa.api.datamodel.semantic.app.ApplicationDeployed" .
+
+_:node16prsp4ctx28 a c4s-app-m:Application_Deployed .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:hasStatus _:node16prsp4ctx28 ;
+	dcterms:hasVersion "1" ;
+	dcterms:alternative "C4Sv1.0" .
+
+_:node16prsp4ctx29 a measure:Storage_Unit ;
+	measure:has_value "4087.0"^^xsd:float .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#Application/53e7148f-e607-40d2-922b-00c0a88bf70d> c4s-app-m:size _:node16prsp4ctx29 .

@@ -1,0 +1,54 @@
+###
+#  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+###
+
+
+# Saved by TopBraid on Fri Jun 29 18:32:31 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppWebScalingFactor
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+# imports: http://xmlns.com/foaf/0.1/
+# imports: http://www.cloud4soa.eu/v0.1/measure
+# imports: http://purl.org/dc/terms/
+# imports: http://www.enterprise-architecture.org/essential-metamodel.owl
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppWebScalingFactor#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppWebScalingFactor>
+      rdf:type owl:Ontology ;
+      owl:imports dcterms: , <http://www.enterprise-architecture.org/essential-metamodel.owl> , <http://www.cloud4soa.eu/v0.1/measure> , <http://www.cloud4soa.eu/v0.1/application-domain> , <http://purl.org/dc/elements/1.1/> , <http://xmlns.com/foaf/0.1/> .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppWebScalingFactor.twoRange>
+      rdf:type measure:NumericRange ;
+      rdfs:label "two range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "2"^^xsd:float .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppWebScalingFactor.AppWebScalingFactor>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application web scaling factor"^^xsd:string ;
+      dcterms:alternative "Application web scaling factor"^^xsd:string ;
+      dcterms:title "Application web scaling factor"^^xsd:string ;
+      application-domain:requireWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#AppWebScalingFactor.twoRange> .

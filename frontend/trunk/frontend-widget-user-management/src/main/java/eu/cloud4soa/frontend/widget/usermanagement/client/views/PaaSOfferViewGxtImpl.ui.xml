@@ -1,0 +1,46 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+             xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+        >
+
+
+    <gxt:LayoutContainer layout="FlowLayout">
+        <gxt:layoutdata type="FlowData" margins="0">
+                <form:FormPanel bodyBorder="true" heading="PaaS Offer" headerVisible="false" height="300">
+
+                    <form:layoutdata type="FormData">
+                        <form:TextField ui:field="offerName" fieldLabel="PaaS Offer name" allowBlank="true" readOnly="true"/>
+                        <form:TextField ui:field="provider" fieldLabel="PaaS Provider" allowBlank="true" readOnly="true"/>
+                        <form:TextField ui:field="infrastructure" fieldLabel="Infrastructure" allowBlank="true" readOnly="true"/>
+                        <form:TextField ui:field="programmingLanguage" fieldLabel="Programming language"
+                                        allowBlank="true" readOnly="true"/>
+                    </form:layoutdata>
+
+                    <form:buttons>
+                        <button:Button ui:field="deployButton" text="Deploy application"/>
+                    </form:buttons>
+
+                </form:FormPanel>
+        </gxt:layoutdata>
+    </gxt:LayoutContainer>
+
+</ui:UiBinder>

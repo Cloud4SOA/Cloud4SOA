@@ -1,0 +1,49 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+             xmlns:toolbar="urn:import:com.extjs.gxt.ui.client.widget.toolbar"
+
+        >
+    <gxt:LayoutContainer addStyleNames="c4s-white-bg" layout="FitLayout">
+
+        <gxt:ContentPanel ui:field="editorPanel" headerVisible="true" borders="true"  heading="Application Deployment: SLA Policies" scrollMode="AUTO">
+            <gxt:topcomponent>
+                <toolbar:ToolBar addStyleNames="c4s-white-bg">
+                    <button:Button ui:field="addPolicyButton" text="Add policy" scale="LARGE" iconAlign="BOTTOM"/>
+                </toolbar:ToolBar>
+            </gxt:topcomponent>
+
+            <gxt:VerticalPanel ui:field="mainPanel" spacing="2" visible="false">
+
+                <gxt:ContentPanel ui:field="policiesPanel" headerVisible="false"/>
+
+            </gxt:VerticalPanel>
+      		
+      		 <gxt:bottomcomponent>
+                <toolbar:ToolBar addStyleNames="c4s-white-bg">
+                	<toolbar:FillToolItem/>
+      				<button:Button ui:field="cancelButton" text="Cancel"/>
+      				<button:Button ui:field="nextButton" text="Next"/>
+      			</toolbar:ToolBar>
+      		</gxt:bottomcomponent>
+        </gxt:ContentPanel> 
+    </gxt:LayoutContainer>
+</ui:UiBinder>

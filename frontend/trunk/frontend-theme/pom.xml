@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>frontend-parent</artifactId>
+        <groupId>eu.cloud4soa</groupId>
+        <version>0.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>frontend-theme</artifactId>
+
+    <name>Cloud4SOA Frontend theme</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.extjs</groupId>
+            <artifactId>gxt</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.gwt.xml</include>
+                    <include>**/*.ui.xml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.css</include>
+                    <include>**/*.png</include>
+                    <include>**/*.gif</include>
+                    <include>**/*.jpg</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>

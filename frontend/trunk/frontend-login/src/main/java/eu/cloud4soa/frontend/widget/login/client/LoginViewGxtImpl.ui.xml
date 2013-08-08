@@ -1,0 +1,54 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+        >
+
+    <gxt:LayoutContainer layout="CenterLayout">
+
+        <form:FormPanel ui:field="loginForm" headerVisible="true" frame="true" heading="Login">
+
+            <form:LabelField ui:field="messageLabel" text="" visible="false"/>
+
+            <form:layoutdata type="FormData">
+                <form:TextField ui:field="username" fieldLabel="Username" allowBlank="false"/>
+                <form:TextField ui:field="password" fieldLabel="Password" password="true" allowBlank="false"/>
+            </form:layoutdata>
+
+            <form:CheckBoxGroup labelSeparator="">
+                <form:CheckBox ui:field="rememberMe" boxLabel="Remember me on this computer"/>
+            </form:CheckBoxGroup>
+
+            <form:buttons>
+                <button:Button text="Lost password?" ui:field="lostPasswordButton"/>
+                <button:Button text="Register" ui:field="registerButton"/>
+                <button:Button text="Cancel" ui:field="cancelButton"/>
+                <button:Button text="Login" ui:field="loginButton"/>
+            </form:buttons>
+
+            <form:formButtonBinding buttonField="loginButton"/>
+
+
+        </form:FormPanel>
+
+    </gxt:LayoutContainer>
+
+</ui:UiBinder>

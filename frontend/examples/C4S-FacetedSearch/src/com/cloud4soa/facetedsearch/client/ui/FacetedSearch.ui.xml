@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder 
+	xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+	>
+	<g:HTMLPanel>
+	<g:TabLayoutPanel ui:field="filtertabs" barUnit="EM" barHeight="3" height="30em" width="100%">
+		<g:tab>
+		<g:header><strong>Search</strong></g:header>
+		<g:FlowPanel ui:field="searchtab" styleName="horizontalbands">
+			<g:ScrollPanel height="150px">
+			<g:FlowPanel styleName="horizontalbands containsvertical">
+				<g:FlowPanel styleName="vertical-filter" ui:field="provcont" visible="false">
+					<g:Label styleName="filter-title">Provider</g:Label>
+					<g:ListBox ui:field="provlist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="techcont" visible="false">
+					<g:Label styleName="filter-title">Technology</g:Label>
+					<g:ListBox ui:field="techlist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="ratingcont" visible="false">
+					<g:Label styleName="filter-title">Rating</g:Label>
+					<g:ListBox ui:field="ratinglist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="toolcont" visible="false">
+					<g:Label styleName="filter-title">Tools</g:Label>
+					<g:ListBox ui:field="toollist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="chnelcont" visible="false">
+					<g:Label styleName="filter-title">Channel</g:Label>
+					<g:ListBox ui:field="chnellist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="rescont" visible="false">
+					<g:Label styleName="filter-title">Resources</g:Label>
+					<g:ListBox ui:field="reslist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="featcont" visible="false">
+					<g:Label styleName="filter-title">Features</g:Label>
+					<g:ListBox ui:field="featlist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+				<g:FlowPanel styleName="vertical-filter" ui:field="paycont" visible="false">
+					<g:Label styleName="filter-title">Pricing policy</g:Label>
+					<g:ListBox ui:field="paylist" styleName="filter-select" multipleSelect="true" visibleItemCount="6"/>
+				</g:FlowPanel>
+			</g:FlowPanel>
+			</g:ScrollPanel>
+			<c:CellTable ui:field="provtable" styleName="filter-result"/>
+			<!-- 
+			<g:StackLayoutPanel ui:field="provpanel" height="300px">
+			</g:StackLayoutPanel>
+			 -->
+		</g:FlowPanel>
+		</g:tab>
+		<g:tab>
+			<g:header>Customize search</g:header>
+			<g:FlowPanel>
+				<g:Label>These are the available filters</g:Label>
+				<g:FlowPanel ui:field="favailable"></g:FlowPanel>
+			</g:FlowPanel>
+		</g:tab>
+	</g:TabLayoutPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

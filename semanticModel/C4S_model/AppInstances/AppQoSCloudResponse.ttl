@@ -1,0 +1,45 @@
+# Saved by TopBraid on Mon Apr 15 16:07:04 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/AppQoSCloudResponse
+# imports: http://www.cloud4soa.eu/v0.1/qos-model
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppQoSCloudResponse#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppQoSCloudResponse>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/qos-model> , <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppQoSCloudResponse.HundredMs>
+      rdf:type measure:MilliSecond ;
+      rdfs:label "Hundred ms"^^xsd:string ;
+      measure:has_value "100"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppQoSCloudResponse.HundredMsRange>
+      rdf:type measure:TimeRange ;
+      rdfs:label "Hundred ms range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppQoSCloudResponse.HundredMs> .
+
+<http://www.cloud4soa.eu/v0.1/qos-model#AppQoSCloudResponse.QoSCloudResponse>
+      rdf:type qos-model:CloudResponseTime ;
+      rdfs:label "Qo slatency"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppQoSCloudResponse.HundredMsRange> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppQoSCloudResponse.AppQoSCloudResponse>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application QoS latency"^^xsd:string ;
+      dcterms:alternative "Application QoS latency"^^xsd:string ;
+      dcterms:title "Application QoS latency"^^xsd:string ;
+      application-domain:requiresServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#AppQoSCloudResponse.QoSCloudResponse> .

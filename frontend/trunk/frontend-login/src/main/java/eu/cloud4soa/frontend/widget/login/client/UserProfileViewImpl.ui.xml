@@ -1,0 +1,53 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:dp="urn:import:com.google.gwt.user.datepicker.client"
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+        <g:HorizontalPanel>
+
+
+            <g:FlowPanel>
+                <g:Label text="Profile of user"/>
+                <g:TextBox ui:field="username" readOnly="true"/>
+            </g:FlowPanel>
+
+            <g:FlowPanel>
+
+                <g:Label text="Name:"/>
+                <g:TextBox ui:field="name"/>
+
+                <g:Label text="Surname:"/>
+                <g:TextBox ui:field="surname"/>
+
+                <g:Label text="e-mail:"/>
+                <g:TextBox ui:field="email"/>
+
+                <g:Label text="Birth date:"/>
+                <dp:DateBox ui:field="birthDate" />
+
+
+                <g:HorizontalPanel>
+                    <g:Button text="Save" ui:field="saveButton"/>
+                </g:HorizontalPanel>
+
+            </g:FlowPanel>
+
+        </g:HorizontalPanel>
+    </g:HTMLPanel>
+</ui:UiBinder>

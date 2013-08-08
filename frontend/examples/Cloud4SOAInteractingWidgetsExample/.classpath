@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<accessrules>
+			<accessrule kind="accessible" pattern="java/util/Set"/>
+			<accessrule kind="accessible" pattern="java/lang/Class"/>
+			<accessrule kind="accessible" pattern="java/util/Vector"/>
+			<accessrule kind="accessible" pattern="java/util/Map"/>
+			<accessrule kind="accessible" pattern="java/util/MissingResourceException"/>
+			<accessrule kind="accessible" pattern="java/lang/Comparable"/>
+			<accessrule kind="accessible" pattern="java/util/ArrayList"/>
+			<accessrule kind="accessible" pattern="java/util/AbstractList"/>
+			<accessrule kind="accessible" pattern="java/lang/String"/>
+			<accessrule kind="accessible" pattern="java/lang/StringIndexOutOfBoundsException"/>
+			<accessrule kind="accessible" pattern="java/lang/IndexOutOfBoundsException"/>
+			<accessrule kind="accessible" pattern="java/lang/Cloneable"/>
+			<accessrule kind="accessible" pattern="java/lang/Exception"/>
+			<accessrule kind="accessible" pattern="java/lang/ClassCastException"/>
+			<accessrule kind="accessible" pattern="java/lang/Error"/>
+			<accessrule kind="accessible" pattern="java/lang/RuntimeException"/>
+			<accessrule kind="accessible" pattern="java/lang/NumberFormatException"/>
+			<accessrule kind="accessible" pattern="java/util/Collections"/>
+			<accessrule kind="accessible" pattern="java/lang/NegativeArraySizeException"/>
+			<accessrule kind="accessible" pattern="java/lang/Integer"/>
+			<accessrule kind="accessible" pattern="java/lang/Byte"/>
+			<accessrule kind="accessible" pattern="java/util/Comparator"/>
+			<accessrule kind="accessible" pattern="java/lang/Float"/>
+			<accessrule kind="accessible" pattern="java/util/List"/>
+			<accessrule kind="accessible" pattern="java/util/Iterator"/>
+			<accessrule kind="accessible" pattern="java/lang/Double"/>
+			<accessrule kind="accessible" pattern="java/lang/NullPointerException"/>
+			<accessrule kind="accessible" pattern="java/lang/IllegalStateException"/>
+			<accessrule kind="accessible" pattern="java/util/TooManyListenersException"/>
+			<accessrule kind="accessible" pattern="java/util/AbstractCollection"/>
+			<accessrule kind="accessible" pattern="java/lang/AssertionError"/>
+			<accessrule kind="accessible" pattern="java/util/Collection"/>
+			<accessrule kind="accessible" pattern="java/lang/Long"/>
+			<accessrule kind="accessible" pattern="java/lang/Object"/>
+			<accessrule kind="accessible" pattern="java/lang/UnsupportedOperationException"/>
+			<accessrule kind="accessible" pattern="java/util/NoSuchElementException"/>
+			<accessrule kind="accessible" pattern="java/util/EventObject"/>
+			<accessrule kind="accessible" pattern="java/lang/Throwable"/>
+			<accessrule kind="accessible" pattern="java/lang/Math"/>
+			<accessrule kind="accessible" pattern="java/lang/Short"/>
+			<accessrule kind="accessible" pattern="java/util/EmptyStackException"/>
+			<accessrule kind="accessible" pattern="java/util/EventListener"/>
+			<accessrule kind="accessible" pattern="java/lang/Boolean"/>
+			<accessrule kind="accessible" pattern="java/util/AbstractSet"/>
+			<accessrule kind="accessible" pattern="java/util/HashSet"/>
+			<accessrule kind="accessible" pattern="java/util/Arrays"/>
+			<accessrule kind="accessible" pattern="java/lang/IllegalArgumentException"/>
+			<accessrule kind="accessible" pattern="java/lang/System"/>
+			<accessrule kind="accessible" pattern="java/util/AbstractMap"/>
+			<accessrule kind="accessible" pattern="java/util/HashMap"/>
+			<accessrule kind="accessible" pattern="java/util/RandomAccess"/>
+			<accessrule kind="accessible" pattern="java/util/Stack"/>
+			<accessrule kind="accessible" pattern="java/lang/StringBuffer"/>
+			<accessrule kind="accessible" pattern="java/lang/Number"/>
+			<accessrule kind="accessible" pattern="java/lang/Character"/>
+			<accessrule kind="accessible" pattern="java/lang/CharSequence"/>
+			<accessrule kind="accessible" pattern="java/util/Date"/>
+			<accessrule kind="accessible" pattern="java/lang/ArrayStoreException"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GWT-Gadgets"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/gwt-2.1.1"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

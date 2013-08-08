@@ -1,0 +1,6 @@
+profile {
+    developer 
+    {
+        username : "vlaudizio" password : "pwd" firstname : "Vincenzo" surname : "Laudizio" email : "vincenzo.laudizio@gmail.com"
+    }
+}

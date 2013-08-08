@@ -1,0 +1,107 @@
+<!--
+ -  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+ -
+ -  Licensed under the Apache License, Version 2.0 (the "License");
+ -  you may not use this file except in compliance with the License.
+ -  You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ -  Unless required by applicable law or agreed to in writing, software
+ -  distributed under the License is distributed on an "AS IS" BASIS,
+ -  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ -  See the License for the specific language governing permissions and
+ -  limitations under the License.
+ -->
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+        
+    <display-name>c4sgitserver</display-name>
+        
+        <!-- Spring Configuration -->
+        
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+  
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>  
+
+    <listener> 
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
+    </listener>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <description>JAX-WS endpoint</description>
+        <display-name>WSServlet</display-name>
+        <servlet-name>WSServlet</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WSServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- General JSF configuration -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
+    
+    <!--
+    <context-param>
+        <param-name>com.sun.faces.expressionFactory</param-name>
+        <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+    </context-param>
+    -->
+    
+        <!-- Primefaces specific -->
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bluesky</param-value>
+    </context-param>   
+        
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+        
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>        
+        
+        
+</web-app>

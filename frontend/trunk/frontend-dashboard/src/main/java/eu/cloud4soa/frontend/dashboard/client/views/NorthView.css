@@ -1,0 +1,24 @@
+        .username {
+            color: white;
+            float: left;
+            font-weight: bold;
+            margin-bottom: 0;
+            margin-left: 7px;
+            margin-top: 68px;
+            margin-right: 0;
+        }
+
+        .username:hover {
+            color: #EFC231;
+        }
+
+        .username a:visited {
+            color: white;
+        }
+
+        .button {
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+

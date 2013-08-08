@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext">
+  <xtext:Grammar name="eu.cloud4soa.xtext.Dsl" usedGrammars="/1">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+      <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="dsl">
+      <ePackage href="http://www.cloud4soa.eu/xtext/Dsl#/"/>
+    </metamodelDeclarations>
+    <rules xsi:type="xtext:ParserRule" name="Scope">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Scope"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="profile"/>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="userProfile" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="applicationProfile" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="paasOfferingProfile" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="UserProfile">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//UserProfile"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="developer"/>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="provider"/>
+            <elements xsi:type="xtext:Keyword" value=":"/>
+            <elements xsi:type="xtext:Assignment" feature="provider" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" feature="accountInfo" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="personalInfo" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PersonalInfos">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//PersonalInfos"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="firstname"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="firstName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="surname"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="surnName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="email"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="email" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="birthDay" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Birthday">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Birthday"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="birthday"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="date" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AccountInfo">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//AccountInfo"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="username"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="username" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="password"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="password" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Provider">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Provider"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="provider" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="url"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="homepage" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ApplicationProfile">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//ApplicationProfile"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="infos" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="file" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="technology" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ApplicationInfos">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//ApplicationInfos"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="application"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="application" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="version" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="code" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ApplicationCode">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//ApplicationCode"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="application_code"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="applicationCode" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PaasOfferingProfile">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//PaasOfferingProfile"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="paasOfferingInfos" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="channels" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="technology" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PaasOfferingInfos">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//PaasOfferingInfos"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="paas_offering"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="paasOffering" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="File">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//File"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="file_name"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="fileName" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="dimension" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="FileDimension">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//FileDimension"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="size"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="size" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="digest" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Digest">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Digest"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="digest"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="digest" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="TechnologyInfo">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//TechnologyInfo"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="programmingLanguage" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="software" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="hardware" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ProgrammingLanguage">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//ProgrammingLanguage"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="programming_language"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="programmingLanguage" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="version" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Software">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Software"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="software"/>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Group" cardinality="+">
+          <elements xsi:type="xtext:Assignment" feature="category" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="{"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="component" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="}"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SoftwareCategory">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//SoftwareCategory"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="category"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="category" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SoftwareComponent">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//SoftwareComponent"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="version" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="license" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Component">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Component"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="component"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Description">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Description"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="description"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="License">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//License"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="license"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="license" operator="=">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="GPL"/>
+            <elements xsi:type="xtext:Keyword" value="LGPL"/>
+            <elements xsi:type="xtext:Keyword" value="BSD"/>
+            <elements xsi:type="xtext:Keyword" value="MIT"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Hardware">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Hardware"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="hardware"/>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Assignment" feature="box" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="compute" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="networkResource" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="storageResource" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Box">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Box"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="box"/>
+        <elements xsi:type="xtext:Assignment" feature="box" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="BoxComponent">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//BoxComponent"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="httpRequest" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="HttpRequests">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//HttpRequests"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="http_requests"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="http_requests" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Compute">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Compute"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="compute"/>
+        <elements xsi:type="xtext:Assignment" feature="compute" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ComputationalComponent">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//ComputationalComponent"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="architecture" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="cores" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="speed" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="memory" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="cache" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Architecture">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Architecture"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="architecture"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="architecture" operator="=">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="x86"/>
+            <elements xsi:type="xtext:Keyword" value="x64"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Cores">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Cores"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="cores"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="cores" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Speed">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Speed"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="speed"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="speed" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Memory">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Memory"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="memory"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="memory" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Cache">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Cache"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="cache"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="cache" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="NetworkResource">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//NetworkResource"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="network_resource"/>
+        <elements xsi:type="xtext:Assignment" feature="networkResource" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CommunicationalComponent">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//CommunicationalComponent"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="bandwidth" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="latency" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Bandwidth">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Bandwidth"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="bandwidth"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="bandwidth" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Latency">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Latency"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="latency"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="latency" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="StorageResource">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//StorageResource"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="storage_resource"/>
+        <elements xsi:type="xtext:Assignment" feature="storageComponent" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="StorageComponent">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//StorageComponent"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="component" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="capacity" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="bandwidth" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Capacity">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Capacity"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="capacity"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="capacity" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Channels">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Channels"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="channels"/>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="channel" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Channel">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Channel"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="api"/>
+          <elements xsi:type="xtext:Keyword" value="cli"/>
+          <elements xsi:type="xtext:Keyword" value="web_interface"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="operation" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.42"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Operation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Operation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="operation"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="operation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="description" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="command" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="informationReturned" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Command">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Command"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="command"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="command" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="InformationReturned">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//InformationReturned"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="information_returned"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="informationReturned" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Version">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.cloud4soa.eu/xtext/Dsl#//Version"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="version"/>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="+">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="NATURAL_NUMBER">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="1"/>
+            <right value="9"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange" cardinality="+">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="DATE_US">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="-"/>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="-"/>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+      </alternatives>
+    </rules>
+  </xtext:Grammar>
+  <xtext:Grammar name="org.eclipse.xtext.common.Terminals" definesHiddenTokens="true" hiddenTokens="/1/@rules.5 /1/@rules.3 /1/@rules.4">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+      <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </metamodelDeclarations>
+    <rules xsi:type="xtext:TerminalRule" name="ID">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="^"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="a"/>
+            <right value="z"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="A"/>
+            <right value="Z"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="a"/>
+            <right value="z"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="A"/>
+            <right value="Z"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="INT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </type>
+      <alternatives xsi:type="xtext:CharacterRange" cardinality="+">
+        <left value="0"/>
+        <right value="9"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="STRING">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="b"/>
+                <elements xsi:type="xtext:Keyword" value="t"/>
+                <elements xsi:type="xtext:Keyword" value="n"/>
+                <elements xsi:type="xtext:Keyword" value="f"/>
+                <elements xsi:type="xtext:Keyword" value="r"/>
+                <elements xsi:type="xtext:Keyword" value="u"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="'"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="b"/>
+                <elements xsi:type="xtext:Keyword" value="t"/>
+                <elements xsi:type="xtext:Keyword" value="n"/>
+                <elements xsi:type="xtext:Keyword" value="f"/>
+                <elements xsi:type="xtext:Keyword" value="r"/>
+                <elements xsi:type="xtext:Keyword" value="u"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+                <elements xsi:type="xtext:Keyword" value="\"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="'"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/*"/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:Keyword" value="*/"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="//"/>
+        <elements xsi:type="xtext:NegatedToken" cardinality="*">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="WS">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives" cardinality="+">
+        <elements xsi:type="xtext:Keyword" value=" "/>
+        <elements xsi:type="xtext:Keyword" value="&#x9;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ANY_OTHER">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Wildcard"/>
+    </rules>
+  </xtext:Grammar>
+</xmi:XMI>

@@ -1,0 +1,58 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.0//EN" "http://google-web-toolkit.googlecode.com/svn/releases/2.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to="loginwidget">
+
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.place.Place"/>
+    <inherits name="com.google.gwt.activity.Activity"/>
+    <inherits name="eu.cloud4soa.frontend.commons.FrontendCommons"/>
+
+    <inherits name="com.extjs.gxt.ui.GXT" />
+    <inherits name="com.jhickman.web.gwt.gxtuibinder.GxtUiBinder" />
+
+    <source path="client" />
+    <source path="shared" />
+
+
+    <replace-with class="eu.cloud4soa.frontend.widget.login.client.LoginViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.login.client.LoginView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.login.client.LostPasswordViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.login.client.LostPasswordView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.login.client.RegisterViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.login.client.RegisterView"/>
+    </replace-with>
+    
+    <replace-with class="eu.cloud4soa.frontend.widget.login.client.RegistrationViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.login.client.RegistrationView"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactoryImpl">
+        <when-type-is class="eu.cloud4soa.frontend.commons.client.Cloud4SOAUIClientFactory"/>
+    </replace-with>
+
+    <replace-with class="eu.cloud4soa.frontend.widget.login.client.UserProfileViewGxtImpl">
+        <when-type-is class="eu.cloud4soa.frontend.widget.login.client.UserProfileView"/>
+    </replace-with>
+
+
+</module>

@@ -1,0 +1,32 @@
+# Saved by TopBraid on Fri Jun 29 18:12:33 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppComputingScalingFactor
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppComputingScalingFactor#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppComputingScalingFactor>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+measure:AppComputingScalingFactortwoRange
+      rdf:type measure:NumericRange ;
+      rdfs:label "two range"^^xsd:string ;
+      measure:hasMinNumericValue
+              "2"^^xsd:float .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppComputingScalingFactor.AppComputingScalingFactor>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application computing scaling factor"^^xsd:string ;
+      dcterms:alternative "Application computing scaling factor"^^xsd:string ;
+      dcterms:title "Application computing scaling factor"^^xsd:string ;
+      application-domain:requireComputeScalingFactor
+              measure:AppComputingScalingFactortwoRange .

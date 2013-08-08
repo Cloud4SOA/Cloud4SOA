@@ -1,0 +1,100 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!-- Offer Sample with service and guarantee terms  ( modified from Aggreement sample from GDF.167)  -->
+<!-- http://www.ggf.org/documents/GFD.167.pdf -->
+<wsag:AgreementOffer
+xmlns:wsag="http://schemas.ggf.org/graap/2007/03/ws-agreement">
+<wsag:Context>
+    <wsag:AgreementInitiator>Francesco d'Adria</wsag:AgreementInitiator>
+    <wsag:AgreementResponder>Cloudbees</wsag:AgreementResponder>
+<wsag:ServiceProvider>Cloudbees</wsag:ServiceProvider>
+<wsag:ExpirationTime>2013-04-08 20:24:15</wsag:ExpirationTime>
+<wsag:TemplateId>1</wsag:TemplateId>
+<wsag:TemplateName>SLAContract</wsag:TemplateName>
+</wsag:Context>
+
+<wsag:Terms>
+<wsag:All>
+
+<wsag:ServiceDescriptionTerm wsag:Name="Term1"
+wsag:ServiceName="AppJavaAndDB" />
+
+<wsag:GuaranteeTerm wsag:Name="LATENCY_GUARANTEE">
+<!-- LATENCY = Interval between the receipt of 
+the end of transmission of an inquiry message and 
+the beginning of the transmission of a response message
+ to the station originating the inquiry.
+ -->
+<wsag:ServiceScope wsag:ServiceName="AppJavaAndDB"/>
+<wsag:ServiceLevelObjective>
+<wsag:KPITarget>
+<wsag:KPIName>LATENCY</wsag:KPIName>
+<wsag:CustomServiceLevel>LATENCY &lt;=
+100ms</wsag:CustomServiceLevel>
+</wsag:KPITarget>
+</wsag:ServiceLevelObjective>
+<wsag:BusinessValueList>
+<wsag:Penalty>
+<wsag:AssessmentInterval>
+<wsag:TimeInterval>Weekly</wsag:TimeInterval>
+</wsag:AssessmentInterval>
+<wsag:ValueUnit>EUR</wsag:ValueUnit>
+<wsag:ValueExpression>5</wsag:ValueExpression>
+</wsag:Penalty>
+<wsag:Reward>
+<wsag:AssessmentInterval>
+<wsag:TimeInterval>Weekly</wsag:TimeInterval>
+</wsag:AssessmentInterval>
+<wsag:ValueUnit>EUR</wsag:ValueUnit>
+<wsag:ValueExpression>10</wsag:ValueExpression>
+</wsag:Reward>
+</wsag:BusinessValueList>
+</wsag:GuaranteeTerm>
+
+<wsag:GuaranteeTerm wsag:Name="UPTIME_GUARANTEE">
+<!--   UPTIME =  The percentage of time in a determined period that 
+the application will answer with an agreed httpCode = 200
+ -->
+<wsag:ServiceScope wsag:ServiceName="UserService1"/>
+<wsag:ServiceLevelObjective>
+<wsag:KPITarget>
+<wsag:KPIName>UPTIME</wsag:KPIName>
+<wsag:CustomServiceLevel>UPTIME &lt;=
+99,9</wsag:CustomServiceLevel>
+</wsag:KPITarget>
+</wsag:ServiceLevelObjective>
+<wsag:BusinessValueList>
+<wsag:Penalty>
+<wsag:AssessmentInterval>
+<wsag:TimeInterval>Weekly</wsag:TimeInterval>
+</wsag:AssessmentInterval>
+<wsag:ValueUnit>EUR</wsag:ValueUnit>
+<wsag:ValueExpression>5</wsag:ValueExpression>
+</wsag:Penalty>
+<wsag:Reward>
+<wsag:AssessmentInterval>
+<wsag:TimeInterval>Weekly</wsag:TimeInterval>
+</wsag:AssessmentInterval>
+<wsag:ValueUnit>EUR</wsag:ValueUnit>
+<wsag:ValueExpression>10</wsag:ValueExpression>
+</wsag:Reward>
+</wsag:BusinessValueList>
+</wsag:GuaranteeTerm>
+</wsag:All>
+</wsag:Terms>
+</wsag:AgreementOffer>

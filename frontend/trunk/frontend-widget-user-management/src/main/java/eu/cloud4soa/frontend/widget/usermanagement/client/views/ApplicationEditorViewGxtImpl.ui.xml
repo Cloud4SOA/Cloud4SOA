@@ -1,0 +1,58 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:form="urn:import:com.extjs.gxt.ui.client.widget.form"
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+             xmlns:toolbar="urn:import:com.extjs.gxt.ui.client.widget.toolbar"
+
+        >
+    <gxt:LayoutContainer addStyleNames="c4s-white-bg" layout="FitLayout">
+
+        <gxt:ContentPanel ui:field="editorPanel" headerVisible="true" borders="true"  heading="Application profile" scrollMode="AUTO">
+            <gxt:topcomponent>
+                <toolbar:ToolBar addStyleNames="c4s-white-bg">
+                    <button:Button ui:field="closeButton" text="Back" scale="LARGE" iconAlign="BOTTOM" />
+                    <button:Button ui:field="saveButton" text="Save" scale="LARGE"  iconAlign="BOTTOM"/>
+                    <button:Button ui:field="addComponentButton" text="Add component" scale="LARGE" iconAlign="BOTTOM"/>
+                    <button:Button ui:field="searchButton" text="Search" scale="LARGE" iconAlign="BOTTOM"/>
+                    <toolbar:FillToolItem/>
+                    <button:Button ui:field="deleteButton" text="Delete" scale="LARGE" iconAlign="BOTTOM"/>
+
+                </toolbar:ToolBar>
+            </gxt:topcomponent>
+
+            <gxt:VerticalPanel ui:field="mainPanel" spacing="2" visible="false">
+
+
+                <form:FormPanel ui:field="applicationDetailsForm" headerVisible="false">
+                    <form:FieldSet ui:field="applicationDetailsFieldSet" heading="Application details"/>
+                </form:FormPanel>
+
+                <gxt:ContentPanel ui:field="softwareComponentsPanel" headerVisible="false"/>
+
+                <gxt:ContentPanel ui:field="hardwareComponentsPanel" headerVisible="false"/>
+
+                <form:FormPanel ui:field="slaForm" headerVisible="false">
+                    <form:FieldSet ui:field="slaFieldSet" heading="Service level agreement"/>
+                </form:FormPanel>
+
+            </gxt:VerticalPanel>
+        </gxt:ContentPanel>
+    </gxt:LayoutContainer>
+</ui:UiBinder>

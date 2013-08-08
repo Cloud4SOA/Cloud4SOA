@@ -1,0 +1,58 @@
+###
+#  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+###
+
+
+# Saved by TopBraid on Wed May 01 12:49:40 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/TestPaaS
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/TestPaaS#> .
+@prefix CloudBees:  <http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:TestPaaS
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Test paa s"^^xsd:string ;
+      dcterms:title "Test PaaS (Java)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:cloudBees_API ;
+      paas-m:hasAdapter "true"^^xsd:boolean ;
+      paas-m:hasURL "www.testpaas.com"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#OneToTenRange> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesXLargeCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesLargeCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesSmallCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBees2XLargeCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesMediumCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesStarterCompute> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#cloudBees_storage> ;
+      paas-m:offerSoftware
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesMySqlDB5MBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#cloudbeesTomcat> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Jenkins> , <http://www.enterprise-architecture.org/essential-metamodel.owl#cloudant> , <http://www.enterprise-architecture.org/essential-metamodel.owl#AutoScaling> , <http://www.enterprise-architecture.org/essential-metamodel.owl#SSL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesMySqlDB40GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Sonar> , <http://www.enterprise-architecture.org/essential-metamodel.owl#cloudbeesCustomName> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesMySqlDB80GBInstance> , <http://www.enterprise-architecture.org/essential-metamodel.owl#JFrog> , <http://www.enterprise-architecture.org/essential-metamodel.owl#NewRelic> , <http://www.enterprise-architecture.org/essential-metamodel.owl#Sauce_Labs_OnDemand> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#CloudBeesMySqlDB1GBInstance> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#one_range> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#cloudBeesPaaS> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#cloudbeesLatency> , <http://www.cloud4soa.eu/v0.1/qos-model#cloudbeesUptime> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/TestPaaS>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

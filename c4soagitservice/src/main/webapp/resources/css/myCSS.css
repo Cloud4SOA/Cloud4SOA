@@ -1,0 +1,33 @@
+/*
+    Document   : myCSS
+    Created on : Apr 9, 2012, 9:00:59 AM
+    Author     : thanasis
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root {
+    display: block;
+}
+
+.panelGridColWidth1 {
+        width: 200px;
+        text-align: right;
+}
+.panelGridColWidth2 {
+    width: 200px;
+    text-align: left;
+}
+.panelGridColWidth3 {
+    width: 360px;
+    text-align: left;
+}
+
+.panelGridColWidth4 {
+    width: 460px;
+}

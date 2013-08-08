@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:Azure="http://www.cloud4soa.eu/v0.1/paasInstances/Azure#"
+    xmlns:CumuLogic="http://www.cloud4soa.eu/v0.1/paasInstances/CumuLogic#"
+    xmlns:OpenShift="http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift#"
+    xmlns:CloudControl="http://www.cloud4soa.eu/v0.1/paasInstances/CloudControl#"
+    xmlns:c4s-inf-m="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:user-m="http://www.cloud4soa.eu/v0.1/user-model#"
+    xmlns:qos-m="http://www.cloud4soa.eu/v0.1/qos-model#"
+    xmlns:MuleiON="http://www.cloud4soa.eu/v0.1/paasInstances/MuleiON#"
+    xmlns:AppEngine="http://www.cloud4soa.eu/v0.1/paasInstances/AppEngine#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:Playapps="http://www.cloud4soa.eu/v0.1/paasInstances/Playapps#"
+    xmlns:CloudBees="http://www.cloud4soa.eu/v0.1/paasInstances/CloudBees#"
+    xmlns:Beanstalk="http://www.cloud4soa.eu/v0.1/paasInstances/Beanstalk#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:c4s-app-m="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:AppHarbor="http://www.cloud4soa.eu/v0.1/paasInstances/AppHarbor#"
+    xmlns:EngineYard="http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard#"
+    xmlns:appinstances="http://www.cloud4soa.eu/v0.1/appinstances#"
+    xmlns:CloudFoundry="http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry#"
+    xmlns:BSCW="http://www.cloud4soa.eu/v0.1/appinstances/BSCW#"
+    xmlns="http://www.cloud4soa.eu/v0.1/state-model-base#"
+    xmlns:Heroku="http://www.cloud4soa.eu/v0.1/paasInstances/Heroku#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:c4s-pro-m="http://www.cloud4soa.eu/v0.1/provider-model#"
+  xml:base="http://www.cloud4soa.eu/v0.1/state-model-base">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/qos-model"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model"/>
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/user-model"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/application-domain"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </owl:Ontology>
+  <rdf:Description rdf:about="http://www.cloud4soa.eu/v0.1/paas-model#offerHardwareComponent">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.cloud4soa.eu/v0.1/user-model#providesResource">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.cloud4soa.eu/v0.1/paas-model#relatedHardwareComponent">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Resource"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

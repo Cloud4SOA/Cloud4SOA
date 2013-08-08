@@ -1,0 +1,2 @@
+serviceClass: com.extjs.gxt.samples.client.FileService
+path: ED9ED55B8DF669F4E1EA40ABC884CC4E.gwt.rpc

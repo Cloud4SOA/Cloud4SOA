@@ -1,0 +1,2 @@
+serviceClass: com.cloud4soa.facetedsearch.client.GreetingService
+path: 394B628101AB90E2B349C94229661F65.gwt.rpc

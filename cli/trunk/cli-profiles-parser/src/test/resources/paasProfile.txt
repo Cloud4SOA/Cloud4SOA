@@ -1,0 +1,23 @@
+profile {
+    paas_offering: "CloudBees"
+        channels 
+        { 
+            api 
+            { 
+                operation :  "checkApplicationAvailability" description : "Checks whether the specified application name is available" command : "checkAppAvailability" information_returned : "null"
+            } 
+        }
+        programming_language: "Java" version: 1.6 
+        software 
+        { 
+            category: "web server" description: "Host applications"
+            { 
+                component : "apache tomcat" description : "Apache Tomcat Application Server" version : 7.0 license : GPL
+            } 
+        } 
+        hardware
+        { 
+            compute 
+                component : "Pentium" description : "intel Pentium" architecture : x86 cores : 1 speed : 2000 memory : 1024 cache : 2048 
+        } 
+}

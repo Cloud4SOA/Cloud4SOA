@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dsl"
+    nsURI="http://www.cloud4soa.eu/xtext/Dsl" nsPrefix="dsl">
+  <eClassifiers xsi:type="ecore:EClass" name="Scope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userProfile" eType="#//UserProfile"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applicationProfile" eType="#//ApplicationProfile"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paasOfferingProfile" eType="#//PaasOfferingProfile"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserProfile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provider" eType="#//Provider"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accountInfo" eType="#//AccountInfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personalInfo" eType="#//PersonalInfos"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersonalInfos">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="firstName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="surnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="birthDay" eType="#//Birthday"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Birthday">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AccountInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Provider">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="provider" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="homepage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationProfile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="infos" eType="#//ApplicationInfos"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="file" eType="#//File" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="technology" eType="#//TechnologyInfo"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationInfos">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="application" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//Version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//ApplicationCode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationCode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaasOfferingProfile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paasOfferingInfos" eType="#//PaasOfferingInfos"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" eType="#//Channels"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="technology" eType="#//TechnologyInfo"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PaasOfferingInfos">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paasOffering" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dimension" eType="#//FileDimension"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileDimension">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="digest" eType="#//Digest"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Digest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="digest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TechnologyInfo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="programmingLanguage" eType="#//ProgrammingLanguage"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="software" eType="#//Software"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hardware" eType="#//Hardware"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProgrammingLanguage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="programmingLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//Version"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Software">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
+        eType="#//SoftwareCategory" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" upperBound="-1"
+        eType="#//SoftwareComponent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareCategory">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="#//Component"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//Version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="license" eType="#//License"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="component" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Description">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="License">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="license" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hardware">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="box" eType="#//Box" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compute" eType="#//Compute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="networkResource" upperBound="-1"
+        eType="#//NetworkResource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storageResource" upperBound="-1"
+        eType="#//StorageResource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Box">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="box" eType="#//BoxComponent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoxComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="#//Component"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="httpRequest" eType="#//HttpRequests"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HttpRequests">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="http_requests" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compute" eType="#//ComputationalComponent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComputationalComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="#//Component"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" eType="#//Architecture"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cores" eType="#//Cores"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speed" eType="#//Speed"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="memory" eType="#//Memory"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cache" eType="#//Cache"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Architecture">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="architecture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cores">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cores" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Speed">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Memory">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cache">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cache" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetworkResource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="networkResource" eType="#//CommunicationalComponent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationalComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="#//Component"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bandwidth" eType="#//Bandwidth"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="latency" eType="#//Latency"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bandwidth">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bandwidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Latency">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageResource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="storageComponent" eType="#//StorageComponent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="#//Component"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="#//Capacity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bandwidth" eType="#//Bandwidth"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capacity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channels">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channel" upperBound="-1"
+        eType="#//Channel" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
+        eType="#//Operation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="#//Command"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="informationReturned" eType="#//InformationReturned"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InformationReturned">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="informationReturned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Version">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

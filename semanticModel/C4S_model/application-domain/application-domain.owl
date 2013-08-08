@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.cloud4soa.eu/v0.1/application-domain#"
+    xmlns:c4s-ent-m="http://www.cloud4soa.eu/v0.1/enterprise-domain#"
+    xmlns:common-m="http://www.cloud4soa.eu/v0.1/other#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measure="http://www.cloud4soa.eu/v0.1/measure#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:c4s-inf-m="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:user-m="http://www.cloud4soa.eu/v0.1/user-model#"
+  xml:base="http://www.cloud4soa.eu/v0.1/application-domain">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/user-model"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/enterprise-domain"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/other"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/measure"/>
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Application_Undeployed">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Applciation Undeployed status means that an application has been undeployed ftom the PaaS offering ans so there exists only the applciation profile.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Applciation Undeployed</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Application_Status"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Deployed">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Deployed status means that the application is deployed on a specific cloud platform.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Application_Status"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Deployed</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_application_starting">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application starting status means that an error has occured during the starting of the application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application starting</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Error"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Error">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error status means that an error has occured at the lifecycle  of the application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Application_Status"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Migrated">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Migrated status means that a the Application has been migrated to the new PaaS offering.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Migrated</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Application_Status"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Unreachable">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Unreachable status means that the cloud4soa system cannot reach the application at the PaaS offering and retrieve its status.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Applciation Unreachable</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Application_Status"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_application_stopping">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application stopping status means that an error has occured during the stopping of the application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in applciation stopping</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Error"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Application_Status">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A generic concept that describe the lifecycle status of a cloud-based Application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Status</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Logical"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ApplicationArchive">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A collection of files used to deploy the appliation on the cloud platform.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Archive</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Physical"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DB_Migrated">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DB migrated status means that the DB was succesfully migrated to the new PaaS offering.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DB migrated</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Application_Status"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Running">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Applciation Running status means that a deployed application has started running succesfully.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Running</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Application_Status"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Migrating">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Migrating status means that the application is currently migrating to the new PaaS offering.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Migrating</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Application_Status"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_application_migration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application migration status means that an error has occured during the migration of the application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application migration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Error"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Stopped">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Stopped status means that a deployed application is stopped for a specific cause.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application Stopped</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Application_Status"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_application_deployment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application deployment status means that an error has occured during the deployment of the applciation.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in applciation deployment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Error"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_db_migration">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in DB migration status means that an error has occured during the migration of the DB.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in DB migration</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Error"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DB_Migrating">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DB migrating status means that the DB is currently migrating to the new PaaS offering.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Migrating DB</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Application_Status"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Error_in_application_undeploying">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application undeploying status means that an error has occured during the undeployment of the application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Error in application undeploying</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Error"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="migratedFrom">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Can capture the applciation deployment history</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >migrated from</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="useProgrammingLanguage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Application with the Programming Language it uses.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/other#ProgrammingLanguage"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >use Programming Language</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="size">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >size</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#Storage_Unit"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the Application Size.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDeployment">
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Application with an Application Deployment of the specific application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Deployment</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="requiresSoftwareComponent">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >requires Software Component</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Application with the Software Components it required for its execution.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Software_Component"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasStatus">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Status</rdfs:label>
+    <rdfs:range rdf:resource="#Application_Status"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Application with an Application Status. The potential statuses are Uploaded, Deployed, Stopped.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="requireWebScalingFactor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >require web scaling factor</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of Http requests handler instances required by the application.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="requiresServiceQuality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define the QoS metrics required by an application.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >requires Service Quality</rdfs:label>
+    <rdfs:range rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Technology_Service_Quality"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="requiresHardwareComponent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates an Application with the Hardware Components it requires during its excecution.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >requires Hardware Component</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Component"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="deploying_location">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >deploying location</rdfs:label>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/paas-model#PaaSOffering"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlates a deployed Application with the PaaS Offering where  it is deployed.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="requireComputeScalingFactor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of compute instances required by the application.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/measure#NumericRange"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >require compute scaling factor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOwner">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/user-model#Developer"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The main person who own the application</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Owner</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="releatedApplicationArchive">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >releatedApplicationArchive</rdfs:label>
+    <rdfs:range rdf:resource="#ApplicationArchive"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relates an Application with its Application Archive.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="cause">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >cause</rdfs:label>
+    <rdfs:domain rdf:resource="#Application_Stopped"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The cause that describe why the application is stopped.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Error"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="digest">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >digest</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Application digest like md5sum/SHA.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="application_code">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The code of the applciation</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Application code</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasIP">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has IP</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the IP of the Application Deployment</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAdapterUrl">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the URL of the Adapter related to the Application Deployment</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Adapter Url</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="extensionName">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The file extension of the Application Archive (e.g. war).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ApplicationArchive"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >extension Name</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="SLAid">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application_Deployment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SLAid</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the ID of the SLA of the applciation</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="license_type">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >license type</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the license type of a Software Component</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="fileName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >file Name</rdfs:label>
+    <rdfs:domain rdf:resource="#ApplicationArchive"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The file name of the Applciation archive.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:domain rdf:resource="#ApplicationArchive"/>
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <rdfs:domain rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Application"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/title">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

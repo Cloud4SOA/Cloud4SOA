@@ -1,0 +1,41 @@
+# Saved by TopBraid on Fri Jul 26 16:45:43 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudPython
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudPython#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix dotCloudJava:  <http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-model:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-model:dotCloudPython
+      rdf:type paas-model:PaaSOffering ;
+      rdfs:label "dot cloud python"^^xsd:string ;
+      dcterms:title "dotCloud (python)"^^xsd:string ;
+      paas-model:communicateThrough
+              paas-model:dotCloudAPI ;
+      paas-model:hasAdapter
+              "false"^^xsd:boolean ;
+      paas-model:hasURL "https://www.dotcloud.com"^^xsd:string ;
+      paas-model:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#fiveRange> ;
+      paas-model:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotCloudStorage> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotcloudCompute> ;
+      paas-model:offerSoftware
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#dotCloudSSL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotCloudmongoDB> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotCloudredis> , <http://www.enterprise-architecture.org/essential-metamodel.owl#dotCloudWebServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotCloudpostrgesql> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#dotCloudMySQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#dotCloudApplciationserver> ;
+      paas-model:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#fiveRange> ;
+      paas-model:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#dotCloudProvider> ;
+      paas-model:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#dotCloudUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#dotCloudLatency> ;
+      paas-model:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Python> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudPython>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/dotCloudJava> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

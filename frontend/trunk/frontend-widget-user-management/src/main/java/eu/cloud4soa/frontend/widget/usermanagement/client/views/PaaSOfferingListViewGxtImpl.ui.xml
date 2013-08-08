@@ -1,0 +1,68 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:button="urn:import:com.extjs.gxt.ui.client.widget.button"
+             xmlns:grid="urn:import:com.extjs.gxt.ui.client.widget.grid"
+             xmlns:toolbar="urn:import:com.extjs.gxt.ui.client.widget.toolbar"
+        >
+
+    <ui:with
+            type="eu.cloud4soa.frontend.widget.usermanagement.client.views.PaaSOfferingListViewGxtImpl.ViewDataProvider"
+            field="data"/>
+
+
+    <gxt:LayoutContainer addStyleNames="c4s-white-bg" layout="FitLayout">
+
+        <gxt:ContentPanel ui:field="gridPanel" bodyBorder="true" heading="PaaS Offerings"
+                          headerVisible="true"
+                          layout="FitLayout"
+                          buttonAlign="CENTER"
+                          height="300">
+            <gxt:topcomponent>
+                <toolbar:ToolBar>
+                    <button:Button ui:field="newButton" enabled="true" text="New"/>
+                    <toolbar:FillToolItem/>
+                </toolbar:ToolBar>
+            </gxt:topcomponent>
+
+            <grid:Grid store="{data.instanceStore}"
+                       ui:field="instanceGrid"
+                       styleAttribute="borderTop:none"
+                       autoExpandColumn="programmingLanguage.version"
+                       borders="false"
+                       autoWidth="true"
+                       stripeRows="true"
+                       columnLines="true"
+                       columnReordering="true">
+                <grid:column id="displayName"
+                             header="PaaS Provider"
+                             width="200"
+                             rowHeader="true"/>
+                <grid:column id="programmingLanguage.displayName"
+                             header="Programming language"
+                             width="200"
+                             rowHeader="true"/>
+                <grid:column id="programmingLanguage.version"
+                             header="Version"
+                             width="200"
+                             rowHeader="true"/>
+            </grid:Grid>
+        </gxt:ContentPanel>
+    </gxt:LayoutContainer>
+</ui:UiBinder>

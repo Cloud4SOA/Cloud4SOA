@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns="http://www.cloud4soa.eu/v0.1/other#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:conv="http://usoa.deri.ie/ontology/conversion_v.0.1#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:essential-metamodel="http://www.enterprise-architecture.org/essential-metamodel.owl#"
+    xmlns:infrastructural-domain="http://www.cloud4soa.eu/v0.1/infrastructural-domain#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.cloud4soa.eu/v0.1/other">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain"/>
+    <owl:imports rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="ProgrammingLanguage">
+    <rdfs:subClassOf rdf:resource="http://www.enterprise-architecture.org/essential-metamodel.owl#Utilities"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Programming Language</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A language used to write cloud-based Applications (e.g. Java, PHP, Python etc.).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EquivalenceRuleHardwareCategory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An equivalence rule between 2 hardware categories</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Equivalence rule hardware category</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasTarget">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The target of an equivalence rule</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Category"/>
+    <rdfs:domain rdf:resource="#EquivalenceRuleHardwareCategory"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has target</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasBackwardCompatibilityWith">
+    <rdfs:domain rdf:resource="#ProgrammingLanguage"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has Backward Compatibility With</rdfs:label>
+    <rdfs:range rdf:resource="#ProgrammingLanguage"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Correlate a Programming Language with another Programming language that is backwards compatible.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasSource">
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Category"/>
+    <rdfs:domain rdf:resource="#EquivalenceRuleHardwareCategory"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The target of an equivalence rule</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has source</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://usoa.deri.ie/ontology/conversion_v.0.1#hasConversionRate">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has source</rdfs:label>
+    <rdfs:domain rdf:resource="#EquivalenceRuleHardwareCategory"/>
+    <rdfs:range rdf:resource="http://www.cloud4soa.eu/v0.1/infrastructural-domain#Hardware_Category"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The conversion rate between the source and target hardware category.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasConversionRate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#EquivalenceRuleHardwareCategory"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has conversion rate</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The conversion rate between the source and target hardware category.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <ProgrammingLanguage rdf:ID="GO">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GO</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Clojure">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Clojure</rdfs:label>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Ruby_1.9.2">
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1.9.2</dcterms:hasVersion>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ruby</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="PHP_5_3_2">
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >5.3.2</dcterms:hasVersion>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PHP</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Csharp">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C#</rdfs:label>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >C#</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="ASP.NET">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ASP.NET</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="PHP_5_3">
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >5.3</dcterms:hasVersion>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >PHP</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Node.js">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Node.js</rdfs:label>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Python">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Python</dcterms:title>
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2.7.2</dcterms:hasVersion>
+  </ProgrammingLanguage>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdfs:domain rdf:resource="#ProgrammingLanguage"/>
+  </rdf:Description>
+  <ProgrammingLanguage rdf:ID="Play_Framework">
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Play Framework</dcterms:title>
+  </ProgrammingLanguage>
+  <ProgrammingLanguage rdf:ID="Java_1_6_0">
+    <hasBackwardCompatibilityWith>
+      <ProgrammingLanguage rdf:ID="Java_1_4_0">
+        <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Java</dcterms:title>
+        <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >1.4</dcterms:hasVersion>
+      </ProgrammingLanguage>
+    </hasBackwardCompatibilityWith>
+    <dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Java</dcterms:title>
+    <dcterms:hasVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1.6</dcterms:hasVersion>
+  </ProgrammingLanguage>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ProgrammingLanguage"/>
+  </rdf:Description>
+  <ProgrammingLanguage rdf:ID="Scala">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Scala</rdfs:label>
+  </ProgrammingLanguage>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

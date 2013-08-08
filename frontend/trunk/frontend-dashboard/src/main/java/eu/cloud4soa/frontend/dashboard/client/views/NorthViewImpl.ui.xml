@@ -1,0 +1,126 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:c4s="urn:import:eu.cloud4soa.frontend.commons.client.ui"
+        >
+
+    <ui:with field="images" type="eu.cloud4soa.frontend.commons.client.resources.PlaceIcons"/>
+
+	<ui:style src="NorthView.css" />
+    
+    <gxt:LayoutContainer layout="FlowLayout" height="100" addStyleNames="c4s-blue-background">
+        <gxt:ContentPanel headerVisible="false" borders="false" bodyBorder="false" height="100" addStyleNames="c4s-logo">
+
+            <g:Anchor ui:field="userAnchor" text="" styleName="{style.username}"/>
+
+            <gxt:HorizontalPanel horizontalAlign="RIGHT" spacing="3" borders="false" addStyleNames="c4s-float-right">
+
+                <gxt:ContentPanel ui:field="searchPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="searchImage" title="Search" altText="search"
+                                     imageNormal="{images.search}"
+                                     imageSelected="{images.search_over}"
+                                     imageOver="{images.search_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="browsePanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="browseImage" title="Catalogue Browse" altText="browse"
+                                     imageNormal="{images.browse}"
+                                     imageSelected="{images.browse_over}"
+                                     imageOver="{images.browse_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="applicationPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="applicationImage" title="Applications" altText="applications"
+                                     imageNormal="{images.application}"
+                                     imageSelected="{images.application_over}"
+                                     imageOver="{images.application_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="offerPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="offerImage" title="PaaS Offerings" altText="offerings"
+                                     imageNormal="{images.offer}"
+                                     imageSelected="{images.offer_over}"
+                                     imageOver="{images.offer_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="monitoringPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="monitoringImage" title="Monitoring" altText="monitoring"
+                                     imageNormal="{images.monitoring}"
+                                     imageSelected="{images.monitoring_over}"
+                                     imageOver="{images.monitoring_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="deployPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="deployImage" title="Deploy" altText="deploy"
+                                     imageNormal="{images.deploy}"
+                                     imageSelected="{images.deploy_over}"
+                                     imageOver="{images.deploy_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="migratePanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="migrateImage" title="Migrate" altText="migrate"
+                                     imageNormal="{images.migrate}"
+                                     imageSelected="{images.migrate_over}"
+                                     imageOver="{images.migrate_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="userProfilePanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="userProfileImage" title="User profile" altText="user"
+                                     imageNormal="{images.userProfile}"
+                                     imageSelected="{images.userProfile_over}"
+                                     imageOver="{images.userProfile_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="adminPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="adminImage" title="Administer Cloud4SOA" altText="admin"
+                                     imageNormal="{images.adminPlace}"
+                                     imageSelected="{images.adminPlace_over}"
+                                     imageOver="{images.adminPlace_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="registerPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="registerImage" title="Register" altText="register"
+                                     imageNormal="{images.register}"
+                                     imageSelected="{images.register_over}"
+                                     imageOver="{images.register_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="loginPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="loginImage" title="Login" altText="login"
+                                     imageNormal="{images.login}"
+                                     imageSelected="{images.login_over}"
+                                     imageOver="{images.login_over}"/>
+                </gxt:ContentPanel>
+
+                <gxt:ContentPanel ui:field="logoutPanel" addStyleNames="{style.button}" headerVisible="false" bodyBorder="false" visible="false">
+                    <c4s:ButtonImage ui:field="logoutImage" title="Logout" altText="logout"
+                                     imageNormal="{images.logout}"
+                                     imageSelected="{images.logout_over}"
+                                     imageOver="{images.logout_over}"/>
+                </gxt:ContentPanel>
+            </gxt:HorizontalPanel>
+
+        </gxt:ContentPanel>
+
+    </gxt:LayoutContainer>
+
+
+</ui:UiBinder>

@@ -1,0 +1,174 @@
+# Saved by TopBraid on Mon Dec 19 15:23:35 CET 2011
+# baseURI: http://www.cloud4soa.eu/v0.1/appinstances/BSCW
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/appinstances/BSCW#> .
+@prefix c4s-app-m:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-ent-m:  <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+essential-metamodel:BSCW
+      rdf:type essential-metamodel:Application ;
+      rdfs:comment "BSCW application"^^xsd:string ;
+      dcterms:hasVersion "4.5.5"^^xsd:string ;
+      dcterms:title "BSCW"^^xsd:string ;
+      c4s-app-m:digest "f6f244eb9c6fbabdcab653477b3b42fc"^^xsd:string ;
+      c4s-app-m:requiresHardwareComponent
+              :bscw_storage_component_redis , :bscw_computational_component , :bscw_storage_component_s3 , :bscw_network_component ;
+      c4s-app-m:requiresSoftwareComponent
+              :redis , :apache2 ;
+      c4s-app-m:size :bscw_size ;
+      c4s-app-m:useProgrammingLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Python> .
+
+<http://www.cloud4soa.eu/v0.1/appinstances#1.5_GigaHertz>
+      rdf:type measure:GigaHertz ;
+      rdfs:comment ""^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/appinstances#1500_Hz>
+      rdf:type measure:GigaHertz ;
+      rdfs:comment ""^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/appinstances/BSCW>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:apache2
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:comment "apache2"^^xsd:string ;
+      dcterms:description "Apache open-source HTTP Server with following Modules enabled: alias, auth_basic, autoindex, cgi, deflate, dir, env, expires, headers, mime, rewrite, setenvif, ssl"^^xsd:string ;
+      dcterms:hasVersion "2.2"^^xsd:string ;
+      dcterms:title "Apache2"^^xsd:string ;
+      c4s-app-m:license_type
+              "Apache License 2.0"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:web_server .
+
+:apache_software_foundation
+      rdf:type c4s-ent-m:SoftwareProvider ;
+      rdfs:comment "The Apache Software Foundation"^^xsd:string .
+
+:bscw_computational_component
+      rdf:type c4s-inf-m:Computational_Component ;
+      rdfs:comment "bscw_computational_component"^^xsd:string ;
+      essential-metamodel:realisation_of_technology_capability
+              :bscw_compute .
+
+:bscw_compute
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:comment "bscw compute"^^xsd:string ;
+      c4s-inf-m:hasArchitecture
+              "x64"^^xsd:string ;
+      c4s-inf-m:hasCache :bscw_compute_cache_size ;
+      c4s-inf-m:hasCores 2 ;
+      c4s-inf-m:hasMemory :bscw_compute_memory_size ;
+      c4s-inf-m:hasSpeed :bscw_compute_speed .
+
+:bscw_compute_cache_size
+      rdf:type measure:MegaByte ;
+      rdfs:comment "bscw compute cache size"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+:bscw_compute_memory_size
+      rdf:type measure:GigaByte ;
+      rdfs:comment "bscw compute memory size"^^xsd:string ;
+      measure:has_value "4"^^xsd:float .
+
+:bscw_compute_speed
+      rdf:type measure:GigaHertz ;
+      rdfs:comment "bscw compute speed"^^xsd:string ;
+      measure:has_value "1.5"^^xsd:float .
+
+:bscw_network_component
+      rdf:type c4s-inf-m:Communicational_Component ;
+      rdfs:comment "bscw network component"^^xsd:string ;
+      essential-metamodel:realisation_of_technology_capability
+              :bscw_network_resource .
+
+:bscw_network_resource
+      rdf:type c4s-inf-m:NetworkResource ;
+      rdfs:comment "bscw network resource"^^xsd:string ;
+      c4s-inf-m:bandwidth :bscw_network_resource_bandwidth ;
+      c4s-inf-m:latency :bscw_network_resource_latency .
+
+:bscw_network_resource_bandwidth
+      rdf:type measure:GigaByte_Per_Second ;
+      rdfs:comment "bscw network resource bandwidth"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+:bscw_network_resource_latency
+      rdf:type measure:MilliSecond ;
+      rdfs:comment "bscw network resource latency"^^xsd:string ;
+      measure:has_value "75"^^xsd:float .
+
+:bscw_size
+      rdf:type measure:MegaByte ;
+      rdfs:comment ""^^xsd:string ;
+      measure:has_value "32.538782"^^xsd:float .
+
+:bscw_storage_component_redis
+      rdf:type c4s-inf-m:Storage_Component ;
+      rdfs:comment "bscw storage component for redis"^^xsd:string ;
+      essential-metamodel:realisation_of_technology_capability
+              :bscw_storage_resource_redis .
+
+:bscw_storage_component_s3
+      rdf:type c4s-inf-m:Storage_Component ;
+      rdfs:comment "bscw storage component s3"^^xsd:string ;
+      essential-metamodel:realisation_of_technology_capability
+              :bscw_storage_resource_s3 .
+
+:bscw_storage_resource_redis
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:comment "bscw storage resource for redis"^^xsd:string ;
+      dcterms:description "bscw storage resource for redis store"^^xsd:string ;
+      c4s-inf-m:bandwidth :bscw_storage_resource_redis_bandwidth ;
+      c4s-inf-m:capacity :bscw_storage_resource_redis_capacity .
+
+:bscw_storage_resource_redis_bandwidth
+      rdf:type measure:GigaByte_Per_Second ;
+      rdfs:comment "bscw storage resource redis bandwidth"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+:bscw_storage_resource_redis_capacity
+      rdf:type measure:GigaByte ;
+      rdfs:comment "bscw storage resource redis capacity"^^xsd:string ;
+      measure:has_value "20"^^xsd:float .
+
+:bscw_storage_resource_s3
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:comment "bscw storage resource s3"^^xsd:string ;
+      c4s-inf-m:bandwidth :bscw_storage_resource_s3_bandwidth ;
+      c4s-inf-m:capacity :bscw_storage_resource_s3_capacity .
+
+:bscw_storage_resource_s3_bandwidth
+      rdf:type measure:MegaByte_Per_Second ;
+      rdfs:comment "bscw storage resource s3 bandwidth"^^xsd:string ;
+      measure:has_value "100"^^xsd:float .
+
+:bscw_storage_resource_s3_capacity
+      rdf:type measure:TeraByte ;
+      rdfs:comment "bscw storage resource s3 capacity"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+:redis
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:comment "Redis"^^xsd:string ;
+      dcterms:description "Persistent key-value database server with network interface"^^xsd:string ;
+      dcterms:hasVersion "2.2.12"^^xsd:string ;
+      dcterms:title "Redis"^^xsd:string ;
+      c4s-app-m:license_type
+              "BSD"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:dataBase .
+
+<http://www.cloud4soa.eu/v0.1/other#Python>
+      dcterms:hasVersion "2.6"^^xsd:string .

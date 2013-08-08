@@ -1,0 +1,157 @@
+/*
+ * Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+ *
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/**
+ * <copyright>
+ * </copyright>
+ *
+ */
+package eu.cloud4soa.xtext.dsl;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Operation</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link eu.cloud4soa.xtext.dsl.Operation#getOperation <em>Operation</em>}</li>
+ *   <li>{@link eu.cloud4soa.xtext.dsl.Operation#getDescription <em>Description</em>}</li>
+ *   <li>{@link eu.cloud4soa.xtext.dsl.Operation#getCommand <em>Command</em>}</li>
+ *   <li>{@link eu.cloud4soa.xtext.dsl.Operation#getInformationReturned <em>Information Returned</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see eu.cloud4soa.xtext.dsl.DslPackage#getOperation()
+ * @model
+ * @generated
+ */
+public interface Operation extends EObject
+{
+  /**
+   * Returns the value of the '<em><b>Operation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Operation</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Operation</em>' attribute.
+   * @see #setOperation(String)
+   * @see eu.cloud4soa.xtext.dsl.DslPackage#getOperation_Operation()
+   * @model
+   * @generated
+   */
+  String getOperation();
+
+  /**
+   * Sets the value of the '{@link eu.cloud4soa.xtext.dsl.Operation#getOperation <em>Operation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Operation</em>' attribute.
+   * @see #getOperation()
+   * @generated
+   */
+  void setOperation(String value);
+
+  /**
+   * Returns the value of the '<em><b>Description</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Description</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Description</em>' containment reference.
+   * @see #setDescription(Description)
+   * @see eu.cloud4soa.xtext.dsl.DslPackage#getOperation_Description()
+   * @model containment="true"
+   * @generated
+   */
+  Description getDescription();
+
+  /**
+   * Sets the value of the '{@link eu.cloud4soa.xtext.dsl.Operation#getDescription <em>Description</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Description</em>' containment reference.
+   * @see #getDescription()
+   * @generated
+   */
+  void setDescription(Description value);
+
+  /**
+   * Returns the value of the '<em><b>Command</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Command</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Command</em>' containment reference.
+   * @see #setCommand(Command)
+   * @see eu.cloud4soa.xtext.dsl.DslPackage#getOperation_Command()
+   * @model containment="true"
+   * @generated
+   */
+  Command getCommand();
+
+  /**
+   * Sets the value of the '{@link eu.cloud4soa.xtext.dsl.Operation#getCommand <em>Command</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Command</em>' containment reference.
+   * @see #getCommand()
+   * @generated
+   */
+  void setCommand(Command value);
+
+  /**
+   * Returns the value of the '<em><b>Information Returned</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Information Returned</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Information Returned</em>' containment reference.
+   * @see #setInformationReturned(InformationReturned)
+   * @see eu.cloud4soa.xtext.dsl.DslPackage#getOperation_InformationReturned()
+   * @model containment="true"
+   * @generated
+   */
+  InformationReturned getInformationReturned();
+
+  /**
+   * Sets the value of the '{@link eu.cloud4soa.xtext.dsl.Operation#getInformationReturned <em>Information Returned</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Information Returned</em>' containment reference.
+   * @see #getInformationReturned()
+   * @generated
+   */
+  void setInformationReturned(InformationReturned value);
+
+} // Operation

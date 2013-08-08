@@ -1,0 +1,208 @@
+grammar eu.cloud4soa.xtext.Dsl import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate dsl "http://www.cloud4soa.eu/xtext/Dsl"
+
+Scope :
+  PROFILE LBRACE ( userProfile=UserProfile | applicationProfile=ApplicationProfile | paasOfferingProfile=PaasOfferingProfile ) RBRACE ;
+
+UserProfile :
+  ( DEVELOPER | PROVIDER_T COLON Provider ) LBRACE accountInfo=AccountInfo personalInfo=PersonalInfos RBRACE ;
+
+PersonalInfos :
+  FIRSTNAME COLON firstName=STRING SURNAME COLON surnName=STRING EMAIL COLON email=EMAIL_VALUE ( birthDay=Birthday )? ;
+
+Birthday :
+  BIRTHDAY_T COLON date=DATE_US ;
+
+AccountInfo :
+ USERNAME COLON username=STRING PASSWORD COLON password=STRING ;
+
+Provider :
+  provider=STRING homepage=STRING;
+
+ApplicationProfile :
+  ApplicationInfos file=File technology=TechnologyInfo ;
+
+ApplicationInfos :
+  APPLICATION COLON application=STRING version=Version ( code=ApplicationCode )? ;
+
+ApplicationCode:
+	APPLICATION_CODE COLON applicationCode=STRING ;
+
+PaasOfferingProfile :
+  PaasOfferingInfos channels=Channels technology=TechnologyInfo ;
+
+PaasOfferingInfos :
+  PAAS_OFFERING COLON paasOffering=STRING ;
+
+File :
+  FILE_NAME COLON STRING ( FileDimension )? ;
+
+FileDimension :
+  SIZE COLON NATURAL_NUMBER ( Digest )? ;
+
+Digest :
+  DIGEST_T COLON STRING ;
+
+TechnologyInfo :
+  ProgrammingLanguage software=Software hardware=Hardware ;
+
+ProgrammingLanguage :
+  PROGRAMMING_LANGUAGE COLON STRING Version ;
+
+Software :
+ SOFTWARE_T LBRACE (category+=SoftwareCategory LBRACE ( component+=SoftwareComponent )+ RBRACE )+ RBRACE ;
+
+
+SoftwareCategory :
+  CATEGORY COLON STRING Description ;
+
+SoftwareComponent :
+  Component version=Version ( license=License )? ;
+
+Component :
+  COMPONENT_T   COLON   STRING  Description ;
+
+Description :
+  DESCRIPTION_T COLON STRING ;
+
+License :
+  LICENSE_T   COLON   LICENSE_TYPE ;
+
+Hardware :
+  HARDWARE_T   LBRACE  ( Box | Compute )? ( networkResource+=NetworkResource )* ( storageResource+=StorageResource )*  RBRACE ;
+
+Box :
+  BOX_T  BoxComponent ;
+
+BoxComponent :
+  Component httpRequest=HttpRequests ;
+
+HttpRequests :
+  HTTP_REQUESTS   COLON   NATURAL_NUMBER ;
+
+Compute :
+  COMPUTE_T  ComputationalComponent ;
+
+ComputationalComponent :
+  Component architecture=Architecture cores=Cores speed=Speed memory=Memory cache=Cache ;
+
+Architecture :
+  ARCHITECTURE_T   COLON   ARCHITECTURE_VALUE ;
+
+Cores :
+  CORES_T   COLON   NATURAL_NUMBER ;
+
+Speed :
+  SPEED_T   COLON   NATURAL_NUMBER ;
+
+Memory :
+  MEMORY_T   COLON   NATURAL_NUMBER ;
+
+Cache :
+  CACHE_T   COLON   NATURAL_NUMBER ;
+
+NetworkResource :
+  NETWORK_RESOURCE   COLON  CommunicationalComponent ;
+
+CommunicationalComponent :
+  Component bandwidth=Bandwidth  ( latency=Latency )? ;
+
+Bandwidth :
+  BANDWIDTH_T   COLON   NATURAL_NUMBER ;
+
+Latency :
+  LATENCY_T   COLON   NATURAL_NUMBER ;
+
+StorageResource :
+  STORAGE_RESOURCE  StorageComponent ;
+
+StorageComponent :
+  Component capacity=Capacity ( bandwidth=Bandwidth )? ;
+
+Capacity :
+  CAPACITY_T   COLON   NATURAL_NUMBER ;
+
+Channels :
+  CHANNELS_T   LBRACE  ( channel+=Channel )*  RBRACE ;
+
+Channel :
+  (  API  |  CLI  |  WebInterface )  LBRACE  ( operation+=Operation )*  RBRACE ;
+
+Operation :
+  OPERATION_T   COLON   STRING  Descriptioncommand=Command informationReturned=InformationReturned ;
+
+Command :
+  COMMAND_T   COLON   LBRACKET   STRING   RBRACKET ;
+
+InformationReturned :
+  INFORMATION_RETURNED   COLON  STRING ;
+
+Version :
+  VERSION_T   COLON   FLOATING_POINT ;
+
+	
+	
+
+terminal PROFILE : "profile" ;
+terminal DEVELOPER : "developer" ;
+terminal PROVIDER_T : "provider" ;
+terminal APPLICATION : "application" ;
+terminal PAAS_OFFERING : "paas_offering" ;
+terminal ACCOUNT : "account" ;
+terminal UPLOADING : "uploading" ; 
+terminal DEPLOYED : "deployed" ; 
+terminal STOPPED : "stopped" ;
+terminal SOFTWARE_T : "software" ;
+terminal HARDWARE_T : "hardware" ;
+terminal NETWORK_RESOURCE : "network_resource" ;
+terminal BOX_T : "box" ;
+terminal COMPUTE_T : "compute" ;
+terminal HTTP_REQUESTS : "http_requests";
+terminal STORAGE_RESOURCE : "storage_resource" ;
+terminal CHANNELS_T : "channels" ;
+terminal API : "api" ;
+terminal CLI : "cli" ;
+terminal WebInterface : "web_interface" ;
+terminal LBRACE : "{" ;
+terminal RBRACE : "}" ;
+terminal LBRACKET : "[" ;
+terminal RBRACKET : "]" ;
+terminal COLON : ":" ;
+terminal BANDWIDTH_T : "bandwidth" ; //KB
+terminal LATENCY_T : "latency" ; //ms
+terminal SPEED_T : "speed" ; 
+terminal MEMORY_T : "memory" ; //KB
+terminal CACHE_T : "cache" ; //KB
+terminal CAPACITY_T : "capacity" ;
+terminal FIRSTNAME : "firstname" ; 
+terminal SURNAME : "surname" ; 
+terminal USERNAME : "username" ; 
+terminal PASSWORD : "password" ;
+terminal ACRONYM : "acronym" ;
+terminal COMMAND_T : "command" ;
+terminal DIGEST_T : "digest" ;
+terminal PROGRAMMING_LANGUAGE : "programming_language" ;
+terminal INFORMATION_RETURNED : "information_returned" ;
+terminal APPLICATION_CODE : "application_code" ;
+terminal SIZE : "size" ; //Byte
+terminal FILE_NAME : "file_name" ;
+terminal CATEGORY : "category" ; 
+terminal COMPONENT_T : "component" ;
+terminal DESCRIPTION_T : "description" ;
+terminal BIRTHDAY_T : "birthday" ;
+terminal EMAIL : "email" ;
+terminal VERSION_T : "version" ;
+terminal LICENSE_T : "license" ;
+terminal LICENSE_TYPE : ( "GPL" | "LGPL" | "BSD" | "MIT" ) ;
+terminal CORES_T : "cores" ;
+terminal ARCHITECTURE_T : "architecture" ;
+terminal RUNTIME_STATE : "runtime_state";
+terminal OPERATION_T : "operation";
+terminal ARCHITECTURE_VALUE : ( "x86" | "x64" ) ;
+terminal FLOATING_POINT : NATURAL_NUMBER ( "."  NATURAL_NUMBER )+ ;
+terminal NATURAL_NUMBER : ( "0".."9" | "1".."9" ( "0".."9" )+ ) ;
+terminal EMAIL_VALUE : ( "A".."Z"|"a".."z"|"0".."9"|"_"|"-"|"." )+ "@" ( "A".."Z"|"a".."z"|"0".."9"|"_"|"-"|"." )+ "." ( "com" | "org" | "eu" | "edu" | "it" | "gov" | "net" | "info" ) ;
+terminal DATE_US : "0".."9" "0".."9" "0".."9" "0".."9" "-" "0".."9" "0".."9" "-" "0".."9" "0".."9" ;
+//terminal HOMEPAGE : ( "http://" ( "A".."Z"|"a".."z"|"_"|"-"|"." )+ ( "/" "A".."Z"|"a".."z" )* ) ;
+terminal STRING : "\"" ( "A".."Z"|"a".."z"|"0".."9"|"_"|"\'"|"."|"-"|"+"|"#"|"*"|" " )+ "\"" ;

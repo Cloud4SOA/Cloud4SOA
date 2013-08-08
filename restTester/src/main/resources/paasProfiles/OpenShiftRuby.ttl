@@ -1,0 +1,58 @@
+###
+#  Copyright 2013 Cloud4SOA, www.cloud4soa.eu
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+###
+
+
+# Saved by TopBraid on Tue Apr 30 20:40:08 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/OpenShiftRuby
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/OpenShiftRuby#> .
+@prefix OpenShift:  <http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:OpenShiftRuby
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "Open shift ruby"^^xsd:string ;
+      dcterms:title "OpenShift (Ruby)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:OpenShiftChannel ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "https://www.openshift.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#sixteenRange> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#mediumGear> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#gearStorage> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#smallGear> ;
+      paas-m:offerSoftware
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#opnshiftAppServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#opneShiftPostgreSQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#openshiftWebServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#openShiftMySQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#openShiftAutoscaling> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#openShiftMongoDB> , <http://www.enterprise-architecture.org/essential-metamodel.owl#openshiftSSL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#openShiftCron> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#oneRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#RedHat> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#openshiftUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#openshiftLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Ruby_1.9.2> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/OpenShiftRuby>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/OpenShift> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+        <link rel="stylesheet" type="text/css" href="../resources/css/screen.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/myCSS.css" />
+
+        <title><ui:insert name="title">Εφαρμογή Διαχείρισης Χρηστών - Σύστημα Χειρισμού Κρίσεων(ΣΧΚ)</ui:insert>></title>
+    </h:head>
+
+    <h:body>
+        <div id="container">
+            <div id="header"></div>
+            <div id="usertype" style="text-align: center"></div>
+            <div id="menu">
+                <ui:insert name="menu"></ui:insert>
+            </div>
+            <div id="content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+            <div id="footer">
+                <ui:insert name="footer"><font size="1px">  Κέντρο Πληροφορικής Υποστήριξης Ελληνικού Στρατού (ΚΕ.Π.Υ.Ε.Σ) Τηλ. 210-6553560</font></ui:insert>
+                <ui:debug hotkey="p" rendered="true"/>
+            </div>
+        </div>
+    </h:body>
+</html>

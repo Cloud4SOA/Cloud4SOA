@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <body>
+        <ui:composition template="/templates/template.xhtml">
+
+            <ui:define name="title"> Επιλογή Χρηστών </ui:define>
+            <ui:define name="content">
+
+                <h:form id="listform">  
+                    
+                    <p:commandButton id="showDialogButton"  value="Δημιουργία νέου χρήστη"  onclick="newuserdlg.show()"  />  
+                    <p:panel id="listpanel">
+                        <p:dataTable id="userTable" var="user" value="#{userListBean.allItems}" paginator="true" rows="10"  
+                                    paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+                                    rowsPerPageTemplate="5,10,15" selectionMode="single"  selection="#{userListBean.selectedItem}"   > 
+
+
+                            <p:column headerText="Όνομα χρήστη" sortBy="#{user.userId}" filterBy="#{user.userId}">  
+                                <h:outputText value="#{user.userId}" />  
+                            </p:column>  
+
+                            <p:column headerText="Επίθετο" sortBy="#{user.epwnymo}" >  
+                                <h:outputText value="#{user.epwnymo}" />  
+                            </p:column>                         
+
+                            <p:column headerText="Όνομα" sortBy="#{user.onomaXrhsth}" >  
+                                <h:outputText value="#{user.onomaXrhsth}" />  
+                            </p:column>                         
+
+                            <p:column headerText="Αριθμός Μητρώου" sortBy="#{user.am}" >  
+                                <h:outputText value="#{user.am}" />  
+                            </p:column>                          
+
+                            <p:column headerText="Μονάδα" sortBy="#{user.mipCode}" >  
+                                <h:outputText value="#{user.mipCode}" />  
+                            </p:column>  
+
+                            <p:column headerText="Ενέργειες"   >
+                                <p:commandButton id="selectButton" update=":edituserform:edituserDialog" oncomplete="edituserDialog.show()" icon="ui-icon-search" title="Επιλογή">  
+                                    <f:setPropertyActionListener value="#{user}" target="#{userListBean.selectedItem}" />  
+                                </p:commandButton>                              
+                                <p:commandButton id="removeButton" update=":removeuserform:removeuserDialog" oncomplete="removeuserDialog.show()" icon="ui-icon-delete" title="Διαγραφή">  
+                                    <f:setPropertyActionListener value="#{user}" target="#{userListBean.selectedItem}" />  
+                                </p:commandButton>  
+                            </p:column>                         
+
+                        </p:dataTable>  
+                    </p:panel>
+                 </h:form>
+                
+                
+                 <h:form id="edituserform">  
+                    <p:growl id="growl1" showDetail="true" life="3000" /> 
+                    <p:dialog header="Πληροφορίες Χρήστη" id="edituserDialog" widgetVar="edituserDialog" resizable="false"  modal="true" showEffect="explode" hideEffect="explode">  
+                        
+                        <p:ajax event="close" listener="#{userListBean.handleEditFormClose}" update="edituserform" />
+                        
+                        <h:panelGrid id="editusergrid" columns="3" >  
+
+                                <h:outputLabel for="bathmos" value="Βαθμός:" />  
+                                <p:inputText id="bathmos" value="#{userListBean.selectedItem.bathmos}" />  
+                                <p:message for="bathmos" /> 
+                                
+                                <h:outputLabel for="oplo" value="Όπλο:" />  
+                                <p:inputText id="oplo" value="#{userListBean.selectedItem.tmhma}" />                          
+                                <p:message for="oplo" /> 
+                                
+                                <h:outputLabel for="am" value="Αριθμός Μητρώου:" />  
+                                <p:inputText id="am" value="#{userListBean.selectedItem.am}" />                             
+                                <p:message for="am" /> 
+                                
+                                <h:outputLabel for="epitheto" value="Επίθετο:" />  
+                                <p:inputText id="epitheto" value="#{userListBean.selectedItem.epwnymo}" />                            
+                                <p:message for="epitheto" /> 
+                                
+                                <h:outputLabel for="onoma" value="Όνομα:" />  
+                                <p:inputText id="onoma" value="#{userListBean.selectedItem.onomaXrhsth}" />                            
+                                <p:message for="onoma" /> 
+                                
+                                <h:outputLabel for="thesi" value="Θέση:" />  
+                                <p:inputText id="thesi" value="#{userListBean.selectedItem.thesi}" />                            
+                                <p:message for="thesi" /> 
+                                
+                                <h:outputLabel for="tilefono" value="Τηλέφωνο:" />  
+                                <p:inputText id="tilefono" value="#{userListBean.selectedItem.thlefwno}" />  
+                                <p:message for="tilefono" /> 
+                                
+                                <h:outputLabel for="monada" value="Μονάδα:" />  
+                                <p:inputText id="monada" value="#{userListBean.selectedItem.mipCode}" />                          
+                                <p:message for="monada" /> 
+                                
+                                <h:outputLabel for="diatagi" value="Διαταγή Εγγραφής:" />  
+                                <p:inputText id="diatagi" value="#{userListBean.selectedItem.dghEggrafhs}" />                             
+                                <p:message for="diatagi" /> 
+                                
+                                <h:outputLabel for="rolos" value="Ρόλος:" />  
+                                <p:inputText id="rolos" value="#{userListBean.selectedItem.kathgoria}" />                            
+                                <p:message for="rolos" /> 
+                                
+                                <h:outputLabel for="username" value="Όνομα Χρήστη:" />  
+                                <p:inputText id="username" value="#{userListBean.selectedItem.userId}" />                            
+                                <p:message for="username" /> 
+                                
+                                <h:outputLabel for="password" value="Κωδικός Χρήστη:" />  
+                                <p:password id="password" value="#{userListBean.selectedItem.password}" />                            
+                                <p:message for="password" /> 
+                                
+                                <h:outputLabel for="password2" value="Επιβ. Κωδικός Χρήστη:" />  
+                                <p:password id="password2" value="#{userListBean.selectedItem.password2}" />                            
+                                <p:message for="password2" />                                  
+                                
+                                <f:facet name="footer">     
+                                    <p:commandButton id="saveButton1" 
+                                                        value="Αποθήκευση" 
+                                                        update="edituserform:growl1  edituserform:editusergrid :listform:listpanel"   
+                                                        actionListener="#{userListBean.updateUser}"   
+                                                        oncomplete="handleEditUserRequest(xhr, status, args)"
+                                    />
+                                                                                                         
+                                </f:facet>                                  
+                                
+                        </h:panelGrid>  
+                    </p:dialog>  
+                     
+                    <script type="text/javascript">  
+                        function handleEditUserRequest(xhr, status, args) {  
+                            if(args.validationFailed ) {  
+                                //alert('fail');
+                            } else {  
+                                //alert('success');
+                                edituserDialog.hide();  //Caution: the widget var is used here
+                            }  
+                        }  
+                    </script>                       
+                     
+                 </h:form>
+                             
+                
+                
+                
+                 <h:form id="newuserform">
+                    <p:growl id="growl" showDetail="true" life="3000" />  
+                     
+                    <p:dialog id="newuserdlgid" header="Δημιουργία νέου Χρήστη" widgetVar="newuserdlg" resizable="false" modal="true" visible="#{not empty facesContext.maximumSeverity}" >  
+                            
+                        <p:ajax event="close" listener="#{userListBean.handleClose}" update="newuserform" />
+                        
+                            <h:panelGrid id="newusergrid" columns="3" style="margin-bottom:10px"> 
+                                                                
+                                <h:outputLabel for="bathmos" value="Βαθμός:" />  
+                                <p:inputText id="bathmos" value="#{userListBean.newuser.bathmos}" />  
+                                <p:message for="bathmos" /> 
+                                
+                                <h:outputLabel for="oplo" value="Όπλο:" />  
+                                <p:inputText id="oplo" value="#{userListBean.newuser.tmhma}" />                          
+                                <p:message for="oplo" />
+                                
+                                <h:outputLabel for="am" value="Αριθμός Μητρώου:" />  
+                                <p:inputText id="am" value="#{userListBean.newuser.am}" />                             
+                                <p:message for="am" />
+                                
+                                <h:outputLabel for="epitheto" value="Επίθετο:" />  
+                                <p:inputText id="epitheto" value="#{userListBean.newuser.epwnymo}" />                            
+                                <p:message for="epitheto" />
+                                
+                                <h:outputLabel for="onoma" value="Όνομα:" />  
+                                <p:inputText id="onoma" value="#{userListBean.newuser.onomaXrhsth}" />                            
+                                <p:message for="onoma" />
+                                
+                                <h:outputLabel for="thesi" value="Θέση:" />  
+                                <p:inputText id="thesi" value="#{userListBean.newuser.thesi}" />                            
+                                <p:message for="thesi" /> 
+                                
+                                <h:outputLabel for="tilefono" value="Τηλέφωνο:" />  
+                                <p:inputText id="tilefono" value="#{userListBean.newuser.thlefwno}" />  
+                                <p:message for="tilefono" />
+                                
+                                <h:outputLabel for="monada" value="Μονάδα:" />  
+                                <p:inputText id="monada" value="#{userListBean.newuser.mipCode}" />                          
+                                <p:message for="monada" /> 
+                                
+                                <h:outputLabel for="diatagi" value="Διαταγή Εγγραφής:" />  
+                                <p:inputText id="diatagi" value="#{userListBean.newuser.dghEggrafhs}" />                             
+                                <p:message for="diatagi" /> 
+                                
+                                <h:outputLabel for="rolos" value="Ρόλος:" />  
+                                <p:selectOneMenu id="rolos" value="#{userListBean.newuser.kathgoria}"> 
+                                    <f:selectItem itemLabel="Επιλέξτε.."            itemValue="" />                                     
+                                    <f:selectItem itemLabel="Διαχειριστή"           itemValue="administrator" />  
+                                    <f:selectItem itemLabel="Περιορισμένης Πρόσβασης"  itemValue="forbide" />  
+                                    <f:selectItem itemLabel="Φιλοξενούμενος"        itemValue="guest" />  
+                                    <f:selectItem itemLabel="Τροποποιητής"          itemValue="moderator" />  
+                                    <f:selectItem itemLabel="Χειριστής"             itemValue="operator" />  
+                                    <f:selectItem itemLabel="Απλός Χρήστης"         itemValue="user" />                                    
+                                </p:selectOneMenu>                                                           
+                                <p:message for="rolos" />
+                                
+                                <h:outputLabel for="username" value="Όνομα Χρήστη:" />  
+                                <p:inputText id="username" value="#{userListBean.newuser.userId}" />                            
+                                <p:message for="username" /> 
+                                
+                                <h:outputLabel for="password" value="Κωδικός Χρήστη:" />  
+                                <p:password id="password" value="#{userListBean.newuser.password}" />                            
+                                <p:message for="password" /> 
+                                
+                                <h:outputLabel for="password2" value="Επιβ. Κωδικός Χρήστη:" />  
+                                <p:password id="password2" value="#{userListBean.newuser.password2}" />                            
+                                <p:message for="password2" />                                 
+                                
+                                <f:facet name="footer">     
+                                    <p:commandButton id="loginButton" 
+                                                        value="Αποθήκευση" 
+                                                        update="newuserform:growl  newuserform:newusergrid "   
+                                                        actionListener="#{userListBean.addUser}"   
+                                                        oncomplete="handleLoginRequest(xhr, status, args)"/>                                  
+                                </f:facet>                                  
+                            </h:panelGrid>                                                 
+                    </p:dialog>                                     
+                    <script type="text/javascript">  
+                        function handleLoginRequest(xhr, status, args) {  
+                            if(args.validationFailed ) {  
+                                //alert('fail');
+                            } else {  
+                                //alert('success');
+                                newuserdlg.hide();  //Caution: the widget var is used here
+                            }  
+                        }  
+                    </script>                                                                
+                </h:form>  
+                
+                
+                <h:form id="removeuserform">                                
+                    <p:dialog header="Διαγραφή Χρήστη" id="removeuserDialog" widgetVar="removeuserDialog" resizable="false"  modal="true" >                 
+                        <h:panelGrid id="removeusergrid" columns="1" >
+                            <h:outputText value="Είστε σίγουροι για την Διαγραφή?" />
+                            <f:facet name="footer">     
+                                <p:commandButton id="removeButton1" 
+                                                    value="Ναι να γίνει Διαγραφή" 
+                                                    update=":listform:listpanel"   
+                                                    actionListener="#{userListBean.removeUser}"   
+                                                    oncomplete="removeuserDialog.hide()"
+                                />
+                                <p:commandButton id="cancelButton1" 
+                                                    value="Άκυρο" 
+                                                    update=":listform:listpanel" 
+                                                    oncomplete="removeuserDialog.hide()"
+                                />
+                            </f:facet>                               
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>                
+                
+           
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

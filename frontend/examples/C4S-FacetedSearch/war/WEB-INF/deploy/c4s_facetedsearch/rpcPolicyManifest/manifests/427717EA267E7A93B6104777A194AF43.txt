@@ -1,0 +1,2 @@
+serviceClass: com.cloud4soa.facetedsearch.client.FacetedSearchDataService
+path: 1478173D374CD46AB38A424FC5958819.gwt.rpc

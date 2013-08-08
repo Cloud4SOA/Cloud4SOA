@@ -1,0 +1,40 @@
+# Saved by TopBraid on Fri Jul 26 17:42:24 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/EngineYardNodeJs
+# imports: http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYardNodeJs#> .
+@prefix EngineYard:  <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+paas-m:engineYardNodeJs
+      rdf:type paas-m:PaaSOffering ;
+      rdfs:label "engine yard node js"^^xsd:string ;
+      dcterms:title "Engine Yard (Node.js)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:engineYardAPI ;
+      paas-m:hasAdapter "false"^^xsd:boolean ;
+      paas-m:hasURL "https://www.engineyard.com"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#nineteennineRange> ;
+      paas-m:offerHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#engineYardStorage> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#engineYardCompute> ;
+      paas-m:offerSoftware
+              <http://www.enterprise-architecture.org/essential-metamodel.owl#engineYardWebServer> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#engineYardMySQL> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#engineYardRedis> , <http://www.cloud4soa.eu/v0.1/infrastructural-domain#engineYardPostgresSQL> , <http://www.enterprise-architecture.org/essential-metamodel.owl#engineYardAppServer> , <http://www.enterprise-architecture.org/essential-metamodel.owl#engineYardMemcache> ;
+      paas-m:offerWebScalingFactor
+              <http://www.cloud4soa.eu/v0.1/measure#nineteennineRange> ;
+      paas-m:providedByPaaSProvider
+              <http://www.cloud4soa.eu/v0.1/enterprise-domain#EngineYardPaaSProvider> ;
+      paas-m:providesServiceQuality
+              <http://www.cloud4soa.eu/v0.1/qos-model#engineYardUptime> , <http://www.cloud4soa.eu/v0.1/qos-model#engineYardLatency> ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Node.js> .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/EngineYardNodeJs>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/paasInstances/EngineYard> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

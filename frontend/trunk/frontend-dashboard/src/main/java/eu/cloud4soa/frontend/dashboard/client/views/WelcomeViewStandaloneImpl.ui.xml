@@ -1,0 +1,135 @@
+<!--
+  ~ This file is part of Cloud4SOA Frontend.
+  ~
+  ~     Cloud4SOA Frontend is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     Cloud4SOA Frontend is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with Cloud4SOA Frontend.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:gxt="urn:import:com.extjs.gxt.ui.client.widget" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style src="WelcomeView.css" />
+		
+	<gxt:ContentPanel headerVisible="false" borders="false"
+		bodyBorder="false">
+
+		<g:HTMLPanel>
+
+			<div class="content">
+
+				<div class='{style.left}'>
+					<div class='{style.section}'>
+						<div class='{style.sideBar}'>
+							<p class='{style.sideheaderFont}'>Welcome to Cloud4SOA matchmaking portal</p>
+							<p class='{style.sideFont}'>Cloud4SOA is a a Cloud interoperability framework and
+								platform for user-centric,
+								semantically-enhanced,
+								service-oriented application design, deployment and
+								distributed	execution</p>
+							<p class='{style.sideFont}'>
+								More information about the project can be found
+								<a href="http://www.cloud4soa.eu">here</a>
+							</p>
+						</div>
+						<div class='{style.sideImages}'>
+							<img src="cloud4soadashboard/gwt/c4s/imgs/eu.gif" alt="EU logo"
+								title="EU logo" class='{style.euImg}' />
+							<img src="cloud4soadashboard/gwt/c4s/imgs/fp7_small.gif" alt="FP7"
+								title="FP7" class='{style.fp7Img}' />
+
+						</div>
+					</div>
+				</div>
+				<div class='{style.center}'>
+					<div class='{style.section}'>
+						<div>
+							<img src="cloud4soadashboard/gwt/c4s/imgs/magnifier.jpg" alt="MatchmakingClouds"
+								title="Clouds" class='{style.matchmakingImg}' />
+						</div>
+						<div class='{style.banner}'>
+
+							<p class='{style.titleFont}'>Need help to find out where in the Cloud your application can go?</p>
+
+						</div>
+						<div style="clear:both;"></div>
+						<div>
+							<div class='{style.column3}'>
+								<div class='{style.columnHeader}'>
+									<p class='{style.columnHeaderFont}'>Create your app's profile</p>
+								</div>
+								<div class='{style.columnText}'>
+									<p class='{style.textFont}'>
+										Specify what you need from a Cloud provider, by creating a profile of your application.
+										A profile specifies for example that you need Java provider and a DB with enough storage.
+									</p>
+								</div>
+							</div>
+							<div class='{style.column3}'>
+								<div class='{style.columnHeader}'>
+									<p class='{style.columnHeaderFont}'>Matchmaking</p>
+								</div>
+								<div class='{style.columnText}'>
+									<p class='{style.textFont}'>
+										When you search, your app's profile is compared to all providers profiles in the system. We rank the results based on how well they fit your app's profile.
+									</p>
+								</div>
+							</div>
+							<div class='{style.column3}'>
+								<div class='{style.columnHeader}'>
+									<p class='{style.columnHeaderFont}'>Exploring</p>
+								</div>
+								<div class='{style.columnText}'>
+									<p class='{style.textFont}'>
+										You can also browse providers characteristics using 
+										our facet browser, and select for example only the ones 
+										that have MongoDB.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='{style.right}'>
+					<div class='{style.section}'>
+						<div class='{style.sideBar}'>
+							<p class='{style.sideheaderFont}'>Supported providers</p>
+							<div class='{style.sideRightBar}'>
+								<img src="cloud4soadashboard/gwt/c4s/imgs/OpenShift-Logo.png"
+									alt="OpenShift Logo" title="OpenShift Logo" class='{style.rightImg}' />
+								<img src="cloud4soadashboard/gwt/c4s/imgs/cloud_control_logo_0.png"
+									alt="CloudControl Logo" title="CloudControl Logo" class='{style.rightImg}' />
+								<img src="cloud4soadashboard/gwt/c4s/imgs/CloudBees-Logo.png"
+									alt="CloudBees Logo" title="CloudBees Logo" class='{style.rightImg}' />
+								<img src="cloud4soadashboard/gwt/c4s/imgs/cloud-foundry-logo1.png"
+									alt="Cloud Foundry Logo" title="Cloud Foundry Logo" class='{style.rightImg}' />
+								<img src="cloud4soadashboard/gwt/c4s/imgs/aws-logo.png" alt="AWS Logo"
+									title="AWS Logo" class='{style.rightImg}' />
+								<img src="cloud4soadashboard/gwt/c4s/imgs/heroku-Logo-1.jpg"
+									alt="Heroku Logo" title="Heroku Logo" class='{style.rightImg}' />
+								<img
+									src="cloud4soadashboard/gwt/c4s/imgs/80777_dotCloud_LOGO_color.jpg"
+									alt="dot Cloud Logo" title="dot Cloud Logo" class='{style.rightImg}' />
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</g:HTMLPanel>
+	</gxt:ContentPanel>
+
+
+</ui:UiBinder>

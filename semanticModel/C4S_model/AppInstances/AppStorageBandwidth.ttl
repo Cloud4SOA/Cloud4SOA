@@ -1,0 +1,45 @@
+# Saved by TopBraid on Fri Jun 29 18:28:41 EEST 2012
+# baseURI: http://www.cloud4soa.eu/v0.1/AppStorageBandwidth
+# imports: http://www.cloud4soa.eu/v0.1/application-domain
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/AppStorageBandwidth#> .
+@prefix application-domain:  <http://www.cloud4soa.eu/v0.1/application-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.cloud4soa.eu/v0.1/AppStorageBandwidth>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/application-domain> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+<http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppStorageBandwidth.StorageBandwidthComponent>
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "Storage bandwidth component"^^xsd:string ;
+      c4s-inf-m:bandwidth <http://www.cloud4soa.eu/v0.1/measure#AppStorageBandwidth.OneGBperSecRange> ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppStorageBandwidth.OneGBperSec>
+      rdf:type measure:GigaByte_Per_Second ;
+      rdfs:label "One GBper sec"^^xsd:string ;
+      measure:has_value "1"^^xsd:float .
+
+<http://www.cloud4soa.eu/v0.1/measure#AppStorageBandwidth.OneGBperSecRange>
+      rdf:type measure:NetworkingRange ;
+      rdfs:label "One GBper sec range"^^xsd:string ;
+      measure:hasMinNetworkingValue
+              <http://www.cloud4soa.eu/v0.1/measure#AppStorageBandwidth.OneGBperSec> .
+
+<http://www.enterprise-architecture.org/essential-metamodel.owl#AppStorageBandwidth.AppStorageBandwidth>
+      rdf:type essential-metamodel:Application ;
+      rdfs:label "Application storage bandwidth"^^xsd:string ;
+      dcterms:alternative "Application storage bandwidth"^^xsd:string ;
+      dcterms:title "Application storage bandwidth"^^xsd:string ;
+      application-domain:requiresHardwareComponent
+              <http://www.cloud4soa.eu/v0.1/infrastructural-domain#AppStorageBandwidth.StorageBandwidthComponent> .

@@ -1,0 +1,339 @@
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-26 18:01:09
+addon create simple --topLevelPackage eu.cloud4soa
+perform assembly
+perform assembly
+perform assembly
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-26 18:08:25
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-26 18:08:35
+say hello --name vins
+osgi uninstall --bundleSymbolicName eu.cloud4soa
+addon remove --bundleSymbolicName eu.cloud4soa
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-26 18:09:38
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 14:46:30
+perform assembly
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-27 14:51:55
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 17:02:32
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-27 17:05:22
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 17:05:27
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-27 17:05:47
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 17:09:24
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-27 17:48:48
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 18:16:28
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-27 18:24:33
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-27 19:37:10
+perform assembly
+perform assembly
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 11:32:02
+osgi ps
+perform assembly
+perform assembly
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi ps
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi ps
+osgi headers 
+osgi find --bundleSymbolicName cli
+osgi find --bundleSymbolicName cli.soa
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 11:44:41
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 11:44:51
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 11:45:59
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 11:48:28
+perform assembly
+osgi ps
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi ps
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 11:51:46
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 11:55:23
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 12:07:47
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 12:08:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 12:47:52
+perform assembly
+osgi ps
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+// [failed] osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 12:57:13
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 12:57:18
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 12:57:55
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 12:59:18
+perform assembly
+osgi install --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 12:59:59
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 13:02:36
+perform assembly
+osgi ps
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cli-soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 13:04:31
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 13:37:15
+osgi ps
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi ps
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 19:10:08
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 19:16:50
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 19:17:59
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 19:21:40
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-29 19:22:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-29 19:24:30
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:24:40
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:26:03
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:26:06
+osgi ps
+// [failed] osgi uninstall --bundleSymbolicName 143
+// [failed] osgi uninstall --bundleSymbolicName file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001-jar-with-dependencies.jar
+addon remove --bundleSymbolicName file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001-jar-with-dependencies.jar
+// [failed] osgi uninstall --bundleSymbolicName file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001-jar-with-dependencies.jar
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:29:00
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:29:05
+osgi ps
+osgi headers 
+osgi ps
+addon info id --searchResultId 143
+addon info id --searchResultId 1
+addon info id --searchResultId   1
+addon list 
+osgi ps
+osgi framework command stop
+osgi framework command stop 143
+osgi ps
+osgi framework command remove 143
+osgi framework command unistall 143
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:36:42
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:36:50
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:38:06
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:39:35
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi ps
+osgi framework command uninstall 143
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:40:57
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:43:17
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001-jar-with-dependencies.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi ps
+osgi framework command uninstall 146
+osgi framework command uninstall 147
+osgi ps
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 10:44:32
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 10:50:41
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi ps
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+perform assembly
+perform assembly
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 11:00:03
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 11:02:32
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+osgi ps
+osgi framework command uninstall 154
+osgi framework command uninstall 153
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 11:04:04
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 11:11:04
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-30 11:31:48
+osgi ps
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-30 11:32:03
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-10-31 09:52:36
+perform assembly
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+// [failed] cloud4soa login 
+osgi ps
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-10-31 09:56:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-01 11:21:40
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-01 11:22:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-01 11:34:27
+osgi ps
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi ps 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-01 11:36:05
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-01 11:41:25
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-01 11:42:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-01 11:42:07
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-01 11:42:18
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-01 11:44:32
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/soa-client/target/eu.cloud4soa.cli-soa-client-0.0.1-SNAPSHOT.0001.jar 
+osgi start --url file:///home/vins/spring-roo-1.1.5.RELEASE/bin/cloud4soa-cli/target/cli-0.1.0.BUILD-SNAPSHOT.jar 
+osgi uninstall --bundleSymbolicName eu.cloud4soa.cli-soa-client
+addon remove --bundleSymbolicName eu.cloud4soa.cli-soa-client
+osgi uninstall --bundleSymbolicName cli
+addon remove --bundleSymbolicName cli
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-01 11:45:21

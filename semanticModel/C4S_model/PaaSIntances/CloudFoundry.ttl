@@ -1,0 +1,242 @@
+###
+# Copyright [2013] [Cloud4SOA, www.cloud4soa.eu]
+#
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+###
+
+# Saved by TopBraid on Wed May 01 12:39:29 EEST 2013
+# baseURI: http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry
+# imports: http://www.cloud4soa.eu/v0.1/qos-model
+# imports: http://www.cloud4soa.eu/v0.1/paas-model
+
+@prefix :        <http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry#> .
+@prefix c4s-ent-m:  <http://www.cloud4soa.eu/v0.1/enterprise-domain#> .
+@prefix c4s-inf-m:  <http://www.cloud4soa.eu/v0.1/infrastructural-domain#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix essential-metamodel:  <http://www.enterprise-architecture.org/essential-metamodel.owl#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix measure:  <http://www.cloud4soa.eu/v0.1/measure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix paas-m:  <http://www.cloud4soa.eu/v0.1/paas-model#> .
+@prefix qos-model:  <http://www.cloud4soa.eu/v0.1/qos-model#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+c4s-ent-m:vmware
+      rdf:type c4s-ent-m:PaaSProvider ;
+      rdfs:label "vmware"^^xsd:string ;
+      dcterms:description "VMware is a company providing virtualization software, founded in 1998 and based in Palo Alto, California, USA"^^xsd:string ;
+      dcterms:title "VMware"^^xsd:string ;
+      foaf:homepage foaf:CloudFoundryPaaSURL .
+
+c4s-inf-m:CF_MongoDBConf
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "CF Mongo DBConf"^^xsd:string ;
+      c4s-inf-m:hasDBcapacity
+              measure:CFtwohundredfourtyMBRange .
+
+c4s-inf-m:CF_MySQL
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "CF My SQL"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:CF_MySQLconf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MySQL .
+
+c4s-inf-m:CF_MySQLconf
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "CF My SQLconf"^^xsd:string ;
+      c4s-inf-m:hasDBcapacity
+              measure:CFonehundredtwentyeightMBRange .
+
+c4s-inf-m:CF_Redis
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "CF Redis"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:CF_RedisConf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:Redis .
+
+c4s-inf-m:CF_RedisConf
+      rdf:type c4s-inf-m:DBConfiguration ;
+      rdfs:label "CF Redis conf"^^xsd:string ;
+      c4s-inf-m:hasDBcapacity
+              measure:CFsixteenMBRange .
+
+c4s-inf-m:CF_mongoDB
+      rdf:type c4s-inf-m:DBStorageComponent ;
+      rdfs:label "Mongo DB"^^xsd:string ;
+      c4s-inf-m:hasDBconfiguration
+              c4s-inf-m:CF_MongoDBConf ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:MongoDB .
+
+c4s-inf-m:CloudFoundryStorage
+      rdf:type c4s-inf-m:StorageResource ;
+      rdfs:label "Cloud foundry storage"^^xsd:string ;
+      c4s-inf-m:capacity measure:CFtwoGBRange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:FileSystem .
+
+c4s-inf-m:CloudFoundry_compute
+      rdf:type c4s-inf-m:Compute ;
+      rdfs:label "Cloud foundry compute"^^xsd:string ;
+      c4s-inf-m:computationalPowerFactor
+              measure:CFfourrange ;
+      c4s-inf-m:hasMemory measure:CFtwoGBRange ;
+      essential-metamodel:realisation_of_technology_capability
+              c4s-inf-m:ECU .
+
+c4s-inf-m:RabbitMQ
+      rdf:type c4s-inf-m:Software_Category ;
+      rdfs:label "Rabbit MQ"^^xsd:string ;
+      dcterms:description "Robust messaging for applications"^^xsd:string ;
+      dcterms:title "RabbitMQ"^^xsd:string .
+
+measure:CFfourrange
+      rdf:type measure:NumericRange ;
+      rdfs:label "fourrange"^^xsd:string ;
+      measure:hasMaxNumericValue
+              "4"^^xsd:float .
+
+measure:CFhundredMillisecond
+      rdf:type measure:MilliSecond ;
+      rdfs:label "hundred millisecond"^^xsd:string ;
+      measure:has_value "100"^^xsd:float .
+
+measure:CFhundredMillisecondRange
+      rdf:type measure:TimeRange ;
+      rdfs:label "hundred millisecond range"^^xsd:string ;
+      measure:hasMaxTimeValue
+              measure:CFhundredMillisecond .
+
+measure:CFonehundredtwentyeightMB
+      rdf:type measure:MegaByte ;
+      rdfs:label "onehundredtwentyeight MB"^^xsd:string ;
+      measure:has_value "128"^^xsd:float .
+
+measure:CFonehundredtwentyeightMBRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "onehundredtwentyeight MBRange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:CFonehundredtwentyeightMB .
+
+measure:CFsixteenMB
+      rdf:type measure:MegaByte ;
+      rdfs:label "sixteen MB"^^xsd:string ;
+      measure:has_value "16"^^xsd:float .
+
+measure:CFsixteenMBRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "sixteen MBRange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:CFsixteenMB .
+
+measure:CFtwoGB
+      rdf:type measure:GigaByte ;
+      rdfs:label "two GB"^^xsd:string ;
+      measure:has_value "2"^^xsd:float .
+
+measure:CFtwoGBRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "two GBRange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:CFsixteenMB .
+
+measure:CFtwohundredfourtyMB
+      rdf:type measure:MegaByte ;
+      rdfs:label "twohundredfourty MB"^^xsd:string ;
+      measure:has_value "240"^^xsd:float .
+
+measure:CFtwohundredfourtyMBRange
+      rdf:type measure:StorageRange ;
+      rdfs:label "twohundredfourty MBRange"^^xsd:string ;
+      measure:hasMaxStorageValue
+              measure:CFtwohundredfourtyMB .
+
+paas-m:CFAppArchive
+      rdf:type paas-m:Operation ;
+      rdfs:label "CFApp archive"^^xsd:string ;
+      paas-m:hasOperationType
+              paas-m:CodeArchiveDeployment .
+
+paas-m:CFGIT
+      rdf:type paas-m:Operation ;
+      rdfs:label "CFGIT"^^xsd:string ;
+      paas-m:hasOperationType
+              paas-m:GITDeployment .
+
+paas-m:CloudFoundry
+      rdf:type paas-m:PaaSOffering ;
+      dcterms:description "Cloud Foundry provides a platform for building, deploying, and running cloud apps using Spring for Java developers, Rails and Sinatra for Ruby developers, Node.js and other JVM languages/frameworks including Groovy, Grails and Scala."^^xsd:string ;
+      dcterms:title "Cloud Foundry (Java)"^^xsd:string ;
+      paas-m:communicateThrough
+              paas-m:CloudFounfryChannel ;
+      paas-m:hasAdapter "true"^^xsd:boolean ;
+      paas-m:hasSlaId "d6bdd45c-ff30-4d06-95de-b2e53bd43e48"^^xsd:string ;
+      paas-m:hasURL "http://www.cloudfoundry.com/"^^xsd:string ;
+      paas-m:offerComputeScalingFactor
+              measure:one_range ;
+      paas-m:offerHardwareComponent
+              c4s-inf-m:CloudFoundryStorage , c4s-inf-m:CloudFoundry_compute ;
+      paas-m:offerSoftware
+              c4s-inf-m:CF_MySQL , c4s-inf-m:CF_Redis , c4s-inf-m:CF_mongoDB , essential-metamodel:CF_RabitMQ ;
+      paas-m:offerWebScalingFactor
+              measure:one_range ;
+      paas-m:providedByPaaSProvider
+              c4s-ent-m:vmware ;
+      paas-m:providesServiceQuality
+              qos-model:CF_uptime , qos-model:CF_latency ;
+      paas-m:supportLanguage
+              <http://www.cloud4soa.eu/v0.1/other#Java_1_6_0> .
+
+paas-m:CloudFounfryChannel
+      rdf:type paas-m:API ;
+      rdfs:label "CFChannel"^^xsd:string ;
+      paas-m:supportOperation
+              paas-m:CFAppArchive .
+
+<http://www.cloud4soa.eu/v0.1/paasInstances/CloudFoundry>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.cloud4soa.eu/v0.1/qos-model> , <http://www.cloud4soa.eu/v0.1/paas-model> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+qos-model:CF_latency
+      rdf:type qos-model:Latency ;
+      rdfs:label "CF latency"^^xsd:string ;
+      qos-model:hasTimeRangeValue
+              measure:CFhundredMillisecondRange .
+
+qos-model:CF_uptime
+      rdf:type qos-model:Uptime ;
+      rdfs:label "CF uptime"^^xsd:string ;
+      qos-model:hasPercentage
+              "99.5"^^xsd:float .
+
+essential-metamodel:CF_RabitMQ
+      rdf:type essential-metamodel:Software_Component ;
+      rdfs:label "CF Rabit MQ"^^xsd:string ;
+      c4s-inf-m:related_sw_category
+              c4s-inf-m:RabbitMQ .
+
+foaf:CloudFoundryPaaSURL
+      rdf:type foaf:Document ;
+      rdfs:label "Cloud foundry paa SURL"^^xsd:string ;
+      c4s-ent-m:link <http://www.vmware.com/> .
