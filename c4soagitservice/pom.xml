@@ -39,7 +39,7 @@
         <org.hibernate.validator.version>4.3.0.Final</org.hibernate.validator.version>        
         <cglib.version>2.2.2</cglib.version>
         <junit.version>4.10</junit.version>
-        <mysql.version>5.1.20</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <c3p0.pooling.version>0.9.1.2</c3p0.pooling.version>
         <jsf.version>2.1.0</jsf.version>
         <primefaces.version>3.2</primefaces.version>
