@@ -35,7 +35,7 @@
   	
 	
 	<properties>
-        <cxf.version>2.4.2</cxf.version>
+        <cxf.version>2.6.11</cxf.version>
         <eu.cloud4soa.api.version>0.0.3-SNAPSHOT</eu.cloud4soa.api.version>
     </properties>
 	
